@@ -38,8 +38,9 @@ group :development do
 end
 
 group :test do
-  #gem 'rspec'
-  #gem 'webrat'
-  gem "rspec-rails"
+  #gem 'rspec', '2.0.0.beta.14'
+  gem 'webrat'
+  gem "rspec-rails", '2.0.0.beta.14.2'
+  gem "factory_girl"
   gem "cucumber"
 end

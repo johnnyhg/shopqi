@@ -40,13 +40,16 @@ module Shopqi
     config.generators do |g|
       g.orm             :mongoid
       g.template_engine :haml
-    # g.test_framework  :test_unit, :fixture => true
+      
+      g.test_framework :rspec, :fixture => true, :views => false
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+      # g.test_framework  :test_unit, :fixture => true
     end
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]
   end
 end
