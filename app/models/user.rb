@@ -6,7 +6,7 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  field :name
-  validates_presence_of :name
-  validates_uniqueness_of :name, :email, :case_sensitive => false
+  field :login
+  validates_presence_of :login
+  validates_uniqueness_of :login, :email, :case_sensitive => false
 end

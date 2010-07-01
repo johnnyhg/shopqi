@@ -2,27 +2,26 @@
 %html
   %head
     %title ShopQi 适合中小企业的网店平台
-    = stylesheet_link_tag "main"
+    = stylesheet_link_tag "main", "awesome-buttons"
+    =formtastic_stylesheet_link_tag
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    #wrapper.bhome
+    #wrapper{:class => wrapper_class}
       %ul#quicklinks
-        %li#signup
-          %a{:href => "#"} 注册试用
-        %li#manage
-          %a{:href => "#"} 管理您的网店
+        %li#signup=link_to '注册试用', new_user_registration_path
+        %li#manage=link_to '管理您的网店', new_user_session_path
       #header
         .wrapper
-          %h1
-            %a{:href => "/"} ShopQi
+          %h1=link_to 'ShopQi', root_path
           %h2 专为您打造的网店平台
-          %p
-            您一直想进军电子商务，将业务拓展至全国，乃至全球。
-            您希望有一个安全稳定的网店平台，包含电子商务的所有功能，操作简单，越傻瓜越好。
-            这样就不用再浪费时间精力去选购服务器、安装程序，处理技术问题。
-            %br
-            如您所愿，选择ShopQi网店平台，省时！省力！省心！
+          -if is_home?
+            %p
+              您一直想进军电子商务，将业务拓展至全国，乃至全球。
+              您希望有一个安全稳定的网店平台，包含电子商务的所有功能，操作简单，越傻瓜越好。
+              这样就不用再浪费时间精力去选购服务器、安装程序，处理技术问题。
+              %br
+              如您所愿，选择ShopQi网店平台，省时！省力！省心！
           %ul#navigation
             %li#our=link_to '首页', root_path
             %li#why
@@ -33,10 +32,8 @@
               %a{:href => "/community/"} 常见问题
             %li#con
               %a{:href => "/contact/"} 联系我们
-            %li#blo
-              %a{:href => "/blog/"} 免费试用
-      #content
-        = yield
+            %li#blo=link_to '免费试用', new_user_registration_path
+      = yield
       #footer
         %p#copyright
           Copyright 2010 ShopQi.com Inc.All Rights Reserved.

@@ -72,9 +72,6 @@ body {
   width: 910px;
   margin: 0 auto; }
 
-#skiplinks {
-  display: none; }
-
 a {
   color: #0066cc;
   text-decoration: none; }
@@ -148,7 +145,7 @@ li#signup a {
   height: 29px;
   width: 268px;
   text-indent: -9999px;
-  /* background: url(../images/title_built_sub.gif) no-repeat */ }
+  background: url(../images/title_built_sub.gif) no-repeat; }
 
 .bhome #header h2 {
   left: 495px;
@@ -268,7 +265,7 @@ li#blo a:hover {
 #content {
   padding: 0 20px 0 32px;
   width: 906px;
-  w\idth: 854px;
+  width: 854px;
   background: url(../images/content.gif) repeat-y top left;
   float: left;
   color: #444444; }
@@ -277,7 +274,7 @@ li#blo a:hover {
   padding: 0 10px 35px 10px;
   width: 910px;
   background: url(../images/table.jpg) no-repeat 10px 65px;
-  w\idth: 890px; }
+  width: 890px; }
 
 #content a {
   color: #0066cc;
@@ -391,16 +388,9 @@ table td.cost {
 #main {
   padding-right: 23px;
   float: left;
-  color: #666666;
   width: 513px;
-  w\idth: 490px;
+  width: 490px;
   padding-top: 6px; }
-  #main p {
-    font-size: 116%;
-    line-height: 1.5;
-    margin-bottom: 20px; }
-    #main p.source {
-      margin-top: -20px; }
 
 #secondary p {
   line-height: 1.5;
@@ -409,15 +399,7 @@ table td.cost {
 em {
   font-style: italic; }
 
-#main ul {
-  font-size: 116%;
-  margin-bottom: 20px; }
-  #main ul li {
-    margin: 0 0 2px;
-    padding: 2px 0 2px 21px;
-    background: transparent url(../images/bullet_sub.gif) no-repeat 0 4px; }
-
-#new_customer input, #new_customer select {
+#user_new input, #user_new select {
   font-size: 130%; }
 
 #build_it {
@@ -428,7 +410,7 @@ em {
     text-align: center;
     margin: 0 auto; }
 
-#new_customer #build_it input {
+#user_new #build_it input {
   font-size: 200%; }
 
 label span {
@@ -436,7 +418,7 @@ label span {
   padding: 0 5px;
   font-size: 92%; }
 
-div#error {
+#error {
   background: #feebe8;
   padding: 15px 20px;
   margin: 0 0 20px;
@@ -448,7 +430,7 @@ div#error {
   font-size: 9;
   float: left;
   width: 340px;
-  w\idth: 296px;
+  width: 296px;
   background: url(../images/secondary.gif) no-repeat top left; }
   #secondary ul {
     margin: 0 0 15px; }

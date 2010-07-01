@@ -11,7 +11,7 @@ gem 'devise', '1.1.rc2'
 
 gem 'haml'
 
-gem "formtastic"
+gem "formtastic", :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3" 
 gem "validation_reflection", '1.0.0.beta4'
 gem "inherited_resources"
 

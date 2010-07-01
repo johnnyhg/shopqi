@@ -1,0 +1,15 @@
+#content-top
+  #content-bottom
+    #content
+      #main
+        %h3 注册试用
+        -semantic_form_for(resource, :url => registration_path(resource_name)) do |f|
+          =f.semantic_errors :login, :email, :password, :password_confirmation, :id => :error
+          =f.inputs :login, :email, :password, :password_confirmation
+          .buttons
+            %button.awesome.large.green 立即注册
+        = render :partial => "devise/shared/links"
+      #secondary
+        %h4 提示
+        %ul
+          %li 注册后可享受七天免费试用
