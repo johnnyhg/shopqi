@@ -34,6 +34,7 @@ gem 'unicorn'
 
 group :development do
   gem 'rails3-generators'
+  gem "hpricot"
   gem "awesome_print"
 end
 

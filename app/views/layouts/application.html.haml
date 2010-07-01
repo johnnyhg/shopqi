@@ -1,0 +1,46 @@
+!!! Strict
+%html
+  %head
+    %title ShopQi 适合中小企业的网店平台
+    = stylesheet_link_tag "main"
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  %body
+    #wrapper.bhome
+      %ul#quicklinks
+        %li#signup
+          %a{:href => "#"} 注册试用
+        %li#manage
+          %a{:href => "#"} 管理您的网店
+      #header
+        .wrapper
+          %h1
+            %a{:href => "/"} ShopQi
+          %h2 专为您打造的网店平台
+          %p
+            您一直想进军电子商务，将业务拓展至全国，乃至全球。
+            您希望有一个安全稳定的网店平台，包含电子商务的所有功能，操作简单，越傻瓜越好。
+            这样就不用再浪费时间精力去选购服务器、安装程序，处理技术问题。
+            %br
+            如您所愿，选择ShopQi网店平台，省时！省力！省心！
+          %ul#navigation
+            %li#our=link_to '首页', root_path
+            %li#why
+              %a{:href => "/why/"} 为何选择ShopQi
+            %li#sup
+              %a{:href => "/questions/"} 功能列表
+            %li#com
+              %a{:href => "/community/"} 常见问题
+            %li#con
+              %a{:href => "/contact/"} 联系我们
+            %li#blo
+              %a{:href => "/blog/"} 免费试用
+      #content
+        = yield
+      #footer
+        %p#copyright
+          Copyright 2010 ShopQi.com Inc.All Rights Reserved.
+        %p
+          %a{:href => "/tos"} 使用协议
+          |
+          %a{:href => "/privacy"} 隐私条款
