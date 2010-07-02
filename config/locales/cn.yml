@@ -51,3 +51,18 @@ cn:
       words_connector: ","
       two_words_connector: ","
       last_word_connector: ","
+
+  web-app-theme: 
+    save: 保存
+    cancel: 取消
+    list: 列表
+    edit: 编辑
+    new: 新增
+    show: 查看
+    delete: 删除
+    confirm: 您是否确定?
+    created_at: 创建于
+    all: 全部
+    profile: 个人资料
+    settings: 设置
+    logout: 退出

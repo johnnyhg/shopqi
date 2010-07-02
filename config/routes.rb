@@ -3,7 +3,7 @@ Shopqi::Application.routes.draw do |map|
 
   devise_for :users
   #用户登录后的跳转页面
-  match "user_root" => "home#index"
+  match "user_root" => "home#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

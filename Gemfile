@@ -20,6 +20,10 @@ gem "mini_magick"
 # Use unicorn as the web server
 gem 'unicorn'
 
+# 类似37signal的Basecamp产品界面，简洁
+# http://pilu.github.com/web-app-theme/
+#gem 'web-app-theme', :git => "git://github.com/libo/web-app-theme.git"
+
 # Deploy with Capistrano
 # gem 'capistrano'
 
@@ -46,6 +50,7 @@ group :test do
   gem 'capybara'
   #保持数据库处理干净状态
   gem 'database_cleaner'
+  gem 'cucumber'
   gem 'cucumber-rails'
   #为测试加速的drb server(sport cuc &)
   gem 'spork'

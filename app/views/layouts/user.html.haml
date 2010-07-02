@@ -1,0 +1,41 @@
+!!! Strict
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %title ShopQi工作平台
+    = stylesheet_link_tag "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", :cache => true
+  %body
+    #container
+      #header
+        %h1
+          = link_to 'ShopQi工作平台', root_path
+        #user-navigation
+          %ul.wat-cf
+            %li
+              = link_to "#" do
+                = t "web-app-theme.profile", :default => "Profile"
+            %li
+              = link_to "#" do
+                = t "web-app-theme.settings", :default => "Settings"
+            %li
+              = link_to destroy_user_session_path, :class => "logout" do
+                = t "web-app-theme.logout", :default => "Logout"
+        #main-navigation
+          %ul.wat-cf
+            %li.first.active=link_to '工作平台', user_root_path
+      #wrapper.wat-cf
+        .flash
+          - flash.each do |type, message|
+            .message{ :class => type.to_s }
+              %p
+                = message
+        #main
+          = yield
+          #footer
+            .block
+              %p
+                Copyright ©
+                = Time.now.year
+                ShopQi.com
+        #sidebar
+          = yield :sidebar
