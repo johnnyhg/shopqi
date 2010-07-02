@@ -4,3 +4,6 @@ log/*.log
 tmp/**/*
 
 *.sw?
+
+
+capybara-*.html

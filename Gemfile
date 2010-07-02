@@ -39,9 +39,16 @@ group :development do
 end
 
 group :test do
-  #gem 'rspec', '2.0.0.beta.14'
   gem 'webrat'
   gem "rspec-rails", '2.0.0.beta.14.2'
   gem "factory_girl"
-  gem "cucumber"
+
+  gem 'capybara'
+  #保持数据库处理干净状态
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  #为测试加速的drb server(sport cuc &)
+  gem 'spork'
+  #跨平台执行程序(如打开浏览器)
+  gem 'launchy'
 end

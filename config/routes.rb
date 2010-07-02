@@ -2,6 +2,8 @@ Shopqi::Application.routes.draw do |map|
   root :to => "home#index"
 
   devise_for :users
+  #用户登录后的跳转页面
+  match "user_root" => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
