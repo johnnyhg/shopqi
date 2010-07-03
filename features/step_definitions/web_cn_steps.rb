@@ -188,6 +188,8 @@ end
   end
 end
 
+#此方法尽量少用， 会不定时报错:
+# <DRb::DRbConnError: too large packet 67654656
 那么 /^显示页面$/ do
   save_and_open_page
 end

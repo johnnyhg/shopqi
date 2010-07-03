@@ -42,6 +42,7 @@ Spork.each_run do
   ActionController::Base.allow_rescue = false
   
   # 测试后删除数据
+  # 如果测试过程出现异常，使用此命令手动删除:rake db:drop RAILS_ENV=test
   # How to clean your database when transactions are turned off. See
   # http://github.com/bmabey/database_cleaner for more info.
   begin
