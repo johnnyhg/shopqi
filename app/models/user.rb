@@ -8,5 +8,5 @@ class User
 
   field :login
   validates_presence_of :login
-  validates_uniqueness_of :login, :email, :case_sensitive => false
+  validates_uniqueness_of :login, :case_sensitive => false
 end

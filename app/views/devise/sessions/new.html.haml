@@ -1,16 +1,14 @@
-%h2 Sign in
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %p
-    = f.label :email
-    %br/
-    = f.text_field :email
-  %p
-    = f.label :password
-    %br/
-    = f.password_field :password
-  - if devise_mapping.rememberable?
-    %p
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %p= f.submit "Sign in"
-= render :partial => "devise/shared/links"
+#content-top
+  #content-bottom
+    #content
+      #main
+        %h3 登录
+        = semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+          =f.semantic_errors :login, :password, :id => :error
+          =f.inputs :login, :password
+          %p{:style => 'margin-bottom:20px'}
+            =check_box_tag :remember_me, 1, false, :id => :user_remember_me, :style => 'width:20px; margin-left:15%;'
+            = f.label :remember_me, :style => 'display:inline'
+          =f.buttons do
+            =f.commit_button '登录'
+        = render :partial => "devise/shared/links"

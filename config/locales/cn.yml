@@ -8,20 +8,20 @@ cn:
     labels:
       user:
         login: 用户名
-        email: Email
+        email: 电子邮箱
         company: 公司
         password: 密码
         password_confirmation: 确认密码
         edit:
           title: 编辑用户
+        remember_me: 记住我
       user_session:
         login: 用户名
         password: 密码
-        remember_me: 记住我
     hints:
       user:
         login: 用于登录本系统
-        email: 您最常用的email地址
+        email: 您最常用的电子邮箱地址
         password: 必须为6位以上的字母、数字组合
         password_confirmation: 再次输入密码
     actions:
