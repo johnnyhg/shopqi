@@ -1,8 +1,10 @@
 Shopqi::Application.routes.draw do |map|
+  resources :products
+
   root :to => "home#index"
 
   devise_for :users
-  #用户登录后的跳转页面
+  #用户登录后的跳转页面(符合devise命名规范)
   match "user_root" => "home#show"
 
   # The priority is based upon order of creation:

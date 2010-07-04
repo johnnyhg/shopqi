@@ -12,14 +12,8 @@ The following style may be *conditionally* included for improved support on olde
 form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 
 --------------------------------------------------------------------------------------------------*/
-/* 修正:输入框挤在同一行 */
-form.formtastic fieldset > ol > li { display:block; }
-
 /* 修正:密码宽度太小了 */
 form.formtastic fieldset > ol > li.password input { max-width: 74%; }
 
 /* 完善:输入框要大一点 */
 form.formtastic input { font-size: 16px; width: 300px; }
-
-
-.buttons { margin-left: 25%; }

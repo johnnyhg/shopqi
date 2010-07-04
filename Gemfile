@@ -11,7 +11,9 @@ gem 'devise', '1.1.rc2'
 
 gem 'haml'
 
+# 注意页面的html元素要有xmlns属性，否则fieldset会挤在一起 http://bit.ly/bbcxU3
 gem "formtastic", :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3" 
+# 用于formtastic读取实体校验规则，页面可直接展示属性是否必填
 gem "validation_reflection", '1.0.0.beta4'
 gem "inherited_resources"
 
@@ -22,7 +24,7 @@ gem 'unicorn'
 
 # 类似37signal的Basecamp产品界面，简洁
 # http://pilu.github.com/web-app-theme/
-#gem 'web-app-theme', :git => "git://github.com/libo/web-app-theme.git"
+gem 'web-app-theme', :git => "git://github.com/libo/web-app-theme.git"
 
 # Deploy with Capistrano
 # gem 'capistrano'

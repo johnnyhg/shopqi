@@ -7,7 +7,7 @@
           =f.semantic_errors :login, :password, :id => :error
           =f.inputs :login, :password
           %p{:style => 'margin-bottom:20px'}
-            =check_box_tag :remember_me, 1, false, :id => :user_remember_me, :style => 'width:20px; margin-left:15%;'
+            =check_box_tag :remember_me, 1, false, :id => :user_remember_me, :style => 'width:20px; margin-left:25%;'
             = f.label :remember_me, :style => 'display:inline'
           =f.buttons do
             =f.commit_button '登录'

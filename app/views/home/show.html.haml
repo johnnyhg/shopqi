@@ -1,34 +1,21 @@
 .block#block-text
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to '日常管理', '#'
   .content
-    %h2.title
-      Home
-    .inner
-      %p.first
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. <span class="hightlight">Excepteur sint occaecat cupidatat
-        non proident</span>, sunt in culpa qui officia deserunt mollit anim id
-        est laborum.
+    #main-message
+      .flash
+        .message
+    #main-panel.inner
       %p
-        %span.small
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-      %p
-        %span.gray
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-      %hr
-      %p
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.
-        %span.hightlight>
-          Excepteur sint occaecat cupidatat non proident
-        , sunt in culpa qui officia deserunt mollit anim id
-        est laborum.
+        %span.gray 这里是添加商品等日常管理的区域
 
-- content_for :sidebar, render(:partial => 'sidebar')
+.block#block-text
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to '待办事宜', '#'
+  .content
+    .inner
+      %p
+        %span.gray 暂时没有需要处理的订单、咨询、评价信息
+-content_for :sidebar, render(:partial => 'sidebar')

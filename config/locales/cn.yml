@@ -14,7 +14,10 @@ cn:
         password_confirmation: 确认密码
         edit:
           title: 编辑用户
-        remember_me: 记住我
+        remember_me: 记住登录信息，下次自动登录
+      product:
+        name: 名称
+        price: 价格
       user_session:
         login: 用户名
         password: 密码
@@ -45,6 +48,8 @@ cn:
           attributes:
             password:
               confirmation: 确认密码要保持一致
+    models:
+      product: 商品
 
   support:
     array:
@@ -52,6 +57,7 @@ cn:
       two_words_connector: ","
       last_word_connector: ","
 
+  # 页面主题
   web-app-theme: 
     save: 保存
     cancel: 取消
@@ -66,3 +72,9 @@ cn:
     profile: 个人资料
     settings: 设置
     logout: 退出
+
+  # inherited_resource提示消息
+  flash:
+    actions:
+      create:
+        notice: "%{cn_resource_name}添加成功!"

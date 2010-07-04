@@ -1,0 +1,11 @@
+%h3 添加商品
+-#左右分栏需要form class(web-app-theme.css)
+= semantic_form_remote_for(resource, :html => { :class => 'form' }) do |f|
+  =f.semantic_errors :name, :price
+  .columns.wat-cf
+    .column.left
+      =f.inputs :name, :price
+      =f.buttons do
+        =f.commit_button '保存'
+    .column.right
+      所属分类
