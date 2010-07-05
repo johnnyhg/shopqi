@@ -1,1 +1,2 @@
 /* Override here any style definide by web-app-theme */
+.message ul { list-style-type: none }

@@ -1,5 +1,9 @@
 class Product
   include Mongoid::Document
-  field :name, :type => String
+  include Formtastic::I18n::Naming
+  field :name
   field :price, :type => Float
+
+  validates_presence_of :name, :price
+  validates_numericality_of :price
 end

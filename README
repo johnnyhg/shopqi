@@ -1,8 +1,18 @@
-2010.07.01
-  首页布局，用户注册
+*开发环境*
+ubuntu 10.04
+"vim 7.2": http://github.com/akitaonrails/vimfiles
+
+*系统要求*
+ruby 1.9.2
+rails 3
+mongodb 1.4.3
+
+*进度*
+2010.07
+  首页布局，用户注册，添加商品
 
 
-测试:
+*如何测试*
   #查看cucumber支持的语言
   cucumber --i18n help
   #查看cucumber中文语法
