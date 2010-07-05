@@ -11,3 +11,6 @@
   #运行功能测试
   spork cuc &
   cucumber
+
+
+License: "GNU Affero GPL 3": http://www.gnu.org/licenses/agpl-3.0.html
