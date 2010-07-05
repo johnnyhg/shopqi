@@ -116,7 +116,7 @@ li#signup a {
     position: relative;
     height: 150px; }
 
-.bhome #header .wrapper {
+.bindex #header .wrapper {
   height: auto; }
 
 #header h1 a {
@@ -130,7 +130,7 @@ li#signup a {
   top: 8px;
   left: 7px; }
 
-.bhome #header h1 a {
+.bindex #header h1 a {
   width: 392px;
   height: 204px;
   background: url(../images/logo.jpg) no-repeat;
@@ -147,7 +147,7 @@ li#signup a {
   text-indent: -9999px;
   background: url(../images/title_built_sub.gif) no-repeat; }
 
-.bhome #header h2 {
+.bindex #header h2 {
   left: 495px;
   top: 55px;
   height: 36px;
@@ -188,11 +188,11 @@ li#why a {
   left: 182px;
   width: 186px;
   background-position: -182px 0; }
-li#sup a {
+li#fea a {
   left: 368px;
   width: 130px;
   background-position: -368px 0; }
-li#com a {
+li#que a {
   left: 498px;
   width: 155px;
   background-position: -498px 0; }
@@ -200,7 +200,7 @@ li#con a {
   left: 653px;
   width: 127px;
   background-position: -653px 0; }
-li#blo a {
+li#new a {
   left: 780px;
   width: 102px;
   background-position: -780px 0; }
@@ -208,13 +208,13 @@ li#our a:hover {
   background-position: -28px -55px; }
 li#why a:hover {
   background-position: -182px -55px; }
-li#sup a:hover {
+li#fea a:hover {
   background-position: -368px -55px; }
-li#com a:hover {
+li#que a:hover {
   background-position: -498px -55px; }
 li#con a:hover {
   background-position: -653px -55px; }
-li#blo a:hover {
+li#new a:hover {
   background-position: -780px -55px; }
 
 .bours li#our a {
@@ -222,29 +222,29 @@ li#blo a:hover {
   .bours li#our a:hover {
     background-position: -28px -55px; }
 
-.bwhys li#why a {
+.bwhy li#why a {
   background-position: -182px -55px; }
-  .bwhys li#why a:hover {
+  .bwhy li#why a:hover {
     background-position: -182px -55px; }
 
-.bsupp li#sup a {
+.bfeatures li#fea a {
   background-position: -368px -55px; }
-  .bsupp li#sup a:hover {
+  .bfeatures li#fea a:hover {
     background-position: -368px -55px; }
 
-.bcomm li#com a {
+.bquestions li#que a {
   background-position: -498px -55px; }
-  .bcomm li#com a:hover {
+  .bquestions li#que a:hover {
     background-position: -498px -55px; }
 
-.bcont li#con a {
+.bcontact li#con a {
   background-position: -653px -55px; }
-  .bcont li#con a:hover {
+  .bcontact li#con a:hover {
     background-position: -653px -55px; }
 
-.bblog li#blo a {
+.bnew li#new a {
   background-position: -780px -55px; }
-  .bblog li#blo a:hover {
+  .bnew li#new a:hover {
     background-position: -780px -55px; }
 
 /* @end */
@@ -270,7 +270,7 @@ li#blo a:hover {
   float: left;
   color: #444444; }
 
-.bhome #content {
+.bindex #content {
   padding: 0 10px 35px 10px;
   width: 910px;
   background: url(../images/table.jpg) no-repeat 10px 65px;
@@ -325,7 +325,7 @@ code {
   color: #333333;
   padding: 0; }
 
-.bhome #content h4 {
+.bindex #content h4 {
   margin-bottom: 5px; }
 
 #plans {
@@ -357,7 +357,7 @@ table {
   table .odd td {
     background: #d5dde6; }
 
-.bhome td.cost a {
+.bindex td.cost a {
   float: right;
   width: 70px;
   height: 20px;
@@ -380,7 +380,7 @@ table td.cost {
   clear: left;
   float: left; }
 
-.bhome #content ul li {
+.bindex #content ul li {
   margin: 0 0 2px;
   padding: 2px 0 2px 26px;
   background: url(../images/bullet_home.gif) no-repeat 5px 3px; }
@@ -391,6 +391,12 @@ table td.cost {
   width: 513px;
   width: 490px;
   padding-top: 6px; }
+  #main p {
+    font-size: 116%;
+    line-height: 1.5;
+    margin-bottom: 20px; }
+    #main p.source {
+      margin-top: -20px; }
 
 #secondary p {
   line-height: 1.5;
@@ -398,6 +404,14 @@ table td.cost {
 
 em {
   font-style: italic; }
+
+#main ul {
+  font-size: 116%;
+  margin-bottom: 20px; }
+  #main ul.bullet li {
+    margin: 0 0 2px;
+    padding: 2px 0 2px 21px;
+    background: transparent url(../images/bullet_sub.gif) no-repeat 0 4px; }
 
 #user_new input, #user_new select {
   font-size: 130%; }
@@ -461,71 +475,3 @@ label span {
 
 #copyright {
   float: left; }
-
-/************************************
- *+Entry
- * *********************************** */
-.entry {
-  margin-bottom: 3em; }
-
-.entrymeta {
-  font-size: 0.9em; }
-
-.postinfo span {
-  padding: 3px 10px 3px 20px; }
-
-.postedby {
-  background: white url(../images/user.gif) no-repeat 0 50%; }
-
-.filedto {
-  background: white url(../images/post.gif) no-repeat 0 50%; }
-
-.commentslink {
-  background: white url(../images/packaged.gif) no-repeat 0 50%;
-  padding: 3px 10px 3px 20px; }
-
-.commentsblock textarea {
-  width: 100%; }
-
-.commentauthor {
-  display: block;
-  font-size: 1.5em; }
-
-#content p.commentmetadata {
-  margin: 0 0 10px;
-  color: #111111;
-  font-weight: bold; }
-
-ol.commentlist {
-  margin: 0 0 30px; }
-  ol.commentlist li {
-    padding: 15px 20px 5px; }
-    ol.commentlist li.alt {
-      background: #eff3f6; }
-
-#content ol.commentlist li p {
-  font-size: 100%;
-  margin: 0 0 10px; }
-
-p.commentmetadata span.time {
-  float: right; }
-
-div.pagination a {
-  padding: 2px 5px 2px 5px;
-  margin: 2px;
-  border: 1px solid #d5dde6; }
-  div.pagination a:hover, div.pagination a:active {
-    border: 1px solid #d5dde6;
-    color: black; }
-div.pagination span.current {
-  padding: 2px 5px 2px 5px;
-  margin: 2px;
-  border: 1px solid #d5dde6;
-  font-weight: bold;
-  background-color: #d5dde6;
-  color: #111111; }
-div.pagination span.disabled {
-  padding: 2px 5px 2px 5px;
-  margin: 2px;
-  border: 1px solid #d5dde6;
-  color: #dddddd; }

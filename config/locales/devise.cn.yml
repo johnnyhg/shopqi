@@ -1,7 +1,7 @@
 cn:
   errors:
     messages:
-      not_found: "not found"
+      not_found: "未找到"
       already_confirmed: "was already confirmed"
       not_locked: "was not locked"
 

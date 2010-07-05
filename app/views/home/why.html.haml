@@ -1,0 +1,38 @@
+#content-top
+  #content-bottom
+    #content
+      #main
+        %h3#top 为何选择ShopQi
+
+        %h4#price 价格实惠
+        %p 
+          系统中无法看到，在空间使用情况、流量，当其值达到90%时，系统会发Email提示您。
+          请放心使用，空间和流量都按最大可能值设置，正常情况下不会超过。
+          非正常情况下指恶意上传大量超大图片，会导致空间使用超过。或者有黑客攻击，导致流量超出，这种情况系统会自动监测，我们会及时处理，不会让您产生额外支出。
+        %p=link_to '返回顶部', '#top'
+
+        %h4#features 功能全面
+        %p 覆盖电子商务运营过程的各大功能，凡客诚品、京东商城等大型网店已有的功能这里都有。
+        %ul.bullet
+          %li 全文提示性搜索
+          %li 商品放大镜
+        %p
+          详见
+          =link_to '功能列表', features_path
+        %p=link_to '返回顶部', '#top'
+
+        %h4#operate 操作简单
+        %p 所见即所得的操作方式
+        %p=link_to '返回顶部', '#top'
+
+        %h4#service 服务周到
+        %p 全年365天，每天8:00-24:00，欢迎咨询
+        %p=link_to '返回顶部', '#top'
+
+      #secondary
+        %h4 问题列表
+        %ul
+          %li=link_to '价格实惠', '#price'
+          %li=link_to '功能全面', '#features'
+          %li=link_to '操作简单', '#operate'
+          %li=link_to '服务周到', '#service'

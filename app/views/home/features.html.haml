@@ -1,0 +1,58 @@
+#content-top
+  #content-bottom
+    #content
+      #main
+        %h3#top 功能列表
+
+        %h4#product 商品管理
+        %ul.bullet
+          %li 品牌、分类、规格
+          %li 商品图片放大镜展示
+          %li 详细商品对比
+          %li 咨询评价
+          %li 在线支付、快递配送
+        %p=link_to '返回顶部', '#top'
+
+        %h4#order 订单管理
+        %ul.bullet
+          %li 购物车
+          %li 收款、退款、发货、退货
+        %p=link_to '返回顶部', '#top'
+
+        %h4#customer 会员管理
+        %ul.bullet
+          %li 信息登记、积分管理、会员等级
+          %li 购物流程Email通知
+        %p=link_to '返回顶部', '#top'
+
+        %h4#discount 促销推广
+        %ul.bullet
+          %li 特价促销
+          %li 商品秒杀
+          %li 搭配销售
+          %li 批发
+          %li 代理
+          %li 网站联盟
+        %p=link_to '返回顶部', '#top'
+
+        %h4#article 文章资讯
+        %ul.bullet
+          %li 商品导购资讯
+          %li 与商品双向关联
+        %p=link_to '返回顶部', '#top'
+
+        %h4#report 统计分析
+        %ul.bullet
+          %li 销售统计
+          %li 流量统计
+        %p=link_to '返回顶部', '#top'
+
+      #secondary
+        %h4 功能列表
+        %ul
+          %li=link_to '商品管理', '#product'
+          %li=link_to '订单管理', '#order'
+          %li=link_to '会员管理', '#customer'
+          %li=link_to '促销推广', '#discount'
+          %li=link_to '文章资讯', '#article'
+          %li=link_to '统计分析', '#report'

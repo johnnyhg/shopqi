@@ -2,6 +2,10 @@ Shopqi::Application.routes.draw do |map|
   resources :products
 
   root :to => "home#index"
+  match "why" => "home#why"
+  match "features" => "home#features"
+  match "questions" => "home#questions"
+  match "contact" => "home#contact"
 
   devise_for :users
   #用户登录后的跳转页面(符合devise命名规范)

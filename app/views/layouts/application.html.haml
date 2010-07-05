@@ -8,7 +8,7 @@
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    #wrapper{:class => wrapper_class}
+    #wrapper{:class => "b#{action_name}"}
       %ul#quicklinks
         %li#signup=link_to '注册试用', new_user_registration_path
         %li#manage=link_to '登录管理您的网店', new_user_session_path
@@ -25,15 +25,11 @@
               如您所愿，选择ShopQi网店平台，省时！省力！省心！
           %ul#navigation
             %li#our=link_to '首页', root_path
-            %li#why
-              %a{:href => "/why/"} 为何选择ShopQi
-            %li#sup
-              %a{:href => "/questions/"} 功能列表
-            %li#com
-              %a{:href => "/community/"} 常见问题
-            %li#con
-              %a{:href => "/contact/"} 联系我们
-            %li#blo=link_to '免费试用', new_user_registration_path
+            %li#why=link_to '为何选择ShopQi', why_path
+            %li#fea=link_to '功能列表', features_path
+            %li#que=link_to '常见问题', questions_path
+            %li#con=link_to '联系我们', contact_path
+            %li#new=link_to '免费试用', new_user_registration_path
       = yield
       #footer
         %p#copyright
