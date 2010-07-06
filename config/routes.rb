@@ -1,4 +1,6 @@
 Shopqi::Application.routes.draw do |map|
+  resources :pages
+
   resources :products
 
   root :to => "home#index"

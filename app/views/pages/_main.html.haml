@@ -1,0 +1,23 @@
+.wrapper{:style => "position:relative;z-index:1;"}
+  / main_body start
+  .main_body
+    = render :partial => "pages/header/banner"
+    / main_body_right start
+    .main_body_center.ftr
+      = render :partial => "pages/public"
+      = render :partial => "pages/detail_menu"
+      .clear
+      / women start
+      = render :partial => "pages/product/title"
+      = render :partial => "pages/product/head"
+      = render :partial => "pages/product/middle"
+      = render :partial => "pages/product/small"
+      .clear
+      / women end
+      / laptop bag end
+      = render :partial => "pages/customer/small"
+    / main_body_right end
+    .clear
+  / main_body end
+/ main wrapper end
+

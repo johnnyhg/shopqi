@@ -1,0 +1,23 @@
+!!!
+%html{:lang => "zh-CN", "xml:lang" => "zh-CN", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "zh-CN", "http-equiv" => "Content-Language"}/
+    %title 麦包包官网 - 淘宝网商城知名品牌, 开心网购, 就在麦包包！
+    %meta{:content => "mbaobao.com", :name => "Copyright"}/
+    %meta{ :name => "Keywords"}/
+    %meta{ :name => "Description"}/
+    %link{:href => "http://www.mbaobao.com/templates/default/css/new_common.css?20100406.793", :rel => "stylesheet", :rev => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://www.mbaobao.com/templates/default/css/new_index.css?20100406.793", :rel => "stylesheet", :rev => "stylesheet", :type => "text/css"}/
+    %script{:src => "http://www.mbaobao.com/templates/default/js/jquery-1.3.2.min.js?20100406.793", :type => "text/javascript"}
+    %script{:src => "http://www.mbaobao.com/templates/default/js/common.js?20100406.793", :type => "text/javascript"}
+    %script{:src => "http://www.mbaobao.com/templates/default/js/swfobject.js?20100406.793", :type => "text/javascript"}
+    %script{:src => "http://www.mbaobao.com/templates/default/js/index.js?20100406.793", :type => "text/javascript"}
+  %body
+    = render :partial => "pages/header"
+    = render :partial => "pages/main"
+    = render :partial => "pages/footer/extra"
+    = render :partial => "pages/footer/links"
+    = render :partial => "pages/footer/company"
+      
+    = javascript_include_tag 'focus'
