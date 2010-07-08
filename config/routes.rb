@@ -1,5 +1,10 @@
 Shopqi::Application.routes.draw do |map|
+  resources :navs do
+    post :sort, :on => :collection
+  end
+
   resources :pages
+  match 'page' => 'pages#show'
 
   resources :products
 

@@ -1,0 +1,4 @@
+$("#navs li[edit-id='#{params[:surround_resource_id]}']").before('#{escape_javascript( render(:partial => "navs/item", :object => resource))}');
+//reset tooltip
+$("#navs li[edit-id='#{resource.id}'] a").tooltip(tooltip_setting).dynamic(dynamic_setting);
+$("#tooltip").fadeOut('slow');

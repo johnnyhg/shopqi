@@ -8,6 +8,10 @@ gem 'rails', '3.0.0.beta4'
 gem 'mongoid', '2.0.0.beta9'
 gem 'bson_ext', '1.0.1'
 gem 'devise', '1.1.rc2'
+#排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
+#lib/mongoid/acts_as_list.rb第417存在问题，需要加other.respond_to?('_id')判断
+#其依赖的mongoid_embedded_helper的mongoid/embedded_helper.rb的presend?方法与activesupport中的重名，需要删除
+gem 'acts_as_list_mongoid'
 
 gem 'haml'
 
@@ -26,6 +30,8 @@ gem 'unicorn'
 # http://pilu.github.com/web-app-theme/
 gem 'web-app-theme', :git => "git://github.com/libo/web-app-theme.git"
 
+gem "awesome_print", :require => 'ap'
+
 # Deploy with Capistrano
 # gem 'capistrano'
 
@@ -41,7 +47,6 @@ gem 'web-app-theme', :git => "git://github.com/libo/web-app-theme.git"
 group :development do
   gem 'rails3-generators'
   gem "hpricot"
-  gem "awesome_print"
 end
 
 group :test do

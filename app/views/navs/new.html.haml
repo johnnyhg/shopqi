@@ -1,0 +1,10 @@
+.operates
+  =link_to '<<在其前添加', new_nav_path(:surround_resource_id => resource.id), :remote => true, :update => 'tooltip' unless resource.new_record?
+  =link_to '在其后添加>>', new_nav_path(:surround_resource_id => resource.id), :remote => true, :update => 'tooltip', :style => 'float:right' unless resource.new_record?
+= semantic_form_remote_for(resource) do |f|
+  =hidden_field_tag :surround_resource_id, params[:surround_resource_id]
+  =f.inputs :name, :url
+  =f.buttons do
+    =f.commit_button '保存'
+    -unless resource.new_record?
+      %li=link_to '删除', nav_path, :remote => true, :method => :delete

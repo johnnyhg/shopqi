@@ -1,7 +1,7 @@
 class ProductsController < InheritedResources::Base
-  layout nil, :only => [ :new , :create]
-  respond_to :js, :only => [ :new, :create]
   actions :new, :create
+  layout nil
+  respond_to :js
 
   create! do |success, failure|
     failure.js { render :action => "create.failure.js.haml"}

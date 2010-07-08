@@ -18,6 +18,9 @@ cn:
       product:
         name: 名称
         price: 价格
+      nav:
+        name: 名称
+        url: 链接地址
       user_session:
         login: 用户名
         password: 密码
@@ -75,7 +78,7 @@ cn:
 
   # inherited_resource提示消息
   flash:
-    actions:
+    products:
       create:
         notice: "%{cn_resource_name}添加成功!"
         alert: "%{cn_resource_name}添加失败!"
