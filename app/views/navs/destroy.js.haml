@@ -1,2 +1,5 @@
 $("#navs li[edit-id='#{resource.id}']").remove();
 $("#tooltip").fadeOut('slow');
+//reset first class
+$("#navs li:first").addClass('no_bar');
+$("#navs li:gt(0)").removeClass('no_bar');

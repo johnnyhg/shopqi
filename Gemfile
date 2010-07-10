@@ -9,10 +9,10 @@ gem 'mongoid', '2.0.0.beta9'
 gem 'bson_ext', '1.0.1'
 gem 'devise', '1.1.rc2'
 #排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
-#lib/mongoid/acts_as_list.rb第417存在问题，需要加other.respond_to?('_id')判断
-#其依赖的mongoid_embedded_helper的mongoid/embedded_helper.rb的presend?方法与activesupport中的重名，需要删除
-gem 'acts_as_list_mongoid'
-
+# lib/mongoid/acts_as_list.rb第417存在问题，需要加other.respond_to?('_id')判断
+# 其依赖的mongoid_embedded_helper的mongoid/embedded_helper.rb的presend?方法与activesupport中的重名，需要删除
+gem 'mongoid_embedded_helper', :git => 'git://github.com/saberma/mongoid_embedded_helper.git'
+gem 'acts_as_list_mongoid', :git => 'git://github.com/saberma/acts_as_list_mongoid.git'
 gem 'haml'
 
 # 注意页面的html元素要有xmlns属性，否则fieldset会挤在一起 http://bit.ly/bbcxU3
@@ -51,7 +51,7 @@ end
 
 group :test do
   gem 'webrat'
-  gem "rspec-rails", '2.0.0.beta.14.2'
+  gem "rspec-rails"
   gem "factory_girl"
   gem "factory_girl_rails"
 
@@ -61,6 +61,8 @@ group :test do
   gem 'cucumber'
   gem 'cucumber-rails'
   #为测试加速的drb server(sport cuc &)
+  # 不要使用rspec2.0.0.beta.16版本，执行rspec -X
+  # Exception encountered: #<NoMethodError: undefined method `configure' for ["--color", "spec/models/nav_spec.rb"]:Array>
   gem 'spork'
   #跨平台执行程序(如打开浏览器)
   gem 'launchy'

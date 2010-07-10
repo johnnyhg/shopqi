@@ -1,11 +1,10 @@
+# encoding: utf-8
 class NavsController < InheritedResources::Base
   layout nil
   actions :new, :create, :edit, :update, :destroy
   respond_to :js
 
   create! do |success, failure|
-    resource.move(:above => Page.mbaobao.navs.find(params[:surround_resource_id]))
-    Page.mbaobao.navs.init_list!
     failure.js { render :action => "create.failure.js.haml"}
   end
 

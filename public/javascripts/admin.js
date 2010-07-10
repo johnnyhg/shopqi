@@ -1,3 +1,17 @@
+// jQuery extension
+// 将内容添加至当前节点的前面或后面
+// @param direct 移动的方向('above', 'below')
+// @param content 待添加的内容
+$.fn.move = function(direct, content){
+  this.each(function(){
+      if(direct == 'above'){
+        $(this).before(content);
+      }else{
+        $(this).after(content);
+      }
+  });
+}
+
 var tooltip_setting = {
   tip: '#tooltip', 
   //position: ['center','right'],
@@ -11,6 +25,7 @@ var tooltip_setting = {
     var url = obj.attr('edit-type') + '/' + obj.attr('edit-id') + '/edit.js';
     $.get(url, function(body){
       $('#tooltip').html(body);
+      $('#tooltip :text:first').focus();
     });
   }
 };
@@ -24,7 +39,8 @@ jQuery(function ($) {
   $('.editable').sortable({
     update: function(){
       $.post('/navs/sort', $('.editable').sortable('serialize'), function(){
-        $('.editable').effect('highlight');
+        $("#navs li:first").addClass('no_bar');
+        $("#navs li:gt(0)").removeClass('no_bar');
       }, 'script');
     }
   });
