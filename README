@@ -35,4 +35,5 @@ mongodb 1.4.3
 *为何选择*
 mongodb:灵活增减字段，不用再管migration
 
-License: "GNU Affero GPL 3": http://www.gnu.org/licenses/agpl-3.0.html
+*License*
+项目遵循授权: "GNU Affero GPL 3": http://www.gnu.org/licenses/agpl-3.0.html

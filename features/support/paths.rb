@@ -11,6 +11,11 @@ module NavigationHelpers
 
     when /首页/
       '/'
+    when /the new page page/
+      new_page_path
+
+    when /网店布局管理/
+      page_path
     when /the new product page/
       new_product_path
 

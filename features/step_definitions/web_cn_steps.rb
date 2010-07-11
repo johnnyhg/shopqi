@@ -99,7 +99,7 @@ end
   end
 end
 
-那么 /^我?(?:在(.+)区域)应该看不到(.+)$/ do |selector, text|
+那么 /^我?(?:在(.+)区域)?应该看不到(.+)$/ do |selector, text|
   with_scope(selector) do
     if page.respond_to? :should
       page.should have_no_content(text)
@@ -186,6 +186,11 @@ end
   else
     assert_equal expected_params, actual_params
   end
+end
+
+
+当 /^我?把鼠标移到(.+)$/ do |field|
+  page.execute_script("$('#navs a:first').mouseover()")
 end
 
 #此方法尽量少用， 会不定时报错:

@@ -1,7 +1,9 @@
 #首页顶端导航
 class Nav
   include Mongoid::Document
+  include Mongoid::Timestamps
   include ActsAsList::Mongoid 
+
   field :name
   field :url
 

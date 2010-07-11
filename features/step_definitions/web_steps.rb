@@ -214,6 +214,16 @@ Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
   end
 end
 
+# javascript mouse support
+Then /^I move mouse over "([^\"]*)"$/ do |label| 
+  begin 
+    Capybara.current_session.driver.browser.execute_script("$('#{label}').mouseover();") 
+  rescue
+    Capybara::NotSupportedByDriverError
+  end
+end 
+
+
 Then /^show me the page$/ do
   save_and_open_page
 end

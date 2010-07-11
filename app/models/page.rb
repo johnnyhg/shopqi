@@ -1,5 +1,7 @@
 class Page
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   field :name
   validates_uniqueness_of :name
 

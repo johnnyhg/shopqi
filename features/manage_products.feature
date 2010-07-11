@@ -4,7 +4,6 @@
   作为用户
   可以添加、修改商品
   
-  @focus
   @javascript
   场景: 添加商品
     假如我已经以用户名saberma登录
