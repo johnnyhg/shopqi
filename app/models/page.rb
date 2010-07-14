@@ -5,7 +5,7 @@ class Page
   field :name
   validates_uniqueness_of :name
 
-  embeds_many :navs, :order_by => 'pos desc'
+  embeds_many :navs
 
   def sorted_navs
     navs.sort {|x, y| x.pos <=> y.pos}

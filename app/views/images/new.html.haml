@@ -1,0 +1,139 @@
+#photomaker
+  #operate
+    %ul
+      %li.label 操作
+      %li=link_to '添加文字', '#', :id => 'add_word'
+      %li=link_to '生成图片', '#', :id => 'generate_image'
+    =hidden_field_tag 'current'
+  #menu
+    %ul{:name => :font}
+      %li.label 字体
+      %li=link_to '微软雅黑', '#', :value => :yahei
+      %li=link_to '华康海报', '#', :value => :haibao
+      %li=link_to '方正卡通', '#', :value => :katong
+    %ul{:name => 'font-size'}
+      %li.label 文字大小
+      %li=link_to '小字', '#', :value => '12px'
+      %li=link_to '中字', '#', :value => '24px'
+      %li=link_to '大字', '#', :value => '36px'
+    %ul.color{:name => :color}
+      %li.label 文字颜色
+      %li.red=link_to '红色', '#', :value => '#E60012'
+      %li.green=link_to '绿色', '#', :value => '#8ABC35'
+      %li.blue=link_to '蓝色', '#', :value => '#3C87C3'
+
+  #panel
+    .jqHandle.jqResize
+
+#log
+
+:javascript
+  $().ready(function(){
+    //面板可修改大小
+    $('#panel').jqResize('.jqResize');
+
+    var number = 0;
+    //添加操作
+    $('#add_word').click(function(){
+      var word = $("<div class='editable jqDnR jqDrag word'>ShopQi</div>").appendTo('#panel');
+      //number为文字子项所在数组的序号
+      word.attr('tmp_id', number++);
+
+      //保留当前文字
+      word.click(function(){
+        var item = $(this);
+        $('#current').val(word.attr('tmp_id'));
+        //回显选中的文字参数
+        $("#menu ul[name]").each(function(i){
+          var name = $(this).attr('name');
+          var value = item.attr('word-' + name);
+          $('a', $(this)).removeClass('selected');
+          $("a[value='" + value + "']", $(this)).addClass('selected');
+        });
+      });
+
+      //可拖动
+      word.jqDrag(null, '#panel');
+
+      //可编辑
+      word.editable(
+        //target为url时提交至服务器，为function则本地执行
+        function(text){
+          return text;
+        },{
+        //失焦时提交
+        onblur : 'submit',
+        //双击进入输入状态
+        event  : 'dblclick',
+        //input为inline,则form也应为inline,否则布局会乱
+        cssclass : 'form_inline'
+      });
+
+      //初始化文字属性
+      $("#menu ul[name]").each(function(i){
+        var attribute = $("li:not(.label):first a", $(this));
+        var name = $(this).attr('name');
+        var value = attribute.attr('value');
+        word.attr('word-' + name, value);
+        //设置字体大小、颜色，字体暂不设置(浏览器没有这些字体)
+        word.css(name, value);
+        $.jGrowl(attribute.attr('value'));
+      });
+
+      //设置当前文字
+      word.click();
+    });
+
+    //生成图片
+    $('#generate_image').click(function(){
+      //面板参数
+      var data = {
+        image: {
+          width: $('#panel').width(),
+          height: $('#panel').height(),
+          words: {}
+        }
+      };
+      //文字参数
+      $('.word').each(function(){
+        var item = $(this);
+        var word = {
+          x: item.position().left,
+          y: item.position().top,
+          text: item.text(),
+          tmp_id: item.attr('tmp_id'),
+          id: item.attr('word-id')
+        }
+        $("#menu ul[name]").each(function(i){
+          var name = $(this).attr('name')
+          word[name] = item.attr('word-' + name);
+        });
+        data['image']['words'][item.attr('tmp_id')] = word;
+      });
+
+      var url = '/images';
+      //更新
+      if($('#panel').attr('image-id')){
+        url += '/' + $('#panel').attr('image-id');
+        data['_method'] = 'put';
+      }
+      $.post(url, data, null, 'script');
+    });
+
+    //修改文字属性
+    $('#menu a').click(function(){
+      var current_word = $(".word[tmp_id='" + $('#current').val() + "']");
+      if(current_word[0]){
+        var parent = $(this).parents('ul');
+        $('a', parent).removeClass('selected');
+        $(this).addClass('selected');
+        var name = parent.attr('name');
+        var value = $(this).attr('value');
+        if(name == 'color' || name == 'font-size')
+          current_word.css(name, value);
+        current_word.attr('word-' + name, value);
+        $.jGrowl('修改属性' + name + ':' + value);
+      }
+    });
+
+  });

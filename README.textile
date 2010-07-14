@@ -1,0 +1,39 @@
+*项目构成*
+# ShopQi官网
+# 网店后台管理
+# 网店布局管理
+# 网店展示
+
+*开发环境*
+ubuntu 10.04
+"vim 7.2": http://github.com/akitaonrails/vimfiles
+
+*系统要求*
+ruby 1.9.2
+rails 3
+mongodb 1.4.3
+
+*进度*
+2010.07
+  首页布局，用户注册，添加商品
+
+
+*如何测试*
+*cucumber*
+  #查看cucumber支持的语言
+  cucumber --i18n help
+  #查看cucumber中文语法
+  cucumber --i18n zh-CN
+
+  #运行功能测试
+  spork cuc &
+  cucumber
+*rspec*
+  spork rspec &
+  rspec spec -X
+
+*为何选择*
+mongodb:灵活增减字段，不用再管migration
+
+*License*
+项目遵循授权: "GNU Affero GPL 3": http://www.gnu.org/licenses/agpl-3.0.html

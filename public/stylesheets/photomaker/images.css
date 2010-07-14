@@ -1,0 +1,63 @@
+a {
+  text-decoration: none; }
+
+#photomaker {
+  /* .color */
+  /*     .red */
+  /*       background-color: #E60012 */
+  /*     .green */
+  /*       background-color: #8ABC35 */
+  /*     .blue */
+  /*       background-color: #3C87C3 */
+  /*     a */
+  /*       color: white */ }
+  #photomaker #menu ul, #photomaker #operate ul {
+    clear: both;
+    list-style: none;
+    display: block;
+    padding-top: 10px; }
+    #photomaker #menu ul li, #photomaker #operate ul li {
+      float: left;
+      padding-left: 10px;
+      margin-right: 10px;
+      width: 100px; }
+      #photomaker #menu ul li.label, #photomaker #operate ul li.label {
+        width: 100px; }
+      #photomaker #menu ul li .selected, #photomaker #operate ul li .selected {
+        background-color: #8abc35;
+        color: white; }
+  #photomaker #panel {
+    position: absolute;
+    left: 200px;
+    top: 150px;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #999999; }
+
+.jqHandle {
+  background: red;
+  height: 10px; }
+
+.jqResize {
+  width: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: se-resize; }
+
+.jqDrag {
+  cursor: move; }
+
+.jqDnR {
+  z-index: 3;
+  position: absolute;
+  font-size: 20px;
+  color: #618d5e;
+  margin: 0;
+  background-color: #eeeeee;
+  border: 1px solid #cccccc;
+  display: inline;
+  white-space: nowrap; }
+
+.form_inline {
+  display: inline; }

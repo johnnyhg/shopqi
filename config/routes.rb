@@ -1,4 +1,6 @@
 Shopqi::Application.routes.draw do |map|
+  resources :images
+
   resources :navs do
     post :sort, :on => :collection
   end

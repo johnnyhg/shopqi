@@ -1,0 +1,10 @@
+!!! Strict
+%html{html_attrs('zh-CN')}
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %title ShopQi在线文字图片合成
+    = stylesheet_link_tag 'photomaker/jgrowl', 'photomaker/images'
+    = javascript_include_tag 'jquery', 'photomaker/jgrowl', 'photomaker/jeditable', 'photomaker/jqDnR'
+    = csrf_meta_tag
+  %body
+    =yield
