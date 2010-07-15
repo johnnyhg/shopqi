@@ -1,0 +1,59 @@
+/* line 1, ../../../app/stylesheets/photomaker.sass */
+.add {
+  background: url('/images/photomaker.png?1279206361');
+}
+
+/* line 3, ../../../app/stylesheets/photomaker.sass */
+.generate {
+  background: url('/images/photomaker.png?1279206361') 0 -32px;
+}
+
+/* line 6, ../../../app/stylesheets/photomaker.sass */
+.yahei {
+  background: url('/images/photomaker.png?1279206361') 0 -64px;
+}
+
+/* line 8, ../../../app/stylesheets/photomaker.sass */
+.haibao {
+  background: url('/images/photomaker.png?1279206361') 0 -96px;
+}
+
+/* line 10, ../../../app/stylesheets/photomaker.sass */
+.katong {
+  background: url('/images/photomaker.png?1279206361') 0 -128px;
+}
+
+/* line 12, ../../../app/stylesheets/photomaker.sass */
+.liuye {
+  background: url('/images/photomaker.png?1279206361') 0 -160px;
+}
+
+/* line 15, ../../../app/stylesheets/photomaker.sass */
+.small {
+  background: url('/images/photomaker.png?1279206361') 0 -192px;
+}
+
+/* line 17, ../../../app/stylesheets/photomaker.sass */
+.middle {
+  background: url('/images/photomaker.png?1279206361') 0 -224px;
+}
+
+/* line 19, ../../../app/stylesheets/photomaker.sass */
+.big {
+  background: url('/images/photomaker.png?1279206361') 0 -256px;
+}
+
+/* line 22, ../../../app/stylesheets/photomaker.sass */
+.red {
+  background: url('/images/photomaker.png?1279206361') 0 -288px;
+}
+
+/* line 24, ../../../app/stylesheets/photomaker.sass */
+.green {
+  background: url('/images/photomaker.png?1279206361') 0 -320px;
+}
+
+/* line 26, ../../../app/stylesheets/photomaker.sass */
+.blue {
+  background: url('/images/photomaker.png?1279206361') 0 -352px;
+}

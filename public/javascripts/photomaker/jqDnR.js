@@ -24,7 +24,7 @@ drag:function(v){
   x = (x > P.W - M.W) ? P.W-M.W : x;
   y = (y < 0) ? 0 : y;
   y = (y > P.H - M.H) ? P.H-M.H : y;
-  $('#log').text("x:" + x + "(" + P.X + ")  y:" + y + "(" + P.Y + ")");
+  //$('#log').text("x:" + x + "(" + P.X + ")  y:" + y + "(" + P.Y + ")");
   E.css({left:x,top:y});
  }else E.css({width:Math.max(v.pageX-M.pX+M.W,0),height:Math.max(v.pageY-M.pY+M.H,0)});
   return false;},

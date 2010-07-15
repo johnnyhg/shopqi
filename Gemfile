@@ -30,6 +30,13 @@ gem 'unicorn'
 # http://pilu.github.com/web-app-theme/
 gem 'web-app-theme', :git => "git://github.com/libo/web-app-theme.git"
 
+##### 样式相关 #####
+gem 'compass'
+# css sprite generator
+gem 'lemonade'
+# 使用960.gs css框架
+gem 'compass-960-plugin'
+
 gem "awesome_print", :require => 'ap'
 
 # Deploy with Capistrano

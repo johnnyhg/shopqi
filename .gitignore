@@ -7,3 +7,6 @@ tmp/**/*
 
 
 capybara-*.html
+
+#自动生成的图片
+public/images/logo/4*.png

@@ -1,31 +1,31 @@
-#photomaker
-  #operate
-    %ul
-      %li.label 操作
-      %li=link_to '添加文字', '#', :id => 'add_word'
-      %li=link_to '生成图片', '#', :id => 'generate_image'
+.container_16
+  #photomaker
     =hidden_field_tag 'current'
-  #menu
-    %ul{:name => :font}
-      %li.label 字体
-      %li=link_to '微软雅黑', '#', :value => :yahei
-      %li=link_to '华康海报', '#', :value => :haibao
-      %li=link_to '方正卡通', '#', :value => :katong
-    %ul{:name => 'font-size'}
-      %li.label 文字大小
-      %li=link_to '小字', '#', :value => '12px'
-      %li=link_to '中字', '#', :value => '24px'
-      %li=link_to '大字', '#', :value => '36px'
-    %ul.color{:name => :color}
-      %li.label 文字颜色
-      %li.red=link_to '红色', '#', :value => '#E60012'
-      %li.green=link_to '绿色', '#', :value => '#8ABC35'
-      %li.blue=link_to '蓝色', '#', :value => '#3C87C3'
+    #menu
+      %ul
+        %li=link_to '', '#', :title => '添加文字', :class => :add, :id => :add_word
+        %li=link_to '', '#', :title => '生成图片', :class => :generate, :id => :generate_image
+        %li.separator
+      %ul{:name => :font}
+        %li=link_to '', '#', :title => '字体:微软雅黑', :value => :yahei, :class => :yahei
+        %li=link_to '', '#', :title => '字体:华康海报', :value => :haibao, :class => :haibao
+        %li=link_to '', '#', :title => '字体:华康柳叶', :value => :katong, :class => :liuye
+        %li=link_to '', '#', :title => '字体:方正卡通', :value => :katong, :class => :katong
+        %li.separator
+      %ul{:name => 'font-size'}
+        %li=link_to '', '#', :title => '字体大小:12px', :value => '12px', :class => 'small'
+        %li=link_to '', '#', :title => '字体大小:24px', :value => '24px', :class => 'middle'
+        %li=link_to '', '#', :title => '字体大小:36px', :value => '36px', :class => 'big'
+        %li.separator
+      %ul.color{:name => :color}
+        %li=link_to '', '#', :title => '字体颜色:红色', :value => '#E60012', :class => 'red'
+        %li=link_to '', '#', :title => '字体颜色:绿色', :value => '#8ABC35', :class => 'green'
+        %li=link_to '', '#', :title => '字体颜色:蓝色', :value => '#3C87C3', :class => 'blue'
 
-  #panel
-    .jqHandle.jqResize
+    #panel
+      .jqHandle.jqResize
 
-#log
+#log.container_16
 
 :javascript
   $().ready(function(){

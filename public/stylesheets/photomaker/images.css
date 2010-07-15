@@ -1,53 +1,96 @@
+/* line 1, ../sass/photomaker/images.sass */
 a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
+/* line 4, ../sass/photomaker/images.sass */
 #photomaker {
-  /* .color */
-  /*     .red */
-  /*       background-color: #E60012 */
-  /*     .green */
-  /*       background-color: #8ABC35 */
-  /*     .blue */
-  /*       background-color: #3C87C3 */
-  /*     a */
-  /*       color: white */ }
-  #photomaker #menu ul, #photomaker #operate ul {
-    clear: both;
-    list-style: none;
-    display: block;
-    padding-top: 10px; }
-    #photomaker #menu ul li, #photomaker #operate ul li {
-      float: left;
-      padding-left: 10px;
-      margin-right: 10px;
-      width: 100px; }
-      #photomaker #menu ul li.label, #photomaker #operate ul li.label {
-        width: 100px; }
-      #photomaker #menu ul li .selected, #photomaker #operate ul li .selected {
-        background-color: #8abc35;
-        color: white; }
-  #photomaker #panel {
-    position: absolute;
-    left: 200px;
-    top: 150px;
-    width: 300px;
-    height: 200px;
-    border: 1px solid #999999; }
+  border: 1px solid #cccccc;
+  margin: 10px;
+  padding: 0 5px;
+  display: block;
+  height: 280px;
+}
+/* line 10, ../sass/photomaker/images.sass */
+#photomaker #menu {
+  border-bottom: 1px solid #cccccc;
+  height: 50px;
+}
+/* line 13, ../sass/photomaker/images.sass */
+#photomaker #menu ul {
+  float: left;
+  list-style: none;
+  display: block;
+  padding-top: 10px;
+}
+/* line 18, ../sass/photomaker/images.sass */
+#photomaker #menu ul li {
+  float: left;
+  margin: 0 2px;
+}
+/* line 21, ../sass/photomaker/images.sass */
+#photomaker #menu ul li.separator {
+  height: 32px;
+  margin: 0 4px;
+  border-left: 1px solid #cccccc;
+}
+/* line 25, ../sass/photomaker/images.sass */
+#photomaker #menu ul li.label {
+  width: 100px;
+}
+/* line 27, ../sass/photomaker/images.sass */
+#photomaker #menu ul li a {
+  opacity: 0.6;
+  width: 32px;
+  height: 32px;
+  display: block;
+  cursor: pointer;
+}
+/* line 33, ../sass/photomaker/images.sass */
+#photomaker #menu ul li a:hover {
+  opacity: 0.99;
+}
+/* line 35, ../sass/photomaker/images.sass */
+#photomaker #menu ul li a.selected {
+  background-color: #f9f9f9;
+  border: 1px solid #cccccc;
+  border-left-color: #aaaaaa;
+  border-top-color: #aaaaaa;
+  padding: 0;
+  /* background-color: #8ABC35 */
+  /* color: #fff */
+}
+/* line 44, ../sass/photomaker/images.sass */
+#photomaker #panel {
+  position: relative;
+  left: 10px;
+  top: 10px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #999999;
+}
 
+/* line 52, ../sass/photomaker/images.sass */
 .jqHandle {
   background: red;
-  height: 10px; }
+  height: 10px;
+}
 
+/* line 56, ../sass/photomaker/images.sass */
 .jqResize {
   width: 10px;
   position: absolute;
   bottom: 0;
   right: 0;
-  cursor: se-resize; }
+  cursor: se-resize;
+}
 
+/* line 63, ../sass/photomaker/images.sass */
 .jqDrag {
-  cursor: move; }
+  cursor: move;
+}
 
+/* line 66, ../sass/photomaker/images.sass */
 .jqDnR {
   z-index: 3;
   position: absolute;
@@ -57,7 +100,10 @@ a {
   background-color: #eeeeee;
   border: 1px solid #cccccc;
   display: inline;
-  white-space: nowrap; }
+  white-space: nowrap;
+}
 
+/* line 77, ../sass/photomaker/images.sass */
 .form_inline {
-  display: inline; }
+  display: inline;
+}
