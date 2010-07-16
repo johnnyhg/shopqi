@@ -28,7 +28,7 @@ drag:function(v){
   E.css({left:x,top:y});
  }else E.css({width:Math.max(v.pageX-M.pX+M.W,0),height:Math.max(v.pageY-M.pY+M.H,0)});
   return false;},
-stop:function(){E.css('opacity',M.o);$(document).unbind('mousemove',J.drag).unbind('mouseup',J.stop);}
+stop:function(){E.css('opacity',M.o);$(document).unbind('mousemove',J.drag).unbind('mouseup',J.stop);E.trigger('drag.stop')}
 };
 var J=$.jqDnR,M=J.dnr,E=J.e,P=$(document),
 i=function(e,h,c,k){return e.each(function(){h=(h)?$(h,e):e;

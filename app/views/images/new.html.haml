@@ -4,12 +4,12 @@
     #menu
       %ul
         %li=link_to '', '#', :title => '添加文字', :class => :add, :id => :add_word
-        %li=link_to '', '#', :title => '生成图片', :class => :generate, :id => :generate_image
+        %li=link_to '', '#', :title => '生成图片', :class => :generate, :id => :generate_image, :style => 'display:none'
         %li.separator
       %ul{:name => :font}
         %li=link_to '', '#', :title => '字体:微软雅黑', :value => :yahei, :class => :yahei
         %li=link_to '', '#', :title => '字体:华康海报', :value => :haibao, :class => :haibao
-        %li=link_to '', '#', :title => '字体:华康柳叶', :value => :katong, :class => :liuye
+        %li=link_to '', '#', :title => '字体:华康柳叶', :value => :liuye, :class => :liuye
         %li=link_to '', '#', :title => '字体:方正卡通', :value => :katong, :class => :katong
         %li.separator
       %ul{:name => 'font-size'}
@@ -25,17 +25,23 @@
     #panel
       .jqHandle.jqResize
 
+  #preview
+
 #log.container_16
 
 :javascript
   $().ready(function(){
     //面板可修改大小
-    $('#panel').jqResize('.jqResize');
+    $('#panel').jqResize('.jqResize').bind('drag.stop', function(){
+      $('#generate_image').click();
+    });
 
     var number = 0;
     //添加操作
     $('#add_word').click(function(){
       var word = $("<div class='editable jqDnR jqDrag word'>ShopQi</div>").appendTo('#panel');
+      //修正:添加时文字会移至中间
+      word.css('left', '0');
       //number为文字子项所在数组的序号
       word.attr('tmp_id', number++);
 
@@ -53,7 +59,11 @@
       });
 
       //可拖动
-      word.jqDrag(null, '#panel');
+      word.jqDrag(null, '#panel').bind('drag.stop', function(){
+        //修正:click会发送两次请求
+        //$('#generate_image').click();
+        $('#generate_image').dblclick();
+      });
 
       //可编辑
       word.editable(
@@ -66,7 +76,10 @@
         //双击进入输入状态
         event  : 'dblclick',
         //input为inline,则form也应为inline,否则布局会乱
-        cssclass : 'form_inline'
+        cssclass : 'form_inline',
+        callback : function(value, settings) {
+          $('#generate_image').click();
+        }
       });
 
       //初始化文字属性
@@ -77,7 +90,7 @@
         word.attr('word-' + name, value);
         //设置字体大小、颜色，字体暂不设置(浏览器没有这些字体)
         word.css(name, value);
-        $.jGrowl(attribute.attr('value'));
+        //$.jGrowl(attribute.attr('value'));
       });
 
       //设置当前文字
@@ -86,6 +99,8 @@
 
     //生成图片
     $('#generate_image').click(function(){
+      if($('.word').size() == 0)
+        return;
       //面板参数
       var data = {
         image: {
@@ -118,10 +133,11 @@
         data['_method'] = 'put';
       }
       $.post(url, data, null, 'script');
+      $('#preview').html('正在生成图片');
     });
 
     //修改文字属性
-    $('#menu a').click(function(){
+    $('#menu ul[name] a').click(function(){
       var current_word = $(".word[tmp_id='" + $('#current').val() + "']");
       if(current_word[0]){
         var parent = $(this).parents('ul');
@@ -132,7 +148,13 @@
         if(name == 'color' || name == 'font-size')
           current_word.css(name, value);
         current_word.attr('word-' + name, value);
-        $.jGrowl('修改属性' + name + ':' + value);
+        //立即生成图片
+        $('#generate_image').click();
+        if(name == 'font')
+          current_word.css('font-family', value);
+        //$.jGrowl('修改属性' + name + ':' + value);
+      }else{
+        $.jGrowl("请先点击最左边的按钮添加文字.");
       }
     });
 

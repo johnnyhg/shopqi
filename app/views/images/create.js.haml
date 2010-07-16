@@ -2,4 +2,6 @@
 $('#panel').attr('image-id', '#{resource.id}');
 -resource.words.each do |word|
   $(".word[tmp_id='#{word.tmp_id}']").attr('word-id', '#{word.id}');
+//preview image
+$("#preview").html('#{escape_javascript( render(:partial => "images/preview", :object => resource))}');
 $.jGrowl('保存成功');

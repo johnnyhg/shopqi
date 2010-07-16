@@ -1,59 +1,79 @@
-/* line 1, ../../../app/stylesheets/photomaker.sass */
+@font-face {
+  font-family: "yahei";
+  src: local("yahei"), url(/images/logo/yahei.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "haibao";
+  src: local("haibao"), url(/images/logo/haibao.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "liuye";
+  src: local("liuye"), url(/images/logo/liuye.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "katong";
+  src: local("katong"), url(/images/logo/katong.ttf) format('truetype');
+}
+
+/* line 7, ../../../app/stylesheets/photomaker.sass */
 .add {
-  background: url('/images/photomaker.png?1279206361');
+  background: url('/images/photomaker.png?1279286975');
 }
 
-/* line 3, ../../../app/stylesheets/photomaker.sass */
+/* line 9, ../../../app/stylesheets/photomaker.sass */
 .generate {
-  background: url('/images/photomaker.png?1279206361') 0 -32px;
-}
-
-/* line 6, ../../../app/stylesheets/photomaker.sass */
-.yahei {
-  background: url('/images/photomaker.png?1279206361') 0 -64px;
-}
-
-/* line 8, ../../../app/stylesheets/photomaker.sass */
-.haibao {
-  background: url('/images/photomaker.png?1279206361') 0 -96px;
-}
-
-/* line 10, ../../../app/stylesheets/photomaker.sass */
-.katong {
-  background: url('/images/photomaker.png?1279206361') 0 -128px;
+  background: url('/images/photomaker.png?1279286975') 0 -32px;
 }
 
 /* line 12, ../../../app/stylesheets/photomaker.sass */
+.yahei {
+  background: url('/images/photomaker.png?1279286975') 0 -64px;
+}
+
+/* line 14, ../../../app/stylesheets/photomaker.sass */
+.haibao {
+  background: url('/images/photomaker.png?1279286975') 0 -96px;
+}
+
+/* line 16, ../../../app/stylesheets/photomaker.sass */
+.katong {
+  background: url('/images/photomaker.png?1279286975') 0 -128px;
+}
+
+/* line 18, ../../../app/stylesheets/photomaker.sass */
 .liuye {
-  background: url('/images/photomaker.png?1279206361') 0 -160px;
+  background: url('/images/photomaker.png?1279286975') 0 -160px;
 }
 
-/* line 15, ../../../app/stylesheets/photomaker.sass */
+/* line 21, ../../../app/stylesheets/photomaker.sass */
 .small {
-  background: url('/images/photomaker.png?1279206361') 0 -192px;
+  background: url('/images/photomaker.png?1279286975') 0 -192px;
 }
 
-/* line 17, ../../../app/stylesheets/photomaker.sass */
+/* line 23, ../../../app/stylesheets/photomaker.sass */
 .middle {
-  background: url('/images/photomaker.png?1279206361') 0 -224px;
+  background: url('/images/photomaker.png?1279286975') 0 -224px;
 }
 
-/* line 19, ../../../app/stylesheets/photomaker.sass */
+/* line 25, ../../../app/stylesheets/photomaker.sass */
 .big {
-  background: url('/images/photomaker.png?1279206361') 0 -256px;
+  background: url('/images/photomaker.png?1279286975') 0 -256px;
 }
 
-/* line 22, ../../../app/stylesheets/photomaker.sass */
+/* line 28, ../../../app/stylesheets/photomaker.sass */
 .red {
-  background: url('/images/photomaker.png?1279206361') 0 -288px;
+  background: url('/images/photomaker.png?1279286975') 0 -288px;
 }
 
-/* line 24, ../../../app/stylesheets/photomaker.sass */
+/* line 30, ../../../app/stylesheets/photomaker.sass */
 .green {
-  background: url('/images/photomaker.png?1279206361') 0 -320px;
+  background: url('/images/photomaker.png?1279286975') 0 -320px;
 }
 
-/* line 26, ../../../app/stylesheets/photomaker.sass */
+/* line 32, ../../../app/stylesheets/photomaker.sass */
 .blue {
-  background: url('/images/photomaker.png?1279206361') 0 -352px;
+  background: url('/images/photomaker.png?1279286975') 0 -352px;
 }

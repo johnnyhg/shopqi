@@ -1,7 +1,7 @@
 # coding: utf-8
 # 以上修正:invalid multibyte char (US-ASCII)
 
-假如 /^我?在(.+)$/ do |page_name|
+假如 /^我?在(.+)(?:页面)?$/ do |page_name|
   visit path_to(page_name)
 end
 

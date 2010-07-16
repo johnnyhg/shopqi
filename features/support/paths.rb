@@ -11,7 +11,7 @@ module NavigationHelpers
 
     when /首页/
       '/'
-    when /图片编辑页面/
+    when /在线文字图片合成/
       new_image_path
 
     when /the new page page/

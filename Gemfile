@@ -6,7 +6,7 @@ gem 'rails', '3.0.0.beta4'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mongoid', '2.0.0.beta9'
-gem 'bson_ext', '1.0.1'
+gem 'bson_ext'
 gem 'devise', '1.1.rc2'
 #排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
 # lib/mongoid/acts_as_list.rb第417存在问题，需要加other.respond_to?('_id')判断
@@ -58,7 +58,7 @@ end
 
 group :test do
   gem 'webrat'
-  gem "rspec-rails"
+  gem "rspec-rails", '2.0.0.beta.14.2'
   gem "factory_girl"
   gem "factory_girl_rails"
 
