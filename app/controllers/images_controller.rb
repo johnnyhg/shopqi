@@ -2,9 +2,10 @@
 class ImagesController < InheritedResources::Base
   actions :new, :create, :edit, :update
   respond_to :js, :only => [:create, :update]
+  layout nil
 
   edit! do |format|
-    format.js { render :action => "new" }
+    format.html { render :action => "new" }
   end
 
   create! do |success, failure|

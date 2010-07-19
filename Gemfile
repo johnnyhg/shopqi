@@ -21,6 +21,8 @@ gem "formtastic", :git => "git://github.com/justinfrench/formtastic.git", :branc
 gem "validation_reflection", '1.0.0.beta4'
 gem "inherited_resources"
 
+# 文件上传
+gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git', :branch => 'master'
 gem "mini_magick"
 
 # Use unicorn as the web server
@@ -54,6 +56,8 @@ gem "awesome_print", :require => 'ap'
 group :development do
   gem 'rails3-generators'
   gem "hpricot"
+  #修改后台文件后，safari或chrome浏览器会自动刷新
+  gem "livereload"
 end
 
 group :test do

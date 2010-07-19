@@ -1,3 +1,3 @@
-%div{:style => "position:absolute;top:22px;left:21px;"}
-  %a{:href => "http://www.mbaobao.com/", :name => "top"}
-    %img{ :src => "http://www.mbaobao.com/templates/default/images/logo_new.gif"}/
+#logo.editable{:style => "position:absolute;top:22px;left:21px;", 'edit-type' => :images, 'edit-id' => resource.logo.image_id, :relate_dom_id => :logo}
+  =link_to '/' do
+    =image_tag resource.logo.url

@@ -1,6 +1,7 @@
-.container_16
+.container_16{:style => 'background-color:white'}
   #photomaker
-    =hidden_field_tag 'current'
+    =hidden_field_tag 'current', (resource.words.size.to_i-1)
+    =hidden_field_tag 'relate_dom_id', params[:relate_dom_id]
     #menu
       %ul
         %li=link_to '', '#', :title => '添加文字', :class => :add, :id => :add_word
@@ -22,29 +23,19 @@
         %li=link_to '', '#', :title => '字体颜色:绿色', :value => '#8ABC35', :class => 'green'
         %li=link_to '', '#', :title => '字体颜色:蓝色', :value => '#3C87C3', :class => 'blue'
 
-    #panel
+    #panel{'image-id' => resource.id, :style => "width: #{resource.width}px; height: #{resource.height}px"}
+      -resource.words.each_with_index do |word, index|
+        .editable.jqDnR.jqDrag.word{:tmp_id => index, 'word-font' => word.font, 'word-font-size' => word.attributes['font-size'], 'word-color' => word.color, :style => "left: #{word.x}px; top: #{word.y}px; color: #{word.color}; font-family: #{word.font}; font-size: #{word.attributes['font-size']}"}=word.text
       .jqHandle.jqResize
 
-  #preview
+  /
+    #preview
 
 #log.container_16
 
 :javascript
-  $().ready(function(){
-    //面板可修改大小
-    $('#panel').jqResize('.jqResize').bind('drag.stop', function(){
-      $('#generate_image').click();
-    });
-
-    var number = 0;
-    //添加操作
-    $('#add_word').click(function(){
-      var word = $("<div class='editable jqDnR jqDrag word'>ShopQi</div>").appendTo('#panel');
-      //修正:添加时文字会移至中间
-      word.css('left', '0');
-      //number为文字子项所在数组的序号
-      word.attr('tmp_id', number++);
-
+  Word = {
+    init: function(word){
       //保留当前文字
       word.click(function(){
         var item = $(this);
@@ -82,6 +73,30 @@
         }
       });
 
+      //设置当前文字
+      word.click();
+    }
+  };
+
+  $().ready(function(){
+    //面板可修改大小
+    $('#panel').jqResize('.jqResize').bind('drag.stop', function(){
+      $('#generate_image').click();
+    });
+
+    $('.word').each(function(){
+      Word.init($(this));
+    });
+
+    var number = $('#current').val();
+    //添加操作
+    $('#add_word').click(function(){
+      var word = $("<div class='editable jqDnR jqDrag word'>ShopQi</div>").appendTo('#panel');
+      //修正:添加时文字会移至中间
+      word.css('left', '0');
+      //number为文字子项所在数组的序号
+      word.attr('tmp_id', number++);
+
       //初始化文字属性
       $("#menu ul[name]").each(function(i){
         var attribute = $("li:not(.label):first a", $(this));
@@ -93,8 +108,7 @@
         //$.jGrowl(attribute.attr('value'));
       });
 
-      //设置当前文字
-      word.click();
+      Word.init(word);
     });
 
     //生成图片
@@ -133,7 +147,7 @@
         data['_method'] = 'put';
       }
       $.post(url, data, null, 'script');
-      $('#preview').html('正在生成图片');
+      //$('#preview').html('正在生成图片');
     });
 
     //修改文字属性

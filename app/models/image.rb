@@ -35,7 +35,8 @@ class Image
           c.draw "text #{word.x},#{word.y} '#{word.text}'"
         end
       end
-      magick.write(path(id))
+      magick.write path
+      Page.mbaobao.logo.update_attributes :url => url, :image_id => id
     end
   end
 
@@ -47,8 +48,12 @@ class Image
     "#{Rails.root}/public/images/logo/blank.png"
   end
 
-  def path(id)
+  def path
     "#{Rails.root}/public/images/logo/#{id}.png"
+  end
+
+  def url
+    "/images/logo/#{id}.png"
   end
 end
 

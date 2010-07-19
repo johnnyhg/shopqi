@@ -15,6 +15,7 @@ $.fn.move = function(direct, content){
 var tooltip_setting = {
   tip: '#tooltip', 
   //position: ['center','right'],
+  //offset: [top, left]
   offset: [5, 2],
   effect: 'slide',
   //delay: 0,
@@ -22,18 +23,26 @@ var tooltip_setting = {
   onBeforeShow: function(){
     $('#tooltip').html('正在处理...');
     var obj = this.getTrigger().parent();
-    var url = obj.attr('edit-type') + '/' + obj.attr('edit-id') + '/edit.js';
+    var url = obj.attr('edit-type') + '/new';
+    if(obj.attr('edit-id'))
+      url = obj.attr('edit-type') + '/' + obj.attr('edit-id') + '/edit';
+    if(obj.attr('relate_dom_id'))
+      url += "?relate_dom_id=" + obj.attr('relate_dom_id');
     $.get(url, function(body){
       $('#tooltip').html(body);
+      var contrainer = $('#tooltip :first-child');
+      //背景色，提示面板大小由具体的显示页面控制
+      $('#tooltip').css('background-color', contrainer.css('background-color')).width(contrainer.width()).height(contrainer.height());
       $('#tooltip :text:first').focus();
     });
   }
 };
 
+//显示提示层动态调整
 var dynamic_setting = { bottom: { direction: 'down', bounce: true } };
 
 jQuery(function ($) {
-  //show user's panel
+  //show panel
   $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
 
   $('.editable').sortable({

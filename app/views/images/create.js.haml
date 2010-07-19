@@ -3,5 +3,10 @@ $('#panel').attr('image-id', '#{resource.id}');
 -resource.words.each do |word|
   $(".word[tmp_id='#{word.tmp_id}']").attr('word-id', '#{word.id}');
 //preview image
-$("#preview").html('#{escape_javascript( render(:partial => "images/preview", :object => resource))}');
+//$("#preview").html('#{escape_javascript( render(:partial => "images/preview", :object => resource))}');
 $.jGrowl('保存成功');
+
+//preview_imag
+var reload_image = $('#' + $('#relate_dom_id').val() + ' img')[0];
+if(reload_image)
+reload_image.src = '#{resource.url}?#{Time.now.to_i}';
