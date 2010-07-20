@@ -38,6 +38,10 @@ var tooltip_setting = {
     if(obj.attr('relate_dom_id'))
       url += "?relate_dom_id=" + obj.attr('relate_dom_id');
 
+    //处理完后的回调路径，用于关联Image
+    if(obj.attr('callback_url'))
+      url += "&callback_url=" + obj.attr('callback_url');
+
     $.get(url, function(body){
       $('#tooltip').html(body);
       var contrainer = $('#tooltip :first-child');

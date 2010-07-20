@@ -190,7 +190,11 @@ end
 
 
 当 /^我?把鼠标移到(.+)$/ do |field|
-  page.execute_script("$('#navs a:first').mouseover()")
+  if field == 'Logo'
+    page.execute_script("$(\"#logo a\").mouseover()")
+  else
+    page.execute_script("$(\"a:contains('#{field}')\").mouseover()")
+  end
 end
 
 #此方法尽量少用， 会不定时报错:

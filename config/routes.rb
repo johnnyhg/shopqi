@@ -5,7 +5,9 @@ Shopqi::Application.routes.draw do |map|
     post :sort, :on => :collection
   end
 
-  resources :pages
+  resources :pages do
+    get :logo, :on => :collection
+  end
   match 'page' => 'pages#show'
 
   resources :products

@@ -36,7 +36,6 @@ class Image
         end
       end
       magick.write path
-      Page.mbaobao.logo.update_attributes :url => url, :image_id => id
     end
   end
 

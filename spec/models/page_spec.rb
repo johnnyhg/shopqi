@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Page do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have logo" do
+    page = Page.create :name => :ShopQi
+    page.logo.should_not be_nil
+  end
 end

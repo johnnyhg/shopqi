@@ -2,6 +2,8 @@
 Factory.define 'page_mbaobao', :class => :page do |p|
   p.name :mbaobao
 
+  #p.logo { |page| Logo.new }
+
   p.navs do |page| 
     [
       Factory.build(:nav, :name => '会员中心'),

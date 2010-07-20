@@ -1,4 +1,4 @@
 -#relate_dom_id用于即时回显合成的图片
-#logo.editable{:style => "position:absolute;top:22px;left:21px;", 'edit-width' => '960px', 'edit-height' => '300px', 'edit-type' => :images, 'edit-id' => resource.logo.image_id, :relate_dom_id => :logo}
+#logo.editable{:style => "position:absolute;top:22px;left:21px;", 'edit-width' => '960px', 'edit-height' => '300px', 'edit-type' => :images, 'edit-id' => resource.logo.image_id, :relate_dom_id => :logo, :callback_url => '/pages/logo'}
   =link_to '/' do
     =image_tag resource.logo.url

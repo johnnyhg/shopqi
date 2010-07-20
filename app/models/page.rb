@@ -11,6 +11,13 @@ class Page
   embeds_one :logo
   embeds_many :navs
 
+  before_create :create_logo
+
+  #必需有Logo
+  def create_logo
+    self.logo = Logo.new
+  end
+
   def sorted_navs
     navs.sort {|x, y| x.pos <=> y.pos}
   end

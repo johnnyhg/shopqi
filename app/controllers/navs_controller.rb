@@ -2,7 +2,7 @@
 class NavsController < InheritedResources::Base
   layout nil
   actions :new, :create, :edit, :update, :destroy
-  respond_to :js, :only => [:create, :update]
+  respond_to :js, :only => [:create, :update, :destroy]
 
   create! do |success, failure|
     failure.js { render :action => "create.failure.js.haml"}

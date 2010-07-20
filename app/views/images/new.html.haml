@@ -1,7 +1,8 @@
 .container_16{:style => 'background-color:white'}
   #photomaker
-    =hidden_field_tag 'current', (resource.words.size.to_i-1)
+    =hidden_field_tag 'current', (resource.words.size.to_i)
     =hidden_field_tag 'relate_dom_id', params[:relate_dom_id]
+    =hidden_field_tag 'callback_url', params[:callback_url]
     #menu
       %ul
         %li=link_to '', '#', :title => '添加文字', :class => :add, :id => :add_word
@@ -23,7 +24,7 @@
         %li=link_to '', '#', :title => '字体颜色:绿色', :value => '#8ABC35', :class => 'green'
         %li=link_to '', '#', :title => '字体颜色:蓝色', :value => '#3C87C3', :class => 'blue'
 
-    #panel{'image-id' => resource.id, :style => "width: #{resource.width}px; height: #{resource.height}px"}
+    #panel
       -resource.words.each_with_index do |word, index|
         .editable.jqDnR.jqDrag.word{:tmp_id => index, 'word-font' => word.font, 'word-font-size' => word.attributes['font-size'], 'word-color' => word.color, :style => "left: #{word.x}px; top: #{word.y}px; color: #{word.color}; font-family: #{word.font}; font-size: #{word.attributes['font-size']}"}=word.text
       .jqHandle.jqResize
@@ -32,6 +33,10 @@
     #preview
 
 #log.container_16
+
+-unless resource.new_record?
+  :javascript
+    $('#panel').attr('image-id', '#{resource.id}').width(#{resource.width}).height(#{resource.height});
 
 :javascript
   Word = {
