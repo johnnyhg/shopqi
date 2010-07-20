@@ -3,7 +3,7 @@
   .header_info.ftr
     .header_links_box
       .links.ftr
-        %ul#navs.editable=render :partial => "navs/item", :collection => resource.sorted_navs, :locals => { :collection => resource.sorted_navs }
+        %ul#navs.editable.sortable=render :partial => "navs/item", :collection => resource.sorted_navs, :locals => { :collection => resource.sorted_navs }
       .welcome
         您好，欢迎光临时尚包包流行第一站：麦包包！ [
         %a{:href => "http://www.mbaobao.com/user/register.php", :rel => "nofollow"}

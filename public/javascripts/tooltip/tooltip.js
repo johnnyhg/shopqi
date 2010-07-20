@@ -107,6 +107,19 @@
 		if (pos == 'center') 	{ left -= width / 2; }
 		if (pos == 'left')   	{ left -= width; }	 
 		
+                //提示面板不可超出body的范围 2010.07.20 by saberma
+                if(left < trigger.offset().left)
+                  left = trigger.offset().left;
+                var max_right = $(":first-child", document.body).offset().left + $(":first-child", document.body).width();
+                if(left+tip.outerWidth() > max_right)
+                  left = max_right - tip.outerWidth();
+
+                //提示面板不可覆盖触发节点 2010.07.20 by saberma
+                if(top + tip.outerHeight() > trigger.offset().top)
+                  top = trigger.offset().top - tip.outerHeight();
+                if(top < 0)
+                  top = trigger.offset().top + trigger.outerHeight() + conf.offset[0];
+
 		return {top: top, left: left};
 	}		
 

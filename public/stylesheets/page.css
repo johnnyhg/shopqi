@@ -1,3 +1,4 @@
+/* line 1, sass/page.sass */
 .tooltip {
   z-index: 999;
   background-color: #0078a7;
@@ -11,9 +12,12 @@
   font-size: 12px;
   outline-radius: 4px;
   -moz-outline-radius: 4px;
-  -webkit-outline-radius: 4px; }
+  -webkit-outline-radius: 4px;
+}
 
 /* override the arrow image of the tooltip */
+/* line 20, sass/page.sass */
 .tooltip .bottom {
   padding-top: 40px;
-  height: 55px; }
+  height: 55px;
+}
