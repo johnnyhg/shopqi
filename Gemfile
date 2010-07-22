@@ -13,6 +13,8 @@ gem 'devise', '1.1.rc2'
 # 其依赖的mongoid_embedded_helper的mongoid/embedded_helper.rb的presend?方法与activesupport中的重名，需要删除
 gem 'mongoid_embedded_helper', :git => 'git://github.com/saberma/mongoid_embedded_helper.git'
 gem 'acts_as_list_mongoid', :git => 'git://github.com/saberma/acts_as_list_mongoid.git'
+gem 'mongoid_acts_as_tree'
+
 gem 'haml'
 
 # 注意页面的html元素要有xmlns属性，否则fieldset会挤在一起 http://bit.ly/bbcxU3
@@ -23,6 +25,7 @@ gem "inherited_resources"
 
 # 文件上传
 gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git', :branch => 'master'
+# 调用参数说明:http://www.imagemagick.org/Usage/
 gem "mini_magick"
 
 # Use unicorn as the web server

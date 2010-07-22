@@ -1,0 +1,23 @@
+/* line 1, ../../../app/stylesheets/page.sass */
+.tooltip {
+  z-index: 999;
+  background-color: #0078a7;
+  outline: 1px solid #666699;
+  border: 2px solid white;
+  padding: 10px 15px;
+  width: 300px;
+  display: none;
+  color: white;
+  text-align: left;
+  font-size: 12px;
+  outline-radius: 4px;
+  -moz-outline-radius: 4px;
+  -webkit-outline-radius: 4px;
+}
+
+/* override the arrow image of the tooltip */
+/* line 20, ../../../app/stylesheets/page.sass */
+.tooltip .bottom {
+  padding-top: 40px;
+  height: 55px;
+}

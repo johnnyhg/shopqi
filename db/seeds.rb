@@ -9,7 +9,9 @@
 
 Page.where(:name => :mbaobao).first.try(:destroy)
 page = Page.create(:name => :mbaobao)
+
 page.logo = Logo.new
+
 [ { :name => '会员中心', :url => '/user' },
   { :name => '订单查询', :url => '/query' },
   { :name => '网站导航', :url => '/sitemap' },
@@ -20,4 +22,10 @@ page.logo = Logo.new
   page.navs << Nav.new(attributes)
 end
 page.navs.init_list!
+page.save
+
+%w( 首页 女包 男包 真皮 数码包 旅行包 ).each do |menu|
+  page.menus << Menu.new(:name => menu, :url => '/category')
+end
+page.menus.init_list!
 page.save

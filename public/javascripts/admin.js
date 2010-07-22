@@ -61,13 +61,14 @@ jQuery(function ($) {
   $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
   //$('.editable a').tooltip(tooltip_setting);
 
-  $('.sortable').sortable({
-    update: function(){
-      $.post('/navs/sort', $('.sortable').sortable('serialize'), function(){
-        $("#navs li:first").addClass('no_bar');
-        $("#navs li:gt(0)").removeClass('no_bar');
-      }, 'script');
-    }
+  $('.sortable').each(function(){
+    $(this).sortable({
+      update: function(){
+        //$.jGrowl($(this).html(), {sticky: true});
+        $.post($(this).attr('sort_url'), $(this).sortable('serialize'), null, 'script');
+      }
+    });
   });
 
+  //$("ul#nav li a.dom_indexmenu").css('background-image', 'none');
 });

@@ -10,6 +10,7 @@ class Page
 
   embeds_one :logo
   embeds_many :navs
+  embeds_many :menus
 
   before_create :create_logo
 
@@ -18,12 +19,25 @@ class Page
     self.logo = Logo.new
   end
 
+  def sorted_menus
+    menus.sort {|x, y| x.pos <=> y.pos}
+  end
+
   def sorted_navs
     navs.sort {|x, y| x.pos <=> y.pos}
   end
 
   def self.mbaobao
     where(:name => :mbaobao).first
+  end
+
+  #网店菜单背景图路径
+  def menu_sprite_path
+    "#{Rails.root}/public/#{menu_sprite_url}"
+  end
+
+  def menu_sprite_url
+    "/images/menu/#{id}.png"
   end
 end
 

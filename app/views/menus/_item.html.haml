@@ -1,0 +1,7 @@
+=content_tag_for :li, item, :class => "nav_0#{item_counter+1} #{item_counter == 0 ? 'on' : ''}", 'edit-width' => '300px', 'edit-height' => '120px', 'edit-type' => :menus , 'edit-id' => item.id do
+  %a.dom_indexmenu{:href => item.url}=item.name
+  %dl.nav_list
+    %dd
+      %ul
+        %li
+          %a{:href => "http://www.mbaobao.com/c-2/", :target => "_blank"}=item.name

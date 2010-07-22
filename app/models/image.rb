@@ -10,7 +10,7 @@ class Image
 
   after_save :render
 
-  #生成图片 参数说明:http://www.imagemagick.org/Usage/
+  #生成图片
   def render
     unless words.empty?
       magick = MiniMagick::Image.from_file(blank)

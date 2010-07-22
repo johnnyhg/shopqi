@@ -1,0 +1,909 @@
+@charset "utf-8"
+
+body
+  background: #ffffff
+
+/*main_body
+
+.main_body
+  width: 960px
+  overflow: hidden
+
+.main_body_left
+  width: 179px
+  padding-bottom: 10px
+
+.main_body_right
+  width: 780px
+  padding-bottom: 10px
+
+.main_body_center
+  width: 960px
+  padding-bottom: 10px
+
+/*left catalog
+
+.main_body_left div
+  &.catalog
+    width: 154px
+    margin: 0 auto
+    h2.title
+      background: url(../images/new_homepage/bg_left_catalog_line.gif) no-repeat left bottom
+      padding: 10px 0 10px 0
+      color: #36312B
+    div.list
+      background: url(../images/new_homepage/bg_left_catalog_line.gif) repeat-y left top
+      width: 154px
+      ul li
+        float: left
+        padding-left: 15px
+        background: url(../images/new_homepage/icon_dot_pink.gif) no-repeat 5px 7px
+        width: 62px
+        height: 20px
+        line-height: 17px
+        a
+          &:link, &:visited
+            color: #614B30
+          &:hover
+            color: #c00
+  &.brand_box_title
+    padding: 9px 0 0 0
+
+/*left_content_box
+
+.left_content_box
+  width: 161px
+  margin: 0 auto
+  background: url(../images/new_homepage/bg_left_content.gif) repeat-y
+  margin-bottom: 10px
+  h2
+    &.title
+      height: 75px
+      text-indent: -999em
+    &.comment
+      background: url(../images/new_homepage/title_left_content_comment.gif) no-repeat
+    &.news
+      background: url(../images/new_homepage/title_left_content_news.gif) no-repeat
+      width: 161px
+      height: 75px
+    &.email
+      background: url(../images/new_homepage/title_left_content_email.gif) no-repeat
+      width: 161px
+      height: 75px
+    &.news a
+      display: block
+      width: 161px
+      height: 75px
+      text-indent: -999em
+      outline: none
+  div
+    &.list
+      background: url(../images/new_homepage/bg_left_content_bottom.gif) no-repeat center bottom
+      padding-bottom: 14px
+      ul
+        width: 137px
+        margin: 0 auto
+        li
+          background: url(../images/new_homepage/bg_left_content_line.gif) no-repeat center bottom
+          padding: 3px 0 7px 0
+          line-height: 1.6
+          span
+            display: block
+            font-size: 11px
+            color: #f60
+            line-height: 1.4
+    &.email
+      padding: 8px 12px 14px 12px
+      input.txtinput
+        color: #666
+        background: #fff
+        font: 12px tahoma, arial, verdana, geneva, sans-serif
+        border: 1px solid #c4c4c4
+    &.edm_list
+      padding-top: 5px
+      ul li
+        height: 15px
+        background-image: none
+
+/*index_focus
+
+.index_focus_box
+  width: 725px
+  height: 391px
+  border: 3px solid #010101
+  position: relative
+  background: #fff
+  z-index: 0
+  div
+    &.img
+      position: absolute
+      width: 725px
+      height: 391px
+      left: 0
+      top: 0
+      z-index: 10
+    &.loding
+      position: absolute
+      width: 725px
+      height: 391px
+      z-index: 40
+      background: #fafafa url(../images/new_homepage/loding.gif) no-repeat center 155px
+      left: 0
+      top: 0
+  ul
+    &.panel
+      position: absolute
+      width: 725px
+      height: 34px
+      top: 356px
+      z-index: 20
+      li
+        /*width:144px;
+        width: 180px
+        height: 34px
+        float: left
+        margin-left: 1px
+        display: inline
+        background: #000
+        filter: alpha(Opacity = 50)
+        Opacity: .5
+        &.last
+          /*width:143px;
+          width: 180px
+        &.on
+          filter: alpha(Opacity = 80)
+          Opacity: .8
+    &.title
+      position: absolute
+      width: 725px
+      height: 34px
+      top: 356px
+      z-index: 30
+      li
+        /*width:144px;
+        width: 180px
+        height: 34px
+        float: left
+        margin-left: 1px
+        display: inline
+        a
+          display: block
+          text-align: center
+          color: #FFFDFE
+          height: 34px
+          line-height: 30px
+          &:hover
+            background: url(../images/new_homepage/arrow_focus.gif) no-repeat center 26px
+        &.on a
+          background: url(../images/new_homepage/arrow_focus.gif) no-repeat center 26px
+
+.index_focus_sidebar
+  width: 220px
+
+.right_content_box
+  border: 1px solid #B4B4B4
+  padding: 1px
+  background: #fff
+  h2
+    &.title
+      height: 23px
+      line-height: 22px
+      background: url(../images/new_homepage/title_right_content.gif) repeat-x
+      font-weight: normal
+      padding-left: 10px
+    &.announcement a
+      &:link, &:visited
+        color: #fff
+    &.title span
+      float: right
+      padding-right: 2px
+  ul.list
+    padding: 4px 6px
+    li
+      background: url(../images/new_homepage/arrow_01.gif) no-repeat 5px 9px
+      padding-left: 20px
+      height: 22px
+      line-height: 22px
+
+/**热门分类*
+
+#detail_menu
+  float: left
+  display: inline
+  margin-top: 10px
+  width: 729px
+  border: 1px solid #d5d5d5
+  h3
+    height: 18px
+    margin-top: 9px
+    background-color: #f3f3f3
+    border-bottom: 2px solid #e60012
+    border-top: 1px solid #efefef
+    position: relative
+    strong
+      display: block
+      width: 82px
+      height: 24px
+      text-indent: -999px
+      background: url(../images/new_index/detail_menu_title.gif) repeat 0 0
+      position: absolute
+      left: 10px
+      bottom: -2px
+  .detail_menu_info
+    padding: 0 0 20px 0
+    margin-top: 16px
+    background: url(../images/new_index/hoverLine_pointbg.gif) repeat-y 0 0
+  dl
+    border-top: 1px solid #fff
+    border-bottom: 1px solid #fff
+    display: block
+    height: 30px
+    margin-bottom: 1px
+    width: 729px
+    &.menuon
+      display: block
+      margin-bottom: 1px
+      width: 729px
+      height: 30px
+      background: url(../images/new_index/hoverLine_bg.jpg) repeat-x 0 0
+      border-top: 1px solid #d5d5d5
+      border-bottom: 1px solid #d5d5d5
+    dt
+      float: left
+      display: inline
+      width: 74px
+      margin: 6px 13px 0 15px
+      height: 19px
+      text-indent: -999px
+      background: url(../images/new_index/detail_menu_stitle.gif) repeat 0 0
+      &.detail_menu_til01
+        background-position: 0 0
+    &.menuon dt.detail_menu_til01
+      background-position: -74px 0
+    dt
+      &.detail_menu_til01r
+        background-position: -74px 0
+      &.detail_menu_til02
+        background-position: 0 -19px
+    &.menuon dt.detail_menu_til02
+      background-position: -74px -19px
+    dt
+      &.detail_menu_til02r
+        background-position: -74px -19px
+      &.detail_menu_til03
+        background-position: 0 -38px
+    &.menuon dt.detail_menu_til03
+      background-position: -74px -38px
+    dt
+      &.detail_menu_til03r
+        background-position: -74px -38px
+      &.detail_menu_til04
+        background-position: 0 -57px
+    &.menuon dt.detail_menu_til04
+      background-position: -74px -57px
+    dt
+      &.detail_menu_til04r
+        background-position: -74px -57px
+      &.detail_menu_til05
+        background-position: 0 -76px
+    &.menuon dt.detail_menu_til05
+      background-position: -74px -76px
+    dt
+      &.detail_menu_til05r
+        background-position: -74px -76px
+      a
+        display: block
+    dd
+      float: left
+      display: inline
+      width: 605px
+      height: 30px
+      padding-left: 5px
+      line-height: 30px
+      a
+        float: left
+        padding: 0 10px
+        background: url(../images/new_index/detail_menu_bdl.gif) no-repeat 0 center
+        &.no_bg
+          background: none
+
+.in_adv01
+  float: left
+  margin-top: 10px
+  margin-left: 9px
+
+/*product list
+
+.index_products_title
+  width: 960px
+  height: 39px
+  position: relative
+  clear: both
+  margin-top: 32px
+  background: url(../images/new_index/bg_index_product_title.gif) repeat-x
+  overflow: hidden
+  div.new_hot
+    height: 39px
+    background: url(../images/new_index/title_index_product_title.gif) no-repeat
+  h2.title
+    a
+      display: block
+      height: 39px
+      text-indent: -999em
+      outline: none
+    background: url(../images/new_index/title_index_product_title.gif) no-repeat
+  span.more_products
+    float: right
+    padding: 5px 10px 0 0
+    a
+      display: block
+      width: 61px
+      height: 18px
+      background: url(../images/new_index/btn_more_products.gif) no-repeat
+      text-indent: -999em
+      outline: none
+  h2
+    &.index_new
+      background-position: left 0
+    &.index_women
+      background-position: left -39px
+    &.index_laptop
+      background-position: left -78px
+    &.index_men
+      background-position: left -117px
+    &.index_hot
+      background-position: left -156px
+    &.index_newproduct
+      background-position: left -195px
+    a.showproduct_title
+      float: left
+      height: 22px
+      line-height: 22px
+      font-size: 12px
+      font-weight: normal
+      color: #565662
+      text-indent: 0
+      padding-right: 20px
+      background: url(../images/new_index/dsanjiaopoint.gif) no-repeat right center
+      position: absolute
+      right: 2px
+      bottom: 2px
+    span.showproduct_title
+      float: left
+      height: 22px
+      line-height: 22px
+      font-size: 12px
+      font-weight: normal
+      color: #565662
+      text-indent: 0
+      padding-right: 20px
+      background: url(../images/new_index/dsanjiaopoint.gif) no-repeat right center
+      position: absolute
+      right: 2px
+      bottom: 2px
+      color: #f00
+      background-image: none
+      padding-right: 8px
+      font-weight: bold
+
+.product_adv
+  overflow: hidden
+  margin-top: 10px
+
+a.bigproduct_adv
+  float: left
+  display: inline
+  margin-right: 10px
+
+/**右侧动态切换*
+
+.accshowlist
+  float: right
+  display: inline
+  width: 218px
+  border: 1px solid #e8e7e3
+  border-bottom: none
+  overflow: hidden
+  dt
+    height: 29px
+    line-height: 29px
+    padding-left: 20px
+    background: url(../images/new_index/sanjiaopoint.gif) no-repeat 10px center
+    border-bottom: 1px solid #e8e7e3
+    a
+      display: block
+      background: url(../images/new_index/jiantou.gif) no-repeat 184px 1px
+    &.showpic a
+      display: block
+      color: #f00
+      padding-right: 18px
+      background: url(../images/new_index/jiantou.gif) no-repeat 184px -26px
+  dd
+    display: none
+    height: 162px
+    border-bottom: 1px solid #e8e7e3
+    overflow: hidden
+    a
+      display: block
+
+/**今日特价*
+
+#index_countdown
+  float: right
+  width: 218px
+  height: 280px
+  position: relative
+  padding-top: 30px
+  border: 2px solid #ddd
+  text-align: center
+  h4
+    width: 222px
+    height: 30px
+    overflow: hidden
+    background: #cc0000 url(../images/new_index/special_today.gif) no-repeat 0 0
+    text-indent: -999px
+    position: absolute
+    top: -2px
+    left: -2px
+  a
+    display: block
+    width: 218px
+    line-height: 22px
+    img
+      height: 150px
+  strong.countdown_title
+    display: block
+    font-size: 14px
+    font-family: '微软雅黑', sans-serif
+    font-weight: normal
+    height: 18px
+    line-height: 18px
+    padding-top: 5px
+
+#countdown
+  width: 164px
+  height: 24px
+  font-size: 18px
+  font-family: Arial, "MS Trebuchet", sans-serif
+  font-weight: bold
+  color: #fff
+  line-height: 24px
+  background: url(../images/new_index/countdown_num.gif) no-repeat 0 0
+  margin: 5px auto 0
+
+#index_countdown
+  .countdown_oldprice
+    font-size: 14px
+    strong
+      font-weight: normal
+      color: #666
+      text-decoration: line-through
+      padding: 0 5px
+  .countdown_price
+    font-size: 14px
+    strong
+      font-size: 16px
+      color: #eb0202
+      padding: 0 5px
+  input.seckill_btn
+    display: block
+    width: 101px
+    height: 24px
+    background: url(../images/new_index/SecKill_btn.jpg) no-repeat 0 0
+    border-style: none
+    border: 0
+    text-indent: -999px
+    margin: 5px auto 0
+    cursor: pointer
+
+/**商品列表*
+
+ul
+  &.border_black
+    width: 970px
+    margin-left: -10px
+    overflow: hidden
+  &.products_list
+    width: 970px
+    margin-left: -6px
+    overflow: hidden
+  &.border_black li
+    float: left
+    width: 184px
+    padding-left: 10px
+    padding-top: 10px
+  &.products_list li
+    float: left
+    width: 187px
+    padding-left: 6px
+    padding-top: 10px
+  &.model_list li
+    height: 390px
+  &.products_list li
+    height: 280px
+  &.index_products li.nopadding
+    padding-left: 0
+  &.border_red li div.pic img
+    border: 2px solid #f00
+  &.border_gray li div
+    &.pic img
+      border: 1px solid #E7E7E7
+    &.text
+      padding-top: 4px
+  &.border_black li div.pic img
+  &.products_list li div.pic a
+    display: block
+    border: 1px solid #E7E7E7
+  &.model_list li div.pic
+    height: 300px
+  &.products_list li div.pic
+    height: 195px
+  &.index_products li div.text
+    width: 169px
+    div
+      &.title
+        height: 40px
+        line-height: 1.6
+        overflow: hidden
+      &.price
+        line-height: 1.6
+
+.index_flash
+  clear: both
+  padding-top: 36px
+  margin-left: -10px
+
+.index_products_ad
+  padding-top: 10px
+
+/*20091028 brand_box_list
+
+.main_body_left div.index_brand_box_list
+  padding: 5px 0 10px 0
+  ul
+    width: 160px
+    margin: 0 auto
+    li
+      background: url(../images/new_homepage/arrow_03.gif) no-repeat 5px 10px
+      padding-left: 15px
+      border-bottom: 1px dashed #CEC2AE
+      height: 22px
+      line-height: 22px
+
+/**活动专区*
+
+#activitybox_left
+  float: left
+  display: inline
+  width: 580px
+
+#activitybox_right
+  float: right
+  display: inline
+  width: 370px
+
+#activitybox
+  float: left
+  display: inline
+  width: 578px
+  border: 1px solid #b4b4b4
+  margin-top: 10px
+
+.bbgtitle
+  margin: 1px
+  height: 25px
+  font-size: 12px
+  font-weight: normal
+  color: #fff
+  line-height: 25px
+  background-color: #565662
+  padding-left: 10px
+  overflow: hidden
+  a
+    float: right
+    color: #fff
+    padding-right: 20px
+    margin-right: 10px
+    background: url(../images/new_index/dsanjiaopointb.gif) no-repeat right center
+
+.activitylist
+  list-style-type: none
+  width: 570px
+  margin: 0 auto
+
+#activitybox
+  padding-bottom: 15px
+
+.activitylist li
+  float: left
+  width: 190px
+  height: 255px
+  padding-top: 15px
+  div
+    &.pic
+      text-align: center
+      height: 165px
+      img
+        height: 160px
+        border: 1px solid #E7E7E7
+        padding: 1px
+    &.title
+      width: 160px
+      height: 45px
+      margin: 0 auto
+      line-height: 1.5
+    &.price
+      width: 160px
+      margin: 0 auto
+      line-height: 1.5
+
+#activitybox .pdtitle
+  height: 22px
+  line-height: 22px
+
+.oldprice
+  display: block
+  font-size: 12px
+  color: #999
+  height: 22px
+  line-height: 22px
+  padding: 0 5px
+  strong
+    font-weight: normal
+    text-decoration: line-through
+
+.price
+  display: block
+  font-size: 12px
+  font-weight: bold
+  color: #c00
+
+#activitybox
+  .oldprice
+    padding: 0
+    text-align: left
+  .price
+    padding: 0
+    text-align: left
+    strong
+      padding: 0
+      text-align: left
+
+/**麦包包事件*
+
+#bbevent, #askactivity, #subscription, #jiangnanhui
+  float: left
+  display: inline
+  width: 368px
+  border: 1px solid #b4b4b4
+  margin-top: 10px
+  /**padding-bottom: 13px;
+   **padding-bottom: 14px;*
+  overflow: hidden
+
+#subscription
+  padding-bottom: 0
+
+#jiangnanhui
+  margin-top: 9px
+  height: 70px
+  overflow: hidden
+
+#impevent
+  float: left
+  display: inline
+  width: 346px
+  height: 120px
+  padding: 20px 6px 5px 16px
+  overflow: hidden
+
+a.impeventpic
+  &:link, &:visited
+    float: left
+    display: inline
+    width: 167px
+    height: 118px
+    border: 1px solid #888984
+    overflow: hidden
+  &:hover, &:active
+    float: left
+    display: inline
+    width: 167px
+    height: 118px
+    border: 1px solid #bbb
+    overflow: hidden
+
+#impevent
+  h4
+    float: left
+    display: inline
+    width: 160px
+    height: 24px
+    padding-left: 15px
+    font-size: 12px
+    line-height: 24px
+  p
+    float: left
+    display: inline
+    width: 160px
+    height: 91px
+    padding-left: 15px
+    padding-top: 5px
+    font-size: 12px
+    color: #666
+    line-height: 20px
+    position: relative
+    span
+      position: absolute
+      right: 10px
+      bottom: 5px
+      a
+        &:link, &:visited
+          color: #c00
+        &:hover, &:active
+          color: #f60
+
+#othevent
+  float: left
+  display: inline
+  list-style-type: none
+  padding: 14px 0
+  li
+    float: left
+    display: inline
+    padding: 0 5px 0 15px
+    width: 164px
+    height: 22px
+    line-height: 22px
+    overflow: hidden
+    background: url(../images/new_index/sanjiaopoint.gif) no-repeat 7px center
+    a
+      &:link, &:visited
+        color: #666
+      &:hover, &:active
+        color: #c00
+
+/**#hottalk {
+ *	float: left;
+ *	display: inline;
+ *}*
+
+#hottalk
+  float: left
+  display: inline
+  width: 368px
+  border: 1px solid #b4b4b4
+  margin-top: 10px
+  h4
+    float: left
+    display: inline
+    width: 338px
+    font-size: 12px
+    font-weight: normal
+    color: #000
+    padding: 5px 10px
+  ul
+    float: left
+    display: inline
+    padding-top: 5px
+    padding-bottom: 10px
+  li
+    float: left
+    display: inline
+    padding: 0 0 0 20px
+    width: 345px
+    height: 20px
+    color: #666
+    line-height: 20px
+    background: url(../images/new_index/sanjiaopoint.gif) no-repeat 10px center
+    a
+      &:link, &:visited
+        float: left
+        display: inline
+        color: #666
+      &:hover, &:active
+        float: left
+        display: inline
+        color: #c00
+    span
+      float: right
+      display: inline
+      font-size: 12px
+      margin: 0 4px
+
+/**#subscription {
+ *	float: left;
+ *	display: inline;
+ *	width: 358px;
+ *	border: 1px solid #b4b4b4;
+ *	margin: 24px 4px 0;
+ *}*
+
+/**问卷调查*
+
+#askactivity
+  p
+    padding: 10px 15px 10px 40px
+    color: #666
+    text-indent: -24px
+    line-height: 22px
+    overflow: hidden
+  ul
+    float: left
+    padding-left: 40px
+    padding-bottom: 13px
+    li
+      float: left
+      width: 160px
+      height: 30px
+      line-height: 30px
+      input
+        margin-right: 10px
+        vertical-align: middle
+  input.post_btn
+    float: right
+    display: inline
+    width: 56px
+    height: 20px
+    text-indent: -999px
+    border-style: none
+    border: 0
+    background: url(../images/new_index/askactivity_post_bg.gif) no-repeat 0 0
+    margin-right: 15px
+    cursor: pointer
+
+#subscription
+  h4
+    float: left
+    display: inline
+    font-size: 12px
+    font-weight: normal
+    color: #000
+    padding: 12px 0 0 12px
+  span
+    float: left
+    display: inline
+    width: 224px
+    margin-left: 12px
+    margin-top: 6px
+
+.sublink
+  float: left
+  display: inline
+
+.subtext
+  float: left
+  width: 125px
+  height: 12px
+  line-height: 12px
+  font-size: 12px
+  padding: 2px 5px
+  margin-top: 1px
+  border: 1px solid #7f9db9
+
+.subbt
+  float: right
+  display: inline
+  width: 56px
+  height: 20px
+  background: url(../images/new_index/subscription_post_bg.gif) no-repeat 0 0
+  border-style: none
+  border: 0
+  text-indent: -300px
+  margin-right: 15px
+  cursor: pointer
+  overflow: hidden
+
+.index_help_box div.links_title
+  height: 45px
+  border-bottom: 1px solid #9f0306
+  background: none
+  position: relative
+  span.more
+    position: absolute
+    font-weight: normal
+    right: 5px
+    top: 18px
+
+.n
+  font-weight: normal

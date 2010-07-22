@@ -1,19 +1,20 @@
+# encoding: utf-8
 #首页顶端导航
 class Nav
   include Mongoid::Document
   include Mongoid::Timestamps
   include ActsAsList::Mongoid 
 
-  field :name
+  field :name, :default => '空白导航'
   field :url
 
   #排序
   field :pos, :type => Integer
   acts_as_list :column => :pos
 
+  #页面传递的参数，用于新增时指明其所在的参照数哪个位置(前或后)
   attr_accessor :neighbor, :direct
 
-  validates_presence_of :name, :url
   #mongoid暂不支持scope
   #validates_uniqueness_of :name, :scope => :page
 

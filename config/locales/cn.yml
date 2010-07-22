@@ -21,6 +21,9 @@ cn:
       nav:
         name: 名称
         url: 链接地址
+      menu:
+        name: 名称
+        url: 链接地址
       user_session:
         login: 用户名
         password: 密码

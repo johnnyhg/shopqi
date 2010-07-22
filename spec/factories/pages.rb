@@ -4,12 +4,15 @@ Factory.define 'page_mbaobao', :class => :page do |p|
 
   #p.logo { |page| Logo.new }
 
+  p.menus do |page|
+    %w( 首页 女包 男包 真皮 数码包 旅行包 ).map do |menu|
+      Factory.build(:menu, :name => menu)
+    end
+  end
+
   p.navs do |page| 
-    [
-      Factory.build(:nav, :name => '会员中心'),
-      Factory.build(:nav, :name => '订单查询'),
-      Factory.build(:nav, :name => '网站导航'),
-      Factory.build(:nav, :name => '帮助')
-    ]
+    %w( 会员中心 订单查询 网站导航 帮助 ).map do |nav|
+      Factory.build(:nav, :name => nav)
+    end
   end
 end

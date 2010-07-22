@@ -21,3 +21,8 @@
   padding-top: 40px;
   height: 55px;
 }
+
+/* line 25, sass/page.sass */
+ul#nav li a:link, ul#nav li a:visited, ul#nav li a:hover, ul#nav li a:active {
+  background-image: url(/images/menu/4c46c87d8e0dee15ac000001.png);
+}

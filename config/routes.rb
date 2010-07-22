@@ -1,10 +1,20 @@
 Shopqi::Application.routes.draw do |map|
+  resources :categories
+
+  #图片合成
   resources :images
 
+  #菜单
+  resources :menus do
+    post :sort, :on => :collection
+  end
+
+  #导航
   resources :navs do
     post :sort, :on => :collection
   end
 
+  #主页面
   resources :pages do
     get :logo, :on => :collection
   end
