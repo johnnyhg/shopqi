@@ -1,79 +1,31 @@
-@font-face {
-  font-family: "yahei";
-  src: local("yahei"), url(/images/logo/yahei.ttf) format('truetype');
-}
+@font-face { font-family: "yahei"; src: local("yahei"), url(/images/logo/yahei.ttf) format('truetype'); }
 
-@font-face {
-  font-family: "haibao";
-  src: local("haibao"), url(/images/logo/haibao.ttf) format('truetype');
-}
+@font-face { font-family: "haibao"; src: local("haibao"), url(/images/logo/haibao.ttf) format('truetype'); }
 
-@font-face {
-  font-family: "liuye";
-  src: local("liuye"), url(/images/logo/liuye.ttf) format('truetype');
-}
+@font-face { font-family: "liuye"; src: local("liuye"), url(/images/logo/liuye.ttf) format('truetype'); }
 
-@font-face {
-  font-family: "katong";
-  src: local("katong"), url(/images/logo/katong.ttf) format('truetype');
-}
+@font-face { font-family: "katong"; src: local("katong"), url(/images/logo/katong.ttf) format('truetype'); }
 
-/* line 7, ../../../app/stylesheets/photomaker.sass */
-.add {
-  background: url('/images/photomaker.png?1279286975');
-}
+.add { background: url('/images/photomaker.png?1279981039'); }
 
-/* line 9, ../../../app/stylesheets/photomaker.sass */
-.generate {
-  background: url('/images/photomaker.png?1279286975') 0 -32px;
-}
+.generate { background: url('/images/photomaker.png?1279981039') 0 -32px; }
 
-/* line 12, ../../../app/stylesheets/photomaker.sass */
-.yahei {
-  background: url('/images/photomaker.png?1279286975') 0 -64px;
-}
+.yahei { background: url('/images/photomaker.png?1279981039') 0 -64px; }
 
-/* line 14, ../../../app/stylesheets/photomaker.sass */
-.haibao {
-  background: url('/images/photomaker.png?1279286975') 0 -96px;
-}
+.haibao { background: url('/images/photomaker.png?1279981039') 0 -96px; }
 
-/* line 16, ../../../app/stylesheets/photomaker.sass */
-.katong {
-  background: url('/images/photomaker.png?1279286975') 0 -128px;
-}
+.katong { background: url('/images/photomaker.png?1279981039') 0 -128px; }
 
-/* line 18, ../../../app/stylesheets/photomaker.sass */
-.liuye {
-  background: url('/images/photomaker.png?1279286975') 0 -160px;
-}
+.liuye { background: url('/images/photomaker.png?1279981039') 0 -160px; }
 
-/* line 21, ../../../app/stylesheets/photomaker.sass */
-.small {
-  background: url('/images/photomaker.png?1279286975') 0 -192px;
-}
+.small { background: url('/images/photomaker.png?1279981039') 0 -192px; }
 
-/* line 23, ../../../app/stylesheets/photomaker.sass */
-.middle {
-  background: url('/images/photomaker.png?1279286975') 0 -224px;
-}
+.middle { background: url('/images/photomaker.png?1279981039') 0 -224px; }
 
-/* line 25, ../../../app/stylesheets/photomaker.sass */
-.big {
-  background: url('/images/photomaker.png?1279286975') 0 -256px;
-}
+.big { background: url('/images/photomaker.png?1279981039') 0 -256px; }
 
-/* line 28, ../../../app/stylesheets/photomaker.sass */
-.red {
-  background: url('/images/photomaker.png?1279286975') 0 -288px;
-}
+.red { background: url('/images/photomaker.png?1279981039') 0 -288px; }
 
-/* line 30, ../../../app/stylesheets/photomaker.sass */
-.green {
-  background: url('/images/photomaker.png?1279286975') 0 -320px;
-}
+.green { background: url('/images/photomaker.png?1279981039') 0 -320px; }
 
-/* line 32, ../../../app/stylesheets/photomaker.sass */
-.blue {
-  background: url('/images/photomaker.png?1279286975') 0 -352px;
-}
+.blue { background: url('/images/photomaker.png?1279981039') 0 -352px; }

@@ -33,7 +33,7 @@ class Page
 
   #网店菜单背景图路径
   def menu_sprite_path
-    "#{Rails.root}/public/#{menu_sprite_url}"
+    "#{Rails.root}/public" + menu_sprite_url
   end
 
   def menu_sprite_url

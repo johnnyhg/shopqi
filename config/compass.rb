@@ -13,3 +13,6 @@ environment = Compass::AppIntegration::Rails.env
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # relative_assets = true
 preferred_syntax = :sass
+
+output_style = :compact 
+line_comments = false
