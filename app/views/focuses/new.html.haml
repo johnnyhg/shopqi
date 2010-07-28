@@ -1,5 +1,5 @@
 = render :partial => "images/panel", :locals => { :image => resource.image }
-.big_contrainer{:style => 'width:960px'}
+.container_16
   .operates
     =link_to '<<在其前添加', new_focus_path('focus[neighbor]' => resource.id, :'focus[direct]' => :above), :remote => true, :update => 'tooltip' unless resource.new_record?
     =link_to '在其后添加>>', new_focus_path('focus[neighbor]' => resource.id, 'focus[direct]' => :below), :remote => true, :update => 'tooltip', :style => 'float:right' unless resource.new_record?
@@ -12,3 +12,4 @@
       =f.commit_button '保存'
       -unless resource.new_record?
         %li=link_to '删除', focus_path, :remote => true, :method => :delete
+      %li=link_to_function '取消', '$("#tooltip").fadeOut("slow")'

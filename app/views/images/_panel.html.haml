@@ -1,4 +1,4 @@
-.container_16{:style => 'background-color:white'}
+.container_16
   #photomaker
     =hidden_field_tag 'current_word', image.words.size
     =hidden_field_tag 'words_size', image.words.size
@@ -122,7 +122,7 @@
       Word.init($(this));
     });
 
-    var words_size = #{resource.words.size};
+    var words_size = #{image.words.size};
     //添加操作
     $('#add_word').click(function(){
       var word = $("<div class='editable jqDnR jqDrag word'>ShopQi</div>").appendTo('#panel');
@@ -220,7 +220,6 @@
 
     //面板大小调整按钮
     $('.panel_bg a').click(function(){
-      $.jGrowl($(this).attr('title'));
       var width = /宽(\d+)(px)?/.exec($(this).attr('title'))[1];
       var height = /高(\d+)(px)?/.exec($(this).attr('title'))[1];
       $('#panel').width(parseInt(width)).height(parseInt(height));

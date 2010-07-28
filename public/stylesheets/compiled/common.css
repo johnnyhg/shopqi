@@ -150,7 +150,7 @@ textarea.txt_focus { border: 1px solid #cc0000; }
 #container { width: 960px; margin: 0 auto; text-align: left; }
 
 /*header */
-.header { border-top: 2px solid #993333; height: 69px; }
+.header { /* border-top: 2px solid #933 */ height: 69px; }
 .header .logo { padding-left: 20px; }
 .header .header_info { width: 580px; padding-right: 20px; text-align: right; }
 .header .header_info .header_links_box { padding: 14px 0 0 0; font-size: 12px; }

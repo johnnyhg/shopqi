@@ -1,6 +1,6 @@
 a { text-decoration: none; }
 
-#photomaker { padding: 0; display: block; height: 280px; }
+#photomaker { padding: 0; }
 #photomaker #menu { border-bottom: 1px solid #cccccc; height: 50px; }
 #photomaker #menu ul { float: left; list-style: none; display: block; padding-top: 10px; }
 #photomaker #menu ul li { float: left; margin: 0 2px; }

@@ -14,11 +14,18 @@ $.fn.move = function(direct, content){
 
 var tooltip_setting = {
   tip: '#tooltip', 
+  predelay: 1000, 
+  //delay: 100,
   //position: ['center','right'],
   //offset: [top, left]
   offset: [15, 2],
   effect: 'slide',
-  //delay: 0,
+  //鼠标移至触发点时显示，移出时隐藏
+  //鼠标移至提示面板时显示，移出时不隐藏，手动点击取消隐藏
+  events: {
+    def: 'mouseover,mouseout',
+    tooltip: 'mouseover'
+  },
   //opacity: 0.9,
   onBeforeShow: function(){
     $('#tooltip').html('正在处理...');
