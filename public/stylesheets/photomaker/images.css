@@ -1,124 +1,24 @@
-/* line 1, ../sass/photomaker/images.sass */
-a {
-  text-decoration: none;
-}
+a { text-decoration: none; }
 
-/* line 4, ../sass/photomaker/images.sass */
-#photomaker {
-  border: 1px solid #cccccc;
-  margin: 10px;
-  padding: 0 5px;
-  display: block;
-  height: 280px;
-}
-/* line 10, ../sass/photomaker/images.sass */
-#photomaker #menu {
-  border-bottom: 1px solid #cccccc;
-  height: 50px;
-}
-/* line 13, ../sass/photomaker/images.sass */
-#photomaker #menu ul {
-  float: left;
-  list-style: none;
-  display: block;
-  padding-top: 10px;
-}
-/* line 18, ../sass/photomaker/images.sass */
-#photomaker #menu ul li {
-  float: left;
-  margin: 0 2px;
-}
-/* line 21, ../sass/photomaker/images.sass */
-#photomaker #menu ul li.separator {
-  height: 32px;
-  margin: 0 4px;
-  border-left: 1px solid #cccccc;
-}
-/* line 25, ../sass/photomaker/images.sass */
-#photomaker #menu ul li.label {
-  width: 100px;
-}
-/* line 27, ../sass/photomaker/images.sass */
-#photomaker #menu ul li a {
-  opacity: 0.6;
-  width: 32px;
-  height: 32px;
-  display: block;
-  cursor: pointer;
-}
-/* line 33, ../sass/photomaker/images.sass */
-#photomaker #menu ul li a:hover {
-  opacity: 0.99;
-}
-/* line 35, ../sass/photomaker/images.sass */
-#photomaker #menu ul li a.selected {
-  background-color: #f9f9f9;
-  border: 1px solid #cccccc;
-  border-left-color: #aaaaaa;
-  border-top-color: #aaaaaa;
-  padding: 0;
-  /* background-color: #8ABC35 */
-  /* color: #fff */
-}
-/* line 44, ../sass/photomaker/images.sass */
-#photomaker #panel {
-  position: relative;
-  left: 10px;
-  top: 10px;
-  width: 300px;
-  height: 200px;
-  border: 1px solid #999999;
-}
+#photomaker { padding: 0; display: block; height: 280px; }
+#photomaker #menu { border-bottom: 1px solid #cccccc; height: 50px; }
+#photomaker #menu ul { float: left; list-style: none; display: block; padding-top: 10px; }
+#photomaker #menu ul li { float: left; margin: 0 2px; }
+#photomaker #menu ul li.separator { height: 32px; margin: 0 4px; border-left: 1px solid #cccccc; }
+#photomaker #menu ul li.label { width: 100px; }
+#photomaker #menu ul li a { opacity: 0.6; width: 32px; height: 32px; display: block; cursor: pointer; }
+#photomaker #menu ul li a:hover { opacity: 0.99; }
+#photomaker #menu ul li a.selected { background-color: #f9f9f9; border: 1px solid #cccccc; border-left-color: #aaaaaa; border-top-color: #aaaaaa; padding: 0; /* background-color: #8ABC35 */ /* color: #fff */ }
+#photomaker #panel { position: relative; left: 0px; top: 0px; width: 300px; height: 200px; border: 1px solid #999999; }
 
-/* line 52, ../sass/photomaker/images.sass */
-#preview {
-  margin: 25px;
-}
-/* line 54, ../sass/photomaker/images.sass */
-#preview img {
-  border: 1px solid #999999;
-}
+.jqHandle { background: red; height: 10px; }
 
-/* line 57, ../sass/photomaker/images.sass */
-.jqHandle {
-  background: red;
-  height: 10px;
-}
+.jqResize { width: 10px; position: absolute; bottom: 0; right: 0; cursor: se-resize; }
 
-/* line 61, ../sass/photomaker/images.sass */
-.jqResize {
-  width: 10px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  cursor: se-resize;
-}
+.jqDrag { cursor: move; }
 
-/* line 68, ../sass/photomaker/images.sass */
-.jqDrag {
-  cursor: move;
-}
+.jqDnR { z-index: 3; position: absolute; font-size: 20px; color: #618d5e; margin: 0; /* background-color: #EEE */ /* border: 1px solid #CCC */ display: inline; /* 修正:文字移至最右会换行 */ white-space: nowrap; }
 
-/* line 71, ../sass/photomaker/images.sass */
-.jqDnR {
-  z-index: 3;
-  position: absolute;
-  font-size: 20px;
-  color: #618d5e;
-  margin: 0;
-  /* background-color: #EEE */
-  /* border: 1px solid #CCC */
-  display: inline;
-  /* 修正:文字移至最右会换行 */
-  white-space: nowrap;
-}
+.form_inline { display: inline; }
 
-/* line 83, ../sass/photomaker/images.sass */
-.form_inline {
-  display: inline;
-}
-
-/* line 86, ../sass/photomaker/images.sass */
-.hide {
-  display: none;
-}
+.hide { display: none; }

@@ -1,0 +1,11 @@
+//set ID
+$('#panel').attr('image-id', '#{@image.id}');
+
+//show background
+var background = $('<div class="editable jqDnR jqDrag background"><img src="#{@background.file.url}"/></div>').appendTo('#panel');
+background.attr('tmp_id', '#{@background.tmp_id}').attr('background-id', '#{@background.id}');
+background.css('left', '0');
+//draggable
+background.jqDrag(null, '#panel').bind('drag.stop', function(){
+$('#generate_image').dblclick();
+});

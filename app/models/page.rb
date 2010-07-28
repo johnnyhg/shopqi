@@ -1,30 +1,20 @@
 # encoding: utf-8
-require 'carrierwave/orm/mongoid'
-
 class Page
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Sortable
+  sortable :navs, :menus, :focuses
 
   field :name
   validates_uniqueness_of :name
 
   embeds_one :logo
-  embeds_many :navs
-  embeds_many :menus
 
   before_create :create_logo
 
   #必需有Logo
   def create_logo
     self.logo = Logo.new
-  end
-
-  def sorted_menus
-    menus.sort {|x, y| x.pos <=> y.pos}
-  end
-
-  def sorted_navs
-    navs.sort {|x, y| x.pos <=> y.pos}
   end
 
   def self.mbaobao

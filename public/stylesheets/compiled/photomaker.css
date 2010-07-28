@@ -1,31 +1,39 @@
-@font-face { font-family: "yahei"; src: local("yahei"), url(/images/logo/yahei.ttf) format('truetype'); }
+@font-face { font-family: "yahei"; src: local("☺"), url(/images/logo/yahei.ttf) format('truetype'); }
 
-@font-face { font-family: "haibao"; src: local("haibao"), url(/images/logo/haibao.ttf) format('truetype'); }
+@font-face { font-family: "haibao"; src: local("☺"), url(/images/logo/haibao.ttf) format('truetype'); }
 
-@font-face { font-family: "liuye"; src: local("liuye"), url(/images/logo/liuye.ttf) format('truetype'); }
+@font-face { font-family: "liuye"; src: local("☺"), url(/images/logo/liuye.ttf) format('truetype'); }
 
-@font-face { font-family: "katong"; src: local("katong"), url(/images/logo/katong.ttf) format('truetype'); }
+@font-face { font-family: "katong"; src: local("☺"), url(/images/logo/katong.ttf) format('truetype'); }
 
-.add { background: url('/images/photomaker.png?1279981039'); }
+.add { background: url('/images/photomaker.png?1280312789'); }
 
-.generate { background: url('/images/photomaker.png?1279981039') 0 -32px; }
+.upload { background: url('/images/photomaker.png?1280312789') 0 -32px; }
 
-.yahei { background: url('/images/photomaker.png?1279981039') 0 -64px; }
+.generate { background: url('/images/photomaker.png?1280312789') 0 -64px; }
 
-.haibao { background: url('/images/photomaker.png?1279981039') 0 -96px; }
+.yahei { background: url('/images/photomaker.png?1280312789') 0 -96px; }
 
-.katong { background: url('/images/photomaker.png?1279981039') 0 -128px; }
+.haibao { background: url('/images/photomaker.png?1280312789') 0 -128px; }
 
-.liuye { background: url('/images/photomaker.png?1279981039') 0 -160px; }
+.katong { background: url('/images/photomaker.png?1280312789') 0 -160px; }
 
-.small { background: url('/images/photomaker.png?1279981039') 0 -192px; }
+.liuye { background: url('/images/photomaker.png?1280312789') 0 -192px; }
 
-.middle { background: url('/images/photomaker.png?1279981039') 0 -224px; }
+.small { background: url('/images/photomaker.png?1280312789') 0 -224px; }
 
-.big { background: url('/images/photomaker.png?1279981039') 0 -256px; }
+.middle { background: url('/images/photomaker.png?1280312789') 0 -256px; }
 
-.red { background: url('/images/photomaker.png?1279981039') 0 -288px; }
+.big { background: url('/images/photomaker.png?1280312789') 0 -288px; }
 
-.green { background: url('/images/photomaker.png?1279981039') 0 -320px; }
+.red { background: url('/images/photomaker.png?1280312789') 0 -320px; }
 
-.blue { background: url('/images/photomaker.png?1279981039') 0 -352px; }
+.green { background: url('/images/photomaker.png?1280312789') 0 -352px; }
+
+.blue { background: url('/images/photomaker.png?1280312789') 0 -384px; }
+
+.logo_bg { background: url('/images/photomaker.png?1280312789') 0 -416px; }
+
+.banner_bg { background: url('/images/photomaker.png?1280312789') 0 -448px; }
+
+.focus_bg { background: url('/images/photomaker.png?1280312789') 0 -480px; }

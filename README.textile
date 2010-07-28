@@ -1,28 +1,50 @@
-*项目构成*
+h1. 项目介绍
+
+h2. 项目构成
+
 # ShopQi官网
 # 网店后台管理
 # 网店布局管理
 # 网店展示
 
-*开发环境*
+h1. 安装
+
+h2. 开发环境
+
 ubuntu 10.04
 "vim 7.2": http://github.com/akitaonrails/vimfiles
 
-*系统要求*
+h2. 系统要求
+
 ruby 1.9.2
 rails 3
 mongodb 1.4.3
 
-*安装说明*
+h2. 系统安装
+
+添加至@/etc/apt/source.list@
+
+<pre>
+# mongodb的源
+deb http://downloads.mongodb.org/distros/ubuntu 10.4 10gen
+</pre>
+
+在terminal中执行
+
+<pre>
+sudo apt-get update
+sudo apt-get install mongodb-stable
+</pre>
+
+h2. 安装参考
+
 "参考rails3-mongoid-devise项目":http://github.com/fortuity/rails3-mongoid-devise
 
-*进度*
-2010.07
-  首页布局，用户注册，添加商品
+h1. 测试
 
-
-*如何测试*
 *cucumber*
+
+<pre>
   #查看cucumber支持的语言
   cucumber --i18n help
   #查看cucumber中文语法
@@ -31,14 +53,22 @@ mongodb 1.4.3
   #运行功能测试
   spork cuc &
   cucumber -t @focus
+</pre>
+
 *rspec*
+
+<pre>
   spork rspec &
   rspec spec -X
+</pre>
 
 *为何选择*
 mongodb:灵活增减字段，不用再管migration，更好地管理一对多的关系
 
-*使用的jQuery插件*
+h1. 插件介绍
+
+h2. jQuery
+
 "jeditable":http://www.appelsiini.net/projects/jeditable
 用于实现在线文字图片合成时，可以即时编辑文字，编辑后不直接提交至服务器，转至function处理
 
@@ -46,8 +76,10 @@ mongodb:灵活增减字段，不用再管migration，更好地管理一对多的
 用于实现在线文字图片合成时，可以拖动文字，调整面板大小
 使用时做了修改:限制文字拖动只能在面板以内范围；拖动停止后可以触发drag.stop事件
 
-*License*
+h1. License
+
 项目遵循授权: "GNU Affero GPL 3": http://www.gnu.org/licenses/agpl-3.0.html
 
-*参考资源*
+h1. 参考资源
+
 "15个最好的免费开源电子商务平台":http://louishan.com/articles/15-open-source-ecommerce-platforms.html

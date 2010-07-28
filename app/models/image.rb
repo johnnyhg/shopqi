@@ -1,23 +1,41 @@
 # encoding: utf-8
+require 'carrierwave/orm/mongoid'
 class Image
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :width, :type => Integer
-  field :height, :type => Integer
+  field :width, :type => Integer, :default => 255
+  field :height, :type => Integer, :default => 44
 
+  embeds_many :backgrounds
   embeds_many :words
+
+  #mongoid出于性能上的考虑不会触发子记录的callback，导致carrierwave无法将生成图片的路径写入，这里需要手动触发
+  #http://github.com/durran/mongoid/issues/issue/35
+  #http://github.com/durran/mongoid/issues/closed/#issue/160
+  before_create :trigger_embed_callback
+
+  def trigger_embed_callback
+    self.backgrounds.each do |background|
+      background.run_callbacks :save
+    end
+  end
 
   after_save :render
 
   #生成图片
   def render
-    unless words.empty?
+    unless words.empty? and backgrounds.empty?
       magick = MiniMagick::Image.from_file(blank)
       magick.combine_options do |c|
         c.resize "#{width}x#{height}!"
-        #基准坐标：左上角
+        # 基准坐标：左上角
         c.gravity 'NorthWest'
+        # 背景
+        backgrounds.each do |background|
+          c.draw "image over #{background.x},#{background.y},0,0 '#{background.file.path}'"
+        end
+        # 文字
         words.each do |word|
           size = word.attributes['font-size'].to_i
           c.font font_path(word.font)
@@ -56,6 +74,21 @@ class Image
   end
 end
 
+#背景图片
+class Background
+  include Mongoid::Document
+  
+  field :x, :type => Integer, :default => 0
+  field :y, :type => Integer, :default => 0
+  mount_uploader :file, ImageUploader
+
+  #页面背景保存前的序号
+  attr_accessor :tmp_id
+
+  embedded_in :image, :inverse_of => :backgrounds
+end
+
+#文字
 class Word
   include Mongoid::Document
 

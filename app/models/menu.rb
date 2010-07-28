@@ -3,29 +3,10 @@
 class Menu
   include Mongoid::Document
   include Mongoid::Timestamps
-  include ActsAsList::Mongoid 
+  identity :type => String
 
-  field :name, :default => '空白菜单'
+  field :name
   field :url
-
-  #排序
-  field :pos, :type => Integer
-  acts_as_list :column => :pos
-  #页面传递的参数，用于新增时指明其所在的参照数哪个位置(前或后)
-  attr_accessor :neighbor, :direct
-
-  embedded_in :page, :inverse_of => :menus
-
-  #一定要初始化pos
-  after_create :init_pos
-
-  def init_pos
-    page.menus.init_list!
-    if direct
-      move(direct.to_sym => page.menus.find(neighbor))
-      page.save
-    end
-  end
 
   #生成sprite图片
   def self.sprite(page)

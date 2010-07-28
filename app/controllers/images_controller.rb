@@ -2,7 +2,6 @@
 class ImagesController < InheritedResources::Base
   actions :new, :create, :edit, :update
   respond_to :js, :only => [:create, :update]
-  layout nil
 
   edit! do |format|
     format.html { render :action => "new" }
@@ -14,5 +13,12 @@ class ImagesController < InheritedResources::Base
 
   update! do |success, failure|
     failure.js { render :action => "update.failure.js.haml"}
+  end
+
+  def upload
+    @image = params[:id].blank? ? Image.create(params[:image]) : Image.find(params[:id])
+    @background = Background.new params[:background]
+    @image.backgrounds << @background
+    @background.save
   end
 end

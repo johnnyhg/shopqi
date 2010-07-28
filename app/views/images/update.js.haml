@@ -3,6 +3,8 @@
 //$.jGrowl('更新成功');
 
 //preview_imag
+if($('#relate_dom_id').val()){
 var reload_image = $('#' + $('#relate_dom_id').val() + ' img')[0];
 if(reload_image)
 reload_image.src = '#{resource.url}?#{Time.now.to_i}';
+}

@@ -1,36 +1,9 @@
 #index_focus_box.index_focus_box.ftl{:ads_key => "index_focus"}
-  .img.dpn
-    %a{:href => "http://www.mbaobao.com/cps/5693", :target => "_blank"}
-      %img{ :src => "http://images.mbaobao.com/activity/201007/02/event_night.jpg", :style => "width:725px; height:391px;"}/
-  .img.dpn
-    %a{:href => "http://www.mbaobao.com/cps/5590", :target => "_blank"}
-      %img{ :src => "http://images.mbaobao.com/activity/201006/30/event_20100630_caobian.jpg", :style => "width:725px; height:391px;"}/
-  .img.dpn
-    %a{:href => "http://www.mbaobao.com/cps/5548", :target => "_blank"}
-      %img{ :src => "http://images.mbaobao.com/activity/201006/30/event_20100630_01.jpg", :style => "width:725px; height:391px;"}/
-  .img.dpn
-    %a{:href => "http://www.mbaobao.com/cps/5459", :target => "_blank"}
-      %img{ :src => "http://images.mbaobao.com/activity/201006/30/event_new19_change.jpg", :style => "width:725px; height:391px;"}/
-  .img.dpn
-    %a{:href => "http://www.mbaobao.com/cps/4991", :target => "_blank"}
-      %img{ :src => "http://images.mbaobao.com/activity/201007/02/event_20100614_02.jpg", :style => "width:725px; height:391px;"}/
+  =render :partial => "focuses/img", :collection => resource.sorted_focuses, :as => :item
   %ul#index_focus_txt_bg.panel
-    %li
-    %li
-    %li
-    %li
-    %li.last
-  %ul#index_focus_txt.title
-    %li
-      %a{:href => "http://www.mbaobao.com/cps/5693", :target => "_blank"} 越夜越时尚
-    %li
-      %a{:href => "http://www.mbaobao.com/cps/5590", :target => "_blank"} 更爱草编包
-    %li
-      %a{:href => "http://www.mbaobao.com/cps/5548", :target => "_blank"} 2010 激情世界杯
-    %li
-      %a{:href => "http://www.mbaobao.com/cps/5459", :target => "_blank"} 夏季新品第19期
-    %li
-      %a{:href => "http://www.mbaobao.com/cps/4991", :target => "_blank"} 浪美98分贝单肩包
+    -resource.sorted_focuses.each do |focus|
+      %li{:class => ((focus == resource.sorted_focuses.last) ? 'last' : '')}
+  %ul#index_focus_txt.title.editable.sortable{:sort_url => sort_focuses_path}=render :partial => "focuses/item", :collection => resource.sorted_focuses
   #index_focus_loding.loding
 .index_focus_sidebar.ftr
   .right_content_box

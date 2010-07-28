@@ -24,8 +24,15 @@ end
 page.navs.init_list!
 page.save
 
-%w( 首页 女包 男包 真皮 数码包 旅行包 ).each do |menu|
-  page.menus << Menu.new(:name => menu, :url => '/category')
+%w( 首页 女包 男包 真皮 数码包 旅行包 ).each do |label|
+  page.menus << Menu.new(:name => label, :url => '/category')
 end
 page.menus.init_list!
+page.save
+Menu.sprite page
+
+%w( 激情世界杯 最爱草包 时尚之夜 冬季暖包 浪美特价 ).each do |label|
+  page.focuses << Focus.new(:name => label, :url => '/focus', :img_url => 'http://images.mbaobao.com/activity/201007/02/event_night.jpg')
+end
+page.focuses.init_list!
 page.save

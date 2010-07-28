@@ -37,4 +37,16 @@ describe ImagesController do
     image.reload.words.size.should == image_attr[:words].size
   end
 
+  it "should upload a background image" do
+    image_attr = Factory.attributes_for(:image)
+    image_attr[:backgrounds] = { '0' => { :file => File.open("#{Rails.root}/public/images/logo.jpg") } }
+    xhr :post, :create, :image => image_attr
+    response.should be_success
+
+    image = assigns[:image].reload
+    image.backgrounds.size.should eql 1
+    bg = image.backgrounds.first
+    File.exist?(bg.file.path).should eql true
+    FileUtils.rm_f(bg.file.path)
+  end
 end

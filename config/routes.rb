@@ -2,7 +2,9 @@ Shopqi::Application.routes.draw do |map|
   resources :categories
 
   #图片合成
-  resources :images
+  resources :images do
+    post :upload, :on => :collection
+  end
 
   #菜单
   resources :menus do
@@ -11,6 +13,10 @@ Shopqi::Application.routes.draw do |map|
 
   #导航
   resources :navs do
+    post :sort, :on => :collection
+  end
+
+  resources :focuses do
     post :sort, :on => :collection
   end
 

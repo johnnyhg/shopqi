@@ -1,7 +1,7 @@
 # coding: utf-8
 # 以上修正:invalid multibyte char (US-ASCII)
 
-假如 /^我?在(.+)(?:页面)?$/ do |page_name|
+假如 /^我?访问(.+)(?:页面)?$/ do |page_name|
   visit path_to(page_name)
 end
 
@@ -99,8 +99,8 @@ end
   end
 end
 
-那么 /^我?(?:在(.+)区域)?应该看不到(.+)$/ do |selector, text|
-  with_scope(selector) do
+那么 /^我?(?:在(.+)那里)?应该看不到(.+)$/ do |selector, text|
+  with_scope(scope_to(selector)) do
     if page.respond_to? :should
       page.should have_no_content(text)
     else

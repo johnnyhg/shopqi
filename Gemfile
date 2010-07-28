@@ -5,7 +5,7 @@ gem 'rails', '3.0.0.beta4'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mongoid', '2.0.0.beta9'
+gem 'mongoid', '2.0.0.beta11'
 gem 'bson_ext'
 gem 'devise', '1.1.rc2'
 #排序，注意:保存后要调用todo_list.items.init_list! 初始化序号

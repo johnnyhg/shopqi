@@ -24,6 +24,9 @@ cn:
       menu:
         name: 名称
         url: 链接地址
+      focus:
+        name: 名称
+        url: 链接地址
       user_session:
         login: 用户名
         password: 密码

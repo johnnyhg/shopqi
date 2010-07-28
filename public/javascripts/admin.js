@@ -47,7 +47,7 @@ var tooltip_setting = {
       var contrainer = $('#tooltip :first-child');
       //背景色，提示面板大小由具体的显示页面控制
       //$('#tooltip').css('background-color', contrainer.css('background-color')).width(contrainer.width()).height(contrainer.height());
-      $('#tooltip').css('background-color', contrainer.css('background-color'));
+      //$('#tooltip').css('background-color', contrainer.css('background-color'));
       $('#tooltip :text:first').focus();
     });
   }

@@ -8,13 +8,13 @@
     %meta{ :name => "Keywords"}/
     %meta{ :name => "Description"}/
     -# 在线文字图片合成样式
-    = stylesheet_link_tag 'compiled/grid', 'compiled/photomaker', 'photomaker/jgrowl', 'photomaker/images'
+    = stylesheet_link_tag 'compiled/grid', 'compiled/photomaker', 'photomaker/jgrowl', 'photomaker/images', 'compiled/photomaker/fileuploader'
     =formtastic_stylesheet_link_tag
     = stylesheet_link_tag 'compiled/common', 'compiled/index', 'compiled/page'
-    = javascript_include_tag 'jquery', 'jquery-ui.custom.min', 'rails', 'tooltip/tooltip', 'tooltip/tooltip.dynamic', 'tooltip/tooltip.slide', 'admin', 'application'
+    = javascript_include_tag 'jquery', 'jquery-ui.custom.min', 'rails', 'inspect', 'tooltip/tooltip', 'tooltip/tooltip.dynamic', 'tooltip/tooltip.slide', 'admin', 'application'
     -#= javascript_include_tag 'jquery', 'jquery-ui.custom.min', 'rails', 'jquery.tools.min', 'admin', 'application'
     -# 在线文字图片合成脚本
-    = javascript_include_tag 'photomaker/jgrowl', 'photomaker/jeditable', 'photomaker/jqDnR'
+    = javascript_include_tag 'photomaker/jgrowl', 'photomaker/jeditable', 'photomaker/jqDnR', 'photomaker/fileuploader'
     %script{:src => "http://www.mbaobao.com/templates/default/js/common.js?20100406.793", :type => "text/javascript"}
     %script{:src => "http://www.mbaobao.com/templates/default/js/swfobject.js?20100406.793", :type => "text/javascript"}
     %script{:src => "http://www.mbaobao.com/templates/default/js/index.js?20100406.793", :type => "text/javascript"}

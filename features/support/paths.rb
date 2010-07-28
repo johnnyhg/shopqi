@@ -43,6 +43,13 @@ module NavigationHelpers
       end
     end
   end
+
+  def scope_to(scope_name)
+    case scope_name
+    when /菜单/
+      '#nav'
+    end
+  end
 end
 
 World(NavigationHelpers)
