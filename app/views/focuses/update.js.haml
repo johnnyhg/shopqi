@@ -1,16 +1,8 @@
-//update
-$("#nav li[edit-id='#{resource.id}']").replaceWith('#{escape_javascript( render(:partial => "menus/item", :object => resource, :locals => {:item_counter => 0}))}');
+//hide
+$("#tooltip").trigger('cancle');
 
-//refresh image
-$("ul#nav li a.dom_indexmenu").css('background-image', 'url(#{Page.mbaobao.menu_sprite_url}?#{Time.now.to_i})');
+//update
+$("##{resource.class.name.downcase}_#{resource.id}").replaceWith('#{escape_javascript( render(:partial => "#{resource.collection_name}/item", :object => resource, :locals => {:item_counter => 0}))}');
 
 //reset tooltip
-$("#nav li[edit-id='#{resource.id}'] a.dom_indexmenu").tooltip(tooltip_setting).dynamic(dynamic_setting);
-
-//fade
-$("#tooltip").fadeOut('slow');
-
-//resort
-$("ul#nav li a.dom_indexmenu").parent().removeAttr('class').each(function(index){
-$(this).addClass('nav_0' + (index + 1));
-});
+$("##{resource.class.name.downcase}_#{resource.id} a").tooltip(tooltip_setting).dynamic(dynamic_setting);

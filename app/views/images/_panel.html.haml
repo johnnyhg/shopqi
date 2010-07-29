@@ -35,6 +35,9 @@
         %li.panel_bg=link_to '', '#', :title => '面板大小:通栏横幅(宽725px,高391px)',  :class => :focus_bg
 
     #panel
+      -image.backgrounds.each_with_index do |background, index|
+        .editable.jqDnR.jqDrag.background{:tmp_id => index, :style => "left: #{background.x}px; top: #{background.y}px"}
+          =image_tag background.file.url
       -image.words.each_with_index do |word, index|
         .editable.jqDnR.jqDrag.word{:tmp_id => index, 'word-font' => word.font, 'word-font-size' => word.attributes['font-size'], 'word-color' => word.color, :style => "left: #{word.x}px; top: #{word.y}px; color: #{word.color}; font-family: #{word.font}; font-size: #{word.attributes['font-size']}"}=word.text
       .jqHandle.jqResize
@@ -46,6 +49,8 @@
     $('#panel').attr('image-id', '#{image.id}').width(#{image.width}).height(#{image.height});
 
 :javascript
+  //父页面可以实现Image.generated(url)回调方法
+  Image = {};
   Word = {
     init: function(word){
       //保留当前文字

@@ -6,10 +6,15 @@ $('#panel').attr('image-id', '#{resource.id}');
 //$("#preview").html('#{escape_javascript( render(:partial => "images/preview", :object => resource))}');
 $.jGrowl('保存成功');
 
+//callback
+if(Image.generated){
+Image.generated('#{resource.url}?#{Time.now.to_i}')
+}
+
 //preview_imag
-var reload_image = $('#' + $('#relate_dom_id').val() + ' img')[0];
-if(reload_image)
-reload_image.src = '#{resource.url}?#{Time.now.to_i}';
+//var reload_image = $('#' + $('#relate_dom_id').val() + ' img')[0];
+//if(reload_image)
+//reload_image.src = '#{resource.url}?#{Time.now.to_i}';
 
 //reload something
 var callback_url = $('#callback_url').val();

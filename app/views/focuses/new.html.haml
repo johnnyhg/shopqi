@@ -12,4 +12,10 @@
       =f.commit_button '保存'
       -unless resource.new_record?
         %li=link_to '删除', focus_path, :remote => true, :method => :delete
-      %li=link_to_function '取消', '$("#tooltip").fadeOut("slow")'
+      %li=link_to_function '关闭', '$("#tooltip").trigger("cancle")'
+
+:javascript
+  Image.generated = function(url){
+    $.jGrowl(url);
+    $('##{id(resource)}_image').attr('src', url);
+  };

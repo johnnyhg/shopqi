@@ -1,11 +1,15 @@
-h1. 项目介绍
+h1. 产品介绍
 
-h2. 项目构成
+h2. 产品构成
 
 # ShopQi官网
 # 网店后台管理
 # 网店布局管理
 # 网店展示
+
+h2. 产品任务分配
+
+"pivotaltracker": http://www.pivotaltracker.com/projects/84595
 
 h1. 安装
 
@@ -78,7 +82,7 @@ h2. jQuery
 
 h1. License
 
-项目遵循授权: "GNU Affero GPL 3": http://www.gnu.org/licenses/agpl-3.0.html
+产品遵循授权: "GNU Affero GPL 3": http://www.gnu.org/licenses/agpl-3.0.html
 
 h1. 参考资源
 

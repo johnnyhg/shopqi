@@ -7,8 +7,8 @@ $("ul#nav li a.dom_indexmenu").css('background-image', 'url(#{Page.mbaobao.menu_
 //reset tooltip
 $("#nav li[edit-id='#{resource.id}'] a.dom_indexmenu").tooltip(tooltip_setting).dynamic(dynamic_setting);
 
-//fade
-$("#tooltip").fadeOut('slow');
+//hide
+$("#tooltip").trigger('cancle');
 
 //resort
 $("ul#nav li a.dom_indexmenu").parent().removeAttr('class').each(function(index){

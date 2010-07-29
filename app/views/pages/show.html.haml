@@ -22,6 +22,7 @@
       :sass
         ul#nav li a
           background-image: url(/images/menu/#{Page.mbaobao.id}.png)
+    = csrf_meta_tag
   %body
     = render :partial => "pages/header"
     = render :partial => "pages/main"

@@ -15,16 +15,16 @@ $.fn.move = function(direct, content){
 var tooltip_setting = {
   tip: '#tooltip', 
   predelay: 1000, 
-  //delay: 100,
+  delay: 800,
   //position: ['center','right'],
   //offset: [top, left]
   offset: [15, 2],
   effect: 'slide',
   //鼠标移至触发点时显示，移出时隐藏
-  //鼠标移至提示面板时显示，移出时不隐藏，手动点击取消隐藏
+  //鼠标移至提示面板时显示，移出时不隐藏，手动点击取消隐藏(即触发cancle事件，注意直接调用hide会导致此后无法显示提示)
   events: {
     def: 'mouseover,mouseout',
-    tooltip: 'mouseover'
+    tooltip: 'mouseover,cancle'
   },
   //opacity: 0.9,
   onBeforeShow: function(){

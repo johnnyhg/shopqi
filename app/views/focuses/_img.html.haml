@@ -1,3 +1,3 @@
 .img.dpn
-  %a{:href => item.url, :target => "_blank"}
-    %img{ :src => item.img_url, :style => "width:725px; height:391px;"}
+  =link_to item.url, :target => :_blank do
+    =image_tag item.image.url, :id => "#{id(item)}_image"
