@@ -7,10 +7,6 @@ h2. 产品构成
 # 网店布局管理
 # 网店展示
 
-h2. 产品任务分配
-
-"pivotaltracker": http://www.pivotaltracker.com/projects/84595
-
 h1. 安装
 
 h2. 开发环境
@@ -79,6 +75,23 @@ h2. jQuery
 "jqDnR":http://dev.iceburg.net/jquery/jqDnR/
 用于实现在线文字图片合成时，可以拖动文字，调整面板大小
 使用时做了修改:限制文字拖动只能在面板以内范围；拖动停止后可以触发drag.stop事件
+
+h1. 欢迎参与
+
+如果您对开发此产品有兴趣，可以：
+
+# Fork这里
+# 增加功能或者修正Bug
+# 编写测试相应的测试用例
+# 提交后发送pull request
+
+点这里查看哪些功能需要开发
+"pivotaltracker": http://www.pivotaltracker.com/projects/84595
+
+对此产品涉及技术有需要交流的地方，可以:
+
+# 加我的talk直接沟通: mahb45#gmail.com
+# 发送email: mahb45#gmail.com
 
 h1. License
 

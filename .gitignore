@@ -5,7 +5,7 @@ tmp/**/*
 
 *.sw?
 
-
+#cucumber测试生成的临时文件
 capybara-*.html
 
 #自动生成的图片

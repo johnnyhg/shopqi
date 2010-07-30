@@ -25,36 +25,34 @@ class Image
 
   #生成图片
   def render
-    unless words.empty? and backgrounds.empty?
-      magick = MiniMagick::Image.from_file(blank)
-      magick.combine_options do |c|
-        c.resize "#{width}x#{height}!"
-        # 基准坐标：左上角
-        c.gravity 'NorthWest'
-        # 背景
-        backgrounds.each do |background|
-          c.draw "image over #{background.x},#{background.y},0,0 '#{background.file.path}'"
-        end
-        # 文字
-        words.each do |word|
-          size = word.attributes['font-size'].to_i
-          c.font font_path(word.font)
-          #undefined size??
-          #c.pointsize word.font-size
-          c.pointsize size
-          #c.weight :bold
-          #c.stroke 'black'
-          c.fill word.color
-          if word.background
-            c.draw "roundrectangle #{word.x - 5}, #{word.y}, #{word.text.size * size + 5}, #{height}, 5, 5" if word.background
-            #有背景，则前景颜色改为白色
-            c.fill 'white'
-          end
-          c.draw "text #{word.x},#{word.y} '#{word.text}'"
-        end
+    magick = MiniMagick::Image.from_file(blank)
+    magick.combine_options do |c|
+      c.resize "#{width}x#{height}!"
+      # 基准坐标：左上角
+      c.gravity 'NorthWest'
+      # 背景
+      backgrounds.each do |background|
+        c.draw "image over #{background.x},#{background.y},0,0 '#{background.file.path}'"
       end
-      magick.write path
+      # 文字
+      words.each do |word|
+        size = word.attributes['font-size'].to_i
+        c.font font_path(word.font)
+        #undefined size??
+        #c.pointsize word.font-size
+        c.pointsize size
+        #c.weight :bold
+        #c.stroke 'black'
+        c.fill word.color
+        if word.background
+          c.draw "roundrectangle #{word.x - 5}, #{word.y}, #{word.text.size * size + 5}, #{height}, 5, 5" if word.background
+          #有背景，则前景颜色改为白色
+          c.fill 'white'
+        end
+        c.draw "text #{word.x},#{word.y} '#{word.text}'"
+      end
     end
+    magick.write path
   end
 
   def font_path(font)

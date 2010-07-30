@@ -2,54 +2,8 @@
 #detail_menu
   %h3
     %strong 热门分类
-  .detail_menu_info
-    %dl
-      %dt.detail_menu_til05r 品牌
-      %dd
-        %a.no_bg.red{:href => "http://www.mbaobao.com/brand.html", :style => "float: right;padding: 0;", :target => "_blank"} [更多]
-        %a.no_bg{:href => "http://www.mbaobao.com/b-43/", :target => "_blank", :title => "DUDU"} DUDU
-        %a{:href => "http://www.mbaobao.com/b-2/", :target => "_blank"} 浪美
-        %a{:href => "http://www.mbaobao.com/b-10/", :target => "_blank"} 薇茉
-        %a{:href => "http://www.mbaobao.com/b-1/", :target => "_blank"} 飞扬空间
-        %a{:href => "http://www.mbaobao.com/b-4/", :target => "_blank"} 阿尔法.阿蒂斯特
-        %a{:href => "http://www.mbaobao.com/b-3/", :target => "_blank"} 卡唐
-        %a{:href => "http://www.mbaobao.com/b-5/", :target => "_blank"} 希夏邦马
-        %a{:href => "http://www.mbaobao.com/b-53/", :target => "_blank"} 戈尔本
-        %a{:href => "http://www.mbaobao.com/b-58/", :target => "_blank"} 比比
-    %dl
-      %dt.detail_menu_til01 女款
-      %dd
-        %a.no_bg{:href => "http://www.mbaobao.com/r-winp/", :target => "_blank"} 新品女包
-        %a{:href => "http://www.mbaobao.com/r-iwj/", :target => "_blank"} 热销女包
-        %a{:href => "http://www.mbaobao.com/c-2/", :target => "_blank"} 单肩包
-        %a{:href => "http://www.mbaobao.com/k-womanxk/", :target => "_blank"} 斜挎包
-        %a{:href => "http://www.mbaobao.com/k-womanst/", :target => "_blank"} 手提包
-        %a{:href => "http://www.mbaobao.com/c-6/", :target => "_blank"} 单肩/斜挎两用包
-        %a{:href => "http://www.mbaobao.com/k-womanstxk/", :target => "_blank"} 手提/斜挎两用包
-        %a{:href => "http://www.mbaobao.com/k-womanwallet/", :target => "_blank"} 钱包
-    %dl
-      %dt.detail_menu_til02 男款
-      %dd
-        %a.no_bg{:href => "http://www.mbaobao.com/r-imj/", :target => "_blank"} 热销男包
-        %a{:href => "http://www.mbaobao.com/c-16/", :target => "_blank"} 公文包
-        %a{:href => "http://www.mbaobao.com/k-mankuabag/", :target => "_blank"} 斜肩包
-        %a{:href => "http://www.mbaobao.com/k-manwallet/", :target => "_blank"} 钱包
-        %a{:href => "http://www.mbaobao.com/k-manhandbag/", :target => "_blank"} 手包
-        %a{:href => "http://www.mbaobao.com/k-mantwobag/", :target => "_blank"} 手提/斜肩两用包
-        %a{:href => "http://www.mbaobao.com/c-37/", :target => "_blank"} 皮带
-    %dl
-      %dt.detail_menu_til03 数码包
-      %dd
-        %a.no_bg{:href => "http://www.mbaobao.com/k-sjcomputerbag/", :target => "_blank"} 双肩电脑包
-        %a{:href => "http://www.mbaobao.com/k-stcomputerbag/", :target => "_blank"} 手提电脑包
-        %a{:href => "http://www.mbaobao.com/k-incomputer/", :target => "_blank"} 电脑内胆包
-    %dl
-      %dt.detail_menu_til04 功能包
-      %dd
-        %a.no_bg{:href => "http://www.mbaobao.com/c-44/", :target => "_blank"} 双肩包
-        %a{:href => "http://www.mbaobao.com/c-42/", :target => "_blank"} 拉杆箱
-        %a{:href => "http://www.mbaobao.com/c-24/", :target => "_blank"} 书包
-        %a{:href => "http://www.mbaobao.com/c-19/", :target => "_blank"} 相机包
+  .detail_menu_info.editable.sortable{:sort_url => sort_hots_path}
+    =render :partial => "hots/item", :collection => resource.sorted_hots
     %div{:style => "clear:both;"}
 .in_adv01
   / start ads index_23 遇见，就不要错过！

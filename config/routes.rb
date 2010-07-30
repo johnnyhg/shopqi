@@ -1,4 +1,9 @@
 Shopqi::Application.routes.draw do |map|
+  #首页热门分类
+  resources :hots do
+    post :sort, :on => :collection
+  end
+
   resources :categories
 
   #图片合成

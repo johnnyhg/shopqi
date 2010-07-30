@@ -6,11 +6,18 @@ module Mongoid
     end
 
     module ClassMethods
-      def sortable(*children_names)
-        children_names.each do |children_name|
+      def sortable(*args)
+        #树型collection无法使用embed结构
+        default_options = { :embed => true }
+        options = args.extract_options!
+        options.reverse_merge! default_options
+        parent_associations = options[:embed] ? :embeds_many : :references_many
+        child_associations = options[:embed] ? :embedded_in : :referenced_in
+        
+        args.each do |children_name|
           #parent
           parent_name = self.name.singularize
-          embeds_many children_name
+          send parent_associations, children_name
 
           define_method "sorted_#{children_name}" do
             send(children_name).sort {|x, y| x.pos <=> y.pos}
@@ -23,10 +30,12 @@ module Mongoid
 
           child.class_eval do
             define_method :init_pos do
-              send(parent_name).send(children_name).init_list!
+              direct_parent = send(parent_name) ? send(parent_name) : send(:parent)
+              direct_children_name = send(parent_name) ? children_name : :children
+              direct_parent.send(direct_children_name).init_list!
               if direct
-                move(direct.to_sym => send(parent_name).send(children_name).find(neighbor))
-                send(parent_name).save
+                move(direct.to_sym => direct_parent.send(direct_children_name).find(neighbor))
+                direct_parent.save
               end
             end
 
@@ -36,7 +45,7 @@ module Mongoid
             #页面传递的参数，用于新增时指明其所在的参照数哪个位置(前或后)
             attr_accessor :neighbor, :direct
 
-            embedded_in parent_name, :inverse_of => children_name
+            send child_associations, parent_name, :inverse_of => children_name
 
             #一定要初始化pos
             after_create :init_pos

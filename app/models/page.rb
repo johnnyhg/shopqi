@@ -4,6 +4,7 @@ class Page
   include Mongoid::Timestamps
   include Mongoid::Sortable
   sortable :navs, :menus, :focuses
+  sortable :hots, :embed => false
 
   field :name
   validates_uniqueness_of :name
