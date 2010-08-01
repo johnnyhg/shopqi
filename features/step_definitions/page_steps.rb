@@ -4,6 +4,8 @@
 end
 
 假如 /^页面会显示操作表单$/ do
+  # 鼠标悬停一秒后才显示提示面板
+  sleep 2
   page.find('#tooltip').visible?.should eql true
 end
 

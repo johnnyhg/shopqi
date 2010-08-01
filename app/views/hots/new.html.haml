@@ -1,8 +1,7 @@
-= render :partial => "images/panel", :locals => { :image => resource.image }
-.container_16
+.small_contrainer{:style => 'width:300px; background-color:#0078A7'}
   .operates
-    =link_to '<<在其前添加', new_focus_path('focus[neighbor]' => resource.id, :'focus[direct]' => :above), :remote => true, :update => 'tooltip' unless resource.new_record?
-    =link_to '在其后添加>>', new_focus_path('focus[neighbor]' => resource.id, 'focus[direct]' => :below), :remote => true, :update => 'tooltip', :style => 'float:right' unless resource.new_record?
+    =link_to '<<在其前添加', new_hot_path('hot[neighbor]' => resource.id, :'hot[direct]' => :above), :remote => true, :update => 'tooltip' unless resource.new_record?
+    =link_to '在其后添加>>', new_hot_path('hot[neighbor]' => resource.id, 'hot[direct]' => :below), :remote => true, :update => 'tooltip', :style => 'float:right' unless resource.new_record?
   = semantic_form_remote_for(resource) do |f|
     =f.inputs do
       =f.input :direct, :as => :hidden
@@ -11,11 +10,4 @@
     =f.buttons do
       =f.commit_button '保存'
       -unless resource.new_record?
-        %li=link_to '删除', focus_path, :remote => true, :method => :delete
-      %li=link_to_function '关闭', '$("#tooltip").trigger("cancle")'
-
-:javascript
-  Image.generated = function(url){
-    $.jGrowl(url);
-    $('##{id(resource)}_image').attr('src', url);
-  };
+        %li=link_to '删除', hot_path, :remote => true, :method => :delete

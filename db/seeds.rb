@@ -54,4 +54,5 @@ page.save
     hot.children << Hot.new(:name => value, :url => '/hots')
   end
 end
+page.hots.init_list!
 page.save

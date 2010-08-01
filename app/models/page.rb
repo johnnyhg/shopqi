@@ -3,8 +3,8 @@ class Page
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Sortable
-  sortable :navs, :menus, :focuses
-  sortable :hots, :embed => false
+  has_many_sortable :navs, :menus, :focuses
+  has_many_sortable :hots, :embed => false
 
   field :name
   validates_uniqueness_of :name

@@ -1,16 +1,8 @@
 //insert
-$("#nav li[edit-id='#{params[:menu][:neighbor]}']").move('#{params[:menu][:direct]}', '#{escape_javascript( render(:partial => "menus/item", :object => resource, :locals => {:item_counter => 0}))}');
-
-//refresh image
-$("ul#nav li a.dom_indexmenu").css('background-image', 'url(#{Page.mbaobao.menu_sprite_url}?#{Time.now.to_i})');
+$("##{name(resource)}_#{params[:menu][:neighbor]}").move('#{params[:menu][:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/child_item", :object => resource, :locals => {:item_counter => 0}))}');
 
 //reset tooltip
-$("#nav li[edit-id='#{resource.id}'] a.dom_indexmenu").tooltip(tooltip_setting).dynamic(dynamic_setting);
+$("##{name(resource)}_#{resource.id} a").tooltip(tooltip_setting).dynamic(dynamic_setting);
 
 //hide
 $("#tooltip").trigger('cancle');
-
-//resort
-$("ul#nav li a.dom_indexmenu").parent().removeAttr('class').each(function(index){
-$(this).addClass('nav_0' + (index + 1));
-});

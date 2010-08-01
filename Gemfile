@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.beta4'
+# need gem install bundler -v 1.0.0.rc.1
+gem 'rails', '3.0.0.rc'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mongoid', '2.0.0.beta11'
+gem 'mongoid', '2.0.0.beta.15'
 gem 'bson_ext'
 gem 'devise', '1.1.rc2'
 #排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
