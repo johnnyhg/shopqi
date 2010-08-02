@@ -1,5 +1,5 @@
 //insert
-$("##{name(resource)}_#{params[:menu][:neighbor]}").move('#{params[:menu][:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/child_item", :object => resource, :locals => {:item_counter => 0}))}');
+$("##{name(resource)}_#{params[name(resource)][:neighbor]}").move('#{params[name(resource)][:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/child_item", :object => resource, :locals => {:item_counter => 0}))}');
 
 //reset tooltip
 $("##{name(resource)}_#{resource.id} a").tooltip(tooltip_setting).dynamic(dynamic_setting);

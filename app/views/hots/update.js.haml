@@ -2,7 +2,7 @@
 $("#tooltip").trigger('cancle');
 
 //update
-$("##{name(resource)}_#{resource.id}").replaceWith('#{escape_javascript( render(:partial => "#{resource.collection_name}/child_item", :object => resource, :locals => {:item_counter => 0}))}');
+$("##{name(resource)}_#{resource.id}").replaceWith('#{escape_javascript( render(:partial => "#{resource.collection_name}/#{partial_name}", :object => resource, :locals => {:item_counter => 0}))}');
 
 //reset tooltip
 $("##{name(resource)}_#{resource.id} a").tooltip(tooltip_setting).dynamic(dynamic_setting);

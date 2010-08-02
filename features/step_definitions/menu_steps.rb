@@ -1,4 +1,4 @@
-# coding: utf-8
+# encoding: utf-8
 假如 /^系统有以下菜单:$/ do |table|
   page = Page.create :name => :mbaobao
   table.raw.flatten.each do |label|

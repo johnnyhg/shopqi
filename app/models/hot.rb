@@ -8,6 +8,7 @@ class Hot
   sortable_belong_to :page, :embed => false
 
   field :name
+  field :url
 
   acts_as_tree
 

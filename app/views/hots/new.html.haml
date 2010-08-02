@@ -1,11 +1,12 @@
 .small_contrainer{:style => 'width:300px; background-color:#0078A7'}
   .operates
-    =link_to '<<在其前添加', new_hot_path('hot[neighbor]' => resource.id, :'hot[direct]' => :above), :remote => true, :update => 'tooltip' unless resource.new_record?
-    =link_to '在其后添加>>', new_hot_path('hot[neighbor]' => resource.id, 'hot[direct]' => :below), :remote => true, :update => 'tooltip', :style => 'float:right' unless resource.new_record?
+    =link_to "<<在其#{position(:above)}添加", new_hot_path(:hot => { :neighbor => resource.id, :parent_id => resource.parent_id, :direct => :above }), :remote => true, :update => 'tooltip' unless resource.new_record?
+    =link_to "在其#{position(:below)}添加>>", new_hot_path(:hot => { :neighbor => resource.id, :parent_id => resource.parent_id, :direct => :below }), :remote => true, :update => 'tooltip', :style => 'float:right' unless resource.new_record?
   = semantic_form_remote_for(resource) do |f|
     =f.inputs do
       =f.input :direct, :as => :hidden
       =f.input :neighbor, :as => :hidden
+      =f.input :parent_id, :as => :hidden
     =f.inputs :name, :url
     =f.buttons do
       =f.commit_button '保存'

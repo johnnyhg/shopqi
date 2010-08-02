@@ -12,11 +12,11 @@ h1. 安装
 h2. 开发环境
 
 ubuntu 10.04
-"vim 7.2": http://github.com/akitaonrails/vimfiles
+"vim 7.2" ( "http://github.com/akitaonrails/vimfiles":http://github.com/akitaonrails/vimfiles )
 
 h2. 系统安装
 
-添加至@/etc/apt/source.list@
+添加至 @/etc/apt/source.list@
 
 <pre>
 # mongodb的源
@@ -34,6 +34,19 @@ h2. 安装参考
 
 "参考rails3-mongoid-devise项目":http://github.com/fortuity/rails3-mongoid-devise
 
+h1. 开发
+
+<pre>
+# 启动开发环境应用服务
+unicorn
+</pre>
+
+访问以下地址查看效果
+
+"ShopQi官网 http://localhost:8080":http://localhost:8080
+"网店后台管理 http://localhost:8080/user_root":http://localhost:8080/user_root
+"网店布局管理 http://localhost:8080/page":http://localhost:8080/page
+
 h1. 测试
 
 *cucumber*
@@ -46,6 +59,8 @@ h1. 测试
 
   #运行功能测试
   spork cuc &
+  cucumber
+  #可以指定运行focus标记的测试用例
   cucumber -t @focus
 </pre>
 
@@ -54,6 +69,8 @@ h1. 测试
 <pre>
   spork rspec &
   rspec spec -X
+  #可以指定运行特定example name的测试用例
+  rspec spec -e create -X
 </pre>
 
 *为何选择*
@@ -80,7 +97,7 @@ h1. 欢迎参与
 # 提交后发送pull request
 
 点这里查看哪些功能需要开发
-"pivotaltracker": http://www.pivotaltracker.com/projects/84595
+"http://www.pivotaltracker.com/projects/84595": http://www.pivotaltracker.com/projects/84595
 
 对此产品涉及技术有需要交流的地方，可以:
 
@@ -100,7 +117,7 @@ h1. Powered By
 
 h1. License
 
-产品遵循授权: "GNU Affero GPL 3": http://www.gnu.org/licenses/agpl-3.0.html
+产品遵循授权: "GNU Affero GPL 3":http://www.gnu.org/licenses/agpl-3.0.html
 
 h1. 参考资源
 

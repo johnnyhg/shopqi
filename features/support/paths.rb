@@ -11,6 +11,9 @@ module NavigationHelpers
 
     when /首页/
       '/'
+    when /the new hot page/
+      new_hot_path
+
     when /在线文字图片合成/
       new_image_path
 
