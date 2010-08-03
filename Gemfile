@@ -10,8 +10,7 @@ gem 'mongoid', '2.0.0.beta.15'
 gem 'bson_ext'
 gem 'devise', '1.1.rc2'
 #排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
-# lib/mongoid/acts_as_list.rb第417存在问题，需要加other.respond_to?('_id')判断
-gem 'mongoid_embedded_helper', :git => 'git://github.com/saberma/mongoid_embedded_helper.git'
+gem 'mongoid_embedded_helper', :git => 'git://github.com/kristianmandrup/mongoid_embedded_helper.git'
 gem 'acts_as_list_mongoid', :git => 'git://github.com/saberma/acts_as_list_mongoid.git'
 gem 'mongoid_acts_as_tree'
 

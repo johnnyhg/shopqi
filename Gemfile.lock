@@ -17,6 +17,14 @@ GIT
       i18n (>= 0.4.0)
 
 GIT
+  remote: git://github.com/kristianmandrup/mongoid_embedded_helper.git
+  revision: 520cad2
+  specs:
+    mongoid_embedded_helper (0.2.3)
+      bson (>= 1.0.3)
+      mongoid (<= 2.0.0)
+
+GIT
   remote: git://github.com/libo/web-app-theme.git
   revision: e9d1c0f
   specs:
@@ -29,14 +37,6 @@ GIT
     acts_as_list_mongoid (0.2.0)
       mongoid (>= 2.0.0.beta.15)
       mongoid_embedded_helper (>= 0.2.3)
-
-GIT
-  remote: git://github.com/saberma/mongoid_embedded_helper.git
-  revision: 7369220
-  specs:
-    mongoid_embedded_helper (0.2.3)
-      bson (>= 1.0.3)
-      mongoid (<= 2.0.0)
 
 GEM
   remote: http://rubygems.org/
