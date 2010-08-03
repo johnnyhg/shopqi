@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: git://github.com/saberma/acts_as_list_mongoid.git
-  revision: 55e2342
+  revision: 6427f53
   specs:
     acts_as_list_mongoid (0.2.0)
       mongoid (>= 2.0.0.beta.15)
