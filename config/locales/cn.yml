@@ -81,6 +81,7 @@ cn:
     confirm: 您是否确定?
     created_at: 创建于
     all: 全部
+    design: 网店布局
     profile: 个人资料
     settings: 设置
     logout: 退出

@@ -56,3 +56,61 @@ page.save
 end
 page.hots.init_list!
 page.save
+
+Category.delete_all
+#分类
+{
+  :男装 => {
+    :衬衫 => %w( 牛津纺衬衫 商务衬衫 休闲衬衫 ),
+    :POLO衫 => %w(),
+    :针织衫 => %w( 针织背心 长袖针织衫 ), 
+    :外套 => %w( 夹克 西服 卫衣 风衣 棉服 )
+  },
+  :女装 => %w( 百变衫 BRA-T 打底裤 裙子 ), 
+  :童装 => %w( 婴儿装 ),
+  :鞋   => %w( 男鞋 女鞋 童鞋 透气休闲鞋 软底跑步鞋 牛仔鞋 圆头平底鞋 山茶花鞋 人字拖 ),
+  :配饰 => %w( 女包(34款) 帽子(38款) 男款皮带 女款皮带 皮质手环 领带 透气棉袜 环保帆布袋 )
+}.each_pair do |key, values|
+  category = Category.new(:name => key)
+  if values.is_a? Hash
+    values.each_pair do |value_key, value_values|
+      child = Category.new(:name => value_key)
+      child.children = value_values.map{|v| Category.new(:name => v)}
+      category.children << child
+    end
+  elsif values.is_a? Array
+    category.children = values.map{|v| Category.new(:name => v)}
+  end
+  category.save
+end
+
+#商品
+[
+  {
+    :name => '个性背带格子衬衫',
+    :market_price => 298,
+    :price => 59
+  },
+  {
+    :name => '自由舒爽棉麻衬衫',
+    :market_price => 388,
+    :price => 59
+  },
+  {
+    :name => '轻便运动生活休闲鞋',
+    :market_price => 499,
+    :price => 99
+  },
+  {
+    :name => '白色剪花抹胸裙',
+    :market_price => 599,
+    :price => 199
+  },
+  {
+    :name => '甜美荷叶边丝带衬衫',
+    :market_price => 299,
+    :price => 99
+  }
+].each do |attrs|
+  Product.create attrs
+end
