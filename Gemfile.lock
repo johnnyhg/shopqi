@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/justinfrench/formtastic.git
-  revision: 5156877
+  revision: 7b5ed06
   branch: rails3
   specs:
     formtastic (1.0.0.rc)
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: git://github.com/saberma/acts_as_list_mongoid.git
-  revision: b73d645
+  revision: 923e24a
   specs:
     acts_as_list_mongoid (0.2.0)
       mongoid (>= 2.0.0.beta.15)

@@ -58,6 +58,8 @@ page.hots.init_list!
 page.save
 
 Category.delete_all
+#虚拟单根节点，方便实际根节点排序
+root = Category.create :name => :root
 #分类
 {
   :男装 => {
@@ -69,20 +71,25 @@ Category.delete_all
   :女装 => %w( 百变衫 BRA-T 打底裤 裙子 ), 
   :童装 => %w( 婴儿装 ),
   :鞋   => %w( 男鞋 女鞋 童鞋 透气休闲鞋 软底跑步鞋 牛仔鞋 圆头平底鞋 山茶花鞋 人字拖 ),
-  :配饰 => %w( 女包(34款) 帽子(38款) 男款皮带 女款皮带 皮质手环 领带 透气棉袜 环保帆布袋 )
+  :配饰 => %w( 女包 帽子 男款皮带 女款皮带 皮质手环 领带 透气棉袜 环保帆布袋 )
 }.each_pair do |key, values|
   category = Category.new(:name => key)
+  root.children << category
   if values.is_a? Hash
     values.each_pair do |value_key, value_values|
-      child = Category.new(:name => value_key)
-      child.children = value_values.map{|v| Category.new(:name => v)}
+      child = Category.create(:name => value_key)
+      value_values.each do |c|
+        child.children << Category.create(:name => c)
+      end
+      child.children.init_list!
       category.children << child
     end
   elsif values.is_a? Array
     category.children = values.map{|v| Category.new(:name => v)}
   end
-  category.save
+  category.children.init_list!
 end
+root.children.init_list!
 
 #商品
 [

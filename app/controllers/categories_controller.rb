@@ -6,10 +6,20 @@ class CategoriesController < InheritedResources::Base
   respond_to :json, :only => [:index]
 
   create! do |format|
+    # 初始化位置
+    parent = Category.find(params[:category][:parent_id])
+    parent.children.init_list!
     format.js { render :nothing => true }
   end
 
   update! do |format|
+    # 移动
+    neighbor = params[:category][:neighbor]
+    if neighbor.blank?
+      resource.move_to_bottom
+    else
+      resource.move_above(Category.find(neighbor)) 
+    end
     format.js { render :nothing => true }
   end
 
@@ -18,7 +28,7 @@ class CategoriesController < InheritedResources::Base
   end
 
   def index
-    @result = params[:id].blank? ? Category.roots : Category.find(params[:id]).children
+    @result = params[:id].blank? ? Category.roots.first.children : Category.find(params[:id]).children
     render :json => get_attributes(@result).to_json
   end
 

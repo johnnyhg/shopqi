@@ -125,6 +125,10 @@ h1. License
 
 产品遵循授权: "GNU Affero GPL 3":http://www.gnu.org/licenses/agpl-3.0.html
 
+h1. 学习资源
+
+"Git Cheat Sheet":http://github.com/guides/git-cheat-sheet
+
 h1. 参考资源
 
 "15个最好的免费开源电子商务平台":http://louishan.com/articles/15-open-source-ecommerce-platforms.html
