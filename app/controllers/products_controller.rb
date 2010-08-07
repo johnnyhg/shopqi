@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ProductsController < InheritedResources::Base
   actions :new, :create
   layout nil

@@ -11,6 +11,9 @@ module NavigationHelpers
 
     when /首页/
       '/'
+    when /the new category page/
+      new_category_path
+
     when /the new hot page/
       new_hot_path
 
@@ -25,8 +28,8 @@ module NavigationHelpers
     when /the new product page/
       new_product_path
 
-    when /the new user page/
-      new_user_path
+    when /工作平台/
+      user_root_path
 
 
     # Add more mappings here.

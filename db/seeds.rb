@@ -59,7 +59,7 @@ page.save
 
 Category.delete_all
 #虚拟单根节点，方便实际根节点排序
-root = Category.create :name => :root
+root = Category.create :name => :invisible
 #分类
 {
   :男装 => {

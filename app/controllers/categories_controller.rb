@@ -13,12 +13,14 @@ class CategoriesController < InheritedResources::Base
   end
 
   update! do |format|
-    # 移动
-    neighbor = params[:category][:neighbor]
-    if neighbor.blank?
-      resource.move_to_bottom
-    else
-      resource.move_above(Category.find(neighbor)) 
+    unless params[:category][:name] # 改名
+      # 移动
+      neighbor = params[:category][:neighbor]
+      if neighbor.blank?
+        resource.move_to_bottom
+      else
+        resource.move_above(Category.find(neighbor)) 
+      end
     end
     format.js { render :nothing => true }
   end
