@@ -5,6 +5,8 @@ class Category
   include Mongoid::Timestamps
   include Mongoid::Acts::Tree
   include ActsAsList::Mongoid
+
+  references_many :products
   
   field :name
   #排序

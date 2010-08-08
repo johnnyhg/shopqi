@@ -2,9 +2,11 @@
 -#左右分栏需要form class(web-app-theme.css)
 = semantic_form_remote_for(resource, :html => { :class => 'form' }) do |f|
   =f.semantic_errors :name, :price
+  =f.inputs do
+    =f.input :category_id, :as => :hidden
   .columns.wat-cf
     .column.left
-      =f.inputs :name, :price
+      =f.inputs :name, :price, :market_price
       =f.buttons do
         =f.commit_button '保存'
     .column.right
@@ -42,6 +44,9 @@
         }
       }
     }
+  //selected
+  }).bind("select_node.jstree", function (e, data) {
+    $('#product_category_id').val(data.rslt.obj.attr('id').replace("node_","")); 
   //crrm callback
   }).bind("create.jstree", function (e, data) {
     $.post('/categories.js', { 

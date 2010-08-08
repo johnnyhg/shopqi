@@ -18,6 +18,7 @@ cn:
       product:
         name: 名称
         price: 价格
+        market_price: 市场价
       nav:
         name: 名称
         url: 链接地址

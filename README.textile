@@ -22,7 +22,8 @@ h3. 安装开发环境所依赖的软件
 
 <pre>
 #安装依赖库、ruby也需要安装(否则通过rvm安装ruby1.9.2时会报make: *** [miniprelude.c] Error 1错误)
-sudo apt-get install build-essential bison openssl libreadline6 libreadline-dev curl git-core graphicsmagick zlib1g zlib1g-dev libssl-dev vim libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev subversion autoconf ruby ruby-dev
+sudo apt-get install build-essential bison openssl libreadline6 libreadline-dev curl git-core graphicsmagick \ 
+  zlib1g zlib1g-dev libssl-dev vim libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev subversion autoconf ruby ruby-dev
 #webrat插件所需
 sudo apt-get install libxslt1-dev libxml2-dev
 </pre>
@@ -34,12 +35,15 @@ bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
 vim ~/.bashrc
 </pre>
 
-#将以下语句加入~/.bashrc文件最底端
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+#将以下语句加入 @~/.bashrc@ 文件最底端
+@[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"@
 
 <pre>
 #安装ruby 1.9.2，rails3推荐的ruby版本
-#Note that Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails 3.0. Ruby Enterprise Edition have these fixed since release 1.8.7-2010.02 though. On the 1.9 front, Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0, so if you want to use Rails 3 with 1.9.x jump on 1.9.2 for smooth sailing.
+#Note that Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails 3.0. 
+#Ruby Enterprise Edition have these fixed since release 1.8.7-2010.02 though. 
+#On the 1.9 front, Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0, 
+#so if you want to use Rails 3 with 1.9.x jump on 1.9.2 for smooth sailing.
 rvm install 1.9.2-head
 rvm 1.9.2-head --default
 </pre>
