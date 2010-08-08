@@ -12,9 +12,47 @@ h1. 安装
 h2. 开发环境
 
 ubuntu 10.04
-"vim 7.2" ( "http://github.com/akitaonrails/vimfiles":http://github.com/akitaonrails/vimfiles )
+vim 7.2 ( "http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles )
 
 h2. 系统安装
+
+以下安装过程是基于ubuntu 10.04操作系统
+
+h3. 安装开发环境所依赖的软件
+
+<pre>
+#安装依赖库、ruby也需要安装(否则通过rvm安装ruby1.9.2时会报make: *** [miniprelude.c] Error 1错误)
+sudo apt-get install build-essential bison openssl libreadline6 libreadline-dev curl git-core graphicsmagick zlib1g zlib1g-dev libssl-dev vim libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev subversion autoconf ruby ruby-dev
+#webrat插件所需
+sudo apt-get install libxslt1-dev libxml2-dev
+</pre>
+
+h3. 安装rvm
+
+<pre>
+bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
+vim ~/.bashrc
+</pre>
+
+#将以下语句加入~/.bashrc文件最底端
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+<pre>
+#安装ruby 1.9.2，rails3推荐的ruby版本
+#Note that Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails 3.0. Ruby Enterprise Edition have these fixed since release 1.8.7-2010.02 though. On the 1.9 front, Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0, so if you want to use Rails 3 with 1.9.x jump on 1.9.2 for smooth sailing.
+rvm install 1.9.2-head
+rvm 1.9.2-head --default
+</pre>
+
+h3. 安装rails3
+
+<pre>
+gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-format thor bundler i18n --no-ri --no-rdoc
+gem install rails --pre --no-ri --no-rdoc
+#如果报以下错误，则需要到RubyGems.org手动下载安装rack1.1.0的gem包
+##ERROR:  Error installing rails:
+##  actionpack requires rack (~> 1.1.0, runtime)
+</pre>
 
 h3. 安装mongodb数据库
 
@@ -32,9 +70,9 @@ sudo apt-get update
 sudo apt-get install mongodb-stable
 </pre>
 
-h2. 安装参考
+h3. 安装rails ide
 
-"参考rails3-mongoid-devise项目":http://github.com/fortuity/rails3-mongoid-devise
+请参考rails on vim进行安装 ( "http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles )
 
 h1. 开发
 
@@ -103,11 +141,13 @@ h1. 欢迎参与
 # 提交后发送pull request
 
 点这里查看哪些功能需要开发
-"http://www.pivotaltracker.com/projects/84595": http://www.pivotaltracker.com/projects/84595
+"http://www.pivotaltracker.com/projects/84595":http://www.pivotaltracker.com/projects/84595
+
+h1. 技术互助
 
 对此产品涉及技术有需要交流的地方，可以:
 
-# 加我的talk直接沟通: mahb45#gmail.com
+# 加我的gtalk直接沟通: mahb45#gmail.com
 # 发送email: mahb45#gmail.com
 
 h1. Powered By
@@ -127,6 +167,7 @@ h1. License
 
 h1. 学习资源
 
+"rails3-mongoid-devise框架示例项目":http://github.com/fortuity/rails3-mongoid-devise
 "Git Cheat Sheet":http://github.com/guides/git-cheat-sheet
 
 h1. 参考资源
