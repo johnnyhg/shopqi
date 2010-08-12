@@ -3,7 +3,7 @@
   %h3
     %strong 热门分类
   .detail_menu_info.editable.sortable{:sort_url => sort_hots_path}
-    =render :partial => "hots/item", :collection => resource.sorted_hots
+    =render :partial => "hots/item", :collection => current_user.store.hots.roots.first.children
     %div{:style => "clear:both;"}
 .in_adv01
   / start ads index_23 遇见，就不要错过！

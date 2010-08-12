@@ -3,18 +3,17 @@ source 'http://rubygems.org'
 # need gem install bundler -v 1.0.0.rc.1
 gem 'rails', '3.0.0.rc'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'mongoid', '2.0.0.beta.15'
 gem 'bson_ext'
 gem 'devise', '1.1.rc2'
 
-#mongoid
-gem 'mongoid_embedded_helper', :git => 'git://github.com/kristianmandrup/mongoid_embedded_helper.git'
-#排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
-gem 'acts_as_list_mongoid', :git => 'git://github.com/saberma/acts_as_list_mongoid.git'
-gem 'mongoid_acts_as_tree'
+# mongoid
+# 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
+gem 'acts_as_list_mongoid'
+gem 'mongoid_acts_as_tree', :git => 'git://github.com/saberma/mongoid_acts_as_tree.git'
+
+# 将current_user设置至线程中
+gem 'sentient_user'
 
 gem 'haml'
 
@@ -49,7 +48,9 @@ gem "awesome_print", :require => 'ap'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug'
+#gem 'ruby-debug19'
+# 需要手动安装(/path/to/ruby为ruby所在路径，如:home/saberma/.rvm/src/ruby-1.9.2-head)
+# gem install ruby-debug19 --no-ri --no-rdoc -- --with-ruby-include=/path/to/ruby
 
 # Bundle the extra gems:
 # gem 'bj'
@@ -60,8 +61,9 @@ gem "awesome_print", :require => 'ap'
 group :development do
   gem 'rails3-generators'
   gem "hpricot"
-  #修改后台文件后，safari或chrome浏览器会自动刷新
+  # 修改后台文件后，safari或chrome浏览器会自动刷新
   gem "livereload"
+  gem "rb-inotify"
 end
 
 group :test do
@@ -71,15 +73,15 @@ group :test do
   gem "factory_girl_rails"
 
   gem 'capybara'
-  #保持数据库处理干净状态
-  #留意:步骤完成后就会清除数据，此时浏览器中部分ajax可能还没有操作完，会导致ajax请求时找不到相应数据
+  # 保持数据库处理干净状态
+  # 留意:步骤完成后就会清除数据，此时浏览器中部分ajax可能还没有操作完，会导致ajax请求时找不到相应数据
   gem 'database_cleaner'
   gem 'cucumber'
   gem 'cucumber-rails'
-  #为测试加速的drb server(sport cuc &)
+  # 为测试加速的drb server(sport cuc &)
   # 不要使用rspec2.0.0.beta.16版本，执行rspec -X
   # Exception encountered: #<NoMethodError: undefined method `configure' for ["--color", "spec/models/nav_spec.rb"]:Array>
   gem 'spork'
-  #跨平台执行程序(如打开浏览器)
+  # 跨平台执行程序(如打开浏览器)
   gem 'launchy'
 end

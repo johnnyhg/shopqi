@@ -2,6 +2,7 @@
 require 'spec_helper'
 
 describe ImagesController do
+  include Devise::TestHelpers
 
   it "should be create" do
     lambda do

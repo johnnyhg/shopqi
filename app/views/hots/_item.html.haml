@@ -2,4 +2,4 @@
   %dt{'edit-width' => '300px', 'edit-height' => '120px', 'edit-type' => :hots , 'edit-id' => item.id} 
     =link_to item.name, item.url
   %dd
-    %ul.editable.sortable{:sort_url => sort_hots_path}=render :partial => "hots/child_item", :collection => item.sorted_children
+    %ul.editable.sortable{:sort_url => sort_hots_path}=render :partial => "hots/child_item", :collection => item.children

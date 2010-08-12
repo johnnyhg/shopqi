@@ -3,18 +3,16 @@ class HotsController < InheritedResources::Base
   layout nil
   actions :new, :create, :edit, :update, :destroy
   respond_to :js, :only => [:create, :update, :destroy]
-  before_filter :check_parent_id
 
   edit! do |format|
     format.html { render :action => "new" }
   end
 
-  def create
-    @hot = Hot.new(params[:hot])
-    unless @hot.parent_id
-      @hot.page = Page.mbaobao
-    end
-    create!
+  create! do |success, failure|
+    # 初始化位置
+    resource.parent.children.init_list!
+    # reload重新加载pos属性值
+    resource.reload.move(params[:direct].to_sym => end_of_association_chain.find(params[:neighbor])) unless params[:direct].blank?
   end
 
   def sort
@@ -24,7 +22,7 @@ class HotsController < InheritedResources::Base
   end
 
   protected
-  def check_parent_id
-    params[:hot].delete(:parent_id) if params[:hot] and params[:hot][:parent_id].blank?
+  def begin_of_association_chain
+    current_user.store
   end
 end

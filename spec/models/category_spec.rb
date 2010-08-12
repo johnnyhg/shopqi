@@ -3,7 +3,8 @@ require 'spec_helper'
 
 describe Category do
   before :each do
-    @root = Factory(:category_root)
+    @saberma = Factory(:user_saberma)
+    @root = @saberma.store.categories.roots.first
     @root.children << Factory(:category_man)
     @root.children.init_list!
   end

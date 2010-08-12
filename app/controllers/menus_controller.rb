@@ -19,17 +19,17 @@ class MenusController < InheritedResources::Base
 
   def sort
     params[:menu].each_with_index do |id, index|
-      Page.mbaobao.menus.find(id).update_attributes :pos => index
+      current_user.store.pages.homepage.menus.find(id).update_attributes :pos => index
     end
   end
 
   protected
   def begin_of_association_chain
-    Page.mbaobao
+    current_user.store.pages.homepage
   end
 
   def sprite
-    Menu.sprite(Page.mbaobao)
+    Menu.sprite(current_user.store.pages.homepage)
   end
 
 end

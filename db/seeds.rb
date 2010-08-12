@@ -6,9 +6,10 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+User.where(:login => :saberma).first.try(:store).try(:destroy)
+saberma = User.create(:login => :saberma, :email => 'saberma@shopqi.com', :password => '666666')
 
-Page.where(:name => :mbaobao).first.try(:destroy)
-page = Page.create(:name => :mbaobao)
+page = saberma.store.pages.homepage
 
 page.logo = Logo.new
 
@@ -27,7 +28,7 @@ page.save
 
 #菜单
 %w( 首页 女包 男包 真皮 数码包 旅行包 ).each do |label|
-  page.menus << Menu.new(:name => label, :url => '/category')
+  page.menus << Menu.new(:name => label, :url => '/menu')
 end
 page.menus.init_list!
 page.save
@@ -41,6 +42,7 @@ page.focuses.init_list!
 page.save
 
 #热门分类
+hot_root = saberma.store.hots.roots.first
 {
   :女装 => %w( 新品女装 女装季末特惠 吊带/背心29元 短袖T恤39元 短袖衬衫59元 POLO49元 半裙49元 ), 
   :男装 => %w( 新品男装 短袖T恤 棉麻休闲裤 水洗POLO 牛仔裤(34款) 商务衬衫(68款) 香槟领衬衫 ),
@@ -49,17 +51,17 @@ page.save
   :配饰 => %w( 女包(34款) 帽子(38款) 男款皮带 女款皮带 皮质手环 领带 透气棉袜 环保帆布袋 )
 }.each_pair do |key, values|
   hot = Hot.new(:name => key, :url => '/hots')
-  page.hots << hot
+  hot_root.children << hot
   values.each do |value|
     hot.children << Hot.new(:name => value, :url => '/hots')
   end
+  hot.children.init_list!
 end
-page.hots.init_list!
-page.save
+hot_root.children.init_list!
+hot_root.save
 
-Category.delete_all
 #虚拟单根节点，方便实际根节点排序
-root = Category.create :name => :invisible
+category_root = saberma.store.categories.roots.first
 #分类
 {
   :男装 => {
@@ -74,7 +76,7 @@ root = Category.create :name => :invisible
   :配饰 => %w( 女包 帽子 男款皮带 女款皮带 皮质手环 领带 透气棉袜 环保帆布袋 )
 }.each_pair do |key, values|
   category = Category.new(:name => key)
-  root.children << category
+  category_root.children << category
   if values.is_a? Hash
     values.each_pair do |value_key, value_values|
       child = Category.create(:name => value_key)
@@ -89,7 +91,7 @@ root = Category.create :name => :invisible
   end
   category.children.init_list!
 end
-root.children.init_list!
+category_root.children.init_list!
 
 #商品
 [

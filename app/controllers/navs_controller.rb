@@ -18,13 +18,13 @@ class NavsController < InheritedResources::Base
 
   def sort
     params[:nav].each_with_index do |id, index|
-      Page.mbaobao.navs.find(id).update_attributes :pos => index
+      current_user.store.pages.homepage.navs.find(id).update_attributes :pos => index
     end
     render :nothing => true
   end
 
   protected
   def begin_of_association_chain
-    Page.mbaobao
+    current_user.store.pages.homepage
   end
 end

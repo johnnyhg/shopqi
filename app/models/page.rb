@@ -1,10 +1,12 @@
 # encoding: utf-8
+# 网店首页、分类商品列表页等
 class Page
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Sortable
+  referenced_in :store
+
   has_many_sortable :navs, :menus, :focuses
-  has_many_sortable :hots, :embed => false
 
   field :name
   validates_uniqueness_of :name
@@ -18,8 +20,9 @@ class Page
     self.logo = Logo.new
   end
 
-  def self.mbaobao
-    where(:name => :mbaobao).first
+  # 首页
+  def self.homepage
+    where(:name => :homepage).first
   end
 
   #网店菜单背景图路径

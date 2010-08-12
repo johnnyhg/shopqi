@@ -45,6 +45,8 @@ Spork.each_run do
     end
 
     config.before(:each) do
+      # sentient_user
+      Thread.current[:user] = nil
       DatabaseCleaner.start
     end
 

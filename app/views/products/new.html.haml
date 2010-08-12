@@ -49,9 +49,9 @@
     $('#product_category_id').val(data.rslt.obj.attr('id').replace("node_","")); 
   //crrm callback
   }).bind("create.jstree", function (e, data) {
+    var parent_id = data.rslt.parent.attr("id").replace("node_","");
     $.post('/categories.js', { 
-      'category[parent_id]': data.rslt.parent.attr("id").replace("node_",""), 
-      'category[name]': data.rslt.name
+      category: { name: data.rslt.name, parent_id: parent_id }
     });
   }).bind("rename.jstree", function (e, data) {
     $.ajax({

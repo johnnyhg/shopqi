@@ -1,6 +1,6 @@
 # encoding: utf-8
 假如 /^系统有以下菜单:$/ do |table|
-  page = Page.create :name => :mbaobao
+  page = User.current.store.pages.homepage
   table.raw.flatten.each do |label|
     page.menus << Menu.new(:name => label, :url => "/#{label}")
   end

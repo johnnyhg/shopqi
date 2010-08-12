@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Product
   include Mongoid::Document
   include Formtastic::I18n::Naming

@@ -4,10 +4,6 @@
 Factory.define :category do |f|
 end
 
-Factory.define :category_root, :parent => :category do |f|
-  f.name '不显示的根节点'
-end
-
 Factory.define :category_man, :parent => :category do |f|
   f.name '男装'
   f.after_create {|category|

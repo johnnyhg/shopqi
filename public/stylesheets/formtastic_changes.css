@@ -16,7 +16,7 @@ form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 form.formtastic fieldset > ol > li.password input { max-width: 74%; }
 
 /* 完善:输入框要大一点 */
-form.formtastic input { font-size: 16px; width: 300px; }
+form.formtastic input { font-size: 16px; width: 300px; border: 1px solid #959190; }
 
 /* 网店布局 */
 .tooltip form.formtastic fieldset > ol > li label { width:20%;}

@@ -9,6 +9,6 @@ module HotsHelper
       :above => %w(前 上),
       :below => %w(后 下)
     }
-    resource.root? ? all[direct][1] : all[direct][0]
+    (resource.depth == 1) ? all[direct][1] : all[direct][0]
   end
 end

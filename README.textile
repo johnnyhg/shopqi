@@ -81,6 +81,8 @@ h3. 安装rails ide
 h1. 开发
 
 <pre>
+# 加载基本数据
+rake db:seed
 # 启动开发环境应用服务
 unicorn
 </pre>
@@ -143,6 +145,15 @@ h1. 欢迎参与
 # 增加功能或者修正Bug
 # 编写测试相应的测试用例
 # 提交后发送pull request
+
+Fork的commit与shopqi的commit冲突(即github的forkqueue显示"Will likely not apply cleanly")时，需要手动合并分支
+<pre>
+git remote add shopqi git://github.com/saberma/shopqi.git
+git pull shopqi master
+#vim处理冲突的文件...
+git commit -a -m 'merge from shopqi'
+git push origin master
+</pre>
 
 点这里查看哪些功能需要开发
 "http://www.pivotaltracker.com/projects/84595":http://www.pivotaltracker.com/projects/84595

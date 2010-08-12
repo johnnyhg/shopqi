@@ -13,6 +13,7 @@ end
 当 /^我?(?:在(.+)区域)?点击(.+)$/ do |selector, button_or_link|
   with_scope(selector) do
     click(button_or_link)
+    sleep 1
   end
 end
 
@@ -33,10 +34,10 @@ end
 # TODO: Add support for checkbox, select og option
 # based on naming conventions.
 #
-当 /^我?fill in the following(?: within "([^"]*)")?:$/ do |selector, fields|
+当 /^我?(?:在(.+)区域)?输入以下内容:$/ do |selector, fields|
   with_scope(selector) do
     fields.rows_hash.each do |name, value|
-      当 %{I fill in "#{name}" with "#{value}"}
+      当 %{输入#{name}为#{value}}
     end
   end
 end

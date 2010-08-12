@@ -10,12 +10,12 @@ class FocusesController < InheritedResources::Base
 
   def sort
     params[:focus].each_with_index do |id, index|
-      Page.mbaobao.focuses.find(id).update_attributes :pos => index
+      current_user.store.pages.homepage.focuses.find(id).update_attributes :pos => index
     end
   end
 
   protected
   def begin_of_association_chain
-    Page.mbaobao
+    current_user.store.pages.homepage
   end
 end
