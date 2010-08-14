@@ -1,0 +1,5 @@
+//change form url to edit url
+$('#new_product').attr('method', 'put').attr('action', '#{product_path(:id => @product.id)}');
+
+//show photo, render result need to gsub all \n
+$('#photos').append('#{render(:partial => "photo", :object => @photo).gsub(/\n/,"")}');

@@ -112,6 +112,8 @@ h1. 测试
 
 *rspec*
 
+如果gem中装有多个版本的rspec，可使用 @bundle exec rspec spec@ 替换 @rspec spec@
+
 <pre>
   spork rspec &
   rspec spec -X
@@ -137,6 +139,12 @@ h2. jQuery
 实现商品分类的树状结构展示，支持拖动，动态构造节点
 使用时做了修正:修改源码，去掉jquery文件名前缀后无法正常识别出themes所在位置
 
+h2. 纯js插件
+
+"fileuploader":http://valums.com/ajax-upload
+实现ajax文件及图片的上传，对于不支持ajax file提交插件会改用iframe方式隐式提交
+使用时做了修正:addEvent改为调用jQuery方式实现，因为cucumber测试需要为上传按钮触发mouseover，才能生成hidden file input
+
 h1. 欢迎参与
 
 如果您对开发此产品有兴趣，可以：
@@ -147,6 +155,7 @@ h1. 欢迎参与
 # 提交后发送pull request
 
 Fork的commit与shopqi的commit冲突(即github的forkqueue显示"Will likely not apply cleanly")时，需要手动合并分支
+
 <pre>
 git remote add shopqi git://github.com/saberma/shopqi.git
 git pull shopqi master

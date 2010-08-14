@@ -45,7 +45,11 @@ Shopqi::Application.routes.draw do
   end
   match 'page' => 'pages#show'
 
-  resources :products
+  resources :products do
+    collection do
+      post :upload
+    end
+  end
 
   ##### 官网 #####
   root :to => "home#index"

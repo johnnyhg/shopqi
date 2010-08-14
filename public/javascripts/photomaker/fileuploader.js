@@ -25,15 +25,17 @@
      * @param fn callback This refers to the passed element
      */
     function addEvent(el, type, fn){
-        if (el.addEventListener) {
-            el.addEventListener(type, fn, false);
-        } else if (el.attachEvent) {
-            el.attachEvent('on' + type, function(){
-                fn.call(el);
-	        });
-	    } else {
-            throw new Error('not supported or DOM not loaded');
-        }
+        //use jquery event bind 2010.08.13 by saberma
+        $(el).bind(type, fn);
+        //if (el.addEventListener) {
+        //    el.addEventListener(type, fn, false);
+        //} else if (el.attachEvent) {
+        //    el.attachEvent('on' + type, function(){
+        //        fn.call(el);
+	//        });
+	//    } else {
+        //    throw new Error('not supported or DOM not loaded');
+        //}
     }   
     
     /**

@@ -3,14 +3,19 @@
 = semantic_form_remote_for(resource, :html => { :class => 'form' }) do |f|
   =f.semantic_errors :name, :price
   =f.inputs do
+    =f.input :id, :as => :hidden
     =f.input :category_id, :as => :hidden
   .columns.wat-cf
     .column.left
       =f.inputs :name, :price, :market_price
       =f.buttons do
-        =f.commit_button '保存'
+        =f.commit_button '保存', :button_html => { 'data-disable-with' => '正在提交...' }
     .column.right
-      所属分类
+      %a#upload_photo 上传图片
+      %ul#photos
+        /= render :partial => "photo", :collection => Product.all.map(&:photos).flatten.uniq
+      .clear
+      %h4 所属分类
       .tree
 
 :javascript
@@ -110,4 +115,18 @@
         }
       }
     });
+  });
+
+  new AjaxUpload('upload_photo', {
+    name: 'photo[file]',
+    action: '/products/upload',
+    onSubmit: function(file, extension){
+      var csrf_token = $('meta[name=csrf-token]').attr('content'),
+          csrf_param = $('meta[name=csrf-param]').attr('content'),
+          data = {};
+      data[csrf_param] = csrf_token;
+      data['id'] = $('#product_id').val();
+      this.setData(data);
+    },
+    onComplete: function(file, response){ eval(response); }
   });

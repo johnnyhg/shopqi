@@ -4,8 +4,8 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %title ShopQi工作平台
     =formtastic_stylesheet_link_tag
-    = stylesheet_link_tag "photomaker/jgrowl", "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", :cache => true
-    = javascript_include_tag :defaults, 'inspect', 'photomaker/jgrowl', 'tree/cookie', 'tree/hotkeys', 'tree/jstree'
+    = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/user", :cache => true
+    = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree'
     = csrf_meta_tag
   %body
     #container

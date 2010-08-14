@@ -94,3 +94,8 @@ cn:
       create:
         notice: "%{cn_resource_name}添加成功!"
         alert: "%{cn_resource_name}添加失败!"
+
+  carrierwave:
+    errors:
+      integrity: '不支持上传此类型的图片'
+      processing: 'Cannot resize image.'

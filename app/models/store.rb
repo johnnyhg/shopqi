@@ -6,6 +6,7 @@ class Store
 
   references_many :users, :dependent => :destroy
   references_many :categories, :dependent => :destroy
+  references_many :products, :dependent => :destroy
   references_many :hots, :dependent => :destroy
   references_many :pages, :dependent => :destroy
 

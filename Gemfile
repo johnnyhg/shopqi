@@ -24,7 +24,9 @@ gem "validation_reflection", '1.0.0.beta4'
 gem "inherited_resources"
 
 # 文件上传
-gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git', :branch => 'master'
+# 源版本不支持mongoid校验
+#gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git', :branch => 'master'
+gem "carrierwave", :git => 'git://github.com/saberma/carrierwave.git', :branch => 'master'
 # 调用参数说明:http://www.imagemagick.org/Usage/
 gem "mini_magick"
 
