@@ -95,6 +95,10 @@ cn:
         notice: "%{cn_resource_name}添加成功!"
         alert: "%{cn_resource_name}添加失败!"
 
+  helper:
+    label:
+      blank: 未命名
+
   carrierwave:
     errors:
       integrity: '不支持上传此类型的图片'

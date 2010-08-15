@@ -143,7 +143,7 @@ h2. 纯js插件
 
 "fileuploader":http://valums.com/ajax-upload
 实现ajax文件及图片的上传，对于不支持ajax file提交插件会改用iframe方式隐式提交
-使用时做了修正:addEvent改为调用jQuery方式实现，因为cucumber测试需要为上传按钮触发mouseover，才能生成hidden file input
+此版本非官方版本，且在使用时做了修正:addEvent改为调用jQuery方式实现，因为cucumber测试需要为上传按钮触发mouseover，才能生成hidden file input
 
 h1. 欢迎参与
 

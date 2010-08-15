@@ -3,12 +3,11 @@
 class Store
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::BelongToStore
 
-  references_many :users, :dependent => :destroy
-  references_many :categories, :dependent => :destroy
-  references_many :products, :dependent => :destroy
-  references_many :hots, :dependent => :destroy
   references_many :pages, :dependent => :destroy
+
+  store_has_many :users, :categories, :products, :hots
 
   # 二级域名
   field :subdomain
@@ -18,9 +17,6 @@ class Store
 
   # 初始化部分分类
   def init_child
-    # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
-    self.categories << Category.root
-    self.hots << Hot.root
     self.pages << Page.create(:name => :homepage)
   end
 end

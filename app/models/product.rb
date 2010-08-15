@@ -3,8 +3,9 @@ class Product
   include Mongoid::Document
   include Mongoid::Timestamps
   include Formtastic::I18n::Naming
+  include Mongoid::BelongToStore
 
-  referenced_in :store
+  belong_to_store
   referenced_in :category
 
   field :name
@@ -15,12 +16,6 @@ class Product
   # validates_presence_of :name, :price
   validates_numericality_of :price, :allow_blank => true
 
-  # 回调方法
-  before_create :init_store
-
-  def init_store
-    self.store = User.current.store
-  end
 end
 
 #商品图片
