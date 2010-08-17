@@ -1,6 +1,6 @@
 # encoding: utf-8
-# 首页热门分类，不同于商品分类，此分类只作为普通的链接
-class Hot
+# 网店页面中的布局容器
+class Container
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::ActsAsSortableTree
@@ -9,6 +9,6 @@ class Hot
   belong_to_store
   acts_as_sortable_tree
 
-  field :name
-  field :url
+  referenced_in :page
+  references_many :categories, :stored_as => :array, :inverse_of => :container
 end

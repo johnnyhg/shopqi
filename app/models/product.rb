@@ -16,6 +16,10 @@ class Product
   # validates_presence_of :name, :price
   validates_numericality_of :price, :allow_blank => true
 
+  # 产品列表缩略图
+  def middle_url
+    photos.empty? ? '/images/fallback/product/middle.png' : photos.first.file.middle.url
+  end
 end
 
 #商品图片

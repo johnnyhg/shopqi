@@ -30,10 +30,12 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #     end
 
   # Create different versions of your uploaded files
+  # 显示在产品页中的缩略图
   version :thumb do
     process :resize_to_fill => [68, 68]
   end
 
+  # 显示在产品列表页中的缩略图
   version :middle do
     process :resize_to_fill => [185, 185]
   end

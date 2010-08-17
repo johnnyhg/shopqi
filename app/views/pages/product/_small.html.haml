@@ -1,20 +1,14 @@
-.clear
-%ul.index_products.products_list
-  -Product.all.each do |product|
-    %li
-      .pic
-        =link_to product, :target => :_blank do
-          =image_tag 'http://ws05.mbbimg.cn/alfaartist/201004/19/11010247/18/a1.jpg', :height => 185, :width => 185
-      .text
-        .title
-          =link_to s(product.name), product, :target => :_blank
-        .price
-          %span.gray
-            市场价：
-            %s 
-              ￥
-              =product.market_price
-          %br/
-          %span.red_c00.fs14.b
-            ￥
-            =product.price
+%li
+  .pic=link_to image_tag(product.middle_url), product, :target => :_blank
+  .text
+    .title=link_to s(product.name), product, :target => :_blank
+    .price
+      %span.gray
+        市场价：
+        %s 
+          ￥
+          =product.market_price
+      %br/
+      %span.red_c00.fs14.b
+        ￥
+        =product.price

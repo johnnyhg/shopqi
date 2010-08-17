@@ -9,38 +9,6 @@
 User.where(:login => :saberma).first.try(:store).try(:destroy)
 saberma = User.create(:login => :saberma, :email => 'saberma@shopqi.com', :password => '666666')
 
-page = saberma.store.pages.homepage
-
-page.logo = Logo.new
-
-#导航
-[ { :name => '会员中心', :url => '/user' },
-  { :name => '订单查询', :url => '/query' },
-  { :name => '网站导航', :url => '/sitemap' },
-  { :name => '帮助', :url => '/help' },
-  { :name => '包包批发', :url => 'http://www.baobao178.com' },
-  { :name => '相似推荐', :url => '/similar' }
-].each do |attributes|
-  page.navs << Nav.new(attributes)
-end
-page.navs.init_list!
-page.save
-
-#菜单
-%w( 首页 女包 男包 真皮 数码包 旅行包 ).each do |label|
-  page.menus << Menu.new(:name => label, :url => '/menu')
-end
-page.menus.init_list!
-page.save
-Menu.sprite page
-
-#轮播广告
-%w( 激情世界杯 最爱草包 时尚之夜 冬季暖包 浪美特价 ).each do |label|
-  page.focuses << Focus.new(:name => label, :url => '/focus')
-end
-page.focuses.init_list!
-page.save
-
 #热门分类
 hot_root = saberma.store.hots.roots.first
 {
@@ -123,3 +91,40 @@ category_root.children.init_list!
 ].each do |attrs|
   Product.create attrs
 end
+
+page = saberma.store.pages.homepage
+
+page.logo = Logo.new
+
+#导航
+[ { :name => '会员中心', :url => '/user' },
+  { :name => '订单查询', :url => '/query' },
+  { :name => '网站导航', :url => '/sitemap' },
+  { :name => '帮助', :url => '/help' },
+  { :name => '包包批发', :url => 'http://www.baobao178.com' },
+  { :name => '相似推荐', :url => '/similar' }
+].each do |attributes|
+  page.navs << Nav.new(attributes)
+end
+page.navs.init_list!
+page.save
+
+#菜单
+%w( 首页 女包 男包 真皮 数码包 旅行包 ).each do |label|
+  page.menus << Menu.new(:name => label, :url => '/menu')
+end
+page.menus.init_list!
+page.save
+Menu.sprite page
+
+#轮播广告
+%w( 激情世界杯 最爱草包 时尚之夜 冬季暖包 浪美特价 ).each do |label|
+  page.focuses << Focus.new(:name => label, :url => '/focus')
+end
+page.focuses.init_list!
+page.save
+
+# 商品列表
+container_root = page.containers.roots.first
+container_root.children << page.containers.create
+container_root.children.init_list!

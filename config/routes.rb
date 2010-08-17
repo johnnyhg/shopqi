@@ -1,7 +1,11 @@
 # encoding: utf-8
 #http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
 Shopqi::Application.routes.draw do
-  #resources :containers
+  resources :containers do
+    collection do
+      get :operates
+    end
+  end
 
   #首页热门分类
   resources :hots do

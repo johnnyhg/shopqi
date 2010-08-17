@@ -1,0 +1,26 @@
+请选择商品列表所属分类:
+.tree
+
+:javascript
+  $('.tree').jstree({
+    plugins : [ "themes", "json_data", "ui", "checkbox" ],
+    themes: {
+      icons: false
+    },
+    json_data:{
+      ajax: {
+        url: '/categories.json',
+        data: function (n) { 
+          return { id : n.attr ? n.attr("id") : '' }; 
+        }
+      }
+    }
+  }).bind("save_selected.jstree", function (e, data) {
+    var categories = $.map(data.rslt, function(item){
+      return item.replace('#', '');
+    });
+    $.post('#{container_path(resource, :format => :js)}', { 
+      container: { category_ids: categories },
+      _method: 'put'
+    });
+  });

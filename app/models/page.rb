@@ -7,17 +7,27 @@ class Page
   referenced_in :store
 
   has_many_sortable :navs, :menus, :focuses
+  references_many :containers, :dependent => :destroy
 
   field :name
   validates_uniqueness_of :name
 
   embeds_one :logo
 
+
+  # 回调方法
   before_create :create_logo
+  after_create :init_child
 
   #必需有Logo
   def create_logo
     self.logo = Logo.new
+  end
+
+  # 初始化部分分类
+  def init_child
+    # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
+    self.containers << self.containers.root
   end
 
   # 首页

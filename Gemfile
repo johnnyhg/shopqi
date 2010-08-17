@@ -3,13 +3,14 @@ source 'http://rubygems.org'
 # need gem install bundler -v 1.0.0.rc.1
 gem 'rails', '3.0.0.rc'
 
-gem 'mongoid', '2.0.0.beta.15'
+gem 'mongoid', '2.0.0.beta.16'
 gem 'bson_ext'
 gem 'devise', '1.1.rc2'
 
 # mongoid
 # 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
 gem 'acts_as_list_mongoid'
+# 源版已更新，未发布新版本
 gem 'mongoid_acts_as_tree', :git => 'git://github.com/saberma/mongoid_acts_as_tree.git'
 
 # 将current_user设置至线程中

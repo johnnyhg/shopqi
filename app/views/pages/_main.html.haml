@@ -11,7 +11,10 @@
       = render :partial => "pages/product/title"
       /= render :partial => "pages/product/head"
       /= render :partial => "pages/product/middle"
-      = render :partial => "pages/product/small"
+      -resource.containers.roots.first.children.each do |container|
+        =content_tag_for :div, container, :class => 'container_24' do
+          %ul.index_products.products_list
+            = render :partial => "pages/product/small", :collection => Product.all, :as => :product
       .clear
       / women end
       / laptop bag end

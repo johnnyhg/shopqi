@@ -14,7 +14,7 @@ module Mongoid
         args.each do |children_name|
           #parent
           parent_name = self.name.singularize
-          send parent_associations, children_name, :dependent => :destroy
+          send parent_associations, children_name
 
           define_method "sorted_#{children_name}" do
             send(children_name).sort {|x, y| x.pos <=> y.pos}

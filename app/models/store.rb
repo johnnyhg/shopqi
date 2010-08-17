@@ -7,7 +7,7 @@ class Store
 
   references_many :pages, :dependent => :destroy
 
-  store_has_many :users, :categories, :products, :hots
+  store_has_many :users, :categories, :products, :hots, :containers
 
   # 二级域名
   field :subdomain
@@ -18,5 +18,8 @@ class Store
   # 初始化部分分类
   def init_child
     self.pages << Page.create(:name => :homepage)
+    # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
+    self.categories << Category.root
+    self.hots << Hot.root
   end
 end
