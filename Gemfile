@@ -3,14 +3,16 @@ source 'http://rubygems.org'
 # need gem install bundler -v 1.0.0.rc.1
 gem 'rails', '3.0.0.rc'
 
-gem 'mongoid', '2.0.0.beta.16'
+#gem 'mongoid', '2.0.0.beta.16'
+# beta.16存在bug，导致嵌套文档where查询失败，已提交补丁
+gem 'mongoid', :git => 'git://github.com/saberma/mongoid.git'
 gem 'bson_ext'
 gem 'devise', '1.1.rc2'
 
 # mongoid
 # 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
 gem 'acts_as_list_mongoid'
-# 源版已更新，未发布新版本
+# 已提交补丁，源版已更新，未发布新版本
 gem 'mongoid_acts_as_tree', :git => 'git://github.com/saberma/mongoid_acts_as_tree.git'
 
 # 将current_user设置至线程中
@@ -25,7 +27,7 @@ gem "validation_reflection", '1.0.0.beta4'
 gem "inherited_resources"
 
 # 文件上传
-# 源版本不支持mongoid校验
+# 源版本不支持mongoid校验，已提交补丁
 #gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git', :branch => 'master'
 gem "carrierwave", :git => 'git://github.com/saberma/carrierwave.git', :branch => 'master'
 # 调用参数说明:http://www.imagemagick.org/Usage/

@@ -4,7 +4,8 @@ class Page
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Sortable
-  referenced_in :store
+  include Mongoid::BelongToStore
+  belong_to_store
 
   has_many_sortable :navs, :menus, :focuses
   references_many :containers, :dependent => :destroy

@@ -5,7 +5,6 @@ class Menu
   include Mongoid::Timestamps
   include Mongoid::Sortable
   sortable_belong_to :page
-  identity :type => String
 
   field :name
   field :url

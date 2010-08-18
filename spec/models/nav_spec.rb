@@ -3,6 +3,9 @@ require 'spec_helper'
 
 describe Nav do
   before(:each) do
+    @saberma = Factory(:user_saberma)
+    @saberma.make_current
+
     @page = Factory('page_mbaobao')
     @page.navs.init_list!
 

@@ -23,6 +23,17 @@ GIT
       activesupport (>= 3.0.0.beta4)
 
 GIT
+  remote: git://github.com/saberma/mongoid.git
+  revision: 3f62678
+  specs:
+    mongoid (2.0.0.beta.16)
+      activemodel (= 3.0.0.rc)
+      bson (= 1.0.4)
+      mongo (= 1.0.7)
+      tzinfo (= 0.3.22)
+      will_paginate (~> 3.0.pre)
+
+GIT
   remote: git://github.com/saberma/mongoid_acts_as_tree.git
   revision: 0268fb1
   specs:
@@ -141,12 +152,6 @@ GEM
       subexec (~> 0.0.4)
     mongo (1.0.7)
       bson (>= 1.0.4)
-    mongoid (2.0.0.beta.16)
-      activemodel (= 3.0.0.rc)
-      bson (= 1.0.4)
-      mongo (= 1.0.7)
-      tzinfo (= 0.3.22)
-      will_paginate (~> 3.0.pre)
     mongoid_adjust (0.1.1)
       bson (>= 1.0.3)
       mongoid (>= 2.0.0.beta.14)
@@ -241,7 +246,7 @@ DEPENDENCIES
   lemonade
   livereload
   mini_magick
-  mongoid (= 2.0.0.beta.16)
+  mongoid!
   mongoid_acts_as_tree!
   rails (= 3.0.0.rc)
   rails3-generators
