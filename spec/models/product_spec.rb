@@ -9,10 +9,22 @@ describe Product do
     @root.children.init_list!
   end
 
-  it 'should find by categories' do
-    product = Factory(:product, :category => @category_man)
-    product.category_path.should eql @category_man.path
-    Product.where(:category_id.in => [@category_man.id]).to_a.should eql [product]
-  end
+  describe :category_path do
+    before :each do
+      @product = Factory(:product, :category => @category_man)
+    end
 
+    it 'should save' do
+      @product.category_path.should eql @category_man.full_path
+    end
+
+    it 'should find by category_id' do
+      Product.where(:category_id.in => [@category_man.id]).to_a.should eql [@product]
+    end
+
+    it 'should find by category_path' do
+      Product.any_in(:category_path => [@category_man.id]).to_a.should eql [@product]
+    end
+
+  end
 end

@@ -21,7 +21,7 @@ class Product
   before_save :set_category_path
 
   def set_category_path
-    self.category_path = self.category.path if category and (self.new_record? or category.changed?)
+    self.category_path = self.category.full_path if category and (self.new_record? or category.changed?)
   end
 
   # 产品列表缩略图

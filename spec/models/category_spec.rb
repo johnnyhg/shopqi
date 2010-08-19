@@ -25,7 +25,7 @@ describe Category do
     category = Category.create :name => '男士衬衫'
     node.children << category
     node.children.init_list!
-    category.path.should eql (node.path.clone << node.id)
+    category.path.should eql node.full_path
 
     category.products << Product.new(:name => '博士衬衫1')
     category.save
