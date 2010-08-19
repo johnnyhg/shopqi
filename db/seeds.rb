@@ -64,26 +64,31 @@ category_root.children.init_list!
 #商品
 [
   {
+    :category => Category.where(:name => '男装').first, 
     :name => '个性背带格子衬衫',
     :market_price => 298,
     :price => 59
   },
   {
+    :category => Category.where(:name => '衬衫').first, 
     :name => '自由舒爽棉麻衬衫',
     :market_price => 388,
     :price => 59
   },
   {
+    :category => Category.where(:name => '男鞋').first, 
     :name => '轻便运动生活休闲鞋',
     :market_price => 499,
     :price => 99
   },
   {
+    :category => Category.where(:name => '裙子').first, 
     :name => '白色剪花抹胸裙',
     :market_price => 599,
     :price => 199
   },
   {
+    :category => Category.where(:name => '女装').first, 
     :name => '甜美荷叶边丝带衬衫',
     :market_price => 299,
     :price => 99
