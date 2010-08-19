@@ -7,6 +7,8 @@ class Product
 
   belong_to_store
   referenced_in :category
+  # 保存分类至根节点的ID，方便查询某个分类及所有子类关联的商品
+  field :category_path, :type => Array
 
   field :name
   field :price, :type => Float
@@ -15,6 +17,12 @@ class Product
 
   # validates_presence_of :name, :price
   validates_numericality_of :price, :allow_blank => true
+
+  before_save :set_category_path
+
+  def set_category_path
+    self.category_path = self.category.path if category and (self.new_record? or category.changed?)
+  end
 
   # 产品列表缩略图
   def middle_url

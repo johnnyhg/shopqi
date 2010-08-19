@@ -11,4 +11,16 @@ class Category
   references_many :products
   
   field :name
+
+  before_update :reset_products_category_path
+
+  def reset_products_category_path
+    if self.parent_id_changed?
+      # TODO: 修改为ruby driver的update方式
+      # http://www.mongodb.org/display/DOCS/Updating#Updating-update%28%29
+      self.products.each do |product|
+        product.update_attributes :category_path => self.path
+      end
+    end
+  end
 end

@@ -19,4 +19,22 @@ describe Category do
     node.move :above => neighbor
     parent.children.map(&:name).should eql %w( POLO衫 衬衫 针织衫 外套 )
   end
+
+  it 'should reset products category_path' do
+    node = Category.where(:name => '衬衫').first
+    category = Category.create :name => '男士衬衫'
+    node.children << category
+    node.children.init_list!
+    category.path.should eql (node.path.clone << node.id)
+
+    category.products << Product.new(:name => '博士衬衫1')
+    category.save
+    category.products.first.category_path.should eql category.path
+
+    category.parent_id = node.parent.id
+    category.save
+    category.path.should eql node.path
+
+    category.products.first.reload.category_path.should eql category.path
+  end
 end
