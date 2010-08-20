@@ -1,5 +1,5 @@
 /*
- * jsTree 1.0-rc1
+ * jsTree 1.0-rc2
  * http://jstree.com/
  *
  * Copyright (c) 2010 Ivan Bozhanov (vakata.com)
@@ -2262,6 +2262,8 @@
 				});
 				if(obj.is("li")) { this._repair_state(obj); }
 				else { obj.find("> ul > li").each(function () { _this._repair_state(this); }); }
+                                // fixed: in the multi-level struct, non-leaf node will be checked with undetermined. by saberma
+				obj.find("> ul > li").each(function () { _this._repair_state(this); })
 			},
 			change_state : function (obj, state) {
 				obj = this._get_node(obj);
