@@ -1,2 +1,3 @@
 $("##{id(resource)}").replaceWith('#{escape_javascript( render(:partial => "containers/item", :object => resource) )}');
-
+//reset tooltip
+$("##{id(resource)}").tooltip(container_edit_tooltip_setting).dynamic(dynamic_setting);
