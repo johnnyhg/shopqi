@@ -23,6 +23,10 @@ var container_edit_tooltip_setting = {
   delay: 800,
   offset: [15, 2],
   effect: 'slide',
+  events: {
+    def: 'mouseover,mouseout',
+    tooltip: 'mouseover,cancle'
+  },
   //opacity: 0.9,
   onBeforeShow: function(){
     $('#tooltip').html('正在处理...');

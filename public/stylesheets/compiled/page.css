@@ -1,4 +1,4 @@
-.tooltip { z-index: 999; background-color: white; border: 1px solid #cccccc; width: 300px; display: none; text-align: left; font-size: 12px; outline-radius: 4px; -moz-outline-radius: 4px; -webkit-outline-radius: 4px; overflow: auto; /* ul li float: left padding: 5px */ }
+.tooltip { z-index: 999; background-color: #fffff0; border: 1px solid #cccccc; width: 300px; display: none; text-align: left; font-size: 12px; outline-radius: 4px; -moz-outline-radius: 4px; -webkit-outline-radius: 4px; overflow-x: hidden; overflow-y: auto; /* ul li float: left padding: 5px */ }
 
 /* override the arrow image of the tooltip */
 .tooltip .bottom { padding-top: 40px; height: 55px; }
