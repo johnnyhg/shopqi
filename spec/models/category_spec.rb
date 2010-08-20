@@ -29,12 +29,12 @@ describe Category do
 
     category.products << Product.new(:name => '博士衬衫1')
     category.save
-    category.products.first.category_path.should eql category.path
+    category.products.first.category_path.should eql category.full_path
 
     category.parent_id = node.parent.id
     category.save
     category.path.should eql node.path
 
-    category.products.first.reload.category_path.should eql category.path
+    category.products.first.reload.category_path.should eql category.full_path
   end
 end
