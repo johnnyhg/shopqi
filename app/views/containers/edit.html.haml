@@ -9,7 +9,7 @@
     },
     json_data:{
       ajax: {
-        url: '/categories.json',
+        url: '/categories.json?#{resource.categories.map(&:id).map(&:to_s).to_query("checked")}',
         data: function (n) { 
           return { id : n.attr ? n.attr("id") : '' }; 
         }

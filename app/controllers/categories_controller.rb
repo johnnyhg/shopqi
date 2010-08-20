@@ -41,6 +41,8 @@ class CategoriesController < InheritedResources::Base
   def get_attributes(list)
     list.map do |node|
       attribute = { :data => node.name, :attr => {:id =>  node.id.to_s } }
+      # 将复选框置为选中状态
+      attribute[:attr].merge!(:class => 'jstree-checked') if params[:checked] and params[:checked].include?(node.id.to_s)
       # 叶子节点不需要state,children
       attribute.merge!(:state => "open", :children => get_attributes(node.children)) unless node.children.empty?
       attribute
