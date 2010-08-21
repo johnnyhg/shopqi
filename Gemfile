@@ -12,8 +12,9 @@ gem 'devise', '1.1.rc2'
 # mongoid
 # 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
 gem 'acts_as_list_mongoid'
-# 已提交补丁，源版已更新，未发布新版本
-gem 'mongoid_acts_as_tree', :git => 'git://github.com/saberma/mongoid_acts_as_tree.git'
+# 修正Bug，已提交补丁，已合并至官方版本
+#gem 'mongoid_acts_as_tree', :git => 'git://github.com/saberma/mongoid_acts_as_tree.git'
+gem 'mongoid_acts_as_tree', :git => 'git://github.com/saks/mongoid_acts_as_tree.git'
 
 # 将current_user设置至线程中
 gem 'sentient_user'
@@ -27,9 +28,9 @@ gem "validation_reflection", '1.0.0.beta4'
 gem "inherited_resources"
 
 # 文件上传
-# 源版本不支持mongoid校验，已提交补丁
-#gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git', :branch => 'master'
-gem "carrierwave", :git => 'git://github.com/saberma/carrierwave.git', :branch => 'master'
+# 源版本不支持mongoid校验，已提交补丁，已合并至官方版本
+#gem "carrierwave", :git => 'git://github.com/saberma/carrierwave.git', :branch => 'master'
+gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git', :branch => 'master'
 # 调用参数说明:http://www.imagemagick.org/Usage/
 gem "mini_magick"
 

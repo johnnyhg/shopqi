@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/jnicklas/carrierwave.git
+  revision: f7d4d66
+  branch: master
+  specs:
+    carrierwave (0.5.0.beta2)
+      activesupport (>= 3.0.0.beta4)
+
+GIT
   remote: git://github.com/justinfrench/formtastic.git
   revision: 42b4eb8
   branch: rails3
@@ -15,14 +23,6 @@ GIT
     web-app-theme (0.5.2)
 
 GIT
-  remote: git://github.com/saberma/carrierwave.git
-  revision: 061490c
-  branch: master
-  specs:
-    carrierwave (0.5.0.beta2)
-      activesupport (>= 3.0.0.beta4)
-
-GIT
   remote: git://github.com/saberma/mongoid.git
   revision: 3f62678
   specs:
@@ -34,8 +34,8 @@ GIT
       will_paginate (~> 3.0.pre)
 
 GIT
-  remote: git://github.com/saberma/mongoid_acts_as_tree.git
-  revision: 0268fb1
+  remote: git://github.com/saks/mongoid_acts_as_tree.git
+  revision: 7fce729
   specs:
     mongoid_acts_as_tree (0.1.5)
       bson (>= 0.20.1)
