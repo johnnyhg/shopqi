@@ -9,6 +9,11 @@ end
   page.find('#tooltip').visible?.should eql true
 end
 
+假如 /^页面不会显示操作表单$/ do
+  sleep 2
+  page.find('#tooltip').visible?.should eql false
+end
+
 而且 /^(.+)显示在(.+)之(前|后)$/ do |field, neighbor, direct|
   direct = ('前' == direct) ? :prev : :next
   #label = page.evaluate_script("$(\"#navs li a:contains('#{neighbor}')\").parent('li').#{direct}().text()")

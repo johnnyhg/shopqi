@@ -48,13 +48,13 @@ end
   end
 end
 
-当 /^我?check "([^"]*)"(?: within "([^"]*)")?$/ do |field, selector|
+当 /^我?(?:在(.+)区域)?选中(.+)$/ do |selector, field|
   with_scope(selector) do
     check(field)
   end
 end
 
-当 /^我?uncheck "([^"]*)"(?: within "([^"]*)")?$/ do |field, selector|
+当 /^我?(?:在(.+)区域)?不选中(.+)$/ do |selector, field|
   with_scope(selector) do
     uncheck(field)
   end
@@ -145,7 +145,7 @@ end
   end
 end
 
-那么 /^the "([^"]*)" checkbox(?: within "([^"]*)")? should be checked$/ do |label, selector|
+那么 /^(?:在(.+)区域的)?(.+)应该被选中$/ do |selector, label|
   with_scope(selector) do
     field_checked = find_field(label)['checked']
     if field_checked.respond_to? :should
@@ -156,7 +156,7 @@ end
   end
 end
 
-那么 /^the "([^"]*)" checkbox(?: within "([^"]*)")? should not be checked$/ do |label, selector|
+那么 /^(?:在(.+)区域的)?(.+)应该不被选中$/ do |selector, label|
   with_scope(selector) do
     field_checked = find_field(label)['checked']
     if field_checked.respond_to? :should
@@ -188,7 +188,6 @@ end
     assert_equal expected_params, actual_params
   end
 end
-
 
 当 /^我?把鼠标移到(.+)$/ do |field|
   if field == 'Logo'

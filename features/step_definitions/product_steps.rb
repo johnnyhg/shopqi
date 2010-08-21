@@ -15,3 +15,16 @@ end
     find('img').should_not be_nil
   end
 end
+
+假如 /^网店有以下商品:$/ do |table|
+  store = User.current.store
+  table.rows.each do |row|
+    category = store.categories.where(:name => row.fourth).first
+    node = store.products.create(
+      :name => row.first,
+      :market_price => row.second,
+      :price => row.third,
+      :category => category
+    )
+  end
+end
