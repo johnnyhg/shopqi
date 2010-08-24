@@ -9,6 +9,9 @@ class Store
 
   store_has_many :users, :categories, :products, :hots, :containers
 
+  # 模板
+  field :template, :default => 'vancl'
+
   # 二级域名
   field :subdomain
 

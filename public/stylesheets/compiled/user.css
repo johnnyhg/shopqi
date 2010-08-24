@@ -1,6 +1,0 @@
-@charset "utf-8";
-#upload_photo { float: right; }
-
-#photos { clear: both; }
-#photos li { float: left; margin: 5px; }
-#photos li img { border: 1px solid #dddddd; }

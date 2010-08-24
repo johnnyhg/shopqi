@@ -13,13 +13,18 @@ class Menu
   def self.sprite(page)
     menus = page.sorted_menus
 
-    unit_width = 87
-    width = menus.size * unit_width
-    height = 84
-    font_size = 18
+    bg_path = "#{Rails.root}/public/templates/#{User.current.store.template}/menu_bg.png" 
+    bg_hover_path = "#{Rails.root}/public/templates/#{User.current.store.template}/menu_bg_hover.png" 
 
-    front_color = '#ACACAC'
-    hover_color = '#AA6D00'
+    bg = MiniMagick::Image.from_file(bg_path)
+
+    unit_width = bg[:width]
+    width = menus.size * unit_width
+    height = bg[:height] * 2
+    font_size = 14
+
+    font_color = '#000'
+    font_hover_color = '#fff'
 
     magick = MiniMagick::Image.from_file("#{Rails.root}/public/images/logo/blank.png")
     magick.combine_options do |c|
@@ -27,37 +32,30 @@ class Menu
       c.gravity 'NorthWest'
       c.resize "#{width}x#{height}!"
 
-      #背景色
-      c.fill :black
-      c.draw "rectangle 0, 0, #{width}, #{height}"
-
       menus.each_with_index do |menu, index|
-        #menu.name = menu.name.insert(1, '　') if menu.name.size == 2
+
+        # 绘制背景图
+        x0 = index * unit_width
+        y0 = 0
+        c.draw "image over #{x0},#{y0},0,0 '#{bg_path}'"
+
+        # 文字
         c.font "#{Rails.root}/public/images/logo/yahei.ttf" 
         c.pointsize font_size
-        c.fill front_color
+        c.fill font_color
+
         x = index * unit_width + (unit_width - menu.name.size * font_size) / 2
-        y = (height / 2 - font_size) / 2 - 6
+        y = (height / 2 - font_size) / 2
         c.draw "text #{x},#{y} '#{menu.name}'"
 
-        # 绘制虚线
-        # 参考http://www.imagemagick.org/Usage/draw/
-        line_x = (index + 1) * unit_width - 1
-        c.fill :none
-        c.stroke front_color
-        c.draw "stroke-dasharray 1 3 path 'M #{line_x},0 L #{line_x},#{height / 2}'" unless index == menus.size - 1 
-        c.stroke :none 
+        # 绘制悬停背景图
+        y0 = height / 2
+        c.draw "image over #{x0},#{y0},0,0 '#{bg_hover_path}'"
 
         # 鼠标悬停文字
-        c.fill hover_color
+        c.fill font_hover_color
         y += height / 2
         c.draw "text #{x},#{y} '#{menu.name}'"
-
-        # 绘制虚线
-        c.fill :none
-        c.stroke front_color
-        c.draw "stroke-dasharray 1 3 path 'M #{line_x},#{height / 2} L #{line_x},#{height}'" unless index == menus.size - 1 
-        c.stroke :none 
       end
     end
     magick.write page.menu_sprite_path

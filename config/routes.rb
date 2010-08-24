@@ -50,6 +50,7 @@ Shopqi::Application.routes.draw do
     end
   end
   match 'page' => 'pages#show'
+  match 'stylesheets/pages/dynamic.css' => 'pages#dynamic'
 
   resources :products do
     collection do

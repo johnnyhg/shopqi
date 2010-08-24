@@ -1,0 +1,13 @@
+:sass
+  ul#menus li a
+    background-image: url(/images/menu/#{current_user.store.pages.homepage.id}.png)
+
+-current_user.store.pages.homepage.sorted_menus.each_with_index do |menu, index|
+  :sass
+    ul#menus
+      .menu_#{index} a
+        &:link, &:visited
+          background-position: -#{index*75}px 0px
+          width: 75px
+        &.on, &:hover, &:active
+          background-position: -#{index*75}px -30px

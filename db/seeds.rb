@@ -102,12 +102,12 @@ page = saberma.store.pages.homepage
 page.logo = Logo.new
 
 #导航
-[ { :name => '会员中心', :url => '/user' },
-  { :name => '订单查询', :url => '/query' },
-  { :name => '网站导航', :url => '/sitemap' },
-  { :name => '帮助', :url => '/help' },
-  { :name => '包包批发', :url => 'http://www.baobao178.com' },
-  { :name => '相似推荐', :url => '/similar' }
+[ { :name => '我的帐户', :url => '/user' },
+  { :name => '断码专区', :url => '/discount' },
+  { :name => '积分回馈', :url => '/score' },
+  { :name => '凡客论坛', :url => '/bbs' },
+  { :name => '网站联盟', :url => '/union' },
+  { :name => '帮助中心', :url => '/help' }
 ].each do |attributes|
   page.navs << Nav.new(attributes)
 end
@@ -115,7 +115,7 @@ page.navs.init_list!
 page.save
 
 #菜单
-%w( 首页 女包 男包 真皮 数码包 旅行包 ).each do |label|
+%w( 首页 男装 女装 童装 鞋 配饰 家居 ).each do |label|
   page.menus << Menu.new(:name => label, :url => '/menu')
 end
 page.menus.init_list!

@@ -2,10 +2,18 @@
 class PagesController < InheritedResources::Base
   layout nil
 
+  def show
+    render :template => "pages/templates/#{template}/home", :layout => "pages"
+  end
+
   def logo
     @image = Image.find(params[:image_id])
     resource.logo.update_attributes :url => @image.url, :image_id => @image.id
     render :nothing => true
+  end
+
+  def dynamic
+    render :action => :dynamic, :content_type => 'text/css'
   end
 
   protected
