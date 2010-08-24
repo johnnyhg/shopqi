@@ -13,8 +13,8 @@ class Menu
   def self.sprite(page)
     menus = page.sorted_menus
 
-    bg_path = "#{Rails.root}/public/templates/#{User.current.store.template}/menu_bg.png" 
-    bg_hover_path = "#{Rails.root}/public/templates/#{User.current.store.template}/menu_bg_hover.png" 
+    bg_path = "#{Rails.root}/public/images/templates/#{User.current.store.template}/system/menu_bg.png" 
+    bg_hover_path = "#{Rails.root}/public/images/templates/#{User.current.store.template}/system/menu_bg_hover.png" 
 
     bg = MiniMagick::Image.from_file(bg_path)
 

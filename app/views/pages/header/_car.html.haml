@@ -1,0 +1,11 @@
+#car
+  .grid_4.alpha.omega
+    =image_tag "templates/#{template}/header/shopping.jpg", :class => :shopping
+    购物车中有
+    %span#product_count 0
+    件商品
+  .grid_4.alpha.omega
+    合计
+    %span#product_price 0
+    元
+    =link_to '', "/", :class => :pay_btn

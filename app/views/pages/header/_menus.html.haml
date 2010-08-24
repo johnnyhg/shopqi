@@ -1,22 +1,4 @@
-/ nav_box start
-#dom_nav_box.nav_box
-  .nav.ftl
-    %ul#nav.editable.sortable{:sort_url => sort_menus_path}=render :partial => "menus/item", :collection => resource.sorted_menus
-    .clear
-  .sub_nav_box.ftr 
-    #top_cart_box_event.top_cart{:style => 'margin-top: 30px'}
-      .btn_checkout.ftr
-        %a.btn_checkout{:href => "http://www.mbaobao.com/goods/cart.php", :rel => "nofollow"} 去结算
-      #top_cart_btn.btn_cart.ftr
-        %a.btn_cart{:href => "http://www.mbaobao.com/goods/cart.php"} 我的购物车
-        / top_cart_box start
-        #top_cart_box.box.dpn
-          .top_cart_box
-            #top_cart_goods_list
-            .btn.tar
-              %a{:href => "http://www.mbaobao.com/goods/cart.php", :rel => "nofollow"}
-                %img{ :src => "http://www.mbaobao.com/templates/default/images/new_homepage/btn_top_checkout.gif"}/
-            %div{:style => "clear:both;"}
-        / top_cart_box end
-  .clear
-/ nav_box end
+%ul#menus.editable.sortable{:sort_url => sort_menus_path}=render :partial => "menus/item", :collection => resource.sorted_menus
+
+
+

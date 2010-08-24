@@ -1,19 +1,6 @@
-/ top_search_box start
-.top_search_box
-  %form{:action => "http://www.mbaobao.com/goods/search.php", :method => "get"}
-    %span.input.ftl
-      %input#input_goods_search_keyword.txt{:name => "k", :onclick => "return this.value='';", :size => "25", :type => "text"}/
-    %span.button.ftl
-      %input{:src => "http://www.mbaobao.com/templates/default/images/new_homepage/btn_top_search.gif", :type => "image"}/
-    %span.keywords.ftl
-      %strong 热门搜索词：
-      %a{:href => "http://www.mbaobao.com/b-2/"} 浪美
-      %a{:href => "http://www.mbaobao.com/b-8/"} 米奇
-      %a{:href => "http://www.mbaobao.com/goods/search.php?category_id=&brand_id=&sex_id=&material_id=&price=&keyword=%E5%B8%86%E5%B8%83&x=0&y=0/"} 帆布包
-      %a{:href => "http://www.mbaobao.com/goods/search.php?category_id=&brand_id=&sex_id=&material_id=&price=&keyword=%E7%89%9B%E7%9A%AE&x=26&y=12/"} 牛皮
-      %a{:href => "http://www.mbaobao.com/c-18/"} 电脑包
-      %a{:href => "http://www.mbaobao.com/goods/search.php?k=%E6%8A%BD%E7%BB%B3&x=0&y=0/"} 桶包
-    %span.phone.ftr
-      %img{ :src => "http://www.mbaobao.com/templates/default/images/new_homepage/icon_phone_number.gif"}/
-  .clear
-/ top_search_box end
+#search
+  %form{:action => "/"}
+    %span.input
+      %input{:name => "q", :size => "25", :type => "text"}/
+    %span.button
+      =image_submit_tag "templates/#{template}/header/search.jpg"
