@@ -9,6 +9,7 @@ a { text-decoration: none; }
 #photomaker #menu ul li a { opacity: 0.6; width: 32px; height: 32px; display: block; cursor: pointer; }
 #photomaker #menu ul li a:hover { opacity: 0.99; }
 #photomaker #menu ul li a.selected { background-color: #f9f9f9; border: 1px solid #cccccc; border-left-color: #aaaaaa; border-top-color: #aaaaaa; padding: 0; /* background-color: #8ABC35 */ /* color: #fff */ }
+#photomaker #menu .button { float: right; margin-right: 10px; }
 #photomaker #panel { position: relative; left: 0px; top: 0px; width: 300px; height: 200px; border: 1px solid #999999; }
 
 .jqHandle { background: red; height: 10px; }

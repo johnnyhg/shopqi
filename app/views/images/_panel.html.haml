@@ -33,6 +33,8 @@
         %li.panel_bg=link_to '', '#', :title => '面板大小:Logo(宽251px,高44px)', :class => :logo_bg
         %li.panel_bg=link_to '', '#', :title => '面板大小:轮播广告(宽960px,高70px)',  :class => :banner_bg
         %li.panel_bg=link_to '', '#', :title => '面板大小:通栏横幅(宽725px,高391px)',  :class => :focus_bg
+      %ul.button
+        %li=link_to '', '#', :title => '关闭', :class => :close
 
     #panel
       -image.backgrounds.each_with_index do |background, index|
@@ -228,5 +230,10 @@
       var width = /宽(\d+)(px)?/.exec($(this).attr('title'))[1];
       var height = /高(\d+)(px)?/.exec($(this).attr('title'))[1];
       $('#panel').width(parseInt(width)).height(parseInt(height));
+    });
+
+    //关闭
+    $('.close').click(function(){
+      $('#tooltip').trigger('cancle');
     });
   });
