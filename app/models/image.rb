@@ -68,7 +68,7 @@ class Image
   end
 
   def url
-    "/images/logo/#{id}.png"
+    "/images/logo/#{id}.png?#{self.updated_at.to_i}"
   end
 end
 

@@ -11,7 +11,6 @@ class Page
   references_many :containers, :dependent => :destroy
 
   field :name
-  validates_uniqueness_of :name
 
   embeds_one :logo
 
@@ -28,7 +27,7 @@ class Page
   # 初始化部分分类
   def init_child
     # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
-    self.containers << self.containers.root
+    self.containers << Container.root(:page => self)
   end
 
   # 首页

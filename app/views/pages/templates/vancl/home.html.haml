@@ -16,13 +16,13 @@
       .grid_20.alpha.omega=search
     .grid_4=car
 
-.clear
 /= render :partial => "pages/header"
 /= render :partial => "pages/main"
-/.container_operates.container_24
+= render :partial => "containers/item", :collection => resource.containers.roots.first.children
+.container_24
+  .grid_24
+    .container_operates
 /= render :partial => "pages/footer/extra"
 /= render :partial => "pages/footer/links"
 /= render :partial => "pages/footer/company"
 #tooltip.tooltip 
-  
-= javascript_include_tag 'focus'

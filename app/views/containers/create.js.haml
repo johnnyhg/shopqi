@@ -1,4 +1,8 @@
 //reset tooltip
+$("#tooltip").fadeOut('slow');
 $("#tooltip").trigger('cancle');
 
 $("body").append('#{escape_javascript( render(:partial => "containers/item", :object => resource))}');
+
+//reset tooltip
+$('##{id(resource.image)}').tooltip(image_tooltip_setting).dynamic(dynamic_setting);

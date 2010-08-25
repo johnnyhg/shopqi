@@ -42,5 +42,5 @@ var container_edit_tooltip_setting = {
 
 jQuery(function($) {
   $('.container_operates').tooltip(container_operates_tooltip_setting).dynamic(dynamic_setting);
-  $('.container').tooltip(container_edit_tooltip_setting).dynamic(dynamic_setting);
+  //$('.container').tooltip(container_edit_tooltip_setting).dynamic(dynamic_setting);
 });

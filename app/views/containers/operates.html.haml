@@ -1,3 +1,4 @@
 %ul
   %li 新增:
-  %li=link_to '商品列表', containers_path(:method => :post), :remote => true
+  %li=link_to '商品列表', containers_path('container[parent_id]' => container_root.id), :method => :post, :remote => true
+  %li=link_to '通栏广告', containers_path('container[parent_id]' => container_root.id), :method => :post, :remote => true

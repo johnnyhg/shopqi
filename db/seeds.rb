@@ -6,7 +6,9 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-User.where(:login => :saberma).first.try(:store).try(:destroy)
+saberma = User.where(:login => :saberma).first
+saberma.try(:store).try(:destroy)
+saberma.try(:destroy)
 saberma = User.create(:login => :saberma, :email => 'saberma@shopqi.com', :password => '666666')
 
 #热门分类

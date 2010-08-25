@@ -60,6 +60,17 @@ var tooltip_setting = {
   }
 };
 
+var image_tooltip_setting = $.extend(tooltip_setting, {
+  onBeforeShow: function(){
+    this.getTip().width(960);
+    this.getTip().height(300);
+    var url = '/images/' + id(this.getTrigger().attr('id')) + '/edit';
+    $.get(url, function(body){
+      $('#tooltip').html(body);
+    });
+  }
+});
+
 //显示提示层动态调整
 var dynamic_setting = { bottom: { direction: 'down', bounce: true } };
 
@@ -67,6 +78,9 @@ jQuery(function ($) {
   //show panel
   $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
   //$('.editable a').tooltip(tooltip_setting);
+
+  //image
+  $('.image_editable').tooltip(image_tooltip_setting).dynamic(dynamic_setting);
 
   $('.sortable').each(function(){
     $(this).sortable({

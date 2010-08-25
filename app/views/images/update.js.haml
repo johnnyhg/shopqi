@@ -1,15 +1,2 @@
-//preview image
-//$("#preview").html('#{escape_javascript( render(:partial => "images/preview", :object => resource))}');
-//$.jGrowl('更新成功');
-
 //callback
-if(Image.generated){
-Image.generated('#{resource.url}?#{Time.now.to_i}')
-}
-
-//preview_imag
-//if($('#relate_dom_id').val()){
-//var reload_image = $('#' + $('#relate_dom_id').val() + ' img')[0];
-//if(reload_image)
-//reload_image.src = '#{resource.url}?#{Time.now.to_i}';
-//}
+$('##{id(resource)}').attr('src', '#{resource.url}');

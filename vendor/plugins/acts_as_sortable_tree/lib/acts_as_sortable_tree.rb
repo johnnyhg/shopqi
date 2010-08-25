@@ -17,8 +17,8 @@ module Mongoid
         acts_as_tree :order => [:pos, :asc]
 
         # 虚拟根节点
-        def self.root
-          self.create(:name => :invisible)
+        def self.root(options = {})
+          self.create({:name => :invisible}.merge(options))
         end
 
         # 配合acts_as_list，限定子记录排序范围
