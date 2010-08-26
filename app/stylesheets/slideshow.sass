@@ -1,0 +1,42 @@
+@import "compass/utilities/lists/horizontal-list"
+
+ul
+  &.slideshow
+    list-style: none
+    width: 720px
+    height: 390px
+    overflow: hidden
+    position: relative
+    margin: 0
+    padding: 0
+    li.slideshow_image
+      position: absolute
+      left: 0
+      top: 0
+      &.show
+        z-index: 500
+  img
+    border: none
+
+#slideshow-caption
+  width: 720px
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 500
+  .slideshow-caption-container
+    +horizontal-list(1px)
+    text-align: center
+    z-index: 1000
+    li
+      a
+        display: block
+        line-height: 30px
+        height: 33px
+        color: #fff
+        background: #000
+        
+  h3
+    margin: 0
+    padding: 0
+    font-size: 14px
