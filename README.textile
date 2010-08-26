@@ -178,14 +178,7 @@ h1. 技术互助
 
 h1. Powered By
 
-*Ruby1.9.2 rc*
-!http://www.ruby-lang.org/images/logo.gif!:http://www.ruby-lang.org/
-
-*Rails3 rc*
-!http://rubyonrails.org/images/rails.png!:http://rubyonrails.org
-
-*mongoDB 1.4.4*
-!http://www.mongodb.org/download/attachments/132305/PoweredMongoDBgreen50.png?version=1&modificationDate=1247081595817!:http://www.mongodb.org/
+!http://www.ruby-lang.org/images/logo.gif!:http://www.ruby-lang.org/ !http://rubyonrails.org/images/rails.png!:http://rubyonrails.org !http://www.mongodb.org/download/attachments/132305/PoweredMongoDBgreen50.png?version=1&modificationDate=1247081595817!:http://www.mongodb.org/ !http://engineerssolution.co.cc/wp-content/uploads/2010/06/compass-300x80.png!:http://compass-style.org !http://haml-lang.com/images/haml.gif!:http://haml-lang.com !http://sass-lang.com/images/sass.gif!:http://sass-lang.com
 
 h1. License
 
