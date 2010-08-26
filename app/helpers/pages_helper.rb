@@ -31,4 +31,10 @@ module PagesHelper
   def car
     render :partial => "pages/header/car"
   end
+
+  ##### content #####
+  def focuses
+    render :partial => "pages/content/focuses"
+  end
+
 end

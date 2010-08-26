@@ -17,14 +17,10 @@
     .grid_4=car
 
 #content
-  = render :partial => "containers/item", :collection => resource.containers.roots.first.children
+  =render :partial => "containers/item", :collection => resource.containers.roots.first.children
 
   .container_24
-    .grid_18
-      %ul#focus.slideshow
-        %li=link_to image_tag('http://images.vancl.com/Others/2010/8/23/but_home_3-0823-9.jpg', :title => '铅笔裤特惠'), '/'
-        %li=link_to image_tag('http://images.vancl.com/Others/2010/8/23/but_home_6-0823.jpg', :title => '秋冬搭配基础单品'), '/'
-        %li=link_to image_tag('http://images.vancl.com/Others/2010/8/18/but_home_1_100620816-34.jpg', :title => '帆布休闲鞋抢购价'), '/'
+    .grid_18=focuses
     .grid_6
 
 
