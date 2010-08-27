@@ -125,11 +125,13 @@ page.save
 Menu.sprite page
 
 #轮播广告
+=begin
 %w( 激情世界杯 最爱草包 时尚之夜 冬季暖包 浪美特价 ).each do |label|
   page.focuses << Focus.new(:name => label, :url => '/focus')
 end
 page.focuses.init_list!
 page.save
+=end
 
 # 商品列表
 container_root = page.containers.roots.first

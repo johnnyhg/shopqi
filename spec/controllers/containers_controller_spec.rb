@@ -19,4 +19,14 @@ describe ContainersController do
     response.should be_success
     @container.reload.categories.size.should eql 1
   end
+
+  it 'should save via type' do
+    lambda do
+      xhr :post, :create, :container => {
+        :parent_id => @container.id.to_s,
+        :type => :focuses
+      }
+      response.should be_success
+    end.should change(Container, :count).by(1)
+  end
 end

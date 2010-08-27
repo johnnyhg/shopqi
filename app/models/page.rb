@@ -7,7 +7,7 @@ class Page
   include Mongoid::BelongToStore
   belong_to_store
 
-  has_many_sortable :navs, :menus, :focuses
+  has_many_sortable :navs, :menus
   references_many :containers, :dependent => :destroy
 
   field :name

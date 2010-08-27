@@ -3,8 +3,13 @@
 class Focus
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Sortable
-  sortable_belong_to :page
+  include ActsAsList::Mongoid
+
+  embedded_in :item, :inverse_of => :focueses
+
+  #排序
+  field :pos, :type => Integer
+  acts_as_list :column => :pos
 
   field :name
   field :url

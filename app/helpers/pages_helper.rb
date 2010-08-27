@@ -33,8 +33,8 @@ module PagesHelper
   end
 
   ##### content #####
-  def focuses
-    render :partial => "pages/content/focuses"
+  def focuses(collection)
+    render :partial => "pages/content/focuses", :locals => { :collection => collection }
   end
 
 end

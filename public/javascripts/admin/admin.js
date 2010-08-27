@@ -60,7 +60,7 @@ var tooltip_setting = {
   }
 };
 
-var image_tooltip_setting = $.extend(tooltip_setting, {
+var image_tooltip_setting = $.extend({}, tooltip_setting, {
   onBeforeShow: function(){
     this.getTip().width(960);
     this.getTip().height(300);

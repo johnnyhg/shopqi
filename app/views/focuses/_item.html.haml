@@ -1,2 +1,2 @@
 =content_tag_for :li, item , 'edit-width' => '960px', 'edit-height' => '570px', 'edit-type' => :focuses , 'edit-id' => item.id  do
-  =link_to item.name, item.url, :target => :_blank
+  =link_to image_tag(item.image.url, :title => item.name), item.url, :target => :_blank
