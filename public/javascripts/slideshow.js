@@ -22,7 +22,7 @@ function slideShow(speed) {
     var caption = $('<li/>');
     //reduce 2px for li left and right padding
     caption.appendTo('.slideshow-caption-container').width($('.slideshow').width()/slideshow_image_size - 2);
-    var text = $('<a/>').html($('img', this).attr('title'));
+    var text = $('<a/>').html($('img', this).attr('alt'));
     text.attr('href', $(this).find('a').attr('href'));
     caption.append(text);
   });

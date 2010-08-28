@@ -30,6 +30,10 @@ class Container
     if self.type
       self.item = Item.new(:type => self.type)
       self.item.run_callbacks :create
+      self.grids = case self.type.to_sym
+      when :focuses
+        18
+      end
     end
   end
 

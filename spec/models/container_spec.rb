@@ -16,6 +16,7 @@ describe Container do
     container = root.children.first.reload
     container.item.should_not be_nil
     container.item.type.should eql 'focuses'
+    container.grids.should eql 18
 
     container.item.focuses.size.should eql 3
   end

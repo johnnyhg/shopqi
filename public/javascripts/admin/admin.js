@@ -63,7 +63,7 @@ var tooltip_setting = {
 var image_tooltip_setting = $.extend({}, tooltip_setting, {
   onBeforeShow: function(){
     this.getTip().width(960);
-    this.getTip().height(300);
+    this.getTip().height(this.getTrigger().height() + 70);
     var url = '/images/' + id(this.getTrigger().attr('id')) + '/edit';
     $.get(url, function(body){
       $('#tooltip').html(body);

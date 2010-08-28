@@ -7,4 +7,9 @@ module ContainersHelper
   def item_partial(child)
     send(child.item.type, child.item.focuses)
   end
+
+  # 所有子记录所占列总数
+  def grids_sum(item)
+    item.children.map(&:grids).sum
+  end
 end
