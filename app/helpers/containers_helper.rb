@@ -5,7 +5,7 @@ module ContainersHelper
 
   # 根据item类型，render相应的页面内容
   def item_partial(child)
-    send(child.item.type, child.item.focuses)
+    send(child.item.type, child.item)
   end
 
   # 所有子记录所占列总数

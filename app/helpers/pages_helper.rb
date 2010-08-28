@@ -33,8 +33,11 @@ module PagesHelper
   end
 
   ##### content #####
-  def focuses(collection)
-    render :partial => "pages/content/focuses", :locals => { :collection => collection }
+  def focuses(item)
+    render :partial => "containers/items/focuses", :locals => { :collection => item.focuses }
   end
 
+  def sidead(item)
+    render :partial => "containers/items/sidead", :object => item.image
+  end
 end

@@ -1,8 +1,0 @@
-=content_tag_for :div, item, :class => 'container_24' do
-  /
-    %ul.index_products.products_list
-      = render :partial => "pages/product/small", :collection => Product.any_in(:category_path => item.categories.map(&:id)), :as => :product
-  -if item.image_id
-    .grid_24
-      =link_to '/' do
-        =image_tag item.image.url, :class => :image_editable, :id => id(item.image), :alt => '通栏广告'

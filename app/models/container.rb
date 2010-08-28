@@ -13,9 +13,6 @@ class Container
   references_many :categories, :stored_as => :array, :inverse_of => :container
   embeds_one :item
 
-  # 在线文字合成ID: 通栏广告
-  field :image_id
-
   # 占多少列
   field :grids, :type => Integer, :default => 24
 
@@ -23,7 +20,7 @@ class Container
   attr_accessor :type
 
   # 回调方法
-  before_create :create_image_and_set_page
+  before_create :set_page
   before_create :init_item
 
   def init_item
@@ -33,19 +30,14 @@ class Container
       self.grids = case self.type.to_sym
       when :focuses
         18
+      when :sidead
+        6
       end
     end
   end
 
-  def create_image_and_set_page
-    if parent_id
-      self.page = parent.page
-      #self.image_id = Image.create(:width => 940, :height => 70).id
-    end
-  end
-
-  def image
-    Image.find image_id
+  def set_page
+    self.page = parent.page if parent_id
   end
 end
 
@@ -57,18 +49,30 @@ class Item
 
   field :type
   # mongoid暂不支持
-  #validates_inclusion_of :type, :in => %w( focuses )
+  validates_inclusion_of :type, :in => %w( focuses sidead )
+
+  # 在线文字合成ID: (通栏,边栏)广告
+  field :image_id
 
   def sorted_focuses
     focuses.sort {|x, y| x.pos <=> y.pos}
   end
 
-  before_create :init_focuses
+  before_create :init_item
 
-  def init_focuses
-    3.times do |i|
-      self.focuses << Focus.new(:name => "标题#{i+1}", :url => '/')
-      self.focuses.last.run_callbacks :create
+  def init_item
+    case self.type.to_sym
+    when :focuses
+      3.times do |i|
+        self.focuses << Focus.new(:name => "标题#{i+1}", :url => '/')
+        self.focuses.last.run_callbacks :create
+      end
+    when :sidead
+      self.image_id = Image.create(:width => 220, :height => 120).id
     end
+  end
+
+  def image
+    Image.find image_id
   end
 end
