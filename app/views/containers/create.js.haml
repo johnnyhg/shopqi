@@ -4,4 +4,4 @@ $("#tooltip").trigger('cancle');
 $("body").append('#{escape_javascript( render(:partial => "containers/item", :object => resource))}');
 
 //reset tooltip
-$('##{id(resource)}').tooltip(container_new_tooltip_setting).dynamic(dynamic_setting);
+$('##{id(resource)}').qtip($.extend({ content: { url: '/containers/new', data: { parent_id: '#{id(resource)}' } }}, qtip_setting));

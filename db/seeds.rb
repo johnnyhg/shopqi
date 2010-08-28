@@ -134,6 +134,6 @@ page.save
 =end
 
 # 商品列表
-container_root = page.containers.roots.first
-container_root.children << page.containers.create
-container_root.children.init_list!
+#container_root = page.containers.roots.first
+#container_root.children << page.containers.create
+#container_root.children.init_list!

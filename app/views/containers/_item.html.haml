@@ -1,5 +1,3 @@
-=content_tag_for :div, item, :class => 'container_24' do
-  -item.children.each do |child|
-    %div{:class => "grid_#{child.grids}"}=item_partial(child)
-  -if grids_sum(item) < 24
-    %div{:class => "grid_#{24 - grids_sum(item)}"}
+.container_24
+  %div{:class => :grid_24, :id => item.id}<
+    = render :partial => "containers/child", :collection => item.children, :locals => {:containers => item.children}

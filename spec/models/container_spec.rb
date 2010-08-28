@@ -8,7 +8,7 @@ describe Container do
     @page = @saberma.store.pages.homepage
   end
 
-  it 'should save item' do
+  it 'should save focuses item' do
     root = @page.containers.roots.first
     root.item.should be_nil
 

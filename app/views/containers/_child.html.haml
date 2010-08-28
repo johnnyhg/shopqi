@@ -1,0 +1,5 @@
+%div{:class => grid_class(containers, child), :id => child.id}<
+  -if child.item
+    =item_partial(child)
+  -else
+    = render :partial => "containers/child", :collection => child.children, :locals => {:containers => child.children}

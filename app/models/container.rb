@@ -13,8 +13,9 @@ class Container
   references_many :categories, :stored_as => :array, :inverse_of => :container
   embeds_one :item
 
+  MAX_GRIDS = 24
   # 占多少列
-  field :grids, :type => Integer, :default => 24
+  field :grids, :type => Integer, :default => MAX_GRIDS
 
   # 用于传递给item
   attr_accessor :type

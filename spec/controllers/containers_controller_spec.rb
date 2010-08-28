@@ -27,6 +27,6 @@ describe ContainersController do
         :type => :focuses
       }
       response.should be_success
-    end.should change(Container, :count).by(1)
+    end.should change(Container, :count).by(2)
   end
 end

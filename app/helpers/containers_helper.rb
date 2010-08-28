@@ -8,8 +8,10 @@ module ContainersHelper
     send(child.item.type, child.item)
   end
 
-  # 所有子记录所占列总数
-  def grids_sum(item)
-    item.children.map(&:grids).sum
+  def grid_class(containers, item)
+    css_class = ["grid_#{item.grids}"]
+    css_class << :alpha if (item == containers.first)
+    css_class << :omega if (item == containers.last)
+    css_class.join(' ')
   end
 end
