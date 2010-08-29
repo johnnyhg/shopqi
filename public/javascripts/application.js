@@ -1,7 +1,7 @@
 // remove id prefix
 // example: id('container_111'), will return '111'
 function id(str){
-  return str.substring(str.indexOf('_') + 1, str.length);
+  return str.substring(str.lastIndexOf('_') + 1, str.length);
 }
 
 jQuery(function ($) {
