@@ -9,7 +9,7 @@ module ContainersHelper
   end
 
   def grid_class(containers, item)
-    css_class = ["grid_#{item.grids}"]
+    css_class = [name(item), "grid_#{item.grids}"]
     css_class << :alpha if (item == containers.first)
     css_class << :omega if (item == containers.last)
     css_class.join(' ')

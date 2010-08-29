@@ -1,4 +1,4 @@
-%div{:class => grid_class(containers, child), :id => child.id}<
+%div{:class => grid_class(containers, child), :id => id(child)}<
   -if child.item
     =item_partial(child)
   -else
