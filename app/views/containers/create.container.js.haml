@@ -1,0 +1,10 @@
+//close qtip
+$("#tooltip").trigger('cancle');
+
+//appendTo parent
+$('#content').append('#{escape_javascript( render(:partial => "containers/item", :object => resource))}');
+$('##{id(resource)}').effect('highlight');
+
+//reset qtip
+$('##{id(resource)} .grid_24').each(Container.generate_assist);
+Container.attach_tip();

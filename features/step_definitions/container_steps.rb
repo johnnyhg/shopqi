@@ -6,6 +6,10 @@
   root.children.init_list!
 end
 
+当 /^我?把鼠标移进容器操作横栏$/ do
+  page.execute_script("$('.container_operates:first').mouseover()")
+end
+
 当 /^我?把鼠标移进空白容器$/ do
   page.execute_script("$('.container').mouseover()")
 end

@@ -40,6 +40,15 @@ class Container
   def set_page
     self.page = parent.page if parent_id
   end
+
+  def children_full?
+    self.children.map(&:grids).sum == self.grids
+  end
+
+  # 重载根节点的判断方法
+  def root?
+    self.depth == 1
+  end
 end
 
 #内容元素

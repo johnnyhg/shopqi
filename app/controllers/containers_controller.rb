@@ -5,12 +5,15 @@ class ContainersController < InheritedResources::Base
   respond_to :js, :only => [:create, :update, :destroy]
 
   create! do |success, failure|
-    if resource.parent
-      grids_sum = resource.parent.children.map(&:grids).sum
-      resource.parent.children << Container.create(:grids => (resource.parent.grids - grids_sum)) if grids_sum < resource.parent.grids
+    success.js {
       # 初始化位置
       resource.parent.children.init_list!
-    end
+      if resource.root?
+        render :action => "create.container"
+      else
+        render :action => "create"
+      end
+    }
   end
 
   protected
