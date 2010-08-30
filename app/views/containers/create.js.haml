@@ -5,5 +5,9 @@ $("#tooltip").trigger('cancle');
 $('##{id(resource.parent)}').append('#{escape_javascript( render(:partial => "containers/child", :object => resource, :locals => {:containers => resource.parent.children}))}');
 $('##{id(resource)}').effect('highlight');
 
+//destroy old qtip
+$('##{id(resource)}').parents('.container_24').find('.assist').remove();
+$('##{id(resource)}').parents('.container_24').find('.qtip_container').removeClass('qtip_container').qtip('destroy');
+
 //reset qtip
 $('##{id(resource.parent)} .grid_24').each(Container.generate_assist);
