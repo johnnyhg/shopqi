@@ -91,5 +91,6 @@ jQuery(function ($) {
     });
   });
 
+  $('ul.slideshow').slideshow();
   //$("ul#nav li a.dom_indexmenu").css('background-image', 'none');
 });

@@ -1,79 +1,110 @@
-$(document).ready(function() {		
-    //Execute the slideShow, set 3 seconds for each images
-    slideShow(3000);
-});
+/*!
+ * jquery.slideshow. The jQuery slideshow plugin
+ *
+ * Copyright (c) 2010 saberma
+ * http://www.shopqi.com
+ *
+ * Licensed under MIT
+ * http://www.opensource.org/licenses/mit-license.php
+ *
+ * Launch  : August 2010
+ * Version : 1.0.0
+ * Released: Monday 30th August, 2010 - 00:00
+ */
+(function($) {
+  var Slideshow = function(element, options){
+    var self = this,
+      $this = $(element),
+      defaults = { speed: 3000 },
+      settings = $.extend(defaults, options || {});
 
-function slideShow(speed) {
-  //Set the opacity of all images to 0
-  $('ul.slideshow li').css({opacity: 0.0}).addClass('slideshow_image');
+    //if no IMGs have the show class, grab the first image
+    this.getCurrent = function(){
+      return ($('li.show', $this) ? $('li.show', $this) : $('li:first', $this));
+    }
 
-  //Get the first image and display it (set it to full opacity)
-  $('ul.slideshow li:first').css({opacity: 1.0});
+    //Get next image, if it reached the end of the slideshow, rotate it back to the first image
+    this.getNext = function(){
+      var current = this.getCurrent();
+      return ((current.next().length) ? ((current.next().hasClass('slideshow-caption')) ? $('li:first', $this) :current.next()) : $('li:first', $this));
+    }
 
-  //append a LI item to the UL list for displaying caption
-  $('ul.slideshow').append('<li id="slideshow-caption" class="caption"><ul class="slideshow-caption-container"></ul></li>');
+    this.moveTo = function(next){
+      var current = this.getCurrent();
 
-  //Display the caption
-  $('#slideshow-caption').css({opacity: 0.7, top:355});
+      //Set the fade in effect for the next image, show class has higher z-index
+      next.css({opacity: 0.0}).addClass('show').animate({opacity: 1.0}, 1000);
 
-  //Get the caption of the first image from REL attribute and display it
-  var slideshow_image_size = $('ul.slideshow li.slideshow_image').size();
-  $('ul.slideshow li.slideshow_image').each(function(){
-    var caption = $('<li/>');
-    //reduce 2px for li left and right padding
-    caption.appendTo('.slideshow-caption-container').width($('.slideshow').width()/slideshow_image_size - 2);
-    var text = $('<a/>').html($('img', this).attr('alt'));
-    text.attr('href', $(this).find('a').attr('href'));
-    caption.append(text);
-  });
+      //Hide the current image
+      current.animate({opacity: 0.0}, 1000).removeClass('show');
 
-  //Call the gallery function to run the slideshow	
-  gallery();
-  var timer = setInterval('gallery()',speed);
+      //Display the content
+      $('.slideshow-caption-container li', $this).removeClass('current').css({opacity: 0.7});
+      var index = $('> li', $this).index(next);
+      $('.slideshow-caption-container li', $this).eq(index).addClass('current').css({opacity: 1.0});
+    }
 
-  //pause the slideshow on mouse over
-  $('ul.slideshow').hover(function () {
-    clearInterval(timer);	
-  }, function () {
-    timer = setInterval('gallery()',speed);			
-  });
+    this.gallery = function() {
+      self.moveTo(self.getNext());
+    }
 
-  //point to current
-  $('ul.slideshow .slideshow-caption-container li').mouseover(function(){
-    if(!$(this).hasClass('current')){
-      var index = $('ul.slideshow .slideshow-caption-container li').index($(this));
-      var next = $('ul.slideshow > li').eq(index);
-      moveTo(next);
+    this.slideshow = function(){
+      //Set the opacity of all images to 0
+      $('li', $this).css({opacity: 0.0}).addClass('slideshow_image');
+
+      //Get the first image and display it (set it to full opacity)
+      $('li:first', $this).css({opacity: 1.0});
+
+      //append a LI item to the UL list for displaying caption
+      $this.append('<li class="slideshow-caption caption"><ul class="slideshow-caption-container"></ul></li>');
+
+      //Display the caption
+      $('.slideshow-caption', $this).css({opacity: 0.7, top:355});
+
+      //Get the caption of the first image from REL attribute and display it
+      var slideshow_image_size = $('li.slideshow_image', $this).size();
+      $('li.slideshow_image', $this).each(function(){
+        var caption = $('<li/>');
+        //reduce 2px for li left and right padding
+        $('.slideshow-caption-container', $this).append(caption);
+        caption.width($this.width()/slideshow_image_size - 2);
+        var text = $('<a/>').html($('img', this).attr('alt'));
+        text.attr('href', $(this).find('a').attr('href'));
+        caption.append(text);
+      });
+
+      //Call the gallery function to run the slideshow	
+      this.gallery();
+      var timer = setInterval(function(){ self.gallery() }, settings.speed);
+
+      //pause the slideshow on mouse over
+      $this.hover(function () {
+        clearInterval(timer);	
+      }, function () {
+        timer = setInterval(function(){ self.gallery() }, settings.speed);
+      });
+
+      //point to current
+      $('.slideshow-caption-container li', $this).mouseover(function(){
+        if(!$(this).hasClass('current')){
+          var index = $('.slideshow-caption-container li', $this).index($(this));
+          var next = $('> li', $this).eq(index);
+          self.moveTo(next);
+        }
+      });
+    }
+
+    this.slideshow();
+  }
+
+  $.fn.extend({
+    slideshow: function(options){
+      return this.each(function(){
+        if($(this).data('slideshow')) return;
+
+        var slideshow = new Slideshow(this, options);
+        $(this).data('slideshow', slideshow);
+      });
     }
   });
-}
-
-function gallery() {
-  moveTo(getNext());
-}
-
-//if no IMGs have the show class, grab the first image
-function getCurrent(){
-  return ($('ul.slideshow li.show') ?  $('ul.slideshow li.show') : $('#ul.slideshow li:first'));
-}
-
-//Get next image, if it reached the end of the slideshow, rotate it back to the first image
-function getNext(){
-  var current = getCurrent();
-  return ((current.next().length) ? ((current.next().attr('id') == 'slideshow-caption')? $('ul.slideshow li:first') :current.next()) : $('ul.slideshow li:first'));
-}
-
-function moveTo(next){
-  var current = getCurrent();
-
-  //Set the fade in effect for the next image, show class has higher z-index
-  next.css({opacity: 0.0}).addClass('show').animate({opacity: 1.0}, 1000);
-
-  //Hide the current image
-  current.animate({opacity: 0.0}, 1000).removeClass('show');
-
-  //Display the content
-  $('.slideshow-caption-container li').removeClass('current').css({opacity: 0.7});
-  var index = $('ul.slideshow > li').index(next);
-  $('.slideshow-caption-container li').eq(index).addClass('current').css({opacity: 1.0});
-}
+})(jQuery);
