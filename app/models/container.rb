@@ -22,23 +22,41 @@ class Container
 
   # 回调方法
   before_create :set_page
+  before_create :init_grids
   before_create :init_item
+  after_create :tranform_to_child
+
+  def init_grids
+    if self.type
+      self.grids = case self.type.to_sym
+        when :focuses then 18
+        when :sidead then 6
+      end
+    end
+  end
 
   def init_item
-    if self.type
+    if self.type and !is_nested?
       self.item = Item.new(:type => self.type)
       self.item.run_callbacks :create
-      self.grids = case self.type.to_sym
-      when :focuses
-        18
-      when :sidead
-        6
-      end
     end
   end
 
   def set_page
     self.page = parent.page if parent_id
+  end
+
+  # 是否需要转换为嵌套父容器
+  def tranform_to_child
+    if is_nested?
+      self.children << self.class.new(:type => self.type)
+      self.children.init_list!
+      self.type = nil
+    end
+  end
+
+  def is_nested?
+    parent and parent.grids > self.grids
   end
 
   def children_full?

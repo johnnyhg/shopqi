@@ -8,6 +8,24 @@ describe Container do
     @page = @saberma.store.pages.homepage
   end
 
+  describe 'grids less than parents grids' do
+    it 'should add a parent container' do
+      root = @page.containers.roots.first
+      container = Container.new
+      root.children << container
+
+      lambda do
+        focuses_container = Container.create(
+          :parent_id => container.id,
+          :type => :focuses
+        )
+        focuses_container.item.should be_nil
+        focuses_container.children.size.should eql 1
+        focuses_container.grids.should eql focuses_container.children.first.grids
+      end.should change(Container, :count).by(2)
+    end
+  end
+
   it 'should save focuses item' do
     root = @page.containers.roots.first
     root.item.should be_nil

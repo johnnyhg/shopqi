@@ -66,6 +66,7 @@
           $('a', $(this)).removeClass('selected');
           $("a[value='" + value + "']", $(this)).addClass('selected');
         });
+        return false;
       });
 
       //可拖动
@@ -150,6 +151,7 @@
       });
 
       Word.init(word);
+      return false;
     });
 
     //生成图片
@@ -201,6 +203,7 @@
       }
       $.post(url, data, null, 'script');
       //$('#preview').html('正在生成图片');
+      return false;
     });
 
     //修改文字属性
@@ -223,6 +226,7 @@
       }else{
         $.jGrowl("请先点击最左边的按钮添加文字.");
       }
+      return false;
     });
 
     //面板大小调整按钮
@@ -230,6 +234,7 @@
       var width = /宽(\d+)(px)?/.exec($(this).attr('title'))[1];
       var height = /高(\d+)(px)?/.exec($(this).attr('title'))[1];
       $('#panel').width(parseInt(width)).height(parseInt(height));
+      return false;
     });
 
     //关闭
