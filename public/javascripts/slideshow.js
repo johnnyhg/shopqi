@@ -76,12 +76,20 @@
       //Call the gallery function to run the slideshow	
       this.gallery();
       var timer = setInterval(function(){ self.gallery() }, settings.speed);
+      //修正:鼠标悬停频繁时会产生多个timer的问题，导致标题切换混乱
+      var timer_cleared = false;
 
       //pause the slideshow on mouse over
       $this.hover(function () {
-        clearInterval(timer);	
+        if(!timer_cleared){
+          clearInterval(timer);
+          timer_cleared = true;
+        }
       }, function () {
-        timer = setInterval(function(){ self.gallery() }, settings.speed);
+        if(timer_cleared){
+          timer = setInterval(function(){ self.gallery() }, settings.speed);
+          timer_cleared = false;
+        }
       });
 
       //point to current

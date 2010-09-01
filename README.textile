@@ -141,7 +141,7 @@ h2. jQuery
 使用时做了修正:修改源码，去掉jquery文件名前缀导致无法正常识别出themes所在位置
   修正多级节点的非叶子节点在checkbox插件中回显时会被置为半选中状态，而其下级节点却并没有选中
 
-"qtip":
+"qtip":http://craigsworks.com/projects/qtip
 官方发布下载版本1.0.0-rc3存在两个问题:无法在jquery-1.4.2下使用，可手动修正；调用destroy，报state undefined错误
 "最新开发版本已修正以上两个问题":http://bazaar.launchpad.net/~craig.craigsworks/qtip/1.0/files
 
