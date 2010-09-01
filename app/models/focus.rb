@@ -20,7 +20,7 @@ class Focus
   before_create :init_image
 
   def init_image
-    self.image_id = Image.create(:width => 725, :height => 391).id
+    self.image_id = Image.create(:width => 700, :height => 390).id
   end
 
   def image
