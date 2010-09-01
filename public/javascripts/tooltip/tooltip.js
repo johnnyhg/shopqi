@@ -110,7 +110,7 @@
                 //提示面板不可超出body的范围 2010.07.20 by saberma
                 if(left < trigger.offset().left)
                   left = trigger.offset().left;
-                var max_right = $(":first-child", document.body).offset().left + $(":first-child", document.body).width();
+                var max_right = $(".container_24:first-child", document.body).offset().left + $(".container_24:first-child", document.body).width();
                 if(left+tip.outerWidth() > max_right)
                   left = max_right - tip.outerWidth();
 
