@@ -1,20 +1,13 @@
-= render :partial => "images/panel", :locals => { :image => resource.image }
-.container_24
-  .operates
-    =link_to '<<在其前添加', new_focus_path('focus[neighbor]' => resource.id, :'focus[direct]' => :above), :remote => true, :update => 'tooltip' unless resource.new_record?
-    =link_to '在其后添加>>', new_focus_path('focus[neighbor]' => resource.id, 'focus[direct]' => :below), :remote => true, :update => 'tooltip', :style => 'float:right' unless resource.new_record?
-  = semantic_form_remote_for(resource) do |f|
-    =f.inputs do
-      =f.input :direct, :as => :hidden
-      =f.input :neighbor, :as => :hidden
-    =f.inputs :name, :url
-    =f.buttons do
-      =f.commit_button '保存'
-      -unless resource.new_record?
-        %li=link_to '删除', focus_path, :remote => true, :method => :delete
-      %li=link_to_function '关闭', '$("#tooltip").trigger("cancle")'
-
-:javascript
-  Image.generated = function(url){
-    $('##{id(resource)}_image').attr('src', url);
-  };
+.operates
+  =link_to '<<在其前添加', new_focus_path(:neighbor => resource.id, :direct => :above, :container_id => params[:container_id]), :remote => true, :update => 'tooltip' unless resource.new_record?
+  =link_to '在其后添加>>', new_focus_path(:neighbor => resource.id, :direct => :below, :container_id => params[:container_id]), :remote => true, :update => 'tooltip', :style => 'float:right' unless resource.new_record?
+= semantic_form_remote_for(resource) do |f|
+  =hidden_field_tag :direct, params[:direct]
+  =hidden_field_tag :neighbor, params[:neighbor]
+  =hidden_field_tag :container_id, params[:container_id]
+  =f.inputs :name, :url
+  =f.buttons do
+    =f.commit_button '保存'
+    -unless resource.new_record?
+      %li=link_to '删除', focus_path, :remote => true, :method => :delete
+    %li=link_to_function '关闭', '$("#tooltip").trigger("cancle")'

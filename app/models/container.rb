@@ -73,7 +73,7 @@ end
 class Item
   include Mongoid::Document
   embedded_in :container, :inverse_of => :item
-  embeds_many :focuses
+  references_many :focuses
 
   field :type
   # mongoid暂不支持
@@ -91,10 +91,8 @@ class Item
   def init_item
     case self.type.to_sym
     when :focuses
-      3.times do |i|
-        self.focuses << Focus.new(:name => "标题#{i+1}", :url => '/')
-        self.focuses.last.run_callbacks :create
-      end
+      3.times { |i| self.focuses << Focus.create(:name => "标题#{i+1}", :url => '/', :item => self) }
+      self.focuses.init_list!
     when :sidead
       self.image_id = Image.create(:width => 220, :height => 120).id
     end

@@ -2,7 +2,4 @@
 $("#tooltip").trigger('cancle');
 
 //update
-$("##{resource.class.name.downcase}_#{resource.id}").replaceWith('#{escape_javascript( render(:partial => "#{resource.collection_name}/item", :object => resource, :locals => {:item_counter => 0}))}');
-
-//reset tooltip
-$("##{resource.class.name.downcase}_#{resource.id} a").tooltip(tooltip_setting).dynamic(dynamic_setting);
+$("##{id(resource)} a").attr('src', '#{resource.url}').text('#{resource.name}');

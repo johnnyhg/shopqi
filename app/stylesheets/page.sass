@@ -2,6 +2,10 @@
 @import "compass/utilities/lists/horizontal-list"
 @import "compass/utilities/general/min"
 
+body
+  //总是显示纵向滚动条，避免无滚动条时显示图片编辑发生抖动
+  overflow-y: scroll
+
 .tooltip
   z-index: 999
   :background-color #fffff0

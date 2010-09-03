@@ -7,7 +7,7 @@ class Store
 
   references_many :pages, :dependent => :destroy
 
-  store_has_many :users, :categories, :products, :hots, :containers
+  store_has_many :users, :categories, :products, :hots, :containers, :focuses
 
   # 模板
   field :template, :default => 'vancl'

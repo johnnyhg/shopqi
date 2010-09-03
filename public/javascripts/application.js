@@ -4,6 +4,14 @@ function id(str){
   return str.substring(str.lastIndexOf('_') + 1, str.length);
 }
 
+// get id prefix, change to pluralize
+// example: id('container_111'), will return 'containers'
+function name(str){
+  str = str.substring(0, str.lastIndexOf('_'));
+  str += str.match(/s$/) ? 'es' : 's'
+  return str;
+}
+
 jQuery(function ($) {
   // remote anchor support update attribute
   $('a[data-remote]').live('ajax:success', function(xhr, data, status) {

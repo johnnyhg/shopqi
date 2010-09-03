@@ -4,8 +4,11 @@ class Focus
   include Mongoid::Document
   include Mongoid::Timestamps
   include ActsAsList::Mongoid
+  include Mongoid::BelongToStore
 
-  embedded_in :item, :inverse_of => :focueses
+  belong_to_store
+
+  referenced_in :item
 
   #排序
   field :pos, :type => Integer

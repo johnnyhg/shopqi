@@ -1,13 +1,5 @@
-//refresh image
-$("ul#nav li a.dom_indexmenu").css('background-image', 'url(#{current_user.store.pages.homepage.menu_sprite_url}?#{Time.now.to_i})');
-
-//fade
-$("#tooltip").fadeOut('slow');
+//hide
+$("#tooltip").trigger('cancle');
 
 //remove
-$("#nav li[edit-id='#{resource.id}']").remove();
-
-//resort
-$("ul#nav li a.dom_indexmenu").parent().removeAttr('class').each(function(index){
-$(this).addClass('nav_0' + (index + 1));
-});
+$("##{id(resource)}").trigger('slideshow.destroy');

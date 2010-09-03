@@ -31,15 +31,21 @@ var tooltip_setting = {
     $('#tooltip').html('正在处理...');
     var obj = this.getTrigger().parent();
     //初始化提示面板的宽高
-    if(obj.attr('edit-width'))
-      this.getTip().width(obj.attr('edit-width'));
-    if(obj.attr('edit-height'))
-      this.getTip().height(obj.attr('edit-height'));
+    if(obj.attr('edit_width'))
+      this.getTip().width(parseInt(obj.attr('edit_width')));
+    if(obj.attr('edit_height'))
+      this.getTip().height(parseInt(obj.attr('edit_height')));
+
+    var data = {};
 
     //新增还是修改
-    var url = obj.attr('edit-type') + '/new';
-    if(obj.attr('edit-id'))
-      url = obj.attr('edit-type') + '/' + obj.attr('edit-id') + '/edit';
+    var url = name(obj.attr('id')) + '/new';
+    if(obj.attr('id'))
+      url = name(obj.attr('id')) + '/' + id(obj.attr('id')) + '/edit';
+
+    //所属容器
+    var container = this.getTrigger().parents('.container');
+    data['container_id'] = id(container.attr('id'));
 
     //处理完后需要更新的节点
     if(obj.attr('relate_dom_id'))
@@ -49,7 +55,7 @@ var tooltip_setting = {
     if(obj.attr('callback_url'))
       url += "&callback_url=" + obj.attr('callback_url');
 
-    $.get(url, function(body){
+    $.get(url, data, function(body){
       $('#tooltip').html(body);
       var contrainer = $('#tooltip :first-child');
       //背景色，提示面板大小由具体的显示页面控制
@@ -77,7 +83,6 @@ var dynamic_setting = { bottom: { direction: 'down', bounce: true } };
 jQuery(function ($) {
   //show panel
   $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
-  //$('.editable a').tooltip(tooltip_setting);
 
   //image
   $('.image_editable').tooltip(image_tooltip_setting).dynamic(dynamic_setting);

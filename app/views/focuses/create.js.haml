@@ -1,16 +1,8 @@
-//insert
-$("#nav li[edit-id='#{params[:menu][:neighbor]}']").move('#{params[:menu][:direct]}', '#{escape_javascript( render(:partial => "menus/item", :object => resource, :locals => {:item_counter => 0}))}');
-
-//refresh image
-$("ul#nav li a.dom_indexmenu").css('background-image', 'url(#{current_user.store.pages.homepage.menu_sprite_url}?#{Time.now.to_i})');
-
-//reset tooltip
-$("#nav li[edit-id='#{resource.id}'] a.dom_indexmenu").tooltip(tooltip_setting).dynamic(dynamic_setting);
-
 //hide
 $("#tooltip").trigger('cancle');
 
-//resort
-$("ul#nav li a.dom_indexmenu").parent().removeAttr('class').each(function(index){
-$(this).addClass('nav_0' + (index + 1));
-});
+//insert
+$(".slideshow li[rel_id='focus_#{params[:neighbor]}']").move('#{params[:direct]}', '#{escape_javascript( render(:partial => "focuses/item", :object => resource, :locals => {:item_counter => 0}))}');
+
+//caption
+$(".slideshow").data('slideshow').refresh_caption();
