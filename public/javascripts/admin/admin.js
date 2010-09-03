@@ -80,21 +80,29 @@ var image_tooltip_setting = $.extend({}, tooltip_setting, {
 //显示提示层动态调整
 var dynamic_setting = { bottom: { direction: 'down', bounce: true } };
 
-jQuery(function ($) {
-  //show panel
-  $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
+Admin = {
+  refresh: function(){
+    //show panel
+    $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
+    $('.editable').removeClass('editable');
 
-  //image
-  $('.image_editable').tooltip(image_tooltip_setting).dynamic(dynamic_setting);
+    //image
+    $('.image_editable').removeClass('image_editable').tooltip(image_tooltip_setting).dynamic(dynamic_setting);
 
-  $('.sortable').each(function(){
-    $(this).sortable({
-      update: function(event, ui){
-        //$.jGrowl($(this).html(), {sticky: true});
-        $.post($(this).attr('sort_url'), $(this).sortable('serialize'), null, 'script');
-        // 轮播广告拖动后需要调整图片的位置
-        ui.item.trigger('sortable.update');
-      }
+    //sort
+    $('.sortable').removeClass('sortable').each(function(){
+      $(this).sortable({
+        update: function(event, ui){
+          //$.jGrowl($(this).html(), {sticky: true});
+          $.post($(this).attr('sort_url'), $(this).sortable('serialize'), null, 'script');
+          // 轮播广告拖动后需要调整图片的位置
+          ui.item.trigger('sortable.update');
+        }
+      });
     });
-  });
+  }
+};
+
+jQuery(function ($) {
+  Admin.refresh();
 });
