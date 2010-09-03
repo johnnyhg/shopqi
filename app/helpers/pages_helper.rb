@@ -34,7 +34,7 @@ module PagesHelper
 
   ##### content #####
   def focuses(item)
-    render :partial => "containers/items/focuses", :locals => { :collection => item.focuses }
+    render :partial => "containers/items/focuses", :locals => { :collection => item.sorted_focuses }
   end
 
   def sidead(item)

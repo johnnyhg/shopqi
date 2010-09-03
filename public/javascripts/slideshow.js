@@ -79,6 +79,16 @@
       self.refresh_caption_width();
     }
 
+    //Move, will trigger by sortable plugin
+    this.caption_moved = function(){
+      var index = self.getCaptions().index($(this));
+      var origin = $(".slideshow [rel_id='" + $(this).attr('id') + "']");
+      if(index > self.getImages().index(origin))
+        self.getImages().eq(index).after(origin);
+      else
+        self.getImages().eq(index).before(origin);
+    }
+
     //generate_caption
     this.generate_caption = function(){
       if(!$(this).attr('id')) return;
@@ -94,6 +104,8 @@
       var text = $('<a/>').html($('img', $(this)).attr('alt'));
       text.attr('href', $(this).find('a').attr('href'));
       caption.append(text);
+
+      caption.bind('sortable.update', self.caption_moved);
 
       //point to current
       self.getCaptions().mouseover(function(){
@@ -113,7 +125,7 @@
       $('li:first', $this).css({opacity: 1.0});
 
       //append a LI item to the UL list for displaying caption
-      $this.append('<li class="slideshow-caption caption"><ul class="slideshow-caption-container"></ul></li>');
+      $this.append('<li class="slideshow-caption caption"><ul class="slideshow-caption-container sortable" sort_url="/focuses/sort"></ul></li>');
 
       //Display the caption
       $('.slideshow-caption', $this).css({opacity: 0.7, top:355});

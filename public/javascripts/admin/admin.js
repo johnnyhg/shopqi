@@ -89,9 +89,11 @@ jQuery(function ($) {
 
   $('.sortable').each(function(){
     $(this).sortable({
-      update: function(){
+      update: function(event, ui){
         //$.jGrowl($(this).html(), {sticky: true});
         $.post($(this).attr('sort_url'), $(this).sortable('serialize'), null, 'script');
+        // 轮播广告拖动后需要调整图片的位置
+        ui.item.trigger('sortable.update');
       }
     });
   });
