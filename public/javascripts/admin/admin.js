@@ -45,7 +45,8 @@ var tooltip_setting = {
 
     //所属容器
     var container = this.getTrigger().parents('.container');
-    data['container_id'] = id(container.attr('id'));
+    if(container[0])
+      data['container_id'] = id(container.attr('id'));
 
     //处理完后需要更新的节点
     if(obj.attr('relate_dom_id'))

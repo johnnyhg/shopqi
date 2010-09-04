@@ -1,7 +1,6 @@
-$("#navs li[edit-id='#{params[:nav][:neighbor]}']").move('#{params[:nav][:direct]}', '#{escape_javascript( render(:partial => "navs/item", :object => resource))}');
-//reset tooltip
-$("#navs li[edit-id='#{resource.id}'] a").tooltip(tooltip_setting).dynamic(dynamic_setting);
 $("#tooltip").trigger('cancle');
-//reset first class
-$("#navs li:first").addClass('no_bar');
-$("#navs li:gt(0)").removeClass('no_bar');
+
+$("#nav_#{params[:nav][:neighbor]}").move('#{params[:nav][:direct]}', '#{escape_javascript( render(:partial => "navs/item", :object => resource))}');
+
+$("#nav_#{params[:nav][:neighbor]}").parent().children.removeClass('no_bar');
+$("#nav_#{params[:nav][:neighbor]}").parent().children(':first').addClass('no_bar');

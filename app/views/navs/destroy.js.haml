@@ -1,5 +1,5 @@
-$("#navs li[edit-id='#{resource.id}']").remove();
-$("#tooltip").fadeOut('slow');
-//reset first class
-$("#navs li:first").addClass('no_bar');
-$("#navs li:gt(0)").removeClass('no_bar');
+$("#tooltip").trigger('cancle');
+$("##{resource.id}").remove();
+
+$("##{id(resource)}").parent().children.removeClass('no_bar');
+$("##{id(resource)}").parent().children(':first').addClass('no_bar');

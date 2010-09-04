@@ -1,7 +1,3 @@
-$("#navs li[edit-id='#{resource.id}']").replaceWith('#{escape_javascript( render(:partial => "navs/item", :object => resource))}');
-//reset tooltip
-$("#navs li[edit-id='#{resource.id}'] a").tooltip(tooltip_setting).dynamic(dynamic_setting);
 $("#tooltip").trigger('cancle');
-//reset first class
-$("#navs li:first").addClass('no_bar');
-$("#navs li:gt(0)").removeClass('no_bar');
+
+$("##{id(resource)} a").attr('href', '#{resource.url}').text('#{resource.name}');

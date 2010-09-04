@@ -1,3 +1,4 @@
 //refresh class
-$("#navs li:first").addClass('no_bar');
-$("#navs li:gt(0)").removeClass('no_bar');
+-params[:nav].each do |nav_id|
+  $("#nav_#{nav_id}").removeClass('no_bar');
+$("#nav_#{params[:nav].first}").addClass('no_bar');
