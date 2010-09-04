@@ -1,8 +1,10 @@
 :sass
   ul#menus li a
-    background-image: url(/images/menu/#{current_user.store.pages.homepage.id}.png)
+    background-image: url(#{menu_bg_img})
 
--current_user.store.pages.homepage.sorted_menus.each_with_index do |menu, index|
+-# 新增时需要增加定义，为方便，固定10个
+-#current_user.store.pages.homepage.sorted_menus.each_with_index do |menu, index|
+-10.times do |index|
   :sass
     ul#menus
       .menu_#{index} a

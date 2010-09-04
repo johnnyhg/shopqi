@@ -1,13 +1,12 @@
+$("#tooltip").trigger('cancle');
+
 //refresh image
-$("ul#nav li a.dom_indexmenu").css('background-image', 'url(#{current_user.store.pages.homepage.menu_sprite_url}?#{Time.now.to_i})');
-
-//fade
-$("#tooltip").fadeOut('slow');
-
-//remove
-$("#nav li[edit-id='#{resource.id}']").remove();
+$("##{id(resource)}").parent().find('> li > a').css('background-image', 'url(#{menu_bg_img}?#{Time.now.to_i})');
 
 //resort
-$("ul#nav li a.dom_indexmenu").parent().removeAttr('class').each(function(index){
-$(this).addClass('nav_0' + (index + 1));
+var parent = $("##{id(resource)}").parent();
+//remove
+$("##{id(resource)}").remove();
+parent.children().removeAttr('class').each(function(index){
+$(this).addClass('menu_' + index);
 });

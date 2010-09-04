@@ -1,2 +1,2 @@
-=content_tag_for :li, item, :class => "menu_#{item_counter} #{item_counter == 0 ? 'on' : ''}", 'edit-width' => '300px', 'edit-height' => '130px', 'edit-type' => :menus , 'edit-id' => item.id do
+=content_tag_for :li, item, :class => "editable #{menu_selected(item_counter)}" do
   =link_to item.name, item.url

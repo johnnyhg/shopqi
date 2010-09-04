@@ -1,16 +1,16 @@
+$("#tooltip").trigger('cancle');
+
 //insert
-$("#nav li[edit-id='#{params[:menu][:neighbor]}']").move('#{params[:menu][:direct]}', '#{escape_javascript( render(:partial => "menus/item", :object => resource, :locals => {:item_counter => 0}))}');
+$("#menu_#{params[:menu][:neighbor]}").move('#{params[:menu][:direct]}', '#{escape_javascript( render(:partial => "menus/item", :object => resource, :locals => {:item_counter => 0}))}');
 
 //refresh image
-$("ul#nav li a.dom_indexmenu").css('background-image', 'url(#{current_user.store.pages.homepage.menu_sprite_url}?#{Time.now.to_i})');
-
-//reset tooltip
-$("#nav li[edit-id='#{resource.id}'] a.dom_indexmenu").tooltip(tooltip_setting).dynamic(dynamic_setting);
-
-//fade
-$("#tooltip").fadeOut('slow');
+$("##{id(resource)}").parent().find('> li > a').css('background-image', 'url(#{menu_bg_img}?#{Time.now.to_i})');
 
 //resort
-$("ul#nav li a.dom_indexmenu").parent().removeAttr('class').each(function(index){
-$(this).addClass('nav_0' + (index + 1));
+$("##{id(resource)}").parent().children().removeAttr('class').each(function(index){
+$(this).addClass('menu_' + index);
 });
+//readd class, for tooltip reset
+$("##{id(resource)}").addClass('editable');
+
+Admin.refresh();

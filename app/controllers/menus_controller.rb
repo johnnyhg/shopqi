@@ -6,7 +6,6 @@ class MenusController < InheritedResources::Base
   after_filter :sprite, :only => [:create, :update, :destroy, :sort]
 
   create! do |success, failure|
-    failure.js { render :action => "create.failure.js.haml"}
   end
 
   edit! do |format|
@@ -14,7 +13,6 @@ class MenusController < InheritedResources::Base
   end
 
   update! do |success, failure|
-    failure.js { render :action => "update.failure.js.haml"}
   end
 
   def sort

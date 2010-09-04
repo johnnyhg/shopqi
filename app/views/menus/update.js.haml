@@ -1,16 +1,7 @@
-//update
-$("#nav li[edit-id='#{resource.id}']").replaceWith('#{escape_javascript( render(:partial => "menus/item", :object => resource, :locals => {:item_counter => 0}))}');
+$("#tooltip").trigger('cancle');
 
 //refresh image
-$("ul#nav li a.dom_indexmenu").css('background-image', 'url(#{current_user.store.pages.homepage.menu_sprite_url}?#{Time.now.to_i})');
+$("##{id(resource)} > a").css('background-image', 'url(#{menu_bg_img}?#{Time.now.to_i})');
 
-//reset tooltip
-$("#nav li[edit-id='#{resource.id}'] a.dom_indexmenu").tooltip(tooltip_setting).dynamic(dynamic_setting);
-
-//fade
-$("#tooltip").fadeOut('slow');
-
-//resort
-$("ul#nav li a.dom_indexmenu").parent().removeAttr('class').each(function(index){
-$(this).addClass('nav_0' + (index + 1));
-});
+//update
+$("##{id(resource)} > a").attr('href', '#{resource.url}').text('#{resource.name}');

@@ -1,6 +1,7 @@
 //refresh image
-$("ul#nav li a.dom_indexmenu").css('background-image', 'url(#{current_user.store.pages.homepage.menu_sprite_url}?#{Time.now.to_i})');
-//resort
-$("ul#nav li a.dom_indexmenu").parent().removeAttr('class').each(function(index){
-$(this).addClass('nav_0' + (index + 1));
+-params[:menu].each_with_index do |menu_id, index|
+  $("#menu_#{menu_id} > a").css('background-image', 'url(#{menu_bg_img}?#{Time.now.to_i})');
+
+$("#menu_#{params[:menu].first}").parent().children().removeAttr('class').each(function(index){
+$(this).addClass('menu_' + index);
 });

@@ -4,3 +4,5 @@ $("#nav_#{params[:nav][:neighbor]}").move('#{params[:nav][:direct]}', '#{escape_
 
 $("#nav_#{params[:nav][:neighbor]}").parent().children.removeClass('no_bar');
 $("#nav_#{params[:nav][:neighbor]}").parent().children(':first').addClass('no_bar');
+
+Admin.refresh();

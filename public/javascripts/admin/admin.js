@@ -31,10 +31,11 @@ var tooltip_setting = {
     $('#tooltip').html('正在处理...');
     var obj = this.getTrigger().parent();
     //初始化提示面板的宽高
-    if(obj.attr('edit_width'))
-      this.getTip().width(parseInt(obj.attr('edit_width')));
-    if(obj.attr('edit_height'))
-      this.getTip().height(parseInt(obj.attr('edit_height')));
+    var width = 300, height = 130;
+    if(obj.attr('edit_width')) width = parseInt(obj.attr('edit_width'));
+    if(obj.attr('edit_height')) height = parseInt(obj.attr('edit_height'));
+    this.getTip().width(width);
+    this.getTip().height(height);
 
     var data = {};
 
