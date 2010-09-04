@@ -1,3 +1,3 @@
-#logo.editable{'edit-width' => '960px', 'edit-height' => '300px', 'edit-type' => :images, 'edit-id' => resource.logo.image_id, :relate_dom_id => :logo, :callback_url => '/pages/logo'}
+#logo
   =link_to '/' do
-    =image_tag resource.logo.url
+    =image_tag store.logo_image.url, :class => :image_editable, :id => id(store.logo_image), :width => store.logo_image.width, :height => store.logo_image.height

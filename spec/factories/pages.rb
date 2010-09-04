@@ -1,9 +1,6 @@
 # encoding:utf-8
 Factory.define 'page_mbaobao', :class => :page do |p|
   p.name :mbaobao
-
-  #p.logo { |page| Logo.new }
-
   p.menus do |page|
     %w( 首页 女包 男包 真皮 数码包 旅行包 ).map do |menu|
       Factory.build(:menu, :name => menu)

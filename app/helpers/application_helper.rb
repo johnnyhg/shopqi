@@ -1,4 +1,7 @@
 module ApplicationHelper
+  delegate :store, :to => :current_user
+  delegate :template, :to => :store
+
   def id(model)
     "#{name(model)}_#{model.id}"
   end

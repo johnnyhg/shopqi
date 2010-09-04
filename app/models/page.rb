@@ -12,17 +12,8 @@ class Page
 
   field :name
 
-  embeds_one :logo
-
-
   # 回调方法
-  before_create :create_logo
   after_create :init_child
-
-  #必需有Logo
-  def create_logo
-    self.logo = Logo.new
-  end
 
   # 初始化部分分类
   def init_child
@@ -43,16 +34,4 @@ class Page
   def menu_sprite_url
     "/images/menu/#{id}.png"
   end
-end
-
-#首页Logo
-class Logo
-  include Mongoid::Document
-  embedded_in :page, :inverse_of => :logo
-
-  field :url, :default => '/images/logo/default.gif'
-
-  #在线文字合成ID
-  field :image_id
-  #mount_uploader :image, ImageUploader
 end

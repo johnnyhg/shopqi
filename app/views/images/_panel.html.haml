@@ -14,6 +14,7 @@
         %li=link_to '', '#', :title => '生成图片', :class => :generate, :id => :generate_image, :style => 'display:none'
         %li.separator
       %ul{:name => :font}
+        %li=link_to '', '#', :title => '字体:微软雅黑(粗体)', :value => :yahei_bold, :class => :yahei_bold
         %li=link_to '', '#', :title => '字体:微软雅黑', :value => :yahei, :class => :yahei
         %li=link_to '', '#', :title => '字体:华康海报', :value => :haibao, :class => :haibao
         %li=link_to '', '#', :title => '字体:华康柳叶', :value => :liuye, :class => :liuye
@@ -25,6 +26,8 @@
         %li=link_to '', '#', :title => '字体大小:36px', :value => '36px', :class => 'big'
         %li.separator
       %ul.color{:name => :color}
+        %li=link_to '', '#', :title => '字体颜色:黑色', :value => '#000000', :class => :black
+        %li=link_to '', '#', :title => '字体颜色:深红色', :value => '#89060C', :class => :red_dark
         %li=link_to '', '#', :title => '字体颜色:红色', :value => '#E60012', :class => 'red'
         %li=link_to '', '#', :title => '字体颜色:绿色', :value => '#8ABC35', :class => 'green'
         %li=link_to '', '#', :title => '字体颜色:蓝色', :value => '#3C87C3', :class => 'blue'

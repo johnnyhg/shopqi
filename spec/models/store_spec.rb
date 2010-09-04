@@ -8,6 +8,11 @@ describe Store do
     end.should change(Store, :count).by(1)
   end
 
+  it 'should create logo' do
+    @user = Factory(:user)
+    @user.store.logo_image.should_not be_nil
+  end
+
   it 'should create root category' do
     @user = Factory(:user)
     @user.store.categories.size.should eql 1
