@@ -15,15 +15,17 @@ class Store
   # 二级域名
   field :subdomain
 
-  # Logo
+  # Logo, telephone
   field :logo_image_id
+  field :telephone_image_id
 
   # 回调方法
-  before_create :init_logo_image
+  before_create :init_image
   after_create :init_child
 
-  def init_logo_image
-    self.logo_image_id = Image.create(:width => 310, :height => 30).id
+  def init_image
+    self.logo_image_id = Image.create(:width => 300, :height => 44).id
+    self.telephone_image_id = Image.create(:width => 190, :height => 50).id
   end
 
   # 初始化部分分类
@@ -32,6 +34,10 @@ class Store
     # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
     self.categories << Category.root
     self.hots << Hot.root
+  end
+
+  def telephone_image
+    Image.find(self.telephone_image_id)
   end
 
   def logo_image

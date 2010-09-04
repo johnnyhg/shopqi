@@ -13,11 +13,15 @@ saberma = User.create(:login => :saberma, :email => 'saberma@shopqi.com', :passw
 
 #logo
 logo = saberma.store.logo_image
-logo.width = 300
-logo.height = 44
 logo.words << Word.new(:x => 0, :y => 2, :font => :yahei_bold, 'font-size' => '36px', :color => '#000000', :text => :VANCL)
 logo.words << Word.new(:x => 143, :y => 0, :font => :yahei_bold, 'font-size' => '36px', :color => '#89060C', :text => '凡客诚品')
 logo.save
+
+#telephone
+telephone = saberma.store.telephone_image
+telephone.words << Word.new(:x => 80, :y => 5, :font => :yahei, 'font-size' => '12px', :color => '#000000', :text => '订购热线(免长途费)')
+telephone.words << Word.new(:x => 20, :y => 22, :font => :yahei_bold, 'font-size' => '24px', :color => '#89060C', :text => '400 600 6888')
+telephone.save
 
 #热门分类
 hot_root = saberma.store.hots.roots.first
