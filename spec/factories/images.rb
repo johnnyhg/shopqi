@@ -15,7 +15,7 @@ Factory.define :word do |f|
   f.x 10
   f.y 10
   f.font :yahei
-  #f.font-size '12px'
+  f.send('font-size', '12px')
   f.color '#618d5e'
   f.text :ShopQi
 end
