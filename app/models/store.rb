@@ -24,7 +24,7 @@ class Store
   after_create :init_child
 
   def init_image
-    self.logo_image_id = Image.create(:width => 300, :height => 44).id
+    self.logo_image_id = Image.create(:width => 300, :height => 40).id
     self.telephone_image_id = Image.create(:width => 190, :height => 50).id
   end
 

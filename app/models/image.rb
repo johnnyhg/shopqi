@@ -49,7 +49,7 @@ class Image
           #有背景，则前景颜色改为白色
           c.fill 'white'
         end
-        c.draw "text #{word.x},#{word.y} '#{word.text}'"
+        c.draw "text #{word.x},#{word.adjusted_y} '#{word.text}'"
       end
     end
     magick.write path
@@ -107,4 +107,27 @@ class Word
   validates_inclusion_of :background, :in => %w( roundrectangle )
 
   embedded_in :image, :inverse_of => :words
+
+  # ImageMagick在处理draw text时，有些中文字体会有margin-top，而且像素不定
+  # convert xc: -font "/home/saberma/Documents/shopqi/public/images/logo/yahei.ttf" -pointsize 36 -debug annotate -annotate 0 '中国' null 2>&1 | grep Metrics: | fmt -w80
+  def adjusted_y
+    katong_sizes = {
+      '12px' => 1,
+      '24px' => 2,
+      '36px' => 3,
+      '72px' => 6,
+    }
+    yahei_sizes = {
+      '12px' => 2,
+      '24px' => 4,
+      '36px' => 6,
+      '72px' => 12,
+    }
+    if %w( yahei yahei_bold ).include?(self.font)
+      return (self.y - yahei_sizes[self.attributes['font-size']]) 
+    elsif %w( katong ).include?(self.font)
+      return (self.y - katong_sizes[self.attributes['font-size']])
+    end
+    self.y
+  end
 end
