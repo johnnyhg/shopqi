@@ -1,14 +1,9 @@
-Given /^the following images:$/ do |images|
-  Image.create!(images.hashes)
+# encoding: utf-8
+那么 /^我看到网店Logo$/ do
+  @href = find('#logo a img')[:src]
 end
 
-When /^I delete the (\d+)(?:st|nd|rd|th) image$/ do |pos|
-  visit images_path
-  within("table tr:nth-child(#{pos.to_i+1})") do
-    click_link "Destroy"
-  end
-end
-
-Then /^I should see the following images:$/ do |expected_images_table|
-  expected_images_table.diff!(tableish('table tr', 'td,th'))
+那么 /^网店Logo改变了$/ do
+  @new_href = find('#logo a img')[:src]
+  @new_href.should_not eql @href
 end

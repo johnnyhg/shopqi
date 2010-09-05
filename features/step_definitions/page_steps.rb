@@ -24,12 +24,12 @@ end
 #暂不支持后位置
 而且 /^我?将(.+)移至(.+)(前|后){1}面$/ do |field, neighbor, direct|
   #修正链接display属性为block会导致拖动无效
-  page.execute_script("$(\".sortable li a:contains('#{field}')\").css('display', 'inline')")
-  page.execute_script("$(\".sortable li a:contains('#{neighbor}')\").css('display', 'inline')")
+  page.execute_script("$(\"li a:contains('#{field}')\").css('display', 'inline')")
+  page.execute_script("$(\"li a:contains('#{neighbor}')\").css('display', 'inline')")
 
   #find(:xpath, "//li//a[contains(., '#{field}')]/..").drag_to(find(:xpath, "//li//a[contains(., '#{neighbor}')]/.."))
-  find(".sortable li a:contains('#{field}')").drag_to(find(".sortable li a:contains('#{neighbor}')"))
+  find("li a:contains('#{field}')").drag_to(find("li a:contains('#{neighbor}')"))
 
-  page.execute_script("$(\".sortable li a:contains('#{field}')\").css('display', 'block')")
-  page.execute_script("$(\".sortable li a:contains('#{neighbor}')\").css('display', 'block')")
+  page.execute_script("$(\"li a:contains('#{field}')\").css('display', 'block')")
+  page.execute_script("$(\"li a:contains('#{neighbor}')\").css('display', 'block')")
 end

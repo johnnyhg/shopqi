@@ -36,6 +36,7 @@
     而且点击保存
     * 应该能看到男鞋
   
+  @focus
   @javascript
   场景: 删除菜单
     假如我已经以用户名saberma登录

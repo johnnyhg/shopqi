@@ -1,5 +1,6 @@
 $("#tooltip").trigger('cancle');
-$("##{resource.id}").remove();
 
-$("##{id(resource)}").parent().children.removeClass('no_bar');
-$("##{id(resource)}").parent().children(':first').addClass('no_bar');
+var parent = $("##{id(resource)}").parent();
+$("##{id(resource)}").remove();
+parent.children().removeClass('no_bar');
+parent.children(':first').addClass('no_bar');

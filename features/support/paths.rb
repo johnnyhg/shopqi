@@ -53,7 +53,7 @@ module NavigationHelpers
   def scope_to(scope_name)
     case scope_name
     when /菜单/
-      '#nav'
+      '#menus'
     end
   end
 end

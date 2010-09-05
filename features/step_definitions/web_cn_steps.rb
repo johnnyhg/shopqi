@@ -191,7 +191,7 @@ end
 
 当 /^我?把鼠标移到(.+)$/ do |field|
   if field == 'Logo'
-    page.execute_script("$(\"#logo a\").mouseover()")
+    page.execute_script("$(\"#logo a img\").mouseover()")
   else
     page.execute_script("$(\"a:contains('#{field}')\").mouseover()")
   end
