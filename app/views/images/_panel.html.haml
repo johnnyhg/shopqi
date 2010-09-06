@@ -91,6 +91,7 @@
         event  : 'dblclick',
         //input为inline,则form也应为inline,否则布局会乱
         cssclass : 'form_inline',
+        placeholder: '双击此处编辑',
         callback : function(value, settings) {
           $('#generate_image').click();
         }
@@ -136,7 +137,7 @@
     var words_size = #{image.words.size};
     //添加操作
     $('#add_word').click(function(){
-      var word = $("<div class='editable jqDnR jqDrag word'>ShopQi</div>").appendTo('#panel');
+      var word = $("<div class='editable jqDnR jqDrag word'></div>").appendTo('#panel');
       //修正:添加时文字会移至中间
       word.css('left', '0');
       word.attr('tmp_id', $('#words_size').val());
@@ -243,7 +244,7 @@
 
     //关闭
     $('.close').click(function(){
-      $('#tooltip').trigger('cancle');
+      $('#tooltip').hide().trigger('cancle');
       return false;
     });
   });
