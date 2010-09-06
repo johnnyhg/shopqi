@@ -31,6 +31,7 @@ class Container
       self.grids = case self.type.to_sym
         when :focuses then 18
         when :sidead then 6
+        when :fullad then 24
       end
     end
   end
@@ -77,7 +78,7 @@ class Item
 
   field :type
   # mongoid暂不支持
-  validates_inclusion_of :type, :in => %w( focuses sidead )
+  validates_inclusion_of :type, :in => %w( focuses sidead fullad )
 
   # 在线文字合成ID: (通栏,边栏)广告
   field :image_id
@@ -95,6 +96,8 @@ class Item
       self.focuses.init_list!
     when :sidead
       self.image_id = Image.create(:width => 220, :height => 120).id
+    when :fullad
+      self.image_id = Image.create(:width => 940, :height => 60).id
     end
   end
 

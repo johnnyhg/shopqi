@@ -148,7 +148,8 @@
         var name = $(this).attr('name');
         var value = attribute.attr('value');
         word.attr('word-' + name, value);
-        //设置字体大小、颜色，字体暂不设置(浏览器没有这些字体)
+        //设置字体大小、颜色，字体
+        if(name == 'font') name = 'font-family' 
         word.css(name, value);
         //$.jGrowl(attribute.attr('value'));
       });

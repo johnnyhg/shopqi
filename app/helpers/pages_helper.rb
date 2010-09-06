@@ -41,6 +41,10 @@ module PagesHelper
     render :partial => "containers/items/sidead", :object => item.image
   end
 
+  def fullad(item)
+    render :partial => "containers/items/fullad", :object => item.image
+  end
+
   # 菜单背景图片
   def menu_bg_img
     "/images/menu/#{current_user.store.pages.homepage.id}.png"
