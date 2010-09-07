@@ -102,8 +102,8 @@ class Item
     when :hots
       self.hot = Hot.root
       3.times do |i| 
-        hot = Hot.new(:name => "分类#{i+1}", :url => '/')
-        3.times {|j| hot.children << Hot.new(:name => "子类#{j+1}", :url => '/')}
+        hot = Hot.create(:name => "分类#{i+1}", :url => '/')
+        3.times {|j| hot.children << Hot.create(:name => "子类#{j+1}", :url => '/')}
         hot.children.init_list!
         self.hot.children << hot
       end
