@@ -17,7 +17,7 @@ class HotsController < InheritedResources::Base
 
   def sort
     params[:hot].each_with_index do |id, index|
-      Hot.find(id).update_attributes :pos => index
+      end_of_association_chain.find(id).update_attributes :pos => index
     end
   end
 

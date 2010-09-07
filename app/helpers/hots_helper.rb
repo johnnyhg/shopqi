@@ -1,7 +1,7 @@
 # encoding: utf-8
 module HotsHelper
   def partial_name
-    resource.root? ? :item : :child_item
+    resource.root? ? :item : :child
   end
 
   def position(direct)

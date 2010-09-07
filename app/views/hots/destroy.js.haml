@@ -1,5 +1,7 @@
 //hide
 $("#tooltip").trigger('cancle');
 
-//remove
-$("##{name(resource)}_#{resource.id}").remove();
+var parent = $("##{id(resource)}").parent();
+$("##{id(resource)}").remove();
+parent.children().removeClass('no_bar');
+parent.children(':first').addClass('no_bar');

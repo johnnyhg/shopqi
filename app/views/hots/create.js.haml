@@ -1,8 +1,11 @@
-//insert
-$("##{name(resource)}_#{params[name(resource)][:neighbor]}").move('#{params[name(resource)][:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/child_item", :object => resource, :locals => {:item_counter => 0}))}');
-
-//reset tooltip
-$("##{name(resource)}_#{resource.id} a").tooltip(tooltip_setting).dynamic(dynamic_setting);
-
 //hide
 $("#tooltip").trigger('cancle');
+
+//insert
+$("##{name(resource)}_#{params[:neighbor]}").move('#{params[:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/child", :object => resource))}');
+
+
+$("##{name(resource)}_#{params[name(resource)][:neighbor]}").parent().children().removeClass('no_bar');
+$("##{name(resource)}_#{params[name(resource)][:neighbor]}").parent().children(':first').addClass('no_bar');
+
+Admin.refresh();

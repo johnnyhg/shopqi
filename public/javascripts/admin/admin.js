@@ -102,5 +102,7 @@ Admin = {
 };
 
 jQuery(function ($) {
+  // tooltip设置显示延时，但关闭不能也跟着延时
+  $('#tooltip').bind('cancle', function(){ $(this).hide() });
   Admin.refresh();
 });
