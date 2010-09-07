@@ -24,6 +24,7 @@ telephone.words << Word.new(:x => 20, :y => 22, :font => :yahei_bold, 'font-size
 telephone.save
 
 #热门分类
+=begin
 hot_root = saberma.store.hots.roots.first
 {
   :女装 => %w( 新品女装 女装季末特惠 吊带/背心29元 短袖T恤39元 短袖衬衫59元 POLO49元 半裙49元 ), 
@@ -41,6 +42,7 @@ hot_root = saberma.store.hots.roots.first
 end
 hot_root.children.init_list!
 hot_root.save
+=end
 
 #虚拟单根节点，方便实际根节点排序
 category_root = saberma.store.categories.roots.first

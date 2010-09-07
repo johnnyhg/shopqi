@@ -5,13 +5,13 @@
 $color: #333
 $color_hover: #A10010
 
-$color_grey_dark: #565662
-$color_grey: #999
-$color_grey_light: #C7C7C7
-$color_grey_lighter: #F5F5F5
-/*$color_grey_lightest: #EBEBEB
+$color_grey_darker: #565662
+$color_grey_dark: #999999
 /* border
-$color_grey_lightest = #B4B4B4
+$color_grey = #B4B4B4
+$color_grey_light: #C7C7C7
+$color_grey_lighter: #EBEBEB
+$color_grey_lightest: #F5F5F5
 
 $color_red: #A10000
 
@@ -51,7 +51,7 @@ body
 
   #keywords
     padding-top: 8px
-    background-color: $color_grey_dark
+    background-color: $color_grey_darker
     height: 22px
     strong
       float: left
@@ -63,7 +63,7 @@ body
         color: white
 
   #search
-    background-color: $color_grey_lighter
+    background-color: $color_grey_lightest
     height: 30px
     span
       float: left
@@ -73,8 +73,8 @@ body
       margin-top: 5px
 
   #car
-    border-top: 1px solid $color_grey
-    border-bottom: 1px solid $color_grey
+    border-top: 1px solid $color_grey_dark
+    border-bottom: 1px solid $color_grey_dark
     height: 44px
     padding: 5px 0 9px
     line-height: 200%
@@ -96,12 +96,12 @@ body
   .focus
     margin-top: 6px
   .sidead, .fullad
-    border: 1px solid $color_grey_lightest
+    border: 1px solid $color_grey
     margin-top: 6px
   .hots
-    border: 1px solid $color_grey_lightest
+    border: 1px solid $color_grey
     h3
-      background-color: $color_grey_light
+      background-color: $color_grey_lighter
       color: #fff
       font-size: 18px
       font-weight: bold
@@ -126,7 +126,7 @@ body
           line-height: 23px
           font-size: 14px
           font-weight: bold
-          background-color: $color_grey
+          background-color: $color_grey_lighter
           margin: 8px 28px 0 20px
           text-align: center
       dd

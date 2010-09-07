@@ -1,0 +1,11 @@
+.container_24
+  .grid_24
+    -{:grey => { :darker => '#565662',
+      :dark => '#999999', 
+      :normal => '#B4B4B4', 
+      :light => '#C7C7C7',
+      :lighter => '#EBEBEB', 
+      :lightest => '#F5F5F5'}}.each_pair do |name, colors|
+      %div{:style => "margin: 10px; float:left"}==#{name}:
+      -colors.each_pair do |level, color|
+        %div{:style => "margin: 10px; width:48px; height:48px; float:left; background-color: #{color}", :title => "#{level}:#{color}"}
