@@ -29,7 +29,7 @@ class Container
   def init_grids
     if self.type
       self.grids = case self.type.to_sym
-        when :focuses then 18
+        when :focuses, :hots then 18
         when :sidead then 6
         when :fullad then 24
       end
@@ -75,16 +75,21 @@ class Item
   include Mongoid::Document
   embedded_in :container, :inverse_of => :item
   references_many :focuses
+  referenced_in :hot
 
   field :type
   # mongoid暂不支持
-  validates_inclusion_of :type, :in => %w( focuses sidead fullad )
+  validates_inclusion_of :type, :in => %w( focuses sidead fullad hots)
 
   # 在线文字合成ID: (通栏,边栏)广告
   field :image_id
 
   def sorted_focuses
     focuses.sort {|x, y| x.pos <=> y.pos}
+  end
+
+  def sorted_hots
+    self.hot.children.sort {|x, y| x.pos <=> y.pos}
   end
 
   before_create :init_item
@@ -94,6 +99,15 @@ class Item
     when :focuses
       3.times { |i| self.focuses << Focus.create(:name => "标题#{i+1}", :url => '/', :item => self) }
       self.focuses.init_list!
+    when :hots
+      self.hot = Hot.root
+      3.times do |i| 
+        hot = Hot.create(:name => "分类#{i+1}", :url => '/')
+        3.times {|j| hot.children << Hot.create(:name => "子类#{j+1}", :url => '/')}
+        hot.children.init_list!
+        self.hot.children << hot
+      end
+      self.hot.children.init_list!
     when :sidead
       self.image_id = Image.create(:width => 220, :height => 120).id
     when :fullad

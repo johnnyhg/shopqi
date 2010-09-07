@@ -26,31 +26,46 @@ describe Container do
     end
   end
 
-  it 'should save focuses item' do
-    root = @page.containers.roots.first
-    root.item.should be_nil
-
-    root.children << Container.create(:type => :focuses)
-    container = root.children.first.reload
-    container.item.should_not be_nil
-    container.item.type.should eql 'focuses'
-    container.grids.should eql 18
-
-    container.item.focuses.size.should eql 3
-  end
-
   it 'should save page_id' do
     root = @page.containers.roots.first
     root.page_id.should eql @page.id
     root.store_id.should eql @saberma.store.id
   end
 
-  it 'should save categories' do
-    @container = @page.containers.create
+  describe 'item' do
+    it 'should save focuses item' do
+      root = @page.containers.roots.first
+      root.item.should be_nil
 
-    category = Factory(:category_man)
-    @container.category_ids = [ category.id.to_s ]
-    @container.save.should be_true
-    @container.reload.categories.size.should eql 1
+      root.children << Container.create(:type => :focuses)
+      container = root.children.first.reload
+      container.item.should_not be_nil
+      container.item.type.should eql 'focuses'
+      container.grids.should eql 18
+
+      container.item.focuses.size.should eql 3
+    end
+
+    it 'should save hot item' do
+      root = @page.containers.roots.first
+      root.children << Container.create(:type => :hots)
+      container = root.children.first.reload
+
+      container.grids.should eql 18
+      container.item.should_not be_nil
+      container.item.type.should eql 'hots'
+
+      container.item.hot.should_not be_nil
+      container.item.hot.children.size.should eql 3
+    end
+
+    it 'should save categories' do
+      @container = @page.containers.create
+
+      category = Factory(:category_man)
+      @container.category_ids = [ category.id.to_s ]
+      @container.save.should be_true
+      @container.reload.categories.size.should eql 1
+    end
   end
 end

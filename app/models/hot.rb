@@ -8,6 +8,7 @@ class Hot
 
   belong_to_store
   acts_as_sortable_tree
+  references_one :item
 
   field :name
   field :url

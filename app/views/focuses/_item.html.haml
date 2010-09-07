@@ -1,2 +1,2 @@
-=content_tag_for :li, item , :edit_width => 320, :edit_height => 130 do
+=content_tag_for :li, item  do
   =link_to image_tag(item.image.url, :alt => item.name, :class => :image_editable, :id => id(item.image)), item.url, :target => :_blank

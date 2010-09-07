@@ -9,6 +9,7 @@ $color_grey_dark: #565662
 $color_grey: #999
 $color_grey_light: #C7C7C7
 $color_grey_lighter: #F5F5F5
+/*$color_grey_lightest: #EBEBEB
 /* border
 $color_grey_lightest = #B4B4B4
 
@@ -97,3 +98,42 @@ body
   .sidead, .fullad
     border: 1px solid $color_grey_lightest
     margin-top: 6px
+  .hots
+    border: 1px solid $color_grey_lightest
+    h3
+      background-color: $color_grey_light
+      color: #fff
+      font-size: 18px
+      font-weight: bold
+      strong
+        padding-left: 30px
+        display: block
+        height: 39px
+        width: 200px
+        line-height: 39px
+        background-color: $color_red
+    dl
+      display: block
+      height: 36px
+      border-bottom: 1px dotted #ccc
+      dt
+        float: left
+        display: inline
+        width: 100px
+        .title
+          color: #ccc
+          height: 23px
+          line-height: 23px
+          font-size: 14px
+          font-weight: bold
+          background-color: $color_grey
+          margin: 8px 28px 0 20px
+          text-align: center
+      dd
+        line-height: 36px
+        ul
+          +horizontal-list(8px)
+          li
+            background: image_url($image_bar) no-repeat 0px 14px
+            &.no_bar
+              background-image: none

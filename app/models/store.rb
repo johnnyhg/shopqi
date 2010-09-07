@@ -33,7 +33,6 @@ class Store
     self.pages << Page.create(:name => :homepage)
     # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
     self.categories << Category.root
-    self.hots << Hot.root
   end
 
   def telephone_image

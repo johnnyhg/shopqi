@@ -45,6 +45,10 @@ module PagesHelper
     render :partial => "containers/items/fullad", :object => item.image
   end
 
+  def hots(item)
+    render :partial => "containers/items/hots", :locals => { :collection => item.sorted_hots }
+  end
+
   # 菜单背景图片
   def menu_bg_img
     "/images/menu/#{current_user.store.pages.homepage.id}.png"

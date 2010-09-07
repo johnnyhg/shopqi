@@ -1,6 +1,6 @@
 module NavsHelper
-  def nav_bar(navs, nav)
-    return '' if navs.nil?
-    (nav == navs.first) ? :no_bar : ''
+  def bar(collection, item)
+    return '' if collection.nil?
+    (item == collection.first) ? :no_bar : ''
   end
 end

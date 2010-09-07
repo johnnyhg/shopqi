@@ -1,0 +1,5 @@
+.hots
+  %h3
+    %strong 热门分类
+  .sortable{:sort_url => sort_hots_path}
+    =render :partial => "hots/item", :collection => collection
