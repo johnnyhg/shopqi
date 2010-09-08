@@ -19,6 +19,7 @@ class HotsController < InheritedResources::Base
     params[:hot].each_with_index do |id, index|
       end_of_association_chain.find(id).update_attributes :pos => index
     end
+    render :template => "shared/sort"
   end
 
   protected

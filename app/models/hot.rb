@@ -12,4 +12,9 @@ class Hot
 
   field :name
   field :url
+
+  # 重载根节点的判断方法
+  def root?
+    self.depth == 1
+  end
 end

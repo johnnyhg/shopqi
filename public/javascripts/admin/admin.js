@@ -29,7 +29,7 @@ var tooltip_setting = {
   //opacity: 0.9,
   onBeforeShow: function(){
     $('#tooltip').html('正在处理...');
-    var obj = this.getTrigger().parent();
+    var obj = this.getTrigger().parents('[id]:first');
     //初始化提示面板的宽高
     var width = 300, height = 130;
     if(obj.attr('edit_width')) width = parseInt(obj.attr('edit_width'));

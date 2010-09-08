@@ -1,0 +1,5 @@
+//refresh class
+-resource_name = controller_name.singularize
+-params[resource_name].each do |resource_id|
+  $("##{resource_name}_#{resource_id}").removeClass('no_bar');
+$("##{resource_name}_#{params[resource_name].first}").addClass('no_bar');

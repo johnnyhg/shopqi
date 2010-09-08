@@ -16,8 +16,9 @@ class NavsController < InheritedResources::Base
 
   def sort
     params[:nav].each_with_index do |id, index|
-      current_user.store.pages.homepage.navs.find(id).update_attributes :pos => index
+      end_of_association_chain.find(id).update_attributes :pos => index
     end
+    render :template => "shared/sort"
   end
 
   protected
