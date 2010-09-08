@@ -74,7 +74,7 @@ end
 class Item
   include Mongoid::Document
   embedded_in :container, :inverse_of => :item
-  references_many :focuses
+  referenced_in :focus, :class_name => 'Focus'
   referenced_in :hot
 
   field :type
@@ -85,7 +85,7 @@ class Item
   field :image_id
 
   def sorted_focuses
-    focuses.sort {|x, y| x.pos <=> y.pos}
+    self.focus.children.sort {|x, y| x.pos <=> y.pos}
   end
 
   def sorted_hots
@@ -97,8 +97,9 @@ class Item
   def init_item
     case self.type.to_sym
     when :focuses
-      3.times { |i| self.focuses << Focus.create(:name => "标题#{i+1}", :url => '/', :item => self) }
-      self.focuses.init_list!
+      self.focus = Focus.root
+      3.times { |i| self.focus.children << Focus.create(:name => "标题#{i+1}", :url => '/') }
+      self.focus.children.init_list!
     when :hots
       self.hot = Hot.root
       3.times do |i| 

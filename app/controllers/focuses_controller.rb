@@ -9,8 +9,6 @@ class FocusesController < InheritedResources::Base
   end
 
   create! do |success, failure|
-    container = store.containers.find(params[:container_id])
-    resource.update_attributes :item_id => container.item.id
     # 初始化位置
     container.item.focuses.init_list!
     # reload重新加载pos属性值

@@ -1,18 +1,14 @@
 # encoding: utf-8
-# 首页顶端轮播图片
+# 首页顶端轮播图片(设计为tree结构，方便Item关联根节点)
 class Focus
   include Mongoid::Document
   include Mongoid::Timestamps
-  include ActsAsList::Mongoid
+  include Mongoid::ActsAsSortableTree
   include Mongoid::BelongToStore
 
   belong_to_store
-
-  referenced_in :item
-
-  #排序
-  field :pos, :type => Integer
-  acts_as_list :column => :pos
+  acts_as_sortable_tree
+  references_one :item
 
   field :name
   field :url
