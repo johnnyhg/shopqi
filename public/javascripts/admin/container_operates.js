@@ -13,9 +13,20 @@ Container = {
     });
   },
 
+  //删除原有辅助容器及其提示面板
+  destroy_assist: function(){
+    //destroy old qtip
+    var root = $(this).parents('.container_24 > .grid_24');
+    root.find('.assist').remove();
+    root.find('.qtip_container').andSelf().filter('.qtip_container').removeClass('qtip_container').qtip('destroy');
+  },
+
   // 生成辅助容器
   generate_assist: function(){
-    var root = $(this);
+    var root = $(this).parents('.container_24 > .grid_24');
+    //清除原有高度属性
+    //TODO: 只去掉height属性，而不删除整个style属性
+    root.find('.container').removeAttr('style');
     var root_grids = 24;
     var container_height = root.height();
 
@@ -59,7 +70,6 @@ jQuery(function($) {
   $('.qtip a').live('click', function(){
     $(this).parents('.qtip').qtip('hide');
   });
-  //$('.container_24 .grid_24:empty').qtip($.extend({content:{url:'/containers/new'}}, qtip_setting));
 
   Container.attach_tip();
 

@@ -7,4 +7,8 @@ $("##{name(resource)}_#{params[:neighbor]}").move('#{params[:direct]}', '#{escap
 $("##{id(resource)}").parent().children().removeClass('no_bar');
 $("##{id(resource)}").parent().children(':first').addClass('no_bar');
 
+-if resource.root?
+  //reset qtip
+  $('##{id(resource)}').each(Container.destroy_assist).each(Container.generate_assist);
+
 Admin.refresh();

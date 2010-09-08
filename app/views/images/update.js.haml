@@ -1,2 +1,5 @@
 //callback
 $('##{id(resource)}').attr('src', '#{resource.url}').width(#{resource.width}).height(#{resource.height});
+
+//adjust containter height, reset qtip
+$('##{id(resource)}').each(Container.destroy_assist).each(Container.generate_assist);

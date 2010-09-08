@@ -3,5 +3,10 @@ $("#tooltip").trigger('cancle');
 
 var parent = $("##{id(resource)}").parent();
 $("##{id(resource)}").remove();
-parent.children().removeClass('no_bar');
-parent.children(':first').addClass('no_bar');
+
+-if resource.root?
+  //reset qtip
+  parent.each(Container.destroy_assist).each(Container.generate_assist);
+-else
+  parent.children().removeClass('no_bar');
+  parent.children(':first').addClass('no_bar');
