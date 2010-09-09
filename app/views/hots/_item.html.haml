@@ -2,4 +2,4 @@
   %dt
     .title=link_to item.name, item.url
   %dd
-    %ul.sortable{:sort_url => sort_hots_path}=render :partial => "hots/child", :collection => item.children, :locals => { :collection => item.children }
+    %ul.sortable{:sort_url => sort_hots_path, :parent_id => item.id}=render :partial => "hots/child", :collection => item.children, :locals => { :collection => item.children }

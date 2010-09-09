@@ -39,10 +39,8 @@ var tooltip_setting = {
 
     var data = {};
 
-    //新增还是修改
-    var url = name(obj.attr('id')) + '/new';
-    if(obj.attr('id'))
-      url = name(obj.attr('id')) + '/' + id(obj.attr('id')) + '/edit';
+    //jquery tooltip只负责修改，qtip负责新增
+    var url = pluralize_name(obj.attr('id')) + '/' + id(obj.attr('id')) + '/edit';
 
     //所属容器
     var container = this.getTrigger().parents('.container');
@@ -83,6 +81,12 @@ Admin = {
     //show panel
     $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
     $('.editable').removeClass('editable');
+
+    if($('dd ul:empty')[0]){
+      var parentDl = $('dd ul:empty').parents('dl:first');
+      //qtip_ul为方便destroy qtip
+      $('dd ul:empty').not('qtip_ul').addClass('qtip_ul').height(parentDl.height()).qtip($.extend({ content: {url: '/hots/operates' , data: { parent_id: id(parentDl.attr('id')) } }}, qtip_setting));
+    }
 
     //image
     $('.image_editable').removeClass('image_editable').tooltip(image_tooltip_setting).dynamic(dynamic_setting);

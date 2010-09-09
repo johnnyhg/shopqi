@@ -54,6 +54,8 @@ module NavigationHelpers
     case scope_name
     when /菜单/
       '#menus'
+    else
+      scope_name
     end
   end
 end

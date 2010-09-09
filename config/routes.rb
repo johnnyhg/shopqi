@@ -11,6 +11,7 @@ Shopqi::Application.routes.draw do
   resources :hots do
     collection do
       post :sort
+      get :operates
     end
   end
 

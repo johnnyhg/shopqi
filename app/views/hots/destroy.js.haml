@@ -10,3 +10,7 @@ $("##{id(resource)}").remove();
 -else
   parent.children().removeClass('no_bar');
   parent.children(':first').addClass('no_bar');
+
+//make ul:empty can find empty parent
+if($.trim(parent.text()) == '') parent.text('');
+Admin.refresh();

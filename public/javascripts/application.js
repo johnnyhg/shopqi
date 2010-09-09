@@ -4,10 +4,16 @@ function id(str){
   return str.substring(str.lastIndexOf('_') + 1, str.length);
 }
 
+// get id prefix
+// example: id('container_111'), will return 'container'
+function name(str){
+  return str.substring(0, str.lastIndexOf('_'));
+}
+
 // get id prefix, change to pluralize
 // example: id('container_111'), will return 'containers'
-function name(str){
-  str = str.substring(0, str.lastIndexOf('_'));
+function pluralize_name(str){
+  str = name(str);
   str += str.match(/s$/) ? 'es' : 's'
   return str;
 }
