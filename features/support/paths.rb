@@ -54,6 +54,8 @@ module NavigationHelpers
     case scope_name
     when /菜单/
       '#menus'
+    when /热门分类/
+      '.hots'
     else
       scope_name
     end

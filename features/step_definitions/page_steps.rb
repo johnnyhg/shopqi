@@ -21,6 +21,12 @@ end
   label.chomp.should == field
 end
 
+而且 /^(.+)显示在(.+)之(上|下)$/ do |field, neighbor, direct|
+  direct = ('上' == direct) ? :prev : :next
+  label = page.evaluate_script("$(\"dt a:contains('#{neighbor}')\").parents('dl:first').#{direct}().find('dt a').text()")
+  label.chomp.should == field
+end
+
 #暂不支持后位置
 而且 /^我?将(.+)移至(.+)(前|后){1}面$/ do |field, neighbor, direct|
   #修正链接display属性为block会导致拖动无效
