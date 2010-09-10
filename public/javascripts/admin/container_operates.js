@@ -23,7 +23,7 @@ Container = {
 
   // 生成辅助容器
   generate_assist: function(){
-    var root = $(this).parents('.container_24 > .grid_24');
+    var root = $(this).parent('.container_24')[0] ? $(this) : $(this).parents('.container_24 > .grid_24');
     //清除原有高度属性
     //TODO: 只去掉height属性，而不删除整个style属性
     root.find('.container').removeAttr('style');
