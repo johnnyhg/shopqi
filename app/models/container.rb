@@ -10,7 +10,6 @@ class Container
   acts_as_sortable_tree
 
   referenced_in :page
-  references_many :categories, :stored_as => :array, :inverse_of => :container
   embeds_one :item
 
   MAX_GRIDS = 24
@@ -31,7 +30,7 @@ class Container
       self.grids = case self.type.to_sym
         when :focuses, :hots then 18
         when :sidead then 6
-        when :fullad then 24
+        when :fullad, :products then 24
       end
     end
   end
@@ -76,10 +75,11 @@ class Item
   embedded_in :container, :inverse_of => :item
   referenced_in :focus, :class_name => 'Focus'
   referenced_in :hot
+  references_many :categories, :stored_as => :array, :inverse_of => :item
 
   field :type
   # mongoid暂不支持
-  validates_inclusion_of :type, :in => %w( focuses sidead fullad hots)
+  validates_inclusion_of :type, :in => %w( focuses sidead fullad hots products)
 
   # 在线文字合成ID: (通栏,边栏)广告
   field :image_id
@@ -113,6 +113,8 @@ class Item
       self.image_id = Image.create(:width => 220, :height => 120).id
     when :fullad
       self.image_id = Image.create(:width => 940, :height => 60).id
+    when :products
+      self.categories = [User.current.store.categories.roots.first]
     end
   end
 

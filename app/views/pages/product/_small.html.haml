@@ -2,13 +2,11 @@
   .pic=link_to image_tag(product.middle_url), product, :target => :_blank
   .text
     .title=link_to s(product.name), product, :target => :_blank
-    .price
-      %span.gray
-        市场价：
-        %s 
-          ￥
-          =product.market_price
-      %br/
-      %span.red_c00.fs14.b
+    .market_price
+      市场价
+      %s 
         ￥
-        =product.price
+        =product.market_price
+    .price
+      售价￥
+      =product.price

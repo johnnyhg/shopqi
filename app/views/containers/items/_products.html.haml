@@ -1,2 +1,1 @@
-%ul.index_products.products_list
-  = render :partial => "pages/product/small", :collection => Product.any_in(:category_path => item.categories.map(&:id)), :as => :product
+%ul.products_list= render :partial => "pages/product/small", :collection => collection, :as => :product

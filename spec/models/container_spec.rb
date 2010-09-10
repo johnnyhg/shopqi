@@ -33,39 +33,41 @@ describe Container do
   end
 
   describe 'item' do
-    it 'should save focuses item' do
-      root = @page.containers.roots.first
-      root.item.should be_nil
+    before :each do
+      @root = @page.containers.roots.first
+      @root.item.should be_nil
+    end
 
-      root.children << Container.create(:type => :focuses)
-      container = root.children.first.reload
-      container.item.should_not be_nil
-      container.item.type.should eql 'focuses'
+    it 'should save focuses item' do
+      @root.children << Container.create(:type => :focuses)
+      container = @root.children.first.reload
+
       container.grids.should eql 18
+      container.item.type.should eql 'focuses'
 
       container.item.focuses.size.should eql 3
     end
 
     it 'should save hot item' do
-      root = @page.containers.roots.first
-      root.children << Container.create(:type => :hots)
-      container = root.children.first.reload
+      @root.children << Container.create(:type => :hots)
+      container = @root.children.first.reload
 
       container.grids.should eql 18
-      container.item.should_not be_nil
       container.item.type.should eql 'hots'
 
-      container.item.hot.should_not be_nil
       container.item.hot.children.size.should eql 3
     end
 
     it 'should save categories' do
-      @container = @page.containers.create
-
       category = Factory(:category_man)
-      @container.category_ids = [ category.id.to_s ]
-      @container.save.should be_true
-      @container.reload.categories.size.should eql 1
+
+      @root.children << Container.create(:type => :products)
+      container = @root.children.first.reload
+
+      container.grids.should eql 24
+      container.item.type.should eql 'products'
+
+      container.item.categories.size.should eql 1
     end
   end
 end

@@ -135,3 +135,17 @@ body
             background: image_url($image_bar) no-repeat 0px 14px
             &.no_bar
               background-image: none
+
+  .products_list
+    +horizontal-list(6px)
+    img
+      border: 1px solid $color_grey_lighter
+    .title, .market_price
+      margin-top: 5px
+    .title
+      line-height: 16px
+    .market_price
+      color: $color_grey_dark
+    .price
+      margin-top: 3px
+      color: $color_hover

@@ -37,7 +37,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # 显示在产品列表页中的缩略图
   version :middle do
-    process :resize_to_fill => [185, 185]
+    #mbaobao
+    #process :resize_to_fill => [185, 185]
+    process :resize_to_fill => [175, 175]
   end
 
   # Add a white list of extensions which are allowed to be uploaded,

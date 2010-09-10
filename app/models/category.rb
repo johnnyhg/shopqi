@@ -9,6 +9,7 @@ class Category
   belong_to_store
   acts_as_sortable_tree
   references_many :products
+  referenced_in :item
   
   field :name
 
