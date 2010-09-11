@@ -10,12 +10,3 @@ $.jGrowl('保存成功');
 if(Image.generated){
 Image.generated('#{resource.url}?#{Time.now.to_i}')
 }
-
-//preview_imag
-//var reload_image = $('#' + $('#relate_dom_id').val() + ' img')[0];
-//if(reload_image)
-//reload_image.src = '#{resource.url}?#{Time.now.to_i}';
-
-//reload something
-var callback_url = $('#callback_url').val();
-$.get(callback_url + '?image_id=#{resource.id}');

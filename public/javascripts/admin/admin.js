@@ -34,8 +34,7 @@ var tooltip_setting = {
     var width = 300, height = 130;
     if(obj.attr('edit_width')) width = parseInt(obj.attr('edit_width'));
     if(obj.attr('edit_height')) height = parseInt(obj.attr('edit_height'));
-    this.getTip().width(width);
-    this.getTip().height(height);
+    this.getTip().width(width).height(height);
 
     var data = {};
 
@@ -44,16 +43,7 @@ var tooltip_setting = {
 
     //所属容器
     var container = this.getTrigger().parents('.container');
-    if(container[0])
-      data['container_id'] = id(container.attr('id'));
-
-    //处理完后需要更新的节点
-    if(obj.attr('relate_dom_id'))
-      url += "?relate_dom_id=" + obj.attr('relate_dom_id');
-
-    //处理完后的回调路径，用于关联Image
-    if(obj.attr('callback_url'))
-      url += "&callback_url=" + obj.attr('callback_url');
+    if(container[0]) data['container_id'] = id(container.attr('id'));
 
     $.get(url, data, function(body){
       $('#tooltip').html(body);
