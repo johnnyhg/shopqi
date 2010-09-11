@@ -3,7 +3,7 @@
   root_container = User.current.store.containers.roots.first
   root_container.children << Container.create
   parent_container = Container.create(:type => :hots, :parent_id => root_container.children.first.id)
-  root = parent_container.children.first.item.hot
+  root = parent_container.children.first.hot
   root.children.clear
   table.raw.each do |row|
     labels = row.clone

@@ -19,7 +19,6 @@ describe Container do
           :parent_id => container.id,
           :type => :focuses
         )
-        focuses_container.item.should be_nil
         focuses_container.children.size.should eql 1
         focuses_container.grids.should eql focuses_container.children.first.grids
       end.should change(Container, :count).by(2)
@@ -29,23 +28,21 @@ describe Container do
   it 'should save page_id' do
     root = @page.containers.roots.first
     root.page_id.should eql @page.id
-    root.store_id.should eql @saberma.store.id
   end
 
   describe 'item' do
     before :each do
       @root = @page.containers.roots.first
-      @root.item.should be_nil
     end
 
     it 'should save focuses item' do
-      @root.children << Container.create(:type => :focuses)
-      container = @root.children.first.reload
+      lambda do
+        @root.children << Container.create(:type => :focuses)
+        container = @root.children.first.reload
 
-      container.grids.should eql 18
-      container.item.type.should eql 'focuses'
-
-      container.item.focuses.size.should eql 3
+        container.grids.should eql 18
+        container.type.should eql 'focuses'
+      end.should change(Focus, :count).by(4)
     end
 
     it 'should save hot item' do
@@ -53,9 +50,9 @@ describe Container do
       container = @root.children.first.reload
 
       container.grids.should eql 18
-      container.item.type.should eql 'hots'
+      container.type.should eql 'hots'
 
-      container.item.hot.children.size.should eql 3
+      container.hot.children.size.should eql 3
     end
 
     it 'should save categories' do
@@ -65,9 +62,9 @@ describe Container do
       container = @root.children.first.reload
 
       container.grids.should eql 24
-      container.item.type.should eql 'products'
+      container.type.should eql 'products'
 
-      container.item.categories.size.should eql 1
+      container.categories.size.should eql 1
     end
   end
 end

@@ -7,7 +7,9 @@ describe HotsController do
   before :each do
     @saberma = Factory(:user_saberma)
     sign_in @saberma
-    @root = @saberma.store.hots.roots.first
+    container = Factory(:container, :type => :hots)
+
+    @root = container.hot
     @root.children << Hot.new(:name => '男装')
     @root.children.init_list!
   end

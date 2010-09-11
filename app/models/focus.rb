@@ -8,7 +8,7 @@ class Focus
 
   belong_to_store
   acts_as_sortable_tree
-  references_one :item
+  references_one :container
 
   field :name
   field :url
