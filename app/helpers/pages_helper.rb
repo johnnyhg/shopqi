@@ -50,7 +50,7 @@ module PagesHelper
   end
 
   def products(item)
-    render :partial => "containers/items/products", :locals => { :collection => Product.any_in(:category_path => item.categories.map(&:id)) }
+    render :partial => "containers/items/products", :locals => { :collection => Product.any_in(:category_path => item.category_ids) }
   end
 
   # 菜单背景图片

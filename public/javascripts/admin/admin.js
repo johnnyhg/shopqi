@@ -64,12 +64,19 @@ var tooltip_setting = {
 
 var image_tooltip_setting = $.extend({}, tooltip_setting, {
   onBeforeShow: function(){
-    this.getTip().width(960);
-    this.getTip().height(this.getTrigger().height() + 70);
+    $('#tooltip').html('正在处理...');
+    this.getTip().width(960).height(this.getTrigger().height() + 70);
     var url = '/images/' + id(this.getTrigger().attr('id')) + '/edit';
-    $.get(url, function(body){
-      $('#tooltip').html(body);
-    });
+    $.get(url, function(body){ $('#tooltip').html(body); });
+  }
+});
+
+var products_tooltip_setting = $.extend({}, tooltip_setting, {
+  onBeforeShow: function(){
+    $('#tooltip').html('正在处理...');
+    this.getTip().width(960).height(300);
+    var url = '/containers/' + id(this.getTrigger().attr('id')) + '/edit';
+    $.get(url, function(body){ $('#tooltip').html(body); });
   }
 });
 
@@ -78,6 +85,9 @@ var dynamic_setting = { bottom: { direction: 'down', bounce: true } };
 
 Admin = {
   refresh: function(){
+    //products list
+    $('.editable.products_list').removeClass('editable').parent('.container').tooltip(products_tooltip_setting).dynamic(dynamic_setting);
+
     //show panel
     $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
     $('.editable').removeClass('editable');

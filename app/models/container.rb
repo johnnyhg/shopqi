@@ -99,7 +99,7 @@ class Container
       when :fullad
         self.image_id = Image.create(:width => 940, :height => 60).id
       when :products
-        self.categories = [User.current.store.categories.roots.first]
+        self.categories = User.current.store.categories.roots.first.children
       end
     end
   end
