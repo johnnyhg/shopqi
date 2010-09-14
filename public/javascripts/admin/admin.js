@@ -79,7 +79,7 @@ Admin = {
     $('.accordion').accordion();
 
     //products list
-    $('.editable.products_list').removeClass('editable').parent('.container').tooltip(products_tooltip_setting).dynamic(dynamic_setting);
+    $('.editable.products_list, .editable.products_accordion_list').removeClass('editable').parent('.container').tooltip(products_tooltip_setting).dynamic(dynamic_setting);
 
     //show panel
     $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
