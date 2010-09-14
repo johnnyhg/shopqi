@@ -49,6 +49,10 @@ module PagesHelper
     render :partial => "containers/items/hots", :locals => { :collection => item.sorted_hots }
   end
 
+  def products_accordion(item)
+    render :partial => "containers/items/products_accordion", :locals => { :collection => Product.any_in(:category_path => item.category_ids) }
+  end
+
   def products(item)
     render :partial => "containers/items/products", :locals => { :collection => Product.any_in(:category_path => item.category_ids) }
   end

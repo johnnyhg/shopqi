@@ -24,6 +24,11 @@ class Product
     self.category_path = self.category.full_path if category and (self.new_record? or category.changed?)
   end
 
+  # 产品第一张照片
+  def photo
+    (photos.empty? ? Photo.new : photos.first).file
+  end
+
   # 产品列表缩略图
   def middle_url
     photos.empty? ? '/images/fallback/product/middle.png' : photos.first.file.middle.url

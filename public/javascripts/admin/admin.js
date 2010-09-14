@@ -75,6 +75,9 @@ var dynamic_setting = { bottom: { direction: 'down', bounce: true } };
 
 Admin = {
   refresh: function(){
+    //accordion products list
+    $('.accordion').accordion();
+
     //products list
     $('.editable.products_list').removeClass('editable').parent('.container').tooltip(products_tooltip_setting).dynamic(dynamic_setting);
 

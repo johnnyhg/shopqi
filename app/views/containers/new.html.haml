@@ -5,3 +5,4 @@
   %li=link_to '边栏广告', containers_path(:container => { :parent_id => params[:parent_id], :type => :sidead } ), :method => :post, :remote => true
   %li=link_to '热门分类', containers_path(:container => { :parent_id => params[:parent_id], :type => :hots } ), :method => :post, :remote => true
   %li=link_to '商品列表', containers_path(:container => { :parent_id => params[:parent_id], :type => :products } ), :method => :post, :remote => true
+  %li=link_to '商品列表[手风琴展示效果]', containers_path(:container => { :parent_id => params[:parent_id], :type => :products_accordion } ), :method => :post, :remote => true

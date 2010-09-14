@@ -25,7 +25,7 @@ class Container
   field :image_id
 
   # mongoid暂不支持
-  validates_inclusion_of :type, :in => %w( focuses sidead fullad hots products), :allow_blank => true
+  validates_inclusion_of :type, :in => %w( focuses sidead fullad hots products products_accordion), :allow_blank => true
 
   # 回调方法
   before_create :set_page
@@ -37,7 +37,7 @@ class Container
     if self.type
       self.grids = case self.type.to_sym
         when :focuses, :hots then 18
-        when :sidead then 6
+        when :sidead, :products_accordion then 6
         when :fullad, :products then 24
       end
     end
@@ -98,7 +98,7 @@ class Container
         self.image_id = Image.create(:width => 220, :height => 120).id
       when :fullad
         self.image_id = Image.create(:width => 940, :height => 60).id
-      when :products
+      when :products, :products_accordion
         self.categories = User.current.store.categories.roots.first.children
       end
     end
