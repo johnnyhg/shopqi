@@ -17,6 +17,9 @@ $color_red: #A10000
 
 $image_pay: "templates/vancl/header/pay.jpg"
 $image_bar: "templates/common/header/bar.gif"
+$image_bullet_diamond: "templates/common/bullet/diamond.gif"
+$image_bullet_right_arrow: "templates/common/bullet/right_arrow.gif"
+$image_bullet_down_arrow: "templates/common/bullet/down_arrow.gif"
 
 /***** DEFAULT *****/
 body
@@ -153,12 +156,19 @@ body
   .products_accordion_list
     border-bottom: 1px solid $color_grey_lighter
     dt
+      background: image_url($image_bullet_diamond) no-repeat 8px 11px
       border: 1px solid $color_grey_lighter
       border-bottom: none
       height: 29px
       line-height: 29px
-      padding-left: 10px
-      &.showimg a
-        color: $color_hover
+      padding-left: 20px
+      p
+        margin-right: 8px
+        background: image_url($image_bullet_right_arrow) no-repeat 100% 11px
+      &.showimg
+        a
+          color: $color_hover
+        p
+          background: image_url($image_bullet_down_arrow) no-repeat 100% 11px
     dd
       display: none
