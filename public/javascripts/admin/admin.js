@@ -98,6 +98,8 @@ Admin = {
     //sort
     $('.sortable').removeClass('sortable').each(function(){
       $(this).sortable({
+        // 辅助面板不可拖动
+        items: '>:not(.assist)',
         handle: 'h2',
         update: function(event, ui){
           //$.jGrowl($(this).html(), {sticky: true});
