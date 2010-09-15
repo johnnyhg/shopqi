@@ -9,6 +9,8 @@ class Image
 
   embeds_many :backgrounds
   embeds_many :words
+  references_one :container
+  references_one :focus, :class_name => 'Focus'
 
   #mongoid出于性能上的考虑不会触发子记录的callback，导致carrierwave无法将生成图片的路径写入，这里需要手动触发
   #http://github.com/durran/mongoid/issues/issue/35

@@ -9,20 +9,15 @@ class Focus
   belong_to_store
   acts_as_sortable_tree
   references_one :container
+  referenced_in :image
 
   field :name
   field :url
-
-  field :image_id
 
   #先关联图片
   before_create :init_image
 
   def init_image
-    self.image_id = Image.create(:width => 700, :height => 390).id
-  end
-
-  def image
-    Image.find(image_id)
+    self.image = Image.create(:width => 700, :height => 390)
   end
 end

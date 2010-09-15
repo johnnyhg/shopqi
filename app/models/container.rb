@@ -15,14 +15,14 @@ class Container
 
   referenced_in :page
 
+  # 在线文字合成ID: (通栏,边栏)广告
+  referenced_in :image
+
   MAX_GRIDS = 24
   # 占多少列
   field :grids, :type => Integer, :default => MAX_GRIDS
 
   field :type
-
-  # 在线文字合成ID: (通栏,边栏)广告
-  field :image_id
 
   # mongoid暂不支持
   validates_inclusion_of :type, :in => %w( focuses sidead fullad hots products products_accordion), :allow_blank => true
@@ -95,16 +95,12 @@ class Container
         end
         self.hot.children.init_list!
       when :sidead
-        self.image_id = Image.create(:width => 220, :height => 120).id
+        self.image = Image.create(:width => 220, :height => 120)
       when :fullad
-        self.image_id = Image.create(:width => 940, :height => 60).id
+        self.image = Image.create(:width => 940, :height => 60)
       when :products, :products_accordion
         self.categories = User.current.store.categories.roots.first.children
       end
     end
-  end
-
-  def image
-    Image.find image_id
   end
 end
