@@ -33,7 +33,7 @@ Container = {
     //横向辅助容器
     var children_grids = 0;
     root.children('.container').each(function(){
-      children_grids += $(this).attr('class').match(/grid_(\d{1,2})/)[1];
+      children_grids += parseInt($(this).attr('class').match(/grid_(\d{1,2})/)[1]);
     });
     //填充空白
     if(root_grids - children_grids > 0){
@@ -61,6 +61,12 @@ Container = {
         Container.attach_tip();
       }
     });
+  },
+
+  // 移动容器：调整move handler位置
+  move: function(){
+    var position = $(this).parent().position();
+    $(this).css('left', position.left).css('top', position.top).show();
   }
 };
 

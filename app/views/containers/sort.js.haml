@@ -1,0 +1,13 @@
+//refresh class
+-resource_name = controller_name.singularize
+// adjust grid's alpha,omega class(except vertical container)
+-params[resource_name].each do |resource_id|
+  var $this = $("##{resource_name}_#{resource_id}");
+  if(!($this.hasClass('alpha') && $this.hasClass('omega'))){
+  $this.removeClass('alpha').removeClass('omega');
+  }
+$("##{resource_name}_#{params[resource_name].first}").addClass('alpha');
+$("##{resource_name}_#{params[resource_name].last}").addClass('omega');
+
+//reposition
+$("##{resource_name}_#{params[resource_name].first}").parent().find('h2.move').each(Container.move);

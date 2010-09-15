@@ -20,6 +20,7 @@ $image_bar: "templates/common/header/bar.gif"
 $image_bullet_diamond: "templates/common/bullet/diamond.gif"
 $image_bullet_right_arrow: "templates/common/bullet/right_arrow.gif"
 $image_bullet_down_arrow: "templates/common/bullet/down_arrow.gif"
+$image_bullet_move_arrow: "templates/common/bullet/move_arrow.png"
 
 /***** DEFAULT *****/
 body
@@ -172,3 +173,17 @@ body
           background: image_url($image_bullet_down_arrow) no-repeat 100% 11px
     dd
       display: none
+
+.container
+  h2.move
+    width: 16px
+    height: 16px
+    background: image_url($image_bullet_move_arrow) no-repeat 0 0
+    /* 相对位置会占用空间
+    /* position: relative
+    position: absolute
+    left: 0px
+    top: 0px
+    cursor: move
+    display: none
+    z-index: 999

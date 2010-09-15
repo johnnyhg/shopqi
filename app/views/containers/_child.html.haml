@@ -1,4 +1,5 @@
-%div{:class => grid_class(containers, child), :id => id(child)}<
+.sortable{:class => "#{grid_class(containers, child)}", :id => id(child), :sort_url => sort_containers_path}<
+  %h2.move{:title => '点击拖动此容器，实际网店中不会显示此标记'}
   -if child.type
     =item_partial(child)
   -else

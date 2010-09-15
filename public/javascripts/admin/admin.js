@@ -85,6 +85,7 @@ Admin = {
     $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
     $('.editable').removeClass('editable');
 
+    //hots
     if($('dd ul:empty')[0]){
       var parentDl = $('dd ul:empty').parents('dl:first');
       //qtip_ul为方便destroy qtip
@@ -97,6 +98,7 @@ Admin = {
     //sort
     $('.sortable').removeClass('sortable').each(function(){
       $(this).sortable({
+        handle: 'h2',
         update: function(event, ui){
           //$.jGrowl($(this).html(), {sticky: true});
           $.post($(this).attr('sort_url'), $(this).sortable('serialize'), null, 'script');
@@ -112,4 +114,10 @@ jQuery(function ($) {
   // tooltip设置显示延时，但关闭不能也跟着延时
   $('#tooltip').bind('cancle', function(){ $(this).hide() });
   Admin.refresh();
+
+  $('h2.move').css('opacity', '0.3').live('mouseenter', function(){
+    $(this).css('opacity', '1');
+  }).live('mouseleave', function(){
+    $(this).css('opacity', '0.3');
+  }).each(Container.move);
 });

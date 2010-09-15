@@ -16,6 +16,12 @@ class ContainersController < InheritedResources::Base
     }
   end
 
+  def sort
+    params[:container].each_with_index do |id, index|
+      end_of_association_chain.find(id).update_attributes :pos => index
+    end
+  end
+
   protected
   def begin_of_association_chain
     current_user.store

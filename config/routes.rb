@@ -3,6 +3,7 @@
 Shopqi::Application.routes.draw do
   resources :containers do
     collection do
+      post :sort
       get :operates
     end
   end
