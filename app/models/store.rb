@@ -42,4 +42,8 @@ class Store
   def logo_image
     Image.find(self.logo_image_id)
   end
+
+  def root_container
+    self.pages.homepage.containers.roots.first
+  end
 end

@@ -53,7 +53,7 @@ gem "awesome_print", :require => 'ap'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
+# To use debugger(set autoeval; set autolist)
 #gem 'ruby-debug19'
 # 需要手动安装(/path/to/ruby为ruby所在路径，如:home/saberma/.rvm/src/ruby-1.9.2-head)
 # gem install ruby-debug19 --no-ri --no-rdoc -- --with-ruby-include=/path/to/ruby

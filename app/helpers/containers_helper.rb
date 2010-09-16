@@ -11,9 +11,13 @@ module ContainersHelper
   # 容器class
   def grid_class(containers, item)
     css_class = [name(item), "grid_#{item.grids}"]
-    nested = (item.grids == item.parent.grids)
-    css_class << :alpha if nested or (item == containers.first)
-    css_class << :omega if nested or (item == containers.last and item.parent.children_full?)
+    if item.root?
+      css_class << :root
+    else
+      nested = (item.grids == item.parent.grids)
+      css_class << :alpha if nested or (item == containers.first)
+      css_class << :omega if nested or (item == containers.last and item.parent.children_full?)
+    end
     css_class.join(' ')
   end
 end

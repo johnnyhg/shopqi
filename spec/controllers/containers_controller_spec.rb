@@ -8,7 +8,7 @@ describe ContainersController do
     sign_in @saberma
 
     @page = @saberma.store.pages.homepage
-    @container = @page.containers.create
+    @container = @page.containers.roots.first
   end
 
   it 'should save categories' do
@@ -27,6 +27,6 @@ describe ContainersController do
         :type => :focuses
       }
       response.should be_success
-    end.should change(Container, :count).by(2)
+    end.should change(Container, :count).by(3)
   end
 end

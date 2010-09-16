@@ -71,7 +71,7 @@ Container = {
 };
 
 jQuery(function($) {
-  $('.container_operates').qtip($.extend({ content: {url: '/containers/operates' } }, qtip_setting));
+  $('.container_operates').qtip($.extend({ content: {url: '/containers/new' } }, qtip_setting));
   //点击后立即关闭提示面板
   $('.qtip a').live('click', function(){
     $(this).parents('.qtip').qtip('hide');

@@ -1,9 +1,0 @@
-//close qtip
-$("#tooltip").trigger('cancle');
-
-//appendTo parent
-$('#content').append('#{escape_javascript( render(:partial => "containers/item", :object => resource))}');
-$('##{id(resource)}').effect('highlight');
-
-//reset qtip
-Container.attach_tip();

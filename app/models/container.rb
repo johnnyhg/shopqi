@@ -8,6 +8,7 @@ class Container
 
   belong_to_store
   acts_as_sortable_tree
+  alias top_root? root?
 
   referenced_in :focus, :class_name => 'Focus'
   referenced_in :hot
@@ -31,7 +32,7 @@ class Container
   before_create :set_page
   before_create :init_grids
   before_create :init_item
-  after_create :tranform_to_child
+  after_create :tranform
 
   def init_grids
     if self.type
@@ -47,14 +48,19 @@ class Container
     self.page = parent.page if parent_id
   end
 
-  # 是否需要转换为嵌套父容器
-  def tranform_to_child
-    if is_nested?
+  # 是否需要转换为根容器或嵌套父容器
+  def tranform
+    self.update_attributes :grids => MAX_GRIDS if is_root_missing?
+    if is_root_missing? or is_nested?
       self.children << self.class.new(:type => self.type)
       self.children.init_list!
-      self.type = nil
-      self.save
+      self.update_attributes :type => nil
     end
+  end
+
+  # 未建立根容器?
+  def is_root_missing?
+    parent and parent.top_root?
   end
 
   def is_nested?
@@ -79,7 +85,7 @@ class Container
   end
 
   def init_item
-    if self.type and !is_nested?
+    if self.type and !(is_root_missing? or is_nested?)
       case self.type.to_sym
       when :focuses
         self.focus = Focus.root

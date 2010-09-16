@@ -3,16 +3,12 @@ class ContainersController < InheritedResources::Base
   layout nil
   actions :new, :create, :edit, :update, :destroy
   respond_to :js, :only => [:create, :update, :destroy]
+  before_filter :init_parent, :only => :create
 
   create! do |success, failure|
     success.js {
       # 初始化位置
       resource.parent.children.init_list!
-      if resource.root?
-        render :action => "create.container"
-      else
-        render :action => "create"
-      end
     }
   end
 
@@ -25,5 +21,9 @@ class ContainersController < InheritedResources::Base
   protected
   def begin_of_association_chain
     current_user.store
+  end
+
+  def init_parent
+    params[:container][:parent_id] = current_user.store.containers.roots.first.id.to_s if params[:container][:parent_id].blank?
   end
 end
