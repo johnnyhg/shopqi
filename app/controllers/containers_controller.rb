@@ -14,7 +14,10 @@ class ContainersController < InheritedResources::Base
 
   def sort
     params[:container].each_with_index do |id, index|
-      end_of_association_chain.find(id).update_attributes :pos => index
+      container = end_of_association_chain.find(id)
+      container.update_attributes :pos => index
+      @first = container if index == 0
+      @last = container
     end
   end
 

@@ -6,8 +6,10 @@
   if(!($this.hasClass('alpha') && $this.hasClass('omega'))){
   $this.removeClass('alpha').removeClass('omega');
   }
-$("##{resource_name}_#{params[resource_name].first}").addClass('alpha');
-$("##{resource_name}_#{params[resource_name].last}").addClass('omega');
+-unless @first.root?
+  $("##{id(@first)}").addClass('alpha');
+-unless @last.root?
+  $("##{id(@last)}").addClass('omega');
 
 //reposition
-$("##{resource_name}_#{params[resource_name].first}").parent().find('h2.move').each(Container.move);
+$("##{id(@first)}").parent().find('h2.move').each(Container.move);
