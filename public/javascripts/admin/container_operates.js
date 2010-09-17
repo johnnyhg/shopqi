@@ -65,22 +65,34 @@ Container = {
 
   // 移动容器：调整move handler位置
   move: function(){
-    var position = $(this).parent().position();
-    $(this).css('left', position.left).css('top', position.top).show();
+    // 容器存在兄弟容器(非辅助)
+    if(($(this).parent().parent().children('.container:not(.assist)').size() > 1) && (!$(this).parent().hasClass('assist'))){
+      var position = $(this).parent().position();
+      $(this).css('left', position.left).css('top', position.top).show();
+    }
+  },
+
+  // 生成move handler
+  generate_move_handler: function(){
+    $('.container').each(function(){
+      if(!$(this).children('h2.move')[0]) $(this).prepend($('<h2 class="move"/>').css('opacity', '0.3'));
+    });
+    $('h2.move').each(Container.move);
   }
 };
 
 jQuery(function($) {
   $('.container_operates').qtip($.extend({ content: {url: '/containers/new' } }, qtip_setting));
   //点击后立即关闭提示面板
-  $('.qtip a').live('click', function(){
-    $(this).parents('.qtip').qtip('hide');
-  });
+  $('.qtip a').live('click', function(){ $(this).parents('.qtip').qtip('hide'); });
 
   Container.attach_tip();
 
   //空白处要显示提示面板，用于继续添加容器
   //逐层将高度调整（保持与顶层容器一致），除非容器已无子容器
   $('#content .container_24 > .grid_24').each(Container.generate_assist);
+
+  //容器排序move handler
+  $('h2.move').live('mouseenter', function(){ $(this).css('opacity', '1'); }).live('mouseleave', function(){ $(this).css('opacity', '0.3'); });
 
 });

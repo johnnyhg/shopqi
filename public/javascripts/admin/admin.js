@@ -117,6 +117,9 @@ Admin = {
       if($(this).hasClass('container')) attrs['handle'] = 'h2';
       $(this).sortable(attrs);
     });
+
+    //延时以使图片加载后固定高度
+    window.setTimeout(Container.generate_move_handler, 1000);
   }
 };
 
@@ -124,12 +127,6 @@ jQuery(function ($) {
   // tooltip设置显示延时，但关闭不能也跟着延时
   $('#tooltip').bind('cancle', function(){ $(this).hide() });
   Admin.refresh();
-
-  $('h2.move').css('opacity', '0.3').live('mouseenter', function(){
-    $(this).css('opacity', '1');
-  }).live('mouseleave', function(){
-    $(this).css('opacity', '0.3');
-  }).each(Container.move);
 
   // 按下ctrl键才能编辑
   $(document).bind('keydown', 'ctrl', function(){ editable_flag = true; });
