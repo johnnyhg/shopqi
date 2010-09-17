@@ -97,17 +97,19 @@ Admin = {
 
     //sort
     $('.sortable').removeClass('sortable').each(function(){
-      $(this).sortable({
+      var attrs = {
         // 辅助面板不可拖动
         items: '>:not(.assist)',
-        handle: 'h2',
         update: function(event, ui){
           //$.jGrowl($(this).html(), {sticky: true});
           $.post($(this).attr('sort_url'), $(this).sortable('serialize'), null, 'script');
           // 轮播广告拖动后需要调整图片的位置
           ui.item.trigger('sortable.update');
         }
-      });
+      };
+      // 容器拖动时的move handler
+      if($(this).hasClass('container')) attrs['handle'] = 'h2';
+      $(this).sortable(attrs);
     });
   }
 };
