@@ -12,6 +12,9 @@ $.fn.move = function(direct, content){
   });
 }
 
+// 可编辑标记
+var editable_flag = false;
+
 var tooltip_setting = {
   tip: '#tooltip', 
   predelay: 1000, 
@@ -28,6 +31,8 @@ var tooltip_setting = {
   },
   //opacity: 0.9,
   onBeforeShow: function(){
+    if(!editable_flag) return false;
+    editable_flag = false;
     $('#tooltip').html('正在处理...');
     var obj = this.getTrigger().parents('[id]:first');
     //初始化提示面板的宽高
@@ -45,15 +50,14 @@ var tooltip_setting = {
     var container = this.getTrigger().parents('.container');
     if(container[0]) data['container_id'] = id(container.attr('id'));
 
-    $.get(url, data, function(body){
-      $('#tooltip').html(body);
-      $('#tooltip :text:first').focus();
-    });
+    $.get(url, data, function(body){ $('#tooltip').html(body); });
   }
 };
 
 var image_tooltip_setting = $.extend({}, tooltip_setting, {
   onBeforeShow: function(){
+    if(!editable_flag) return false;
+    editable_flag = false;
     $('#tooltip').html('正在处理...');
     this.getTip().width(960).height(this.getTrigger().height() + 70);
     var url = '/images/' + id(this.getTrigger().attr('id')) + '/edit';
@@ -63,6 +67,8 @@ var image_tooltip_setting = $.extend({}, tooltip_setting, {
 
 var products_tooltip_setting = $.extend({}, tooltip_setting, {
   onBeforeShow: function(){
+    if(!editable_flag) return false;
+    editable_flag = false;
     $('#tooltip').html('正在处理...');
     this.getTip().width(960).height(300);
     var url = '/containers/' + id(this.getTrigger().attr('id')) + '/edit';
@@ -124,4 +130,7 @@ jQuery(function ($) {
   }).live('mouseleave', function(){
     $(this).css('opacity', '0.3');
   }).each(Container.move);
+
+  // 按下ctrl键才能编辑
+  $(document).bind('keydown', 'ctrl', function(){ editable_flag = true; });
 });
