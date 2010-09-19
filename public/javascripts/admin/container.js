@@ -1,7 +1,7 @@
 var qtip_setting = {
     position: 'topLeft',
     hide: { fixed: true }, // Make it fixed so it can be hovered over
-    show: { delay: 800 },
+    show: { delay: 1000 },
     style: { padding: '5px 10px', name: 'green' }
 };
 

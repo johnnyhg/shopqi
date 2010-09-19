@@ -3,7 +3,7 @@ class ContainersController < InheritedResources::Base
   layout nil
   actions :new, :create, :edit, :update, :destroy
   respond_to :js, :only => [:create, :update, :destroy]
-  before_filter :init_parent, :only => :create
+  before_filter :init_parent, :only => :new
 
   create! do |success, failure|
     success.js {
@@ -27,6 +27,10 @@ class ContainersController < InheritedResources::Base
   end
 
   def init_parent
-    params[:container][:parent_id] = current_user.store.containers.roots.first.id.to_s if params[:container][:parent_id].blank?
+    @parent = if params[:parent_id].blank? 
+      end_of_association_chain.roots.first
+    else
+      end_of_association_chain.find(params[:parent_id])
+    end
   end
 end

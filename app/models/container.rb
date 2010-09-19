@@ -6,6 +6,17 @@ class Container
   include Mongoid::ActsAsSortableTree
   include Mongoid::BelongToStore
 
+  # 操作
+  OPERATES = {
+    :fullad => { :grids => 24, :name => '通栏广告'},
+    :focuses => { :grids => 18, :name => '聚焦广告'},
+    :sidead => { :grids => 6, :name => '边栏广告'},
+    :hots => { :grids => 18, :name => '热门分类'},
+    :products_head => { :grids => 24, :name => '商品列表标题'},
+    :products => { :grids => 24, :name => '商品列表'},
+    :products_accordion => { :grids => 6, :name => '商品列表[手风琴展示效果]'},
+  }
+
   belong_to_store
   acts_as_sortable_tree
   alias top_root? root?
@@ -26,7 +37,7 @@ class Container
   field :type
 
   # mongoid暂不支持
-  validates_inclusion_of :type, :in => %w( focuses sidead fullad hots products products_accordion products_head), :allow_blank => true
+  validates_inclusion_of :type, :in => OPERATES.stringify_keys, :allow_blank => true
 
   # 回调方法
   before_create :set_page
@@ -34,14 +45,15 @@ class Container
   before_create :init_item
   after_create :tranform
 
+
+  def remain_grids
+    remain = self.grids - self.children.map(&:grids).sum
+    remain = self.grids if remain == 0
+    remain
+  end
+
   def init_grids
-    if self.type
-      self.grids = case self.type.to_sym
-        when :focuses, :hots then 18
-        when :sidead, :products_accordion then 6
-        when :fullad, :products, :products_head then 24
-      end
-    end
+    self.grids = OPERATES[self.type.to_sym][:grids] if self.type
   end
 
   def set_page

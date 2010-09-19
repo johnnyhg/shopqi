@@ -190,6 +190,8 @@ end
 end
 
 当 /^我?把鼠标移到(.+)$/ do |field|
+  # 按下ctrl键，启用编辑状态
+  page.execute_script("window.editable_flag = true;");
   if field == 'Logo'
     page.execute_script("$(\"#logo a img\").mouseover()")
   else

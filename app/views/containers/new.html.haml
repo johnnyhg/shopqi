@@ -1,9 +1,5 @@
 %ul.operates
   %li 在此处添加:
-  %li=link_to '通栏广告', containers_path(:container => { :parent_id => params[:parent_id], :type => :fullad } ), :method => :post, :remote => true
-  %li=link_to '聚焦广告', containers_path(:container => { :parent_id => params[:parent_id], :type => :focuses } ), :method => :post, :remote => true
-  %li=link_to '边栏广告', containers_path(:container => { :parent_id => params[:parent_id], :type => :sidead } ), :method => :post, :remote => true
-  %li=link_to '热门分类', containers_path(:container => { :parent_id => params[:parent_id], :type => :hots } ), :method => :post, :remote => true
-  %li=link_to '商品列表标题', containers_path(:container => { :parent_id => params[:parent_id], :type => :products_head } ), :method => :post, :remote => true
-  %li=link_to '商品列表', containers_path(:container => { :parent_id => params[:parent_id], :type => :products } ), :method => :post, :remote => true
-  %li=link_to '商品列表[手风琴展示效果]', containers_path(:container => { :parent_id => params[:parent_id], :type => :products_accordion } ), :method => :post, :remote => true
+  -Container::OPERATES.each_pair do |type, attrs|
+    -if @parent.remain_grids >= attrs[:grids]
+      %li=link_to attrs[:name], containers_path(:container => { :parent_id => @parent.id, :type => type } ), :method => :post, :remote => true

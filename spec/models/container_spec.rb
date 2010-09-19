@@ -6,14 +6,14 @@ describe Container do
     @saberma.make_current
 
     @page = @saberma.store.pages.homepage
+    @root = @page.containers.roots.first
   end
 
   describe 'grids less than parents grids' do
     it 'should add a root container' do
-      root = @page.containers.roots.first
       lambda do
         root_container = Container.create(
-          :parent_id => root.id,
+          :parent_id => @root.id,
           :type => :focuses
         )
         root_container.children.size.should eql 1
@@ -29,9 +29,8 @@ describe Container do
     end
 
     it 'should add a parent container' do
-      root = @page.containers.roots.first
       container = Container.new
-      root.children << container
+      @root.children << container
 
       lambda do
         focuses_container = Container.create(
@@ -45,15 +44,10 @@ describe Container do
   end
 
   it 'should save page_id' do
-    root = @page.containers.roots.first
-    root.page_id.should eql @page.id
+    @root.page_id.should eql @page.id
   end
 
   describe 'item' do
-    before :each do
-      @root = @page.containers.roots.first
-    end
-
     it 'should save focuses item' do
       lambda do
         @root.children << Container.create(:type => :focuses)
@@ -82,6 +76,13 @@ describe Container do
       container.type.should eql 'products'
 
       container.categories.size.should eql 1
+    end
+
+    # 容器剩余可创建子容器的grids宽度
+    it 'should get parents remain grids' do
+      @root.remain_grids.should eql Container::MAX_GRIDS
+      container = Container.create(:type => :focuses, :parent_id => @root.id)
+      container.remain_grids.should eql 6
     end
   end
 end
