@@ -48,7 +48,7 @@ class Container
 
   def remain_grids
     remain = self.grids - self.children.map(&:grids).sum
-    remain = self.grids if remain == 0
+    remain = self.grids if remain <= 0
     remain
   end
 

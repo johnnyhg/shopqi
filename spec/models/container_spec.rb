@@ -83,6 +83,9 @@ describe Container do
       @root.remain_grids.should eql Container::MAX_GRIDS
       container = Container.create(:type => :focuses, :parent_id => @root.id)
       container.remain_grids.should eql 6
+
+      Container.create(:type => :focuses, :parent_id => @root.id)
+      @root.remain_grids.should eql Container::MAX_GRIDS
     end
   end
 end
