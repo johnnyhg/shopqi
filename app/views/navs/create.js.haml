@@ -1,8 +1,8 @@
 $("#tooltip").trigger('cancle');
 
-$("##{name(resource)}_#{params[name(resource)][:neighbor]}").move('#{params[name(resource)][:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/item", :object => resource))}');
+$("##{name(resource)}_#{params[:neighbor]}").move('#{params[:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/item", :object => resource))}');
 
-$("##{name(resource)}_#{params[name(resource)][:neighbor]}").parent().children().removeClass('no_bar');
-$("##{name(resource)}_#{params[name(resource)][:neighbor]}").parent().children(':first').addClass('no_bar');
+$("##{id(resource)}").parent().children().removeClass('no_bar');
+$("##{id(resource)}").parent().children(':first').addClass('no_bar');
 
 Admin.refresh();

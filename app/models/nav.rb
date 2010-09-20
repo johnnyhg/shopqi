@@ -4,7 +4,7 @@ class Nav
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Sortable
-  sortable_belong_to :page
+  sortable_belong_to :store
 
   field :name
   field :url

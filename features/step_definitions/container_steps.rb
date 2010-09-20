@@ -15,6 +15,8 @@ end
 end
 
 当 /^我?把鼠标移进(.+)所在容器$/ do |field|
+  # 按下ctrl键，启用编辑状态
+  page.execute_script("window.editable_flag = true;");
   page.execute_script("$(\"a:contains('#{field}')\").mouseover()")
   sleep 1
 end

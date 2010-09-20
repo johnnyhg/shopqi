@@ -1,6 +1,6 @@
 # coding: utf-8
 假如 /^系统存在网店信息$/ do
-  Factory('page_mbaobao')
+  Factory('store_vancl')
 end
 
 而且 /将图片(.+)上传/ do |path|

@@ -1,7 +1,7 @@
 $("#tooltip").trigger('cancle');
 
 //insert
-$("#menu_#{params[:menu][:neighbor]}").move('#{params[:menu][:direct]}', '#{escape_javascript( render(:partial => "menus/item", :object => resource, :locals => {:item_counter => 0}))}');
+$("#menu_#{params[:neighbor]}").move('#{params[:direct]}', '#{escape_javascript( render(:partial => "menus/item", :object => resource, :locals => {:item_counter => 0}))}');
 
 //refresh image
 $("##{id(resource)}").parent().find('> li > a').css('background-image', 'url(#{menu_bg_img}?#{Time.now.to_i})');

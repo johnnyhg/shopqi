@@ -16,7 +16,9 @@ Shopqi::Application.routes.draw do
     end
   end
 
-  resources :categories
+  resources :categories do
+    resources :products, :only => :index
+  end
 
   #图片合成
   resources :images do

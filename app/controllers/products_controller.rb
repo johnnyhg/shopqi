@@ -1,7 +1,9 @@
 # encoding: utf-8
 class ProductsController < InheritedResources::Base
-  actions :new, :create, :edit, :update, :destroy
+  belongs_to :category, :optional => true
+  actions :index, :new, :create, :edit, :update, :destroy
   layout nil
+  layout 'pages', :only => :index
   respond_to :js, :only => [ :create, :update, :destroy ]
 
   create! do |success, failure|
@@ -12,6 +14,7 @@ class ProductsController < InheritedResources::Base
     format.js { render :nothing => true }
   end
 
+  # 上传商品照片
   def upload
     @product = end_of_association_chain.find_or_create_by(:id => BSON::ObjectID(params[:id]))
     @photo = @product.photos.new(params[:photo])

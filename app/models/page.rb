@@ -3,11 +3,9 @@
 class Page
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Sortable
   include Mongoid::BelongToStore
   belong_to_store
 
-  has_many_sortable :navs, :menus
   references_many :containers, :dependent => :destroy
 
   field :name
@@ -24,14 +22,5 @@ class Page
   # 首页
   def self.homepage
     where(:name => :homepage).first
-  end
-
-  #网店菜单背景图路径
-  def menu_sprite_path
-    "#{Rails.root}/public" + menu_sprite_url
-  end
-
-  def menu_sprite_url
-    "/images/menu/#{id}.png"
   end
 end

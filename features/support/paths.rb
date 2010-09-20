@@ -27,9 +27,11 @@ module NavigationHelpers
       page_path
     when /the new product page/
       new_product_path
-
     when /工作平台/
       user_root_path
+    when /(.+)分类商品列表页面/
+      name = page_name.match(/(.+)分类商品列表页面$/)[1]
+      category_products_path(:category_id => Category.where(:name => name).first.id)
 
 
     # Add more mappings here.

@@ -4,10 +4,12 @@ class Store
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::BelongToStore
+  include Mongoid::Sortable
 
   references_many :pages, :dependent => :destroy
 
   store_has_many :users, :categories, :products, :hots, :containers, :focuses
+  has_many_sortable :navs, :menus
 
   # 模板
   field :template, :default => 'vancl'
@@ -45,5 +47,14 @@ class Store
 
   def root_container
     self.pages.homepage.containers.roots.first
+  end
+
+  #网店菜单背景图路径
+  def menu_sprite_path
+    "#{Rails.root}/public" + menu_sprite_url
+  end
+
+  def menu_sprite_url
+    "/images/menu/#{id}.png"
   end
 end

@@ -6,6 +6,16 @@ class MenusController < InheritedResources::Base
   after_filter :sprite, :only => [:create, :update, :destroy, :sort]
 
   create! do |success, failure|
+    neighbor = params[:neighbor]
+    if neighbor
+      neighbor_item = end_of_association_chain.find(params[:neighbor])
+      resource.update_attributes :store_id => neighbor_item.store_id
+
+      # 初始化位置
+      resource.store.menus.init_list!
+      # reload重新加载pos属性值
+      resource.reload.move(params[:direct].to_sym => neighbor_item)
+    end
   end
 
   edit! do |format|
@@ -17,17 +27,17 @@ class MenusController < InheritedResources::Base
 
   def sort
     params[:menu].each_with_index do |id, index|
-      current_user.store.pages.homepage.menus.find(id).update_attributes :pos => index
+      end_of_association_chain.find(id).update_attributes :pos => index
     end
   end
 
   protected
   def begin_of_association_chain
-    current_user.store.pages.homepage
+    current_user.store
   end
 
   def sprite
-    Menu.sprite(current_user.store.pages.homepage)
+    Menu.sprite(current_user.store)
   end
 
 end

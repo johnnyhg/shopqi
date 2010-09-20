@@ -4,17 +4,20 @@ class Menu
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Sortable
-  sortable_belong_to :page
+  include Mongoid::BelongToStore
+  sortable_belong_to :store
 
   field :name
   field :url
 
-  #生成sprite图片
-  def self.sprite(page)
-    menus = page.sorted_menus
+  before_create :init_store
 
-    bg_path = "#{Rails.root}/public/images/templates/#{User.current.store.template}/system/menu_bg.png" 
-    bg_hover_path = "#{Rails.root}/public/images/templates/#{User.current.store.template}/system/menu_bg_hover.png" 
+  #生成sprite图片
+  def self.sprite(store)
+    menus = store.sorted_menus
+
+    bg_path = "#{Rails.root}/public/images/templates/#{store.template}/system/menu_bg.png" 
+    bg_hover_path = "#{Rails.root}/public/images/templates/#{store.template}/system/menu_bg_hover.png" 
 
     bg = MiniMagick::Image.from_file(bg_path)
 
@@ -58,6 +61,6 @@ class Menu
         c.draw "text #{x},#{y} '#{menu.name}'"
       end
     end
-    magick.write page.menu_sprite_path
+    magick.write store.menu_sprite_path
   end
 end

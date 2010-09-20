@@ -6,38 +6,49 @@ describe Nav do
     @saberma = Factory(:user_saberma)
     @saberma.make_current
 
-    @page = Factory('page_mbaobao')
-    @page.navs.init_list!
+    @store = @saberma.store
+    @store.navs = []
+    %w( 会员中心 订单查询 网站导航 帮助 ).each do |nav|
+      @store.navs << Nav.new(:name => nav)
+    end
+    @store.navs.init_list!
+    @store.reload
 
-    @customer = @page.navs.where(:name => '会员中心').first
-    @order = @page.navs.where(:name => '订单查询').first
+    @customer = @store.navs.where(:name => '会员中心').first
+    @order = @store.navs.where(:name => '订单查询').first
   end
 
   it "should be sort" do
-    @page.reload.sorted_navs.map(&:name).should == ['会员中心', '订单查询', '网站导航', '帮助']
+    @store.sorted_navs.map(&:name).should == ['会员中心', '订单查询', '网站导航', '帮助']
   end
     
   it "should be move below" do
     @customer.move_below(@order)
-    @page.navs.init_list!
-    @page.reload.sorted_navs.map(&:name).should == ['订单查询', '会员中心', '网站导航', '帮助']
+    @store.navs.init_list!
+    @store.reload.sorted_navs.map(&:name).should == ['订单查询', '会员中心', '网站导航', '帮助']
   end
     
   it "should be move above" do
     @order.move_above(@customer)
-    @page.navs.init_list!
-    @page.reload.sorted_navs.map(&:name).should == ['订单查询', '会员中心', '网站导航', '帮助']
+    @store.navs.init_list!
+    @store.reload.sorted_navs.map(&:name).should == ['订单查询', '会员中心', '网站导航', '帮助']
   end
 
   #在会员中心之前添加导航
   it "should insert above nav" do
-    @page.navs.create :name => '建议', :url => '/complain', :neighbor => @order.id, :direct => :above
-    @page.reload.sorted_navs.map(&:name).should == ['会员中心', '建议', '订单查询', '网站导航', '帮助']
+    complain = @store.navs.create :name => '建议', :url => '/complain'
+    @store.navs.init_list!
+    complain.reload.move(:above => @order)
+    @store.sorted_navs.map(&:name).should == ['会员中心', '建议', '订单查询', '网站导航', '帮助']
   end
 
   #在会员中心之后添加导航
   it "should insert below nav" do
-    @page.navs.create :name => '投诉', :url => '/complain', :neighbor => @order.id, :direct => :below
-    @page.reload.sorted_navs.map(&:name).should == ['会员中心', '订单查询', '投诉', '网站导航', '帮助']
+    complain = @store.navs.new(:name => '投诉', :url => '/complain')
+    @store.navs << complain
+    @store.navs.init_list!
+    complain.reload.move(:below => @order)
+
+    @store.sorted_navs.map(&:name).should == ['会员中心', '订单查询', '投诉', '网站导航', '帮助']
   end
 end

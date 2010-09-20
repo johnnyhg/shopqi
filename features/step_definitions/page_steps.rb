@@ -1,6 +1,6 @@
 # coding: utf-8
 假如 /^系统已有网店布局$/ do
-  Factory :page_mbaobao
+  Factory('store_vancl')
 end
 
 假如 /^页面会显示操作表单$/ do

@@ -1,4 +1,17 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
+# encoding: utf-8
+Factory.define :store do |s|
+end
 
-Factory.define :store do |f|
+Factory.define :store_vancl, :parent => :store do |s|
+  s.menus do |store|
+    %w( 首页 女包 男包 真皮 数码包 旅行包 ).map do |menu|
+      Factory.build(:menu, :name => menu)
+    end
+  end
+
+  s.navs do |store| 
+    %w( 会员中心 订单查询 网站导航 帮助 ).map do |nav|
+      Factory.build(:nav, :name => nav)
+    end
+  end
 end

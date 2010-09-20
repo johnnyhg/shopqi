@@ -6,9 +6,12 @@ describe Menu do
     @saberma = Factory(:user_saberma)
     @saberma.make_current
     
-    page = Factory('page_mbaobao')
-    Menu.sprite(page)
-    path = "#{Rails.root}/public/images/menu/#{page.id}.png"
+    %w( 首页 女包 男包 真皮 数码包 旅行包 ).map do |menu|
+      Menu.create :name => menu
+    end
+    store = @saberma.store
+    Menu.sprite(store)
+    path = "#{Rails.root}/public/images/menu/#{store.id}.png"
     File.exist?(path).should eql true
     FileUtils.rm_f(path) 
   end

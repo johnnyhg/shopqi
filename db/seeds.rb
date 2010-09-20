@@ -11,21 +11,22 @@ saberma.try(:store).try(:destroy)
 saberma.try(:destroy)
 saberma = User.create(:login => :saberma, :email => 'saberma@shopqi.com', :password => '666666')
 
+store = saberma.store
 #logo
-logo = saberma.store.logo_image
+logo = store.logo_image
 logo.words << Word.new(:x => 0, :y => 2, :font => :yahei_bold, 'font-size' => '36px', :color => '#000000', :text => :VANCL)
 logo.words << Word.new(:x => 143, :y => 0, :font => :yahei_bold, 'font-size' => '36px', :color => '#89060C', :text => '凡客诚品')
 logo.save
 
 #telephone
-telephone = saberma.store.telephone_image
+telephone = store.telephone_image
 telephone.words << Word.new(:x => 80, :y => 5, :font => :yahei, 'font-size' => '12px', :color => '#000000', :text => '订购热线(免长途费)')
 telephone.words << Word.new(:x => 20, :y => 22, :font => :yahei_bold, 'font-size' => '24px', :color => '#89060C', :text => '400 600 6888')
 telephone.save
 
 #热门分类
 =begin
-hot_root = saberma.store.hots.roots.first
+hot_root = store.hots.roots.first
 {
   :女装 => %w( 新品女装 女装季末特惠 吊带/背心29元 短袖T恤39元 短袖衬衫59元 POLO49元 半裙49元 ), 
   :男装 => %w( 新品男装 短袖T恤 棉麻休闲裤 水洗POLO 牛仔裤(34款) 商务衬衫(68款) 香槟领衬衫 ),
@@ -45,7 +46,7 @@ hot_root.save
 =end
 
 #虚拟单根节点，方便实际根节点排序
-category_root = saberma.store.categories.roots.first
+category_root = store.categories.roots.first
 #分类
 {
   :男装 => {
@@ -113,7 +114,6 @@ category_root.children.init_list!
   Product.create attrs
 end
 
-page = saberma.store.pages.homepage
 #导航
 [ { :name => '我的帐户', :url => '/user' },
   { :name => '断码专区', :url => '/discount' },
@@ -122,19 +122,20 @@ page = saberma.store.pages.homepage
   { :name => '网站联盟', :url => '/union' },
   { :name => '帮助中心', :url => '/help' }
 ].each do |attributes|
-  page.navs << Nav.new(attributes)
+  store.navs << Nav.new(attributes)
 end
-page.navs.init_list!
-page.save
+store.navs.init_list!
+store.save
 
 #菜单
 %w( 首页 男装 女装 童装 鞋 配饰 家居 ).each do |label|
-  page.menus << Menu.new(:name => label, :url => '/menu')
+  store.menus << Menu.new(:name => label, :url => '/menu')
 end
-page.menus.init_list!
-page.save
-Menu.sprite page
+store.menus.init_list!
+store.save
+Menu.sprite store
 
+page = store.pages.homepage
 #轮播广告
 =begin
 %w( 激情世界杯 最爱草包 时尚之夜 冬季暖包 浪美特价 ).each do |label|
