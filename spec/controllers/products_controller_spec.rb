@@ -8,6 +8,15 @@ describe ProductsController do
     sign_in @saberma
   end
 
+  it "should be index" do
+    @root = @saberma.store.categories.roots.first
+    @category = Factory(:category_man)
+    @root.children << @category
+    @product = Factory(:product, :category => @category)
+    get :index, :category_id => @category.id.to_s
+    assigns[:products].size.should eql 1
+  end
+
   it "should upload a photo" do
     lambda do
       xhr :post, :upload, :id => BSON::ObjectID.from_time(Time.now).to_s, :photo => { :file => File.open("#{Rails.root}/public/images/logo.jpg") }

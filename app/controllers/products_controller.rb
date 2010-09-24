@@ -6,6 +6,10 @@ class ProductsController < InheritedResources::Base
   layout 'pages', :only => :index
   respond_to :js, :only => [ :create, :update, :destroy ]
 
+  def index
+    @products ||= store.products.any_in(:category_path => [BSON::ObjectID(params[:category_id])])
+  end
+
   create! do |success, failure|
     failure.js { render :action => "create.failure.js.haml"}
   end

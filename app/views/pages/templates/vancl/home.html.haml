@@ -1,25 +1,8 @@
-#header
-  .container_24
-    .grid_24=navs
-
-  .container_24
-    .grid_19
-      .grid_19.alpha.omega
-        .grid_8.alpha=logo
-        .grid_11.omega=welcome
-      .grid_19.alpha.omega=menus
-    .grid_5=telephone
-
-  .container_24
-    .grid_20
-      .grid_20.alpha.omega=keywords
-      .grid_20.alpha.omega=search
-    .grid_4=car
+= render :partial => "pages/header"
 
 #content
   .container_24.sortable{:id => id(store.root_container), :sort_url => sort_containers_path}=render :partial => "containers/child", :collection => resource.containers.roots.first.children, :locals => {:containers => nil}
 
-/= render :partial => "pages/header"
 /= render :partial => "pages/main"
 .container_24
   .grid_24

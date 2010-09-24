@@ -1,4 +1,8 @@
-.container_24
-  .grid_6
-  .grid_18
-    %ul.products_list= render :partial => "pages/product/small", :collection => collection, :as => :product
+= render :partial => "pages/header"
+
+#content
+  .container_24
+    .grid_24.root
+      .grid_5.alpha 分类
+      .grid_19.omega
+        %ul.category_product.products_list= render :partial => "pages/product/small", :collection => @products, :as => :product

@@ -142,6 +142,11 @@ body
 
   .products_list
     +horizontal-list(6px)
+    li
+      /* 修正: 第一行首元素要与第二行对齐
+      &:first-child
+        padding-left: 6px
+      margin-bottom: 8px
     img
       border: 1px solid $color_grey_lighter
     .title, .market_price
@@ -153,6 +158,10 @@ body
     .price
       margin-top: 3px
       color: $color_hover
+
+  /* 分类列表页面较窄，只能放四个商品信息
+  .category_product li
+    padding: 0 3px
 
   .products_accordion_list
     border-bottom: 1px solid $color_grey_lighter
