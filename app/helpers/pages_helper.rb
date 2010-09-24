@@ -60,9 +60,4 @@ module PagesHelper
   def products(item)
     render :partial => "containers/items/products", :locals => { :collection => Product.any_in(:category_path => item.category_ids) }
   end
-
-  # 菜单背景图片
-  def menu_bg_img
-    "/images/menu/#{current_user.store.pages.homepage.id}.png"
-  end
 end
