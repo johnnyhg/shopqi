@@ -141,11 +141,9 @@ body
               background-image: none
 
   .products_list
-    +horizontal-list(6px)
+    +horizontal-list(0px)
     li
-      /* 修正: 第一行首元素要与第二行对齐
-      &:first-child
-        padding-left: 6px
+      padding: 0 12px 0 0
       margin-bottom: 8px
     img
       border: 1px solid $color_grey_lighter
@@ -161,7 +159,7 @@ body
 
   /* 分类列表页面较窄，只能放四个商品信息
   .category_product li
-    padding: 0 3px
+    padding: 0 8px 0 0
 
   .products_accordion_list
     border-bottom: 1px solid $color_grey_lighter
@@ -199,3 +197,23 @@ body
     cursor: move
     display: none
     z-index: 999
+
+.categories
+  border: 1px solid $color_grey_light
+  .title
+    background-color: $color_grey_darker
+    color: #fff
+    height: 24px
+    line-height: 24px
+    font-weight: bold
+    padding-left: 15px
+    margin: 1px
+  .tree
+    padding: 5px
+    a
+      height: 24px
+      line-height: 24px
+  .jstree
+    .jstree-icon
+      /* 靠近最左
+      width: 0
