@@ -356,11 +356,7 @@
             } else if ($(this).is('.cloud-zoom-gallery')) {
                 opts = $.extend({}, relOpts, options);
                 $(this).data('relOpts', opts);
-                //mouse hover prefer to click. 2010.09.27 by saberma
-                //$(this).bind('click', $(this), function (event) {
-                $(this).bind('click', function(){
-                    return false;
-                }).bind('mouseenter', $(this), function (event) {
+                $(this).bind('click', $(this), function (event) {
                     var data = event.data.data('relOpts');
                     // Destroy the previous zoom
                     $('#' + data.useZoom).data('zoom').destroy();
