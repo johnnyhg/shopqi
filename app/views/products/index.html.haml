@@ -7,7 +7,7 @@
         .categories
           .title 产品分类
           .tree
-      .grid_19.omega
-        %ul.category_product.products_list= render :partial => "pages/product/small", :collection => @products, :as => :product
+      #main.grid_19.omega
+        = render :partial => "list"
 
 = render :partial => "tree"

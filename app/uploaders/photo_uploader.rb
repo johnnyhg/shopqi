@@ -49,7 +49,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # 显示在产品详情页中的放大镜图片
   version :big do
-    process :resize_to_fill => [800, 800]
+    process :resize_to_fill => [1024, 1024]
   end
 
   version :accordion do
