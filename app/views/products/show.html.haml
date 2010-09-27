@@ -1,0 +1,32 @@
+=content_for :extra_head do
+  = stylesheet_link_tag 'cloud-zoom'
+  = javascript_include_tag 'zoom/cloud-zoom'
+
+= render :partial => "pages/header"
+
+#content
+  .container_24
+    .grid_24.root
+      .grid_5.alpha
+        .categories
+          .title 产品分类
+          .tree
+      .grid_19.omega.product_info
+        .grid_11.alpha
+          .pic
+            =link_to image_tag(resource.photo.middle.url), resource.photo.big.url, :id => :zoom1, :class => 'cloud-zoom', :rel => 'adjustX: 2, adjustY:-1'
+          .gallery
+            -resource.photos.each do |photo|
+              =link_to image_tag(photo.icon.url), photo.big.url, :class => 'cloud-zoom-gallery', :rel => "useZoom: 'zoom1', smallImage: '#{photo.middle.url}'"
+        .grid_8.omega
+          .title=s(resource.name)
+          .attr
+            售价:
+            %span.price=resource.price
+            元
+          .attr
+            .market_price
+              市场价:
+              =resource.market_price
+
+= render :partial => "tree"

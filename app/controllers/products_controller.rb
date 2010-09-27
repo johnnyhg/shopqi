@@ -3,11 +3,12 @@ class ProductsController < InheritedResources::Base
   belongs_to :category, :optional => true
   actions :index, :new, :create, :edit, :update, :destroy
   layout nil
-  layout 'pages', :only => :index
+  layout 'pages', :only => [:index, :show]
   respond_to :js, :only => [ :create, :update, :destroy ]
 
   def index
-    @products ||= store.products.any_in(:category_path => [BSON::ObjectID(params[:category_id])])
+    @products = store.products
+    @products = @products.any_in(:category_path => [BSON::ObjectID(params[:category_id])]) unless params[:category_id].blank?
   end
 
   create! do |success, failure|

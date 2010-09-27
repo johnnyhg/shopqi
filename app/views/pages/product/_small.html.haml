@@ -1,5 +1,5 @@
 %li
-  .pic=link_to image_tag(product.middle_url), product, :target => :_blank
+  .pic=link_to image_tag(product.photo.small.url), product, :target => :_blank
   .text
     .title=link_to s(product.name), product, :target => :_blank
     .market_price

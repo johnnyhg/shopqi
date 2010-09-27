@@ -30,16 +30,26 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #     end
 
   # Create different versions of your uploaded files
-  # 显示在产品页中的缩略图
-  version :thumb do
-    process :resize_to_fill => [68, 68]
+  # 显示在产品详情页中的缩略图
+  version :icon do
+    process :resize_to_fill => [60, 60]
   end
 
   # 显示在产品列表页中的缩略图
-  version :middle do
+  version :small do
     #mbaobao
     #process :resize_to_fill => [185, 185]
     process :resize_to_fill => [175, 175]
+  end
+
+  # 显示在产品详情页中的图片
+  version :middle do
+    process :resize_to_fill => [418, 418]
+  end
+
+  # 显示在产品详情页中的放大镜图片
+  version :big do
+    process :resize_to_fill => [800, 800]
   end
 
   version :accordion do

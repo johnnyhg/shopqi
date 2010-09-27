@@ -15,6 +15,7 @@
     -# 在线文字图片合成脚本
     = javascript_include_tag 'photomaker/jgrowl', 'photomaker/jeditable', 'photomaker/jqDnR', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree', 'hotkeys'
     = javascript_include_tag 'index', 'slideshow', 'accordion'
+    =yield :extra_head
     = csrf_meta_tag
   %body
     =yield

@@ -39,6 +39,7 @@ end
 class Photo
   include Mongoid::Document
   include Mongoid::Timestamps
+  delegate :url, :accordion, :icon, :small, :middle, :big, :to => :file
   mount_uploader :file, PhotoUploader
   embedded_in :product, :inverse_of => :photos
 end

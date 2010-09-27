@@ -1,0 +1,19 @@
+:javascript
+  jQuery(function ($) {
+    $('.tree').jstree({
+      plugins : [ "themes", "json_data", "ui"],
+      themes: { icons: false, dots: false },
+      core: { strings: { loading: "加载中 ..." }},
+      json_data:{
+        ajax: {
+          url: '/categories.json',
+          data: function(n) { 
+            return { id : n.attr ? n.attr("id") : '' }; 
+          }
+        }
+      }
+    //selected
+    }).bind("select_node.jstree", function (e, data) {
+      $.get('/categories/' + data.rslt.obj.attr('id').replace("node_","") + '/products.js', null, null, 'script');
+    });
+  });

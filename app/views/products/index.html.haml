@@ -10,21 +10,4 @@
       .grid_19.omega
         %ul.category_product.products_list= render :partial => "pages/product/small", :collection => @products, :as => :product
 
-:javascript
-  $().ready(function(){
-    $('.tree').jstree({
-      plugins : [ "themes", "json_data", "ui"],
-      themes: { icons: false, dots: false },
-      json_data:{
-        ajax: {
-          url: '/categories.json',
-          data: function (n) { 
-            return { id : n.attr ? n.attr("id") : '' }; 
-          }
-        }
-      }
-    //selected
-    }).bind("select_node.jstree", function (e, data) {
-      $.get('/categories/' + data.rslt.obj.attr('id').replace("node_","") + '/products.js', null, null, 'script');
-    });
-  });
+= render :partial => "tree"

@@ -150,6 +150,11 @@ h2. jQuery
 官方发布下载版本1.0.0-rc3存在两个问题:无法在jquery-1.4.2下使用，可手动修正；调用destroy，报state undefined错误
 "最新开发版本已修正以上两个问题":http://bazaar.launchpad.net/~craig.craigsworks/qtip/1.0/files
 
+"cloud-zoom":http://www.professorcloud.com/mainsite/cloud-zoom.htm
+实现商品图片放大
+使用时修改小图片列表的点击事件为鼠标悬停事件，并且修改边框宽度为1px(原为4px)
+注意要指定img元素的rel属性，否则会报js错误
+
 h2. 纯js插件
 
 "fileuploader":http://valums.com/ajax-upload
