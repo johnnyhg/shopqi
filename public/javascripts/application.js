@@ -1,3 +1,10 @@
+// resource name from url
+// example: rest_name(), will return 'product' if url:localhost/products/9527
+function rest_name(){
+  var pathname = window.location.pathname;
+  return pathname.substring(1, pathname.lastIndexOf('/') - 1);
+}
+
 // remove id prefix
 // example: id('container_111'), will return '111'
 function id(str){

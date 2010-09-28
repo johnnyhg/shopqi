@@ -6,17 +6,17 @@
       -resource.photos.each do |photo|
         =link_to image_tag(photo.icon.url), photo.big.url, :class => 'cloud-zoom-gallery', :rel => "useZoom: 'zoom1', smallImage: '#{photo.middle.url}'"
   .grid_8.omega
-    .title=s(resource.name)
+    .title=editinplace(resource, :name)
     .attr
       售价:
-      %span.price=resource.price
+      =editinplace(resource, :price, :class => :price)
       元
     .attr
-      .market_price
-        市场价:
-        =resource.market_price
+      市场价:
+      =editinplace(resource, :market_price)
+      元
     .attr
       编号:
-      %span.number=resource.number
+      =editinplace(resource, :number, :class => :number)
     .btns
       =link_to image_tag('templates/common/product/shopping_car.gif'), '#'

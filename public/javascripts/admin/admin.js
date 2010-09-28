@@ -130,4 +130,24 @@ jQuery(function ($) {
 
   // 按下ctrl键才能编辑
   $(document).bind('keydown', 'ctrl', function(){ editable_flag = true; });
+
+  // 商品详情即时编辑
+  $('.editinplace').each(function(){
+    var $this = $(this);
+    $this.editable(
+      //target为url时提交至服务器，为function则本地执行
+      function(text, settings){
+        var data = { _method: 'put' };
+        data[rest_name()] = {};
+        data[rest_name()][$this.attr('data-name')] = text;
+        $.post(window.location.pathname + '.js', data);
+        return text;
+      },{
+      //失焦时提交
+      onblur : 'submit',
+      //input为inline,则form也应为inline,否则布局会乱
+      cssclass : 'form_inline',
+      placeholder: '未命名'
+    });
+  });
 });

@@ -45,6 +45,6 @@ class ProductsController < InheritedResources::Base
 
   # 特殊处理:转换id，否则更新不了
   def set_object_id
-    params[:product][:id] = BSON::ObjectID(params[:product][:id])
+    params[:product][:id] = BSON::ObjectID(params[:product][:id]) if params[:product][:id]
   end
 end
