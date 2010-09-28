@@ -5,6 +5,7 @@ class ProductsController < InheritedResources::Base
   layout nil
   layout 'pages', :only => [:index, :show]
   respond_to :js, :only => [ :create, :update, :destroy ]
+  before_filter :set_object_id, :only => :update
 
   def index
     @products = store.products
@@ -40,5 +41,10 @@ class ProductsController < InheritedResources::Base
 
   def begin_of_association_chain
     current_user.store
+  end
+
+  # 特殊处理:转换id，否则更新不了
+  def set_object_id
+    params[:product][:id] = BSON::ObjectID(params[:product][:id])
   end
 end
