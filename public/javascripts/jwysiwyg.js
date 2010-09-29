@@ -764,7 +764,7 @@
 								{
                                     this.editor.css({
                                         minHeight: (newY - 6).toString() + 'px',
-                                        width: '100%'
+                                        width: (newX - 8).toString() + 'px'
                                     });
                                     if ($.browser.msie)
                                     {
@@ -788,7 +788,7 @@
 						if (!options.iFrameClass)
 						{
                             this.element.css({
-                               width: '100%'
+                               width: (newX > 0) ? newX.toString() + 'px' : '100%'
                             });
 						}
 
