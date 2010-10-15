@@ -262,3 +262,32 @@ body
     border-color: white
     .panel
       display: none
+
+#orders
+  border: 1px solid $color_grey_lighter
+  padding: 1px
+  ul
+    background-color: #7a7f89
+    text-align: center
+    color: white
+    +horizontal-list(8px)
+    li
+      @include height(32px)
+  .summary
+    margin: 0 20px
+    border-top: 1px solid $color_grey
+    border-bottom: 1px solid $color_grey
+    @include height(42px)
+    text-align: right
+    color: $color_grey_darker
+    #items_count, #price_count
+      color: $color_hover
+    .unit
+      margin-right: 50px
+  .btns
+    margin: 20px 0 20px 20px
+    a
+      margin-right: 20px
+    .pay
+      float: right
+    margin-right: 20px

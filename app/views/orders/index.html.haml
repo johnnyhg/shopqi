@@ -1,0 +1,32 @@
+#header
+  .container_24
+    .grid_22=logo
+    .grid_2=link_to '帮助', '/helps'
+    .grid_24
+      %hr
+
+#content
+  .container_24
+    .grid_24.root
+      .grid_5.alpha=image_tag 'templates/common/product/order.jpg'
+      .grid_15 　
+      .grid_4.omega=image_tag 'templates/common/product/pay.jpg'
+    .grid_24.root
+      #orders
+        %ul
+          %li(style="width:100px") 商品
+          %li(style="width:280px") 名称
+          %li(style="width:70px") 单价
+          %li(style="width:100px") 数量
+          %li(style="width:100px") 小计
+          %li(style="width:100px") 操作
+        .summary
+          产品数量总计:
+          %span#items_count 0
+          %span.unit 件
+          产品金额总计(不含运费)：
+          %span#price_count ￥0.00
+        .btns
+          =link_to image_tag('templates/common/product/shopping_continue.jpg'), '#'
+          =link_to image_tag('templates/common/product/clear.jpg'), '#'
+          .pay=image_tag 'templates/common/product/pay.jpg'

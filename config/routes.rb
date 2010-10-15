@@ -1,6 +1,8 @@
 # encoding: utf-8
 #http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
 Shopqi::Application.routes.draw do
+  resources :orders
+
   resources :containers do
     collection do
       post :sort

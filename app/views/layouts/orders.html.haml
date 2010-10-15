@@ -1,0 +1,17 @@
+!!!
+%html{:lang => "zh-CN", "xml:lang" => "zh-CN", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "zh-CN", "http-equiv" => "Content-Language"}/
+    %title 麦包包官网 - 淘宝网商城知名品牌, 开心网购, 就在麦包包！
+    %meta{:content => "mbaobao.com", :name => "Copyright"}/
+    %meta{ :name => "Keywords"}/
+    %meta{ :name => "Description"}/
+    =formtastic_stylesheet_link_tag
+    = stylesheet_link_tag 'compiled/grid'
+    = stylesheet_link_tag "compiled/templates/#{template}", 'compiled/page'
+    = javascript_include_tag :defaults
+    =yield :extra_head
+    = csrf_meta_tag
+  %body
+    =yield
