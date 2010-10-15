@@ -1,6 +1,6 @@
 =content_for :extra_head do
-  = stylesheet_link_tag 'cloud-zoom'
-  = javascript_include_tag 'zoom/cloud-zoom'
+  = stylesheet_link_tag 'cloud-zoom', 'jwysiwyg'
+  = javascript_include_tag 'zoom/cloud-zoom', 'jwysiwyg'
 
 = render :partial => "pages/header"
 
@@ -13,5 +13,26 @@
           .tree
       #main.grid_19.omega
         =render :partial => "info"
+        .grid_19.alpha.omega.tabs
+          %h2 商品详情
+          %textarea#wysiwyg=resource.content
 
 = render :partial => "tree"
+:javascript
+  $('#wysiwyg').wysiwyg({
+    controls: {
+      subscript:    { visible: false},
+      superscript:  { visible: false},
+      removeFormat: { visible: false},
+      save: { visible: true, tooltip: '保存', className: 'save', exec: function(){
+        var data = { _method: 'put' };
+        data[rest_name()] = {};
+        data[rest_name()]['content'] = $('#wysiwyg').val();
+        $.post(window.location.pathname + '.js', data);
+      }}
+    }
+  }).wysiwyg('document').click(function(e) {
+    e.preventDefault();
+    $('.panel').show(500);
+    $('.wysiwyg').css('border-color', '#ccc');
+  });;

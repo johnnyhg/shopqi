@@ -14,6 +14,7 @@ class Product
   field :price, :type => Float
   field :market_price, :type => Float
   field :number
+  field :content
   embeds_many :photos
 
   # validates_presence_of :name, :price

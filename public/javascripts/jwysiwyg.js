@@ -764,7 +764,9 @@
 								{
                                     this.editor.css({
                                         minHeight: (newY - 6).toString() + 'px',
-                                        width: (newX - 8).toString() + 'px'
+                                        //width should be 100%. 2010.09.29 by MaHB
+                                        //width: (newX - 8).toString() + 'px'
+                                        width: '100%'
                                     });
                                     if ($.browser.msie)
                                     {
@@ -788,7 +790,9 @@
 						if (!options.iFrameClass)
 						{
                             this.element.css({
-                               width: (newX > 0) ? newX.toString() + 'px' : '100%'
+                               //width should be 100%. 2010.09.29 by MaHB
+                               //width: (newX > 0) ? newX.toString() + 'px' : '100%'
+                               width: '100%'
                             });
 						}
 

@@ -150,4 +150,9 @@ jQuery(function ($) {
       placeholder: '未命名'
     });
   });
+
+  $(document).click(function(){
+    $('.panel').hide(500);
+    $('.wysiwyg').css('border-color', 'white');
+  });
 });
