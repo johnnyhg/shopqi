@@ -155,4 +155,9 @@ jQuery(function ($) {
     $('.panel').hide(500);
     $('.wysiwyg').css('border-color', 'white');
   });
+
+  //修正:点击菜单面板会触发document click事件
+  $('.panel').click(function(e){
+    e.stopPropagation();
+  });
 });
