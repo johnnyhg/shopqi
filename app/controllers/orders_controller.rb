@@ -1,7 +1,8 @@
 # encoding: utf-8
 class OrdersController < ApplicationController
   def index
-    order = cookies[:order].split(';').map{|item| item.split('|')}
+    cookies['order'] = '' if cookies['order'].nil?
+    order = cookies['order'].split(';').map{|item| item.split('|')}
     @products = order.map do |item|
       product_id = item[0]
       store.products.find(product_id)
