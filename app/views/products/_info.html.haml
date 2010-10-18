@@ -18,5 +18,9 @@
     .attr
       编号:
       =editinplace(resource, :number, :class => :number)
+    .attr
+      数量:
+      %input#quantity(type='text' name='quantity' size=5 value=1)
     .btns
-      =link_to image_tag('templates/common/product/shopping_car.gif'), '#'
+      -#采用ajax方式加入购物车，以便后台检查:数量是否超过，商品是否已经下架等(参考至麦包包)
+      =link_to_function image_tag('templates/common/product/shopping_car.gif'), 'Car.add()', :title => '立即购买'

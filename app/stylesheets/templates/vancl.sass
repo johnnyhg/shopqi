@@ -244,6 +244,11 @@ body
       .number
         color: $color_yellow
         font-weight: bold
+      #quantity
+        border: 1px solid $color_grey_light
+        color: $color_grey_dark
+        text-align: center
+        width: 44px
     .btns
       margin-top: 10px
 
@@ -267,12 +272,21 @@ body
   border: 1px solid $color_grey_lighter
   padding: 1px
   ul
-    background-color: #7a7f89
     text-align: center
-    color: white
     +horizontal-list(8px)
     li
+      @include height(60px)
+      &.name
+        text-align: left
+  ul.head
+    color: white
+    background-color: #7a7f89
+    li
       @include height(32px)
+  ul.item
+    padding: 5px 0
+    &.even
+      background-color: $color_grey_lightest
   .summary
     margin: 0 20px
     border-top: 1px solid $color_grey

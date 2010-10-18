@@ -63,6 +63,7 @@ Shopqi::Application.routes.draw do
       post :upload
     end
   end
+  match 'products/:id/add_to_car.js' => 'products#add_to_car'
 
   ##### 官网 #####
   root :to => "home#index"

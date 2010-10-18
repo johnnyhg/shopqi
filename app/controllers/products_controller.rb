@@ -4,7 +4,7 @@ class ProductsController < InheritedResources::Base
   actions :index, :new, :create, :edit, :update, :destroy
   layout nil
   layout 'pages', :only => [:index, :show]
-  respond_to :js, :only => [ :create, :update, :destroy ]
+  respond_to :js, :only => [ :create, :update, :destroy, :add_to_car ]
   before_filter :set_object_id, :only => :update
 
   def index
@@ -31,6 +31,15 @@ class ProductsController < InheritedResources::Base
     else
       render :text => "$.jGrowl('#{@photo.errors[:file].join(',')}');"
     end
+  end
+
+  def add_to_car
+    cookies['order'] = '' if cookies['order'].nil?
+    # 格式: product_id|quantity;product_id|quantity
+    stored_order = cookies['order'].split(';').map {|item| item.split('|')}
+    order_hash = Hash[*stored_order.flatten]
+    order_hash[params[:id]] = order_hash[params[:id]].to_i + params[:quantity].to_i
+    cookies['order'] = order_hash.to_a.map{|item| item.join('|')}.join(';')
   end
 
   protected

@@ -25,6 +25,14 @@ describe ProductsController do
       post :update, :id => @product.id.to_s, :product => { :id => @product.id.to_s, :name => '新男装' }
       @product.reload.name.should eql '新男装'
     end
+
+    it 'should add to car' do
+      post :add_to_car, :id => @product.id.to_s, :quantity => 1, :format => :js
+      cookies['order'].should eql "#{@product.id.to_s}|1"
+
+      post :add_to_car, :id => @product.id.to_s, :quantity => 1, :format => :js
+      cookies['order'].should eql "#{@product.id.to_s}|2"
+    end
   end
 
   describe :photo do

@@ -32,7 +32,9 @@ module NavigationHelpers
     when /(.+)分类商品列表页面/
       name = page_name.match(/(.+)分类商品列表页面$/)[1]
       category_products_path(:category_id => Category.where(:name => name).first.id)
-
+    when /(.+)商品详情页面/
+      name = page_name.match(/(.+)商品详情页面$/)[1]
+      "/products/#{Product.where(:name => name).first.id.to_s}"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
