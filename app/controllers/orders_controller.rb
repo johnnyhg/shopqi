@@ -1,5 +1,7 @@
 # encoding: utf-8
 class OrdersController < ApplicationController
+  skip_before_filter :authenticate_user!
+
   def index
     cookies['order'] = '' if cookies['order'].nil?
     order = cookies['order'].split(';').map{|item| item.split('|')}

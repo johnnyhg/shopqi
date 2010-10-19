@@ -55,7 +55,10 @@ Shopqi::Application.routes.draw do
       post :logo
     end
   end
-  match 'page' => 'pages#show'
+  #测试subdomain，可以访问vancl.lvm.me:3000
+  constraints(Subdomain) do
+    match '/' => 'pages#show'
+  end
   match 'stylesheets/pages/dynamic.css' => 'pages#dynamic'
 
   resources :products do

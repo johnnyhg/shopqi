@@ -1,6 +1,9 @@
 module ApplicationHelper
-  delegate :store, :to => :current_user
   delegate :template, :to => :store
+
+  def store
+    Store.where(:subdomain => request.subdomain).first
+  end
 
   def editinplace(model, attr, options = {})
     options[:class] = [options[:class], :editinplace].compact

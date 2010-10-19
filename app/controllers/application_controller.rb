@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   #before_filter :check_permission!, :only => [ :create, :update, :destroy ]
 
-  delegate :store, :to => :current_user
   delegate :template, :to => :store
 
   protect_from_forgery
