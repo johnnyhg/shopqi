@@ -24,17 +24,17 @@ module NavigationHelpers
       new_page_path
 
     when /网店布局管理/
-      page_path
+      with_subdomain_path('/')
     when /the new product page/
       new_product_path
     when /工作平台/
       user_root_path
     when /(.+)分类商品列表页面/
       name = page_name.match(/(.+)分类商品列表页面$/)[1]
-      category_products_path(:category_id => Category.where(:name => name).first.id)
+      with_subdomain_path(category_products_path(:category_id => Category.where(:name => name).first.id))
     when /(.+)商品详情页面/
       name = page_name.match(/(.+)商品详情页面$/)[1]
-      "/products/#{Product.where(:name => name).first.id.to_s}"
+      with_subdomain_path("/products/#{Product.where(:name => name).first.id.to_s}")
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -63,6 +63,13 @@ module NavigationHelpers
     else
       scope_name
     end
+  end
+
+  def with_subdomain_path(path)
+    #host! 'vancl.lvh.me'
+    Capybara.default_host = "vancl.lvh.me"
+    Capybara.app_host = "http://vancl.lvh.me:9887"
+    path
   end
 end
 

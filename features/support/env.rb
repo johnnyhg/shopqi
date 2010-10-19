@@ -34,6 +34,8 @@ Spork.each_run do
   Before do
     # sentient_user
     Thread.current[:user] = nil
+    Capybara.default_host = "lvh.me"
+    Capybara.app_host = "http://lvh.me:9887"
   end
   # If you set this to false, any error raised from within your app will bubble 
   # up to your step definition and out to cucumber unless you catch it somewhere
