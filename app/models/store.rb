@@ -23,11 +23,16 @@ class Store
 
   # 回调方法
   before_create :init_image
+  before_create :init_subdomain
   after_create :init_child
 
   def init_image
     self.logo_image_id = Image.create(:width => 300, :height => 40).id
     self.telephone_image_id = Image.create(:width => 190, :height => 50).id
+  end
+
+  def init_subdomain
+    self.subdomain = self.id.to_s if self.subdomain.blank?
   end
 
   # 初始化部分分类

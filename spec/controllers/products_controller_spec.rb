@@ -6,6 +6,7 @@ describe ProductsController do
   before :each do
     @saberma = Factory(:user_saberma)
     sign_in @saberma
+    request.host = "#{@saberma.store.subdomain}.shopqi.com"
   end
 
   describe :product do
