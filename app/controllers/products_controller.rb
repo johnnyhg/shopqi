@@ -9,7 +9,7 @@ class ProductsController < InheritedResources::Base
 
   def index
     @products = store.products
-    @products = @products.any_in(:category_path => [BSON::ObjectID(params[:category_id])]) unless params[:category_id].blank?
+    @products = @products.any_in(:category_path => [BSON::ObjectId(params[:category_id])]) unless params[:category_id].blank?
   end
 
   create! do |success, failure|
@@ -22,7 +22,7 @@ class ProductsController < InheritedResources::Base
 
   # 上传商品照片
   def upload
-    @product = end_of_association_chain.find_or_create_by(:id => BSON::ObjectID(params[:id]))
+    @product = end_of_association_chain.find_or_create_by(:id => BSON::ObjectId(params[:id]))
     @photo = @product.photos.new(params[:photo])
     @product.photos << @photo
     @photo.save
@@ -54,6 +54,6 @@ class ProductsController < InheritedResources::Base
 
   # 特殊处理:转换id，否则更新不了
   def set_object_id
-    params[:product][:id] = BSON::ObjectID(params[:product][:id]) if params[:product][:id]
+    params[:product][:id] = BSON::ObjectId(params[:product][:id]) if params[:product][:id]
   end
 end

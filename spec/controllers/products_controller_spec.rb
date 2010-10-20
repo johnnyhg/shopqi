@@ -39,7 +39,7 @@ describe ProductsController do
   describe :photo do
     it "should be upload" do
       lambda do
-        xhr :post, :upload, :id => BSON::ObjectID.from_time(Time.now).to_s, :photo => { :file => File.open("#{Rails.root}/public/images/logo.jpg") }
+        xhr :post, :upload, :id => BSON::ObjectId.from_time(Time.now).to_s, :photo => { :file => File.open("#{Rails.root}/public/images/logo.jpg") }
         response.should be_success
 
         assigns[:product].new_record?.should be_false
@@ -52,7 +52,7 @@ describe ProductsController do
     end
 
     it "should be validate" do
-      xhr :post, :upload, :id => BSON::ObjectID.from_time(Time.now).to_s, :photo => { :file => File.open("#{Rails.root}/public/robots.txt") }
+      xhr :post, :upload, :id => BSON::ObjectId.from_time(Time.now).to_s, :photo => { :file => File.open("#{Rails.root}/public/robots.txt") }
 
       assigns[:product].new_record?.should be_false
 

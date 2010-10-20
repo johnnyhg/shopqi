@@ -19,7 +19,7 @@ class Menu
     bg_path = "#{Rails.root}/public/images/templates/#{store.template}/system/menu_bg.png" 
     bg_hover_path = "#{Rails.root}/public/images/templates/#{store.template}/system/menu_bg_hover.png" 
 
-    bg = MiniMagick::Image.from_file(bg_path)
+    bg = MiniMagick::Image.open(bg_path)
 
     unit_width = bg[:width]
     width = menus.size * unit_width
@@ -29,7 +29,7 @@ class Menu
     font_color = '#000'
     font_hover_color = '#fff'
 
-    magick = MiniMagick::Image.from_file("#{Rails.root}/public/images/logo/blank.png")
+    magick = MiniMagick::Image.open("#{Rails.root}/public/images/logo/blank.png")
     magick.combine_options do |c|
       #基准坐标：左上角
       c.gravity 'NorthWest'

@@ -1,20 +1,21 @@
 source 'http://rubygems.org'
 
 # need gem install bundler -v 1.0.0.rc.1
-gem 'rails', '3.0.0.rc'
+gem 'rails'
 
 #gem 'mongoid', '2.0.0.beta.16'
 # beta.16存在bug，导致嵌套文档where查询失败，已提交补丁
-gem 'mongoid', :git => 'git://github.com/saberma/mongoid.git'
+gem 'mongoid', '2.0.0.beta.19'
 gem 'bson_ext'
-gem 'devise', '1.1.rc2'
+gem 'devise'
 
 # mongoid
 # 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
 gem 'acts_as_list_mongoid'
 # 修正Bug，已提交补丁，已合并至官方版本
-#gem 'mongoid_acts_as_tree', :git => 'git://github.com/saberma/mongoid_acts_as_tree.git'
-gem 'mongoid_acts_as_tree', :git => 'git://github.com/saks/mongoid_acts_as_tree.git'
+# 2010.10.20 BSON::ObjectID改名为BSON::ObjectId，已提交补丁，未合并至官方版本
+gem 'mongoid_acts_as_tree', :git => 'git://github.com/saberma/mongoid_acts_as_tree.git'
+#gem 'mongoid_acts_as_tree', :git => 'git://github.com/saks/mongoid_acts_as_tree.git'
 
 # 将current_user设置至线程中
 gem 'sentient_user'
@@ -22,15 +23,15 @@ gem 'sentient_user'
 gem 'haml'
 
 # 注意页面的html元素要有xmlns属性，否则fieldset会挤在一起 http://bit.ly/bbcxU3
-gem "formtastic", :git => "git://github.com/justinfrench/formtastic.git", :branch => "rails3" 
+gem "formtastic"
 # 用于formtastic读取实体校验规则，页面可直接展示属性是否必填
-gem "validation_reflection", '1.0.0.beta4'
+gem "validation_reflection"
 gem "inherited_resources"
 
 # 文件上传
 # 源版本不支持mongoid校验，已提交补丁，已合并至官方版本
 #gem "carrierwave", :git => 'git://github.com/saberma/carrierwave.git', :branch => 'master'
-gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git', :branch => 'master'
+gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git'
 # 调用参数说明:http://www.imagemagick.org/Usage/
 gem "mini_magick"
 
@@ -39,7 +40,7 @@ gem 'unicorn'
 
 # 类似37signal的Basecamp产品界面，简洁
 # http://pilu.github.com/web-app-theme/
-gem 'web-app-theme', :git => "git://github.com/libo/web-app-theme.git"
+gem 'web-app-theme'
 
 ##### 样式相关 #####
 gem 'compass'
@@ -74,7 +75,7 @@ end
 
 group :test do
   gem 'webrat'
-  gem "rspec-rails", '2.0.0.beta.14.2'
+  gem "rspec-rails"
   gem "factory_girl"
   gem "factory_girl_rails"
 
@@ -82,7 +83,8 @@ group :test do
   # 保持数据库处理干净状态
   # 留意:步骤完成后就会清除数据，此时浏览器中部分ajax可能还没有操作完，会导致ajax请求时找不到相应数据
   gem 'database_cleaner'
-  gem 'cucumber'
+  # 0.9.2版本集成spork的情况下会报undefined method `visit' for #<Object:
+  gem 'cucumber', :git => 'git://github.com/aslakhellesoy/cucumber.git'
   gem 'cucumber-rails'
   # 为测试加速的drb server(sport cuc &)
   # 不要使用rspec2.0.0.beta.16版本，执行rspec -X

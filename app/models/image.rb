@@ -27,7 +27,7 @@ class Image
 
   #生成图片
   def render
-    magick = MiniMagick::Image.from_file(blank)
+    magick = MiniMagick::Image.open(blank)
     magick.combine_options do |c|
       c.resize "#{width}x#{height}!"
       # 基准坐标：左上角
