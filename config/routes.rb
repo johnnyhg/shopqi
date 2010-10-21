@@ -1,6 +1,7 @@
 # encoding: utf-8
 #http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
 Shopqi::Application.routes.draw do
+
   resources :orders
 
   resources :containers do
@@ -75,7 +76,11 @@ Shopqi::Application.routes.draw do
   match "questions" => "home#questions"
   match "contact" => "home#contact"
 
+  # 网店平台会员
   devise_for :users
   #用户登录后的跳转页面(符合devise命名规范)
   match "user_root" => "home#show"
+
+  # 商品购买者
+  devise_for :members
 end

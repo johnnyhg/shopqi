@@ -89,9 +89,9 @@ unicorn
 
 访问以下地址查看效果
 
-"ShopQi官网 http://localhost:8080":http://localhost:8080
-"网店后台管理 http://localhost:8080/user_root":http://localhost:8080/user_root
-"网店布局管理 http://localhost:8080/page":http://localhost:8080/page
+"ShopQi官网 http://lvh.me:8080":http://lvh.me:8080
+"网店后台管理 http://lvh.me:8080/user_root":http://lvh.me:8080/user_root
+"网店布局管理 http://vancl.lvh.me:8080":http://vancl.lvh.me:8080
 
 h1. 测试
 

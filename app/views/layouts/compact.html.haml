@@ -14,4 +14,11 @@
     =yield :extra_head
     = csrf_meta_tag
   %body
+    #header
+      .container_24
+        .grid_22=logo
+        .grid_2=link_to '帮助', '/helps'
+        .grid_24
+          %hr
+
     =yield

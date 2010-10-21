@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
   #before_filter :check_permission!, :only => [ :create, :update, :destroy ]
 
   protect_from_forgery
-  layout 'application'
+
+  # 定义devise layout
+  layout :layout_by_resource
+
+  def layout_by_resource
+    (devise_controller? && resource_name == :member) ? 'compact' : 'application'
+  end
 
 =begin
   # 检查当前用户是否拥有对网店拥有的信息（如商品）进行修改的权限

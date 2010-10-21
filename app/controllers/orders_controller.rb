@@ -1,6 +1,7 @@
 # encoding: utf-8
 class OrdersController < ApplicationController
   skip_before_filter :authenticate_user!
+  layout 'compact'
 
   def index
     cookies['order'] = '' if cookies['order'].nil?
