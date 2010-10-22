@@ -308,6 +308,7 @@ body
     margin-right: 20px
 
 /** 购买者登录注册页
+$left: 34%
 #members
   .steps
     color: $color_grey_dark
@@ -317,7 +318,7 @@ body
   .box
     border: 1px solid $color_grey_light
     padding: 15px 15px 0 15px 
-    height: 350px
+    height: 400px
     h2
       border-bottom: 1px solid $color_grey_darker
       margin-bottom: 25px
@@ -329,16 +330,16 @@ body
         border: 1px solid $color_red
         color: $color_red
         width: 200px
-        margin: 0 0 5px 34%
+        margin: 0 0 5px $left
         text-align: center
         background-color: $color_grey_lightest
         @include height(19px)
       label
         text-align: right
-        width: 34%
+        width: $left
         color: $color_grey_darker
       .inline-hints
-        margin-left: 34%
+        margin-left: $left
         width: 200px
         color: $color_grey_dark
       input 
@@ -347,14 +348,16 @@ body
       .remember
         margin-bottom: 20px
         input
-          margin-left: 34%
+          margin-left: $left
           width: 15px
         label
           display: inline
       .buttons
-        padding-left: 34%
+        padding-left: $left
         input
           border: none
           width: 80px
           @include height(25px)
 
+  #error_explanation
+    display: none

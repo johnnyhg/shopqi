@@ -11,24 +11,14 @@ module NavigationHelpers
 
     when /首页/
       '/'
-    when /the new category page/
-      new_category_path
-
-    when /the new hot page/
-      new_hot_path
-
     when /在线文字图片合成/
       new_image_path
-
-    when /the new page page/
-      new_page_path
-
     when /网店布局管理/
       with_subdomain_path('/')
-    when /the new product page/
-      new_product_path
     when /工作平台/
       user_root_path
+    when /会员登录注册页面/
+      with_subdomain_path(new_member_session_path)
     when /(.+)分类商品列表页面/
       name = page_name.match(/(.+)分类商品列表页面$/)[1]
       with_subdomain_path(category_products_path(:category_id => Category.where(:name => name).first.id))

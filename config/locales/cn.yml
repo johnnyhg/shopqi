@@ -56,10 +56,10 @@ cn:
       member:
         login: 请输入中英文、数字、下划线或它们的组合
         email: 请填写有效的Email地址作为下次登录的用户名，同时我们也会给这个地址发送您的帐户信息、订单通知等。
-        password: 请设为6-16位字母或数字
+        password: 请设为6-20位字母或数字
         password_confirmation: 
     actions:
-      create: 新增{{model}}
+      create: 新增%{model}
       update: 更新
 
   activemodel:
@@ -70,8 +70,8 @@ cn:
       messages:
         blank: 不能为空
         taken: 已经存在
-        too_short: 长度不能少于{{count}}个字符
-        too_long: 长度不能超过{{count}}个字符
+        too_short: 长度不能少于%{count}个字符
+        too_long: 长度不能超过%{count}个字符
         not_a_number: 只能是数字
         invalid: 必须是有效的
       models:
@@ -82,9 +82,14 @@ cn:
         member:
           attributes:
             password:
-              confirmation: 确认密码要保持一致
+              confirmation: 两次设定不一致，请重新输入
     models:
       product: 商品
+    #应用于error中的full_message
+    attributes:
+      member:
+        email: Email地址
+        password: 密码
 
   support:
     array:
