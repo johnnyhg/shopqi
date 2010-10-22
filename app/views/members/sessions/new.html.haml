@@ -13,7 +13,8 @@
         %h2=image_tag 'templates/vancl/members/login.gif'
         = semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
           %p.tip 已注册用户请从这里登录
-          =f.semantic_errors :login, :password, :id => :error
+          -if flash[:alert]
+            %p.error=flash[:alert]
           =f.inputs do
             =f.input :email, :required => false, :label => '用户名：', :hint => '请输入您的Email地址'
             =f.input :password, :required => false, :label => '密　码：',  :hint => false
@@ -25,11 +26,11 @@
       .grid_1.omega &nbsp;
       .grid_11.omega.box
         %h2=image_tag 'templates/vancl/members/signup.gif'
-        =semantic_form_for(resource, :url => registration_path(resource_name)) do |f|
+        =semantic_form_remote_for(resource, :url => registration_path(resource_name)) do |f|
           =f.semantic_errors :email, :password, :password_confirmation, :login, :id => :error
           =f.inputs do
-            =f.input :email, :required => false
-            =f.input :password, :required => false
+            =f.input :email, :required => false, :input_html => { :id => :sign_up_email }
+            =f.input :password, :required => false, :input_html => { :id => :sign_up_password }
             =f.input :password_confirmation, :required => false
             =f.input :login, :required => false
           =f.buttons do

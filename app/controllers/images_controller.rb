@@ -1,6 +1,5 @@
 # encoding: utf-8
 class ImagesController < InheritedResources::Base
-  skip_before_filter :authenticate_user!
   actions :new, :create, :edit, :update
   respond_to :js, :only => [:create, :update]
 

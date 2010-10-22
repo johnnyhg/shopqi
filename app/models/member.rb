@@ -9,8 +9,4 @@ class Member
 
   field :login
 
-  # 校验
-  validates_presence_of :login
-  validates_uniqueness_of :login, :case_sensitive => false
-
 end

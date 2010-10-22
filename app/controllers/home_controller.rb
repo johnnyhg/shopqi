@@ -1,6 +1,6 @@
 # encoding: utf-8
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!, :except => [ :show ]
+  prepend_before_filter :authenticate_user!, :only => [ :show ]
 
   def index
   end

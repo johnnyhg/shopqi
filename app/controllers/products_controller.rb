@@ -6,6 +6,7 @@ class ProductsController < InheritedResources::Base
   layout 'pages', :only => [:index, :show]
   respond_to :js, :only => [ :create, :update, :destroy, :add_to_car ]
   before_filter :set_object_id, :only => :update
+  prepend_before_filter :authenticate_user!, :except => [:index, :add_to_car]
 
   def index
     @products = store.products

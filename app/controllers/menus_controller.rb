@@ -4,6 +4,7 @@ class MenusController < InheritedResources::Base
   actions :new, :create, :edit, :update, :destroy
   respond_to :js, :only => [:create, :update, :destroy]
   after_filter :sprite, :only => [:create, :update, :destroy, :sort]
+  prepend_before_filter :authenticate_user!
 
   create! do |success, failure|
     neighbor = params[:neighbor]

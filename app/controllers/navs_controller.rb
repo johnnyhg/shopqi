@@ -3,6 +3,7 @@ class NavsController < InheritedResources::Base
   layout nil
   actions :new, :create, :edit, :update, :destroy
   respond_to :js, :only => [:create, :update, :destroy]
+  prepend_before_filter :authenticate_user!
 
   create! do |success, failure|
     neighbor = params[:neighbor]

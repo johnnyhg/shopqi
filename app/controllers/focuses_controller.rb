@@ -3,6 +3,7 @@ class FocusesController < InheritedResources::Base
   layout nil
   actions :new, :create, :edit, :update, :destroy
   respond_to :js, :only => [:create, :update, :destroy]
+  prepend_before_filter :authenticate_user!
 
   edit! do |format|
     format.html { render :action => "new" }

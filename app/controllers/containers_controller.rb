@@ -3,6 +3,7 @@ class ContainersController < InheritedResources::Base
   layout nil
   actions :new, :create, :edit, :update, :destroy
   respond_to :js, :only => [:create, :update, :destroy]
+  prepend_before_filter :authenticate_user!
   before_filter :init_parent, :only => :new
 
   create! do |success, failure|

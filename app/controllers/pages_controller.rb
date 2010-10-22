@@ -1,6 +1,7 @@
 # encoding: utf-8
 class PagesController < InheritedResources::Base
   layout nil
+  prepend_before_filter :authenticate_user!
 
   def show
     render :template => "pages/templates/#{template}/home", :layout => "pages"

@@ -83,4 +83,6 @@ Shopqi::Application.routes.draw do
 
   # 商品购买者
   devise_for :members
+  match "member_root" => "members#show"
+  resources :members, :only => :show
 end

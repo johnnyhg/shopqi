@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   include SentientController
   include InheritedResources::DSL
   include ApplicationHelper
-  before_filter :authenticate_user!
   #before_filter :check_permission!, :only => [ :create, :update, :destroy ]
 
   protect_from_forgery

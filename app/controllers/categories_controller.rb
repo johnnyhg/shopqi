@@ -8,6 +8,7 @@ class CategoriesController < InheritedResources::Base
   actions :index, :create, :update, :destroy
   respond_to :js, :only => [:create, :update, :destroy]
   respond_to :json, :only => [:index]
+  prepend_before_filter :authenticate_user!
 
   create! do |format|
     # 初始化位置
