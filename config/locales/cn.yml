@@ -8,8 +8,8 @@ cn:
       user_details: 用户信息
     labels:
       user:
-        login: 用户名
-        email: 电子邮箱
+        login: 昵称
+        email: 用户名
         company: 公司
         password: 密码
         password_confirmation: 确认密码
@@ -49,15 +49,15 @@ cn:
         password: 密码
     hints:
       user:
-        login: 用于登录本系统
-        email: 您最常用的电子邮箱地址
-        password: 必须为6位以上的字母、数字组合
+        email: 请填写有效的Email地址作为下次登录的用户名
+        password: 请设为6-20位字母或数字
         password_confirmation: 再次输入密码
-      member:
         login: 请输入中英文、数字、下划线或它们的组合
+      member:
         email: 请填写有效的Email地址作为下次登录的用户名，同时我们也会给这个地址发送您的帐户信息、订单通知等。
         password: 请设为6-20位字母或数字
         password_confirmation: 
+        login: 请输入中英文、数字、下划线或它们的组合
     actions:
       create: 新增%{model}
       update: 更新

@@ -6,12 +6,13 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-saberma = User.where(:login => :saberma).first
+saberma = User.where(:email => 'saberma@shopqi.com').first
 saberma.try(:store).try(:destroy)
 saberma.try(:destroy)
-saberma = User.create(:login => :saberma, :email => 'saberma@shopqi.com', :password => '666666')
+saberma = User.create(:email => 'saberma@shopqi.com', :password => '666666', :login => :saberma)
 
 store = saberma.store
+store.update_attributes :subdomain => 'vancl'
 #logo
 logo = store.logo_image
 logo.words << Word.new(:x => 0, :y => 2, :font => :yahei_bold, 'font-size' => '36px', :color => '#000000', :text => :VANCL)

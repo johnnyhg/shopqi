@@ -6,7 +6,7 @@
   
   @javascript
   场景: 生成图片
-    假如我已经以用户名saberma登录
+    假如我已经以用户名saberma@shopqi.com登录
     假如系统已有网店布局
     当我访问网店布局管理
     那么我看到网店Logo

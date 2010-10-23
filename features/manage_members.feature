@@ -6,7 +6,7 @@
   
   @javascript
   场景: 会员注册
-    假如我已经以用户名saberma成功注册
+    假如我已经以用户名saberma@shopqi.com成功注册
     * 我访问会员登录注册页面
     而且点击现在注册
     那么我应该能看到Email地址 不能为空
@@ -32,9 +32,8 @@
     #那么我应该能看到注册成功
   
   @focus
-  @javascript
   场景: 会员登录
-    假如我已经以用户名saberma成功注册
+    假如我已经以用户名saberma@shopqi.com成功注册
     * 我已经以会员ben成功注册
     当我访问会员登录注册页面
     而且点击登录

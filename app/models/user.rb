@@ -13,10 +13,6 @@ class User
 
   field :login
 
-  # 校验
-  validates_presence_of :login
-  validates_uniqueness_of :login, :case_sensitive => false
-
   after_create :init_store
 
   def init_store

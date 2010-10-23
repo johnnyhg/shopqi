@@ -6,14 +6,14 @@
   
   @javascript
   场景: 上传商品图片
-    假如我已经以用户名saberma登录
+    假如我已经以用户名saberma@shopqi.com登录
     当我点击添加商品
     而且将图片public/images/logo.jpg上传
     那么缩略图应该能显示
   
   @javascript
   场景: 添加商品
-    假如我已经以用户名saberma登录
+    假如我已经以用户名saberma@shopqi.com登录
     * 点击添加商品
     当我输入名称为iphone
     当我输入价格为99
@@ -22,7 +22,7 @@
 
   @javascript
   场景: 显示商品列表
-    假如我已经以用户名saberma登录
+    假如我已经以用户名saberma@shopqi.com登录
     假如系统有以下商品分类:
       |男装|      |          |
       |    |衬衫  |          |
@@ -56,7 +56,7 @@
 
   @javascript
   场景: 购买商品
-    假如我已经以用户名saberma登录
+    假如我已经以用户名saberma@shopqi.com登录
     假如系统有以下商品分类:
       |男装|      |          |
       |    |衬衫  |          |

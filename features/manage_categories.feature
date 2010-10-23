@@ -7,7 +7,7 @@
   @focus
   @javascript
   场景: 添加分类
-    假如我已经以用户名saberma登录
+    假如我已经以用户名saberma@shopqi.com登录
     假如系统有以下商品分类:
       |男装|      |          |
       |    |衬衫  |          |
@@ -40,7 +40,7 @@
   
   @javascript
   场景: 修改分类名称
-    假如我已经以用户名saberma登录
+    假如我已经以用户名saberma@shopqi.com登录
     假如系统有以下商品分类:
       |男装|
       |女装|
@@ -58,7 +58,7 @@
   
   @javascript
   场景: 删除分类
-    假如我已经以用户名saberma登录
+    假如我已经以用户名saberma@shopqi.com登录
     假如系统有以下商品分类:
       |男装|
       |女装|
