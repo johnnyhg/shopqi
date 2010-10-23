@@ -83,6 +83,9 @@ Shopqi::Application.routes.draw do
 
   # 商品购买者
   devise_for :members
-  match "member_root" => "members#show"
+  # 会员成功登录后跳转至网店首页
+  # @see: http://github.com/plataformatec/devise/wiki/How-To:-Redirect-to-a-specific-page-on-successful-sign-in
+  match '/' => 'pages#show', :as => 'member_root'
   resources :members, :only => :show
+  match '/member' => 'members#show'
 end
