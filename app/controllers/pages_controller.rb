@@ -1,7 +1,8 @@
 # encoding: utf-8
 class PagesController < InheritedResources::Base
   layout nil
-  prepend_before_filter :authenticate_user!
+  # 配置网店需要用户登录
+  prepend_before_filter :config_authenticate
 
   def show
     render :template => "pages/templates/#{template}/home", :layout => "pages"
@@ -22,8 +23,11 @@ class PagesController < InheritedResources::Base
     @resource ||= end_of_association_chain.homepage
   end
 
-  protected
   def begin_of_association_chain
-    current_user.store
+    store
+  end
+
+  def config_authenticate
+    authenticate_user! if config?
   end
 end

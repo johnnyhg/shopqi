@@ -24,4 +24,9 @@ module ApplicationHelper
   def s(label)
     label.blank? ? I18n.t('helper.label.blank') : label
   end
+
+  # 网店可视化配置
+  def config?
+    params[:config]
+  end
 end

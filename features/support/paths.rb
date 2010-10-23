@@ -14,7 +14,7 @@ module NavigationHelpers
     when /在线文字图片合成/
       new_image_path
     when /网店布局管理/
-      with_subdomain_path('/')
+      with_subdomain_path('/?config=true')
     when /工作平台/
       user_root_path
     when /会员登录注册页面/

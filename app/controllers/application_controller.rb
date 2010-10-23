@@ -1,8 +1,8 @@
 # encoding:utf-8
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
   include SentientController
   include InheritedResources::DSL
-  include ApplicationHelper
   #before_filter :check_permission!, :only => [ :create, :update, :destroy ]
 
   protect_from_forgery
