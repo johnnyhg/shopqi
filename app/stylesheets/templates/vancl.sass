@@ -14,6 +14,7 @@ $color_grey_lighter: #EBEBEB
 $color_grey_lightest: #F5F5F5
 
 $color_red: #A10000
+$color_red_dark: #7F0019
 
 $color_yellow: #E9BE16
 
@@ -82,7 +83,7 @@ body
     .button
       margin-top: 5px
 
-  #car
+  #mini-car
     border-top: 1px solid $color_grey_dark
     border-bottom: 1px solid $color_grey_dark
     height: 44px
@@ -268,10 +269,17 @@ body
     .panel
       display: none
 
-/** 订单页
-#orders
-  border: 1px solid $color_grey_lighter
-  padding: 1px
+/** 通用列表
+.list
+  h3
+    margin-bottom: 15px
+    span
+      border-bottom: 2px solid $color_hover
+      padding: 0 5px 5px 5px
+      em
+        font-size: 14px
+        font-weight: bold
+        color: $color_grey_dark
   ul
     text-align: center
     +horizontal-list(8px)
@@ -288,6 +296,11 @@ body
     padding: 5px 0
     &.even
       background-color: $color_grey_lightest
+
+/** 购物车页面
+#car
+  border: 1px solid $color_grey_lighter
+  padding: 1px
   .summary
     margin: 0 20px
     border-top: 1px solid $color_grey
@@ -361,3 +374,18 @@ $left: 34%
 
   #error_explanation
     display: none
+
+/** 会员订单
+#orders
+  border: 1px solid $color_grey_light
+  padding: 1px
+  color: $color_grey_darker
+  .box
+    background-color: $color_grey_lightest
+    padding: 10px
+    h3
+      color: $color_red_dark
+    .tip
+      @include height(20px)
+      span
+        @extend h3

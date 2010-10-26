@@ -1,9 +1,7 @@
 # encoding: utf-8
-#http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
+#@see: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
+#@see: http://edgeguides.rubyonrails.org/routing.html
 Shopqi::Application.routes.draw do
-
-  resources :orders
-
   resources :containers do
     collection do
       post :sort
@@ -80,6 +78,15 @@ Shopqi::Application.routes.draw do
   devise_for :users
   #用户登录后的跳转页面(符合devise命名规范)
   match "user_root" => "home#show"
+
+  ##### 网店展示 #####
+  # 购物车
+  get :car, :to => 'orders#car'
+
+  # 会员管理
+  scope '/member' do
+    resources :orders
+  end
 
   # 商品购买者
   devise_for :members

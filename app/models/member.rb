@@ -6,6 +6,7 @@ class Member
          :recoverable, :rememberable, :trackable, :validatable
 
   referenced_in :store
+  references_many :orders, :dependent => :destroy
 
   field :login
 

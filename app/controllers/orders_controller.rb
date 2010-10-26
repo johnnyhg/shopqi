@@ -1,9 +1,10 @@
 # encoding: utf-8
-class OrdersController < ApplicationController
-  skip_before_filter :authenticate_user!
-  layout 'compact'
+class OrdersController < InheritedResources::Base
+  prepend_before_filter :authenticate_member!, :except => :car
+  actions :index, :show, :destroy
+  layout 'pages'
 
-  def index
+  def car
     cookies['order'] = '' if cookies['order'].nil?
     order = cookies['order'].split(';').map{|item| item.split('|')}
     @products = order.map do |item|
@@ -15,5 +16,11 @@ class OrdersController < ApplicationController
     @price_count = @products.map do |product|
       @order_hash[product.id.to_s].to_i * product.price
     end.sum
+    render :layout => "compact"
+  end
+
+  protected
+  def begin_of_association_chain
+    current_member
   end
 end
