@@ -85,8 +85,9 @@ Shopqi::Application.routes.draw do
 
   # 会员管理
   scope '/member' do
-    resources :orders
+    resources :orders, :except => [:new, :create]
   end
+  post '/orders' => 'orders#create', :as => 'create_order'
 
   # 商品购买者
   devise_for :members

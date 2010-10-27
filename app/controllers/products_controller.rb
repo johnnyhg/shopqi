@@ -1,12 +1,12 @@
 # encoding: utf-8
 class ProductsController < InheritedResources::Base
   belongs_to :category, :optional => true
-  actions :index, :new, :create, :edit, :update, :destroy
+  actions :index, :new, :create, :edit, :update, :destroy, :show
   layout nil
   layout 'pages', :only => [:index, :show]
   respond_to :js, :only => [ :create, :update, :destroy, :add_to_car ]
   before_filter :set_object_id, :only => :update
-  prepend_before_filter :authenticate_user!, :except => [:index, :add_to_car]
+  prepend_before_filter :authenticate_user!, :except => [:index, :add_to_car, :show]
 
   def index
     @products = store.products
@@ -50,7 +50,7 @@ class ProductsController < InheritedResources::Base
   end
 
   def begin_of_association_chain
-    current_user.store
+    store
   end
 
   # 特殊处理:转换id，否则更新不了

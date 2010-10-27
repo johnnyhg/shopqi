@@ -1,12 +1,12 @@
 # encoding: utf-8
-# TODO:带有时间限制的优惠折扣可能会造成商品价格混乱，因此超过24小时未付款的订单将自动删除(京东做法)
+# TODO:带有时间限制的优惠折扣可能会造成商品价格混乱，因此超过一定时间(24小时?)未付款的订单将自动删除
 class Order
   include Mongoid::Document
   include Mongoid::Timestamps
   referenced_in :member
   embeds_many :items, :class_name => "OrderItem"
 
-  field :number, :type => Integer
+  field :number
   field :price_sum, :type => Float
   field :state, :type => Integer
 end

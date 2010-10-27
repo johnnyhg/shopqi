@@ -10,7 +10,7 @@
     =formtastic_stylesheet_link_tag
     = stylesheet_link_tag 'compiled/grid'
     = stylesheet_link_tag "compiled/templates/#{template}", 'compiled/page'
-    = javascript_include_tag :defaults
+    = javascript_include_tag :defaults, 'car'
     =yield :extra_head
     = csrf_meta_tag
   %body

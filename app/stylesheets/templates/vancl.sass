@@ -377,10 +377,9 @@ $left: 34%
 
 /** 会员订单
 #orders
-  border: 1px solid $color_grey_light
-  padding: 1px
-  color: $color_grey_darker
   .box
+    color: $color_grey_darker
+    border: 1px solid $color_grey_light
     background-color: $color_grey_lightest
     padding: 10px
     h3
@@ -389,3 +388,5 @@ $left: 34%
       @include height(20px)
       span
         @extend h3
+  .list ul.item li
+    @include height(24px)
