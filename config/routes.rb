@@ -90,7 +90,7 @@ Shopqi::Application.routes.draw do
   post '/orders' => 'orders#create', :as => 'create_order'
 
   # 商品购买者
-  devise_for :members
+  devise_for :members, :controllers => {:registrations => "members/registrations"}
   # 会员成功登录后跳转至网店首页
   # @see: http://github.com/plataformatec/devise/wiki/How-To:-Redirect-to-a-specific-page-on-successful-sign-in
   match '/' => 'pages#show', :as => 'member_root'

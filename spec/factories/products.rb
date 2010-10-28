@@ -2,5 +2,5 @@
 
 Factory.define :product do |f|
   f.name "Nike"
-  f.price 1.5
+  f.price 15
 end
