@@ -95,5 +95,4 @@ Shopqi::Application.routes.draw do
   # @see: http://github.com/plataformatec/devise/wiki/How-To:-Redirect-to-a-specific-page-on-successful-sign-in
   match '/' => 'pages#show', :as => 'member_root'
   resources :members, :only => :show
-  match '/member' => 'members#show'
 end
