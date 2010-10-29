@@ -62,4 +62,8 @@ class Store
   def menu_sprite_url
     "/images/menu/#{id}.png"
   end
+
+  def next_order_sequence
+    Sequence.next("shop_#{self.id.to_s}")
+  end
 end

@@ -9,7 +9,7 @@ class OrdersController < InheritedResources::Base
     @path = orders_path
     if member_signed_in?
       init_cookie_orders
-      @order = end_of_association_chain.create :number => :aa, :price_sum => @price_count, :state => 0
+      @order = end_of_association_chain.create :number => store.next_order_sequence, :price_sum => @price_count, :state => 0
     end
   end
 
