@@ -85,7 +85,12 @@ Shopqi::Application.routes.draw do
 
   # 会员管理
   scope '/member' do
-    resources :orders, :except => [:new, :create]
+    resources :orders, :except => [:new, :create] do
+      collection do
+        # 提交订单
+        get :confirm
+      end
+    end
   end
   post '/orders' => 'orders#create', :as => 'create_order'
 

@@ -1,16 +1,21 @@
 # encoding: utf-8
 class OrdersController < InheritedResources::Base
-  prepend_before_filter :authenticate_member!, :except => [:car, :create]
+  prepend_before_filter :authenticate_member!, :except => [:car]
   actions :index, :show, :destroy
   respond_to :js, :only => [ :create ]
   layout 'pages'
 
+  # 提交订单
+  def confirm
+    init_cookie_orders
+    render :layout => "compact"
+  end
+
   def create
     @path = orders_path
-    if member_signed_in?
-      init_cookie_orders
-      @order = end_of_association_chain.create :number => store.next_order_sequence, :price_sum => @price_count, :state => 0
-    end
+    init_cookie_orders
+    @order = end_of_association_chain.create :number => store.next_order_sequence, :price_sum => @price_count, :state => 0
+    render :action => "/shared/redirect"
   end
 
   def car

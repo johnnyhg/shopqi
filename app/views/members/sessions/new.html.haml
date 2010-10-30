@@ -1,13 +1,6 @@
 #content
   .container_24#members
-    .grid_24.root
-      .steps
-        结算步骤: 
-        %span.step 1.登录注册
-        >>
-        2.填写核对订单信息
-        >>
-        3.提交订单
+    = render :partial => "/orders/step", :locals => { :step => 1 }
     .grid_24.root
       .grid_10.alpha.box
         %h2=image_tag 'templates/vancl/members/login.gif'

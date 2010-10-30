@@ -183,6 +183,8 @@ git push origin master
 点这里查看哪些功能需要开发
 "http://www.pivotaltracker.com/projects/84595":http://www.pivotaltracker.com/projects/84595
 
+shopqi的代码版本控制遵循git标准化开发流程，详情请参考 "http://github.com/nvie/gitflow":http://github.com/nvie/gitflow
+
 h1. 技术互助
 
 对此产品涉及技术有需要交流的地方，可以:

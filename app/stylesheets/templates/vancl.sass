@@ -33,6 +33,7 @@ $image_bullet_move_arrow: "templates/common/bullet/move_arrow.png"
 body
   font-size: 12px
   a
+    text-decoration: none
     +link-colors($color, $color_hover)
 
 /***** HEADER *****/
@@ -312,22 +313,26 @@ body
       color: $color_hover
     .unit
       margin-right: 50px
+    .back_car
+      float: left
   .btns
     margin: 20px 0 20px 20px
     a
       margin-right: 20px
-    .pay
+    .pay, .confirm
       float: right
     margin-right: 20px
+
+/** 步骤导航
+.steps
+  color: $color_grey_dark
+  .step
+    color: $color_red
+    font-weight: bolder
 
 /** 购买者登录注册页
 $left: 34%
 #members
-  .steps
-    color: $color_grey_dark
-    .step
-      color: $color_red
-      font-weight: bolder
   .box
     border: 1px solid $color_grey_light
     padding: 15px 15px 0 15px 

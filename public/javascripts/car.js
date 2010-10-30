@@ -1,3 +1,4 @@
+// 购物车
 var Car = {
   add: function(){
     var data = { };
@@ -5,7 +6,7 @@ var Car = {
     $.post(window.location.pathname + '/add_to_car.js', data, null, 'script');
   },
   
-  pay: function(){
+  order: function(){
     $.post('/orders', null, null, 'script');
   }
 }
