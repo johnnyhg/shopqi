@@ -8,17 +8,17 @@
     %meta{ :name => "Keywords"}/
     %meta{ :name => "Description"}/
     =formtastic_stylesheet_link_tag
-    = stylesheet_link_tag 'compiled/grid'
+    = stylesheet_link_tag 'compiled/grid_compact'
     = stylesheet_link_tag "compiled/templates/#{template}", 'compiled/page'
     = javascript_include_tag :defaults, 'car'
     =yield :extra_head
     = csrf_meta_tag
   %body
-    #header
-      .container_24
-        .grid_22=logo
+    .container_20
+      #header
+        .grid_18=logo
         .grid_2=link_to '帮助', '/helps'
-        .grid_24
+        .grid_20
           %hr
 
-    =yield
+      =yield
