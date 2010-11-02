@@ -15,7 +15,7 @@ class OrdersController < InheritedResources::Base
     @path = orders_path
     init_cookie_orders
     @order = end_of_association_chain.create :number => store.next_order_sequence, :price_sum => @price_count, :state => 0
-    render :action => "/shared/redirect"
+    render :template => "/shared/redirect"
   end
 
   def car
