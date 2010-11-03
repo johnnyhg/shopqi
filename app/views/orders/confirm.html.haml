@@ -1,31 +1,50 @@
-#content
+#order_confirm
   = render :partial => "/orders/step", :locals => { :step => 2 }
   .grid_20.root
-    #car.list
-      %ul.head
-        %li(style="width:280px") 产品名称
-        %li(style="width:70px") 单价
-        %li(style="width:100px") 数量
-        %li(style="width:100px") 小计
-      -@products.each do |product|
-        %ul.item{:class=>cycle(:odd, :even)}
-          %li.name(style="width:280px")=link_to s(product.name), product
-          %li(style="width:70px")
-            ￥
-            =product.price
-          %li(style="width:100px")=@order_hash[product.id.to_s]
-          %li(style="width:100px")
-            ￥
-            =@order_hash[product.id.to_s].to_i*product.price
+    .grid_15.alpha
+      .box
+        %h2
+          %span 收货人信息
+          =link_to '修改', '#addresses_path', :remote => true
+        .content
+          %ul
+            %li 收 货 人：李小贤 
+            %li 地    区：广东-深圳市-宝安区
+            %li 收货地址：上油路石田大厦 623
+            %li 邮政编码：518101
+            %li 联系方式：0755-26708966
+    .grid_5.omega
+      .box
+        留言
+  .grid_20.root
+    .box
+      %h2
+        %span 产品清单
+      #car.list
+        %ul.head
+          %li(style="width:280px") 产品名称
+          %li(style="width:70px") 单价
+          %li(style="width:100px") 数量
+          %li(style="width:100px") 小计
+        -@products.each do |product|
+          %ul.item{:class=>cycle(:odd, :even)}
+            %li.name(style="width:280px")=link_to s(product.name), product
+            %li(style="width:70px")
+              ￥
+              =product.price
+            %li(style="width:100px")=@order_hash[product.id.to_s]
+            %li(style="width:100px")
+              ￥
+              =@order_hash[product.id.to_s].to_i*product.price
 
-      .summary
-        .back_car=link_to '回到购物车，修改产品 >>', car_path
-        产品数量总计:
-        %span=@items_count
-        %span.unit 件
-        产品金额总计：
-        %span
-          ￥
-          =@price_count
-      .btns
-        .confirm=link_to_function image_tag('templates/common/product/confirm.gif'), 'Car.order()', :title => '提交订单'
+        .summary
+          .back_car=link_to '回到购物车，修改产品 >>', car_path
+          产品数量总计:
+          %span=@items_count
+          %span.unit 件
+          产品金额总计：
+          %span
+            ￥
+            =@price_count
+        .btns
+          .confirm=link_to_function image_tag('templates/common/product/confirm.gif'), 'Car.order()', :title => '提交订单'

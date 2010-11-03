@@ -2,6 +2,8 @@
 #@see: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
 #@see: http://edgeguides.rubyonrails.org/routing.html
 Shopqi::Application.routes.draw do
+  resources :addresses
+
   resources :containers do
     collection do
       post :sort

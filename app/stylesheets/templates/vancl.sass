@@ -329,9 +329,10 @@ body
   .step
     color: $color_red
     font-weight: bolder
+  margin-bottom: 10px
 
 /** 购买者登录注册页
-$left: 34%
+$left: 37%
 #members
   .box
     border: 1px solid $color_grey_light
@@ -395,3 +396,30 @@ $left: 34%
         @extend h3
   .list ul.item li
     @include height(24px)
+
+/** 会员订单
+#order_confirm
+  .box
+    color: $color_grey_darker
+    border: 1px solid $color_grey_light
+    padding: 20px
+    margin: 10px 0
+    h2
+      margin-bottom: 10px
+      padding: 0 10px
+      span
+        font-weight: bolder
+        font-size: 14px
+      a
+        float: right
+        color: $color_red
+    .content
+      padding: 10px
+      border-top: 1px solid $color_grey_light
+      border-bottom: 1px solid $color_grey_light
+      ul li
+        color: $color_grey_dark
+        @include height(24px)
+  .list
+    ul.item li
+      @include height(24px)

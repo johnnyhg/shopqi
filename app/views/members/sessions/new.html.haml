@@ -1,8 +1,8 @@
-#content
-  .container_24#members
-    = render :partial => "/orders/step", :locals => { :step => 1 }
-    .grid_24.root
-      .grid_10.alpha.box
+#members
+  = render :partial => "/orders/step", :locals => { :step => 1 }
+  .grid_20.root
+    .grid_10.alpha
+      .box
         %h2=image_tag 'templates/vancl/members/login.gif'
         = semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
           %p.tip 已注册用户请从这里登录
@@ -16,8 +16,8 @@
             = f.label :remember_me
           =f.buttons do
             =f.commit_button '登录', :button_html => { :type => :image, :src => '/images/templates/vancl/members/btn_login.gif' }
-      .grid_1.omega &nbsp;
-      .grid_11.omega.box
+    .grid_10.omega
+      .box
         %h2=image_tag 'templates/vancl/members/signup.gif'
         =semantic_form_remote_for(resource, :url => registration_path(resource_name)) do |f|
           %p.tip 注册会员可以享受更多优惠，保存积分
