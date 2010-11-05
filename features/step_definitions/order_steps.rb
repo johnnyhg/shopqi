@@ -1,4 +1,10 @@
 # coding: utf-8
+当 /^我选择所在地区为(.+),(.+),(.+)$/ do |province, city, district|
+  select(province, :from => 'address_province')
+  select(city, :from => 'address_city')
+  select(district, :from => 'address_district')
+end
+
 When /^I delete the (\d+)(?:st|nd|rd|th) order$/ do |pos|
   visit orders_path
   within("table tr:nth-child(#{pos.to_i+1})") do

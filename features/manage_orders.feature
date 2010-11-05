@@ -1,45 +1,57 @@
-Feature: Manage orders
-  In order to [goal]
-  [stakeholder]
-  wants [behaviour]
-  
-  Scenario: Register new order
-    Given I am on the new order page
-    And I press "Create"
+# language: zh-CN
+功能: 管理订单
+  为了购买商品
+  作为会员
+  可以提交订单
 
-  # Rails generates Delete links that use Javascript to pop up a confirmation
-  # dialog and then do a HTTP POST request (emulated DELETE request).
-  #
-  # Capybara must use Culerity/Celerity or Selenium2 (webdriver) when pages rely
-  # on Javascript events. Only Culerity/Celerity supports clicking on confirmation
-  # dialogs.
-  #
-  # Since Culerity/Celerity and Selenium2 has some overhead, Cucumber-Rails will
-  # detect the presence of Javascript behind Delete links and issue a DELETE request 
-  # instead of a GET request.
-  #
-  # You can turn this emulation off by tagging your scenario with @no-js-emulation.
-  # Turning on browser testing with @selenium, @culerity, @celerity or @javascript
-  # will also turn off the emulation. (See the Capybara documentation for 
-  # details about those tags). If any of the browser tags are present, Cucumber-Rails
-  # will also turn off transactions and clean the database with DatabaseCleaner 
-  # after the scenario has finished. This is to prevent data from leaking into 
-  # the next scenario.
-  #
-  # Another way to avoid Cucumber-Rails' javascript emulation without using any
-  # of the tags above is to modify your views to use <button> instead. You can
-  # see how in http://github.com/jnicklas/capybara/issues#issue/12
-  #
-  Scenario: Delete order
-    Given the following orders:
-      ||
-      ||
-      ||
-      ||
-      ||
-    When I delete the 3rd order
-    Then I should see the following orders:
-      ||
-      ||
-      ||
-      ||
+  @focus
+  @javascript
+  场景: 管理收货人信息
+    假如我已经以用户名saberma@shopqi.com成功注册
+    * 网店已有具体商品分类
+    * 网店有以下商品:
+      |名称              |市场价格|价格|分类|
+      |个性背带格子衬衫  |298     |59  |男装|
+    而且我已经以会员ben@shopqi.com登录
+    当我访问个性背带格子衬衫商品详情页面
+    * 点击立即购买
+    * 点击去结算
+    那么我应该能看到收货人信息
+    假如我输入以下内容:
+      |收货人姓名|saberma      |
+      |详细地址  |科技园南区   |
+      |邮政编码  |518057       |
+      |手机      |13928xx28xx  |
+      |固定电话  |0755-2674xxxx|
+    * 我选择所在地区为广东省,深圳市,南山区
+    当我点击配送至这个地址
+    那么我应该能看到广东省深圳市南山区科技园南区(518057) saberma 13928xx28xx,0755-2674xxxx
+    #修改
+    当我点击修改
+    假如我输入以下内容:
+      |收货人姓名|ben      |
+    当我点击配送至这个地址
+    那么我应该看不到广东省深圳市南山区科技园南区(518057) saberma 13928xx28xx,0755-2674xxxx
+    那么我应该能看到广东省深圳市南山区科技园南区(518057) ben 13928xx28xx,0755-2674xxxx
+    #添加
+    当我点击添加
+    当我点击配送至这个地址
+    那么我应该能看到收货人姓名 不能为空
+    假如我输入收货人姓名为jian
+    当我点击配送至这个地址
+    那么我应该能看到所在地区的省/直辖市 不能为空
+    * 我选择所在地区为广东省,深圳市,南山区
+    当我点击配送至这个地址
+    那么我应该能看到详细地址 不能为空
+    假如我输入详细地址为科技园南区
+    当我点击配送至这个地址
+    那么我应该能看到邮政编码 不能为空
+    假如我输入邮政编码为518057
+    当我点击配送至这个地址
+    那么我应该能看到手机与固定电话 至少有一项必填
+    假如我输入手机为13928xx28xx
+    当我点击配送至这个地址
+    那么我应该能看到广东省深圳市南山区科技园南区(518057) jian 13928xx28xx
+    #删除
+    当我确定点击删除
+    那么我应该看不到广东省深圳市南山区科技园南区(518057) saberma 13928xx28xx,0755-2674xxxx

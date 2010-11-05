@@ -17,6 +17,13 @@ end
   end
 end
 
+当 /^我?(?:在(.+)区域)?确定点击(.+)$/ do |selector, button_or_link|
+  page.execute_script("window.confirm = function(msg) { return true; }")
+  with_scope(selector) do
+    click(button_or_link)
+  end
+end
+
 当 /^我?(?:在(.+)区域)?输入(.+)为(.+)/ do |selector, field, value|
   with_scope(selector) do
     fill_in(field, :with => value)
