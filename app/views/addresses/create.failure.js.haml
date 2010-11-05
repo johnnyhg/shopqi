@@ -1,1 +1,3 @@
-alert('#{resource.errors}');
+-message = resource.errors.full_messages.first
+-p message
+$('#error_explanation').html("#{message}").show();

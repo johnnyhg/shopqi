@@ -333,8 +333,25 @@ body
     font-weight: bolder
   margin-bottom: 10px
 
-/** 购买者登录注册页
+/** formtastic的标签宽度
+$left_default: 25%
 $left: 37%
+
+/** 错误信息
+.formtastic
+  .error
+    border: 1px solid $color_red
+    color: $color_red
+    width: 300px
+    margin: 0 0 5px $left_default
+    text-align: center
+    background-color: $color_grey_lightest
+    @include height(19px)
+
+  #error_explanation
+    display: none
+
+/** 购买者登录注册页
 #members
   .box
     border: 1px solid $color_grey_light
@@ -348,13 +365,8 @@ $left: 37%
       margin: 0 0 20px 22%
     .formtastic
       .error
-        border: 1px solid $color_red
-        color: $color_red
-        width: 200px
         margin: 0 0 5px $left
-        text-align: center
-        background-color: $color_grey_lightest
-        @include height(19px)
+        width: 200px
       label
         text-align: right
         width: $left
@@ -379,9 +391,6 @@ $left: 37%
           border: none
           width: 80px
           @include height(25px)
-
-  #error_explanation
-    display: none
 
 /** 会员订单
 #orders
@@ -415,6 +424,10 @@ $left: 37%
       a
         float: right
         color: $color_red
+    #address_panel li
+      @include height(20px)
+      a
+        color: $color_grey_dark
     #new_address_form
       padding-top: 10px
   .list

@@ -26,11 +26,15 @@ cn:
         remember_me: 记住登录信息，下次自动登录
       address:
         name: 收货人姓名
-        region: 配送省份/直辖市
+        region: 所在地区
+        province: 所在地区的省/直辖市
+        city: 所在地区的市
+        district: 所在地区的县/区
         detail: 详细地址
         zipcode: 邮政编码
         mobile: 手机
         phone: 固定电话
+        telephone: 手机与固定电话
       product:
         name: 名称
         price: 价格
@@ -81,6 +85,7 @@ cn:
         too_long: 长度不能超过%{count}个字符
         not_a_number: 只能是数字
         invalid: 必须是有效的
+        at_least_one: 至少有一项必填
       models:
         user:
           attributes:
@@ -97,6 +102,9 @@ cn:
       member:
         email: Email地址
         password: 密码
+    #不要在此处增加错误提示的属性名称，应保持与formtastic中定义的label名称一致
+    #具体方法是在controller中增加interpolation_options，在model中include Formtastic::I18n::Naming，参考product相关文件
+    #@see: https://github.com/josevalim/inherited_resources/wiki
 
   support:
     array:

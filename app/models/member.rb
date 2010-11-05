@@ -18,6 +18,7 @@ end
 class Address
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Formtastic::I18n::Naming
 
   embedded_in :member, :inverse_of => :addresses
 
@@ -33,8 +34,11 @@ class Address
   field :default, :type => Boolean, :default => true
 
   validates_presence_of :name, :province, :city, :district, :detail, :zipcode
-  validates_presence_of :mobile, :if => "phone.blank?"
-  validates_presence_of :phone, :if => "mobile.blank?"
+  validate :at_least_one_telephone
+
+  def at_least_one_telephone
+    errors.add(:telephone, I18n.t('activemodel.errors.messages.at_least_one')) if mobile.blank? and phone.blank?
+  end
 
   def self.default
     where(:default => true).first
