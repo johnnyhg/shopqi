@@ -12,4 +12,10 @@ describe District do
     #区
     District.list('440300').should eql [["市辖区", "440301"], ["罗湖区", "440303"], ["福田区", "440304"], ["南山区", "440305"], ["宝安区", "440306"], ["龙岗区", "440307"], ["盐田区", "440308"]]
   end
+
+  it 'should be get' do
+    District.get('440000').should eql '广东省'
+    District.get('440300').should eql '深圳市'
+    District.get('440305').should eql '南山区'
+  end
 end

@@ -67,6 +67,9 @@ gem "awesome_print", :require => 'ap'
 
 group :development do
   gem 'rails3-generators'
+  # jquery,haml已经独立出来
+  #gem "jquery-rails"
+  #gem "haml-rails"
   gem "hpricot"
   # 修改后台文件后，safari或chrome浏览器会自动刷新
   gem "livereload"

@@ -1,0 +1,4 @@
+=content_tag_for :li, address do
+  ==#{address.region}#{address.detail}(#{address.zipcode}) #{address.name} #{address.telephone}
+  =link_to '修改', edit_address_path(address), :remote => true, :update => :new_address_form
+  =link_to '删除', address_path(address), :remote => true, :method => :delete, :confirm => '您确定要删除吗？'

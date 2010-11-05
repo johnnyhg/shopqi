@@ -3,6 +3,7 @@ class District
 
   def self.list(parent_id = '000000')
     result = []
+    return result if parent_id.nil?
     id_match = parent_id.match(/(\d{2})(\d{2})(\d{2})/)
     province_id = id_match[1].ljust(6, '0')
     city_id = "#{id_match[1]}#{id_match[2]}".ljust(6, '0')
@@ -16,6 +17,18 @@ class District
     #sort
     result.sort! {|a, b| a[1] <=> b[1]}
     result
+  end
+
+  def self.get(id)
+    children = self.data
+    return children[id][:text] if children.has_key?(id)
+    id_match = id.match(/(\d{2})(\d{2})(\d{2})/)
+    province_id = id_match[1].ljust(6, '0')
+    children = children[province_id][:children]
+    return children[id][:text] if children.has_key?(id)
+    city_id = "#{id_match[1]}#{id_match[2]}".ljust(6, '0')
+    children = children[city_id][:children]
+    return children[id][:text]
   end
 
   private
@@ -38,6 +51,7 @@ class District
       #   }
       # }
       @list = {}
+      #@see: http://github.com/RobinQu/LocationSelect-Plugin/raw/master/areas_1.0.json
       json = JSON.parse(File.read("#{Rails.root}/db/areas.json"))
       districts = json.values.flatten
       districts.each do |district|

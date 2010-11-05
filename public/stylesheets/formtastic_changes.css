@@ -26,3 +26,10 @@ form.formtastic input { font-size: 16px; width: 300px; border: 1px solid #959190
 
 /* 网店布局提示面板的操作链接 */
 .tooltip .operates { margin-bottom: 10px }
+
+/* 级联下拉框 */
+form.formtastic fieldset > ol > li.select_group fieldset ol li { float:left; width:auto; margin:0 .3em 0 0; }
+
+form.formtastic fieldset > ol > li.select_group fieldset ol li label { display:none; }
+
+form.formtastic fieldset > ol > li.select_group fieldset ol li label input { display:inline; margin:0; padding:0;  }

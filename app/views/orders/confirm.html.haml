@@ -5,14 +5,10 @@
       .box
         %h2
           %span 收货人信息
-          =link_to '修改', '#addresses_path', :remote => true
-        .content
-          %ul
-            %li 收 货 人：李小贤 
-            %li 地    区：广东-深圳市-宝安区
-            %li 收货地址：上油路石田大厦 623
-            %li 邮政编码：518101
-            %li 联系方式：0755-26708966
+          =link_to '添加', new_address_path, :remote => true, 'data-type' => :html, :update => :new_address_form
+        %ul#address_panel= render :partial => "addresses/show", :collection => current_member.addresses, :as => :address
+        #new_address_form
+          = render :partial => "addresses/new", :locals => { :resource => Address.new }  if current_member.addresses.empty?
     .grid_5.omega
       .box
         留言

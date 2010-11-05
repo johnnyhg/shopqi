@@ -35,6 +35,8 @@ body
   a
     text-decoration: none
     +link-colors($color, $color_hover)
+  abbr
+    color: $color_red_dark
 
 /***** HEADER *****/
 #header
@@ -413,13 +415,16 @@ $left: 37%
       a
         float: right
         color: $color_red
-    .content
-      padding: 10px
-      border-top: 1px solid $color_grey_light
-      border-bottom: 1px solid $color_grey_light
-      ul li
-        color: $color_grey_dark
-        @include height(24px)
+    #new_address_form
+      padding-top: 10px
   .list
     ul.item li
       @include height(24px)
+  .select_group legend
+    color: $color_grey_darker
+  .buttons
+    padding-left: $left
+    input
+      border: none
+      width: 130px
+      @include height(25px)

@@ -24,6 +24,13 @@ cn:
         edit:
           title: 编辑用户
         remember_me: 记住登录信息，下次自动登录
+      address:
+        name: 收货人姓名
+        region: 配送省份/直辖市
+        detail: 详细地址
+        zipcode: 邮政编码
+        mobile: 手机
+        phone: 固定电话
       product:
         name: 名称
         price: 价格
