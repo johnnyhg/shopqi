@@ -11,8 +11,9 @@ var Car = {
     var delivery = $('#delivery_panel input:radio:checked').val();
     var pay = $('#pay_panel input:radio:checked').val();
     var receive = $('#receive_panel input:radio:checked').val();
+    var description= $('#description').val();
     var data = { };
-    data['order'] = {address_id: address_id, delivery: delivery, pay: pay, receive: receive};
+    data['order'] = {address_id: address_id, delivery: delivery, pay: pay, receive: receive, description: description};
     $.post('/member/orders', data, null, 'script');
   }
 }

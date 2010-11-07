@@ -38,11 +38,13 @@
 
     .grid_5.omega
       .box
-        留言
+        附加说明
+        =text_area_tag :description, nil, :rows => 10, :cols => 15
   .grid_20.root
     .box
       %h2
         %span 产品清单
+        =link_to '回到购物车，修改产品>>', car_path
       #car.list
         %ul.head
           %li(style="width:280px") 产品名称
@@ -60,17 +62,23 @@
               ￥
               =@order_hash[product.id.to_s].to_i*product.price
 
-        .summary
-          .back_car=link_to '回到购物车，修改产品 >>', car_path
-          产品数量总计:
-          %span=@items_count
-          %span.unit 件
-          产品金额总计：
-          %span
-            ￥
-            =@price_count
-        .btns
-          .confirm=link_to_function image_tag('templates/common/product/confirm.gif'), 'Car.order()', :title => '提交订单'
+      .summary
+        .back_car=link_to '回到购物车，修改产品 >>', car_path
+        产品数量总计:
+        %span=@items_count
+        %span.unit 件
+        产品金额总计：
+        %span
+          ￥
+          =@price_count
+      .summary.total
+        您共需要为订单支付：
+        %span
+          ￥
+          =@price_count
+    .btns
+      %span.tip 请核对以上信息，确认无误后点击“提交订单”
+      %span.confirm=link_to_function image_tag('templates/common/product/confirm.gif'), 'Car.order()', :title => '提交订单'
 
 :javascript
 

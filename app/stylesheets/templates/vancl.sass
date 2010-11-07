@@ -315,8 +315,6 @@ body
       color: $color_hover
     .unit
       margin-right: 50px
-    .back_car
-      float: left
   .btns
     margin: 20px 0 20px 20px
     a
@@ -351,6 +349,10 @@ $left: 37%
 #error_explanation
   display: none
 
+/** 提示信息
+.tip
+  color: $color_grey
+
 /** 购买者登录注册页
 #members
   .box
@@ -361,7 +363,6 @@ $left: 37%
       border-bottom: 1px solid $color_grey_darker
       margin-bottom: 25px
     p.tip
-      color: $color_grey
       margin: 0 0 20px 22%
     .formtastic
       .error
@@ -413,7 +414,7 @@ $left: 37%
   .box
     color: $color_grey_darker
     border: 1px solid $color_grey_light
-    padding: 20px
+    padding: 10px 20px
     margin: 10px 0
     h2
       margin-bottom: 10px
@@ -439,13 +440,28 @@ $left: 37%
       display: none
       padding-top: 10px
   .list
+    border: none
+    border-bottom: 1px solid $color_grey_dark
     ul.item li
       @include height(24px)
   .select_group legend
     color: $color_grey_darker
-  .buttons
-    padding-left: $left
-    input
-      border: none
-      width: 130px
-      @include height(25px)
+  .summary
+    @include height(24px)
+    text-align: right
+    color: $color_grey_darker
+    #items_count, #price_count
+      color: $color_hover
+    .unit
+      margin-right: 50px
+    .back_car
+      float: left
+  .total
+    font-size: 14px
+    color: $color_red_dark
+.btns
+  float: right
+  input
+    border: none
+    width: 130px
+    @include height(25px)

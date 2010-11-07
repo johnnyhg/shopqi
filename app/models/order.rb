@@ -22,6 +22,8 @@ class Order
   field :price_sum, :type => Float
   field :state
 
+  field :description
+
   # 收货人信息
   ADDRESS_EXCLUDE_ATTRIBUTES = ['created_at', 'updated_at', 'default']
   ADDRESS_ATTRIBUTES = Address.fields.keys - ADDRESS_EXCLUDE_ATTRIBUTES
@@ -38,6 +40,7 @@ class Order
   attr_accessor :address_id
 
   validates_presence_of :address_id, :on => :create, :message => I18n.t('activemodel.errors.messages.select')
+  validates_length_of :description, :maximum => 100
 
   before_create :set_address
 
