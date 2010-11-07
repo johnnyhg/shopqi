@@ -1,5 +1,5 @@
 # coding: utf-8
-当 /^我选择所在地区为(.+),(.+),(.+)$/ do |province, city, district|
+当 /^我?选择所在地区为(.+),(.+),(.+)$/ do |province, city, district|
   select(province, :from => 'address_province')
   select(city, :from => 'address_city')
   select(district, :from => 'address_district')

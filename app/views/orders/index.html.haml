@@ -33,7 +33,7 @@
                 %li(style="width:100px")=order.number
                 %li(style="width:100px")=order.created_at.to_s(:db)
                 %li(style="width:70px")=order.price_sum
-                %li(style="width:100px")=order.state
+                %li(style="width:100px")=order.state_name
                 %li(style="width:100px")=link_to '查看详情', order
                 %li(style="width:70px")=link_to '现在支付', '#'
                 %li(style="width:70px")=link_to '取消订单', '#'

@@ -33,7 +33,7 @@ class Order
 
   # 状态
   state_machine do
-    state :start
+    state :unpay
   end
 
   # 会员收货地址ID
@@ -51,6 +51,9 @@ class Order
     end
   end
 
+  def state_name
+    I18n.t("state.#{state}")
+  end
 end
 
 class OrderItem

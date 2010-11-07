@@ -147,3 +147,7 @@ cn:
     errors:
       integrity: '不支持上传此类型的图片'
       processing: 'Cannot resize image.'
+
+  # 状态机
+  state:
+    unpay: 未付款

@@ -437,7 +437,6 @@ $left: 37%
         border-top: none
         padding-top: 0
     #new_address_form
-      display: none
       padding-top: 10px
   .list
     border: none
@@ -459,9 +458,17 @@ $left: 37%
   .total
     font-size: 14px
     color: $color_red_dark
-.btns
-  float: right
-  input
-    border: none
-    width: 130px
-    @include height(25px)
+  /** 配送地址
+  .buttons
+    padding-left: $left
+    input
+      border: none
+      width: 130px
+      @include height(25px)
+  /** 提交订单
+  .btns
+    float: right
+    input
+      border: none
+      width: 117px
+      @include height(32px)
