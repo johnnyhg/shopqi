@@ -3,6 +3,7 @@
   .grid_20.root
     .grid_15.alpha
       .box
+        %p.error#order_error_explanation
         %h2
           %span 收货人信息
           =link_to '添加', new_address_path, :remote => true, 'data-type' => :html, :update => :new_address_form
@@ -44,3 +45,6 @@
             =@price_count
         .btns
           .confirm=link_to_function image_tag('templates/common/product/confirm.gif'), 'Car.order()', :title => '提交订单'
+
+:javascript
+

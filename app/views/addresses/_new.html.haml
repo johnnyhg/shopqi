@@ -4,7 +4,7 @@
   =f.inputs :name
   =f.inputs :id => :region do
     %li.select_group
-      =f.inputs :name => '所在地区<abbr>*<abbr>' do
+      =f.inputs :name => '所在地区<abbr>*</abbr>' do
         =f.input :province, :label => false, :include_blank => '请选择省/直辖市', :collection => District.list
         =f.input :city, :label => false, :include_blank => '请选择市', :collection => District.list(resource.province)
         =f.input :district, :label => false, :include_blank => '请选择县/区', :collection => District.list(resource.city)

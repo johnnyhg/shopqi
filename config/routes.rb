@@ -87,14 +87,8 @@ Shopqi::Application.routes.draw do
 
   # 会员管理
   scope '/member' do
-    resources :orders, :except => [:new, :create] do
-      collection do
-        # 提交订单
-        get :confirm
-      end
-    end
+    resources :orders
   end
-  post '/orders' => 'orders#create', :as => 'create_order'
 
   # 商品购买者
   devise_for :members, :controllers => {:registrations => "members/registrations"}

@@ -34,6 +34,7 @@ Spork.each_run do
   Before do
     # sentient_user
     Thread.current[:user] = nil
+    Thread.current[:member] = nil
     Capybara.default_host = "lvh.me"
     Capybara.app_host = "http://lvh.me:9887"
   end

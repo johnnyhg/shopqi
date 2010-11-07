@@ -7,6 +7,9 @@ var Car = {
   },
   
   order: function(){
-    $.post('/orders', null, null, 'script');
+    var address_id = $('#address_panel input:radio:checked').val();
+    var data = { };
+    data['order'] = {address_id: address_id};
+    $.post('/member/orders', data, null, 'script');
   }
 }

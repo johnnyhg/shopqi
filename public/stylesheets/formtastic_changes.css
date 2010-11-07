@@ -18,6 +18,9 @@ form.formtastic fieldset > ol > li.password input { max-width: 74%; }
 /* 完善:输入框要大一点 */
 form.formtastic input { font-size: 16px; width: 300px; border: 1px solid #959190; }
 
+/* 限制radio宽度 */
+form.formtastic .radio { width: 20px }
+
 /* 网店布局 */
 .tooltip form.formtastic fieldset > ol > li label { width:20%;}
 .tooltip form.formtastic fieldset.buttons { padding-left:20%; }

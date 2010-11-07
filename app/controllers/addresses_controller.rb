@@ -14,6 +14,7 @@ class AddressesController < InheritedResources::Base
   end
 
   update! do |success, failure|
+    success.js { render :action => "update.js.haml"}
     failure.js { render :action => "create.failure.js.haml"}
   end
 

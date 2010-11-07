@@ -338,18 +338,18 @@ $left_default: 25%
 $left: 37%
 
 /** 错误信息
-.formtastic
-  .error
-    border: 1px solid $color_red
-    color: $color_red
-    width: 300px
-    margin: 0 0 5px $left_default
-    text-align: center
-    background-color: $color_grey_lightest
-    @include height(19px)
+.error
+  border: 1px solid $color_red
+  color: $color_red
+  width: 300px
+  margin: 0 0 5px $left_default
+  text-align: center
+  background-color: $color_grey_lightest
+  display: none
+  @include height(19px)
 
-  #error_explanation
-    display: none
+#error_explanation
+  display: none
 
 /** 购买者登录注册页
 #members
