@@ -2,6 +2,7 @@ h1. 产品介绍
 
 h2. 产品构成
 
+bq. 
 # ShopQi官网
 # 网店后台管理
 # 网店布局管理
@@ -20,25 +21,23 @@ h2. 系统安装
 
 h3. 安装开发环境所依赖的软件
 
-<pre>
+pre. 
 #安装依赖库、ruby也需要安装(否则通过rvm安装ruby1.9.2时会报make: *** [miniprelude.c] Error 1错误)
 sudo apt-get install build-essential bison openssl libreadline6 libreadline-dev curl git-core graphicsmagick \ 
   zlib1g zlib1g-dev libssl-dev vim libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev subversion autoconf ruby ruby-dev
 #webrat插件所需
 sudo apt-get install libxslt1-dev libxml2-dev
-</pre>
 
 h3. 安装rvm
 
-<pre>
+pre. 
 bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
 vim ~/.bashrc
-</pre>
 
 #将以下语句加入 @~/.bashrc@ 文件最底端
 @[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"@
 
-<pre>
+pre. 
 #安装ruby 1.9.2，rails3推荐的ruby版本
 #Note that Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails 3.0. 
 #Ruby Enterprise Edition have these fixed since release 1.8.7-2010.02 though. 
@@ -46,33 +45,29 @@ vim ~/.bashrc
 #so if you want to use Rails 3 with 1.9.x jump on 1.9.2 for smooth sailing.
 rvm install 1.9.2-head
 rvm 1.9.2-head --default
-</pre>
 
 h3. 安装rails3
 
-<pre>
+pre. 
 gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-format thor bundler i18n --no-ri --no-rdoc
 gem install rails --pre --no-ri --no-rdoc
 #如果报以下错误，则需要到RubyGems.org手动下载安装rack1.1.0的gem包
 ##ERROR:  Error installing rails:
 ##  actionpack requires rack (~> 1.1.0, runtime)
-</pre>
 
 h3. 安装mongodb数据库
 
 添加至 @/etc/apt/source.list@
 
-<pre>
+pre. 
 # mongodb的源
 deb http://downloads.mongodb.org/distros/ubuntu 10.4 10gen
-</pre>
 
 在terminal中执行
 
-<pre>
+pre. 
 sudo apt-get update
 sudo apt-get install mongodb-stable
-</pre>
 
 h3. 安装rails ide
 
@@ -80,12 +75,11 @@ h3. 安装rails ide
 
 h1. 开发
 
-<pre>
+pre. 
 # 加载基本数据
 rake db:seed
 # 启动开发环境应用服务
 unicorn
-</pre>
 
 访问以下地址查看效果
 
@@ -97,7 +91,7 @@ h1. 测试
 
 *cucumber*
 
-<pre>
+pre. 
   #查看cucumber支持的语言
   cucumber --i18n help
   #查看cucumber中文语法
@@ -108,18 +102,16 @@ h1. 测试
   cucumber
   #可以指定运行focus标记的测试用例
   cucumber -t @focus
-</pre>
 
 *rspec*
 
 如果gem中装有多个版本的rspec，可使用 @bundle exec rspec spec@ 替换 @rspec spec@
 
-<pre>
+pre. 
   spork rspec &
   rspec spec -X
   #可以指定运行特定example name的测试用例
   rspec spec -e create -X
-</pre>
 
 *为何选择*
 mongodb:灵活增减字段，不用再管migration，更好地管理一对多的关系
@@ -165,6 +157,7 @@ h1. 欢迎参与
 
 如果您对开发此产品有兴趣，可以：
 
+bq. 
 # Fork这里
 # 增加功能或者修正Bug
 # 编写测试相应的测试用例
@@ -172,23 +165,23 @@ h1. 欢迎参与
 
 Fork的commit与shopqi的commit冲突(即github的forkqueue显示"Will likely not apply cleanly")时，需要手动合并分支
 
-<pre>
+pre. 
 git remote add shopqi git://github.com/saberma/shopqi.git
 git pull shopqi master
 #vim处理冲突的文件...
 git commit -a -m 'merge from shopqi'
 git push origin master
-</pre>
 
 点这里查看哪些功能需要开发
 "http://www.pivotaltracker.com/projects/84595":http://www.pivotaltracker.com/projects/84595
 
-shopqi的代码版本控制遵循git标准化开发流程，详情请参考 "http://github.com/nvie/gitflow":http://github.com/nvie/gitflow
+shopqi的代码版本控制遵循git标准化开发流程，详情请参考 "http://saberma.me/git/2010/10/25/git-flow.html":http://saberma.me/git/2010/10/25/git-flow.html
 
 h1. 技术互助
 
 对此产品涉及技术有需要交流的地方，可以:
 
+bq. 
 # 加我的gtalk直接沟通: mahb45#gmail.com
 # 发送email: mahb45#gmail.com
 
