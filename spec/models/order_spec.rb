@@ -20,7 +20,7 @@ describe Order do
     end
 
     it 'should init state' do
-     @member.orders.create(:address_id => @address.id.to_s).state.should eql 'start'
+     @member.orders.create(:address_id => @address.id.to_s).state.should eql 'unpay'
     end
 
     it 'should set address' do

@@ -16,17 +16,17 @@ describe OrdersController do
   describe 'confirm' do
     describe 'not login' do
       it 'should redirect to login page' do
-        get :confirm
+        get :new
         response.should redirect_to(new_member_session_path)
       end
     end
 
     describe 'login' do
-      it 'should redirect to order confirm page' do
+      it 'should redirect to order new page' do
         @ben = Factory(:member_ben)
         sign_in @ben
 
-        get :confirm
+        get :new
         response.should be_success
       end
     end
