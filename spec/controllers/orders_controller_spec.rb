@@ -43,9 +43,15 @@ describe OrdersController do
     cookie_order = "#{@product.id.to_s}|2"
     cookies.should_receive(:[]).with('order').at_least(:once).and_return(cookie_order)
 
+    address = @ben.addresses.create(Factory.attributes_for(:address))
+
     lambda do
-      post :create, :format => :js
-      assigns[:order].price_count.should eql 30.0
+      post :create, :order => { :address_id => address.id.to_s, :delivery => 1, :pay => 1, :receive => 1 }, :format => :js
+      order = assigns[:order]
+      order.price_sum.should eql 30.0
+      order.delivery.should eql '1'
+      order.pay.should eql '1'
+      order.receive.should eql '1'
     end.should change(Order, :count).by(1)
   end
 end

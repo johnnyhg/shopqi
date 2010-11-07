@@ -8,8 +8,11 @@ var Car = {
   
   order: function(){
     var address_id = $('#address_panel input:radio:checked').val();
+    var delivery = $('#delivery_panel input:radio:checked').val();
+    var pay = $('#pay_panel input:radio:checked').val();
+    var receive = $('#receive_panel input:radio:checked').val();
     var data = { };
-    data['order'] = {address_id: address_id};
+    data['order'] = {address_id: address_id, delivery: delivery, pay: pay, receive: receive};
     $.post('/member/orders', data, null, 'script');
   }
 }

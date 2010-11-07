@@ -4,8 +4,19 @@ class Order
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Transitions
+  include SimpleEnum
+
   referenced_in :member
   embeds_many :items, :class_name => "OrderItem"
+
+  field :delivery_id
+  has_enum :delivery, :enums => [[:normal, 0, "普通快递送货上门"],[:ems, 1, "邮政特快专递EMS"]]
+
+  field :pay_id
+  has_enum :pay, :enums => [[:online, 0, "网上支付"],[:onsee, 1, "货到付款"], [:post, 2, "邮局汇款"], [:bank, 3, "银行转帐"]]
+
+  field :receive_id
+  has_enum :receive, :enums => [[:all, 0, "工作日、双休日与假日均可送货"],[:holiday, 1, "只有双休日、假日送货（工作日不用送货）"], [:weekday, 2, "只有工作日送货（双休日、假日不用送）"], [:school, 3, "学校地址（该地址白天没人，请尽量安排其他时间送货）"]]
 
   field :number
   field :price_sum, :type => Float

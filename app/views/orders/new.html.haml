@@ -4,12 +4,38 @@
     .grid_15.alpha
       .box
         %p.error#order_error_explanation
-        %h2
-          %span 收货人信息
-          =link_to '添加', new_address_path, :remote => true, 'data-type' => :html, :update => :new_address_form
-        %ul#address_panel= render :partial => "addresses/show", :collection => current_member.addresses, :as => :address
-        #new_address_form
-          = render :partial => "addresses/new", :locals => { :resource => Address.new }  if current_member.addresses.empty?
+        .order_panel.first
+          %h2
+            %span 收货人信息
+            =link_to '添加', new_address_path, :remote => true, 'data-type' => :html, :update => :new_address_form
+          %ul#address_panel= render :partial => "addresses/show", :collection => current_member.addresses, :as => :address
+          #new_address_form
+            = render :partial => "addresses/new", :locals => { :resource => Address.new }  if current_member.addresses.empty?
+        .order_panel
+          %h2
+            %span 配送方式
+          %ul#delivery_panel
+            -Order.options_for_delivery.each_with_index do |item, index|
+              %li
+                =radio_button_tag "order_delivery", item.second, index.zero?, :class => :radio
+                =label_tag "order_delivery_#{item.second}", item.first
+        .order_panel
+          %h2
+            %span 支付方式
+          %ul#pay_panel
+            -Order.options_for_pay.each_with_index do |item, index|
+              %li
+                =radio_button_tag "order_pay", item.second, index.zero?, :class => :radio
+                =label_tag "order_pay_#{item.second}", item.first
+        .order_panel
+          %h2
+            %span 送货时间
+          %ul#receive_panel
+            -Order.options_for_receive.each_with_index do |item, index|
+              %li
+                =radio_button_tag "order_receive", item.second, index.zero?, :class => :radio
+                =label_tag "order_receive_#{item.second}", item.first
+
     .grid_5.omega
       .box
         留言

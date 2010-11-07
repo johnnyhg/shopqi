@@ -424,11 +424,19 @@ $left: 37%
       a
         float: right
         color: $color_red
-    #address_panel li
-      @include height(20px)
-      a
-        color: $color_grey_dark
+    .order_panel
+      border-top: 1px solid $color_grey
+      margin-bottom: 10px
+      padding-top: 20px
+      ul li
+        @include height(24px)
+        a
+          color: $color_grey_dark
+      &.first
+        border-top: none
+        padding-top: 0
     #new_address_form
+      display: none
       padding-top: 10px
   .list
     ul.item li
