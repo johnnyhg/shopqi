@@ -36,6 +36,12 @@ class OrdersController < InheritedResources::Base
     render :action => "show"
   end
 
+  # 会员取消订单
+  #TODO: 先选择订单取消原因
+  def cancel
+    resource.cancel!
+  end
+
   def car
     init_cookie_orders
     render :layout => "compact"

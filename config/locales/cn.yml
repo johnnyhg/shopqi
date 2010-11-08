@@ -151,3 +151,4 @@ cn:
   # 状态机
   state:
     unpay: 有效待付款
+    cancelled: 用户已取消

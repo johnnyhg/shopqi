@@ -28,5 +28,11 @@ describe Order do
       order.name.should eql @address.name
       order.province.should eql @address.province
     end
+
+    it 'should be cancel' do
+      order = @member.orders.create(:address_id => @address.id.to_s)
+      order.cancel!
+      order.state.should eql 'cancelled'
+    end
   end
 end

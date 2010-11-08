@@ -12,11 +12,13 @@
       %li(style="width:70px") 支付
       %li(style="width:70px") 操作
     -@orders.each do |order|
-      %ul.item{:class=>cycle(:even, :odd)}
+      =content_tag_for :ul, order, :class => "item #{cycle(:even, :odd)}" do
         %li(style="width:100px")=order.number
         %li(style="width:100px")=order.created_at.to_s(:db)
         %li(style="width:70px")=order.price_sum
-        %li(style="width:100px")=order.state_name
+        %li.state(style="width:100px")=order.state_name
         %li(style="width:100px")=link_to '查看详情', order
-        %li(style="width:70px")=link_to '现在支付', '#'
-        %li(style="width:70px")=link_to '取消订单', '#'
+        %li.btns_pay(style="width:70px")
+          =link_to '现在支付', '#' if order.state == 'unpay'
+        %li.btns_cancel(style="width:70px")
+          =link_to '取消订单', cancel_order_path(order), :remote => true, :method => :post, :confirm => '您确定要取消订单吗?' if order.state == 'unpay'

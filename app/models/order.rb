@@ -38,6 +38,11 @@ class Order
   # 状态
   state_machine do
     state :unpay
+    state :cancelled
+
+    event :cancel do
+      transitions :to => :cancelled, :from => :unpay
+    end
   end
 
   # 会员收货地址ID
