@@ -1,6 +1,8 @@
 #order_show
   .box
     .block.first
+      -if flash[:success]
+        .spotlight=image_tag('templates/common/product/order_success.gif')
       %h2.title
         %span 订单详情
       .panel
@@ -12,6 +14,12 @@
           %li==配送方式：#{resource.delivery_name}
           %li==发货时间：
           %li==送货要求：#{resource.receive_name}
+        .summary.total
+          应收款金额
+          %span
+            ￥
+            =resource.price_sum
+            =image_tag('templates/common/product/pay_now.gif') if resource.state == 'unpay'
 
     .block.first
       %h2.title

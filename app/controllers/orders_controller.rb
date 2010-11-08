@@ -14,7 +14,6 @@ class OrdersController < InheritedResources::Base
   end
 
   def create
-    @path = orders_path
     init_cookie_orders
     params[:order].merge! :number => store.next_order_sequence, :quantity => @items_count, :price_sum => @price_count if params[:order]
 
@@ -26,13 +25,15 @@ class OrdersController < InheritedResources::Base
     end
 
     create! do |success, failure|
-      success.js { render :template => "/shared/redirect" }
+      success.js { @path = pay_order_path(resource); render :template => "/shared/redirect" }
       failure.js { render :action => "create.failure.js.haml" }
     end
   end
 
   # 订单提交后的提示页面
   def pay
+    flash[:success] = true
+    render :action => "show"
   end
 
   def car
