@@ -206,6 +206,10 @@ end
   end
 end
 
+当 /^我?刷新当前页面/ do
+  page.execute_script("window.location.reload();");
+end
+
 #此方法尽量少用， 会不定时报错:
 # <DRb::DRbConnError: too large packet 67654656
 那么 /^显示页面$/ do

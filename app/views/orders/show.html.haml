@@ -19,7 +19,7 @@
           %span
             ￥
             =resource.price_sum
-            =image_tag('templates/common/product/pay_now.gif') if resource.state == 'unpay'
+            =link_to(image_tag('templates/common/product/pay_now.gif'), '#', :title => '现在支付') if resource.state == 'unpay'
 
     .block.first
       %h2.title
