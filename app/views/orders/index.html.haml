@@ -1,21 +1,22 @@
-.list#orders
-  %h3
-    %span 
-      %em 所有订单
-  %ul.head
-    %li(style="width:100px") 订单号
-    %li(style="width:100px") 订单日期
-    %li(style="width:70px") 总价
-    %li(style="width:100px") 状态
-    %li(style="width:100px") 查看详情
-    %li(style="width:70px") 支付
-    %li(style="width:70px") 操作
-  -@orders.each do |order|
-    %ul.item{:class=>cycle(:even, :odd)}
-      %li(style="width:100px")=order.number
-      %li(style="width:100px")=order.created_at.to_s(:db)
-      %li(style="width:70px")=order.price_sum
-      %li(style="width:100px")=order.state_name
-      %li(style="width:100px")=link_to '查看详情', order
-      %li(style="width:70px")=link_to '现在支付', '#'
-      %li(style="width:70px")=link_to '取消订单', '#'
+#orders
+  .list
+    %h3
+      %span 
+        %em 所有订单
+    %ul.head
+      %li(style="width:100px") 订单号
+      %li(style="width:100px") 订单日期
+      %li(style="width:70px") 总价
+      %li(style="width:100px") 状态
+      %li(style="width:100px") 查看详情
+      %li(style="width:70px") 支付
+      %li(style="width:70px") 操作
+    -@orders.each do |order|
+      %ul.item{:class=>cycle(:even, :odd)}
+        %li(style="width:100px")=order.number
+        %li(style="width:100px")=order.created_at.to_s(:db)
+        %li(style="width:70px")=order.price_sum
+        %li(style="width:100px")=order.state_name
+        %li(style="width:100px")=link_to '查看详情', order
+        %li(style="width:70px")=link_to '现在支付', '#'
+        %li(style="width:70px")=link_to '取消订单', '#'
