@@ -20,10 +20,13 @@ class Order
   has_enum :receive, :enums => [[:all, 0, "工作日、双休日与假日均可送货"],[:holiday, 1, "只有双休日、假日送货（工作日不用送货）"], [:weekday, 2, "只有工作日送货（双休日、假日不用送）"], [:school, 3, "学校地址（该地址白天没人，请尽量安排其他时间送货）"]]
 
   field :number
-  field :price_sum, :type => Float
   field :state
 
   field :description
+
+  # 商品数量、总额
+  field :quantity, :type => Integer
+  field :price_sum, :type => Float
 
   # 收货人信息
   ADDRESS_EXCLUDE_ATTRIBUTES = ['created_at', 'updated_at', 'default']
@@ -59,7 +62,6 @@ end
 
 class OrderItem
   include Mongoid::Document
-  include Mongoid::Timestamps
   embedded_in :order, :inverse_of => :items
 
   referenced_in :product

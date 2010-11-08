@@ -49,9 +49,19 @@ describe OrdersController do
       post :create, :order => { :address_id => address.id.to_s, :delivery => 1, :pay => 1, :receive => 1 }, :format => :js
       order = assigns[:order]
       order.price_sum.should eql 30.0
-      order.delivery.should eql '1'
-      order.pay.should eql '1'
-      order.receive.should eql '1'
+      order.quantity.should eql 2
+
+      order.delivery.should eql 1
+      order.pay.should eql 1
+      order.receive.should eql 1
+
+      # 保存商品购买清单
+      order.items.size.should eql 1
+      item = order.items.first
+      item.product.should eql @product
+      item.price.should eql @product.price
+      item.quantity.should eql 2
+      item.sum.should eql @product.price*2
     end.should change(Order, :count).by(1)
   end
 end

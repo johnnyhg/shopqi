@@ -16,7 +16,15 @@ class OrdersController < InheritedResources::Base
   def create
     @path = orders_path
     init_cookie_orders
-    params[:order].merge! :number => store.next_order_sequence, :price_sum => @price_count if params[:order]
+    params[:order].merge! :number => store.next_order_sequence, :quantity => @items_count, :price_sum => @price_count if params[:order]
+
+    @order = end_of_association_chain.build(params[:order])
+    @products.each do |product|
+      quantity = @order_hash[product.id.to_s]
+      price = product.price
+      @order.items.build :product => product, :price => price, :quantity => quantity, :sum => quantity.to_i*price
+    end
+
     create! do |success, failure|
       success.js { render :template => "/shared/redirect" }
       failure.js { render :action => "create.failure.js.haml" }
