@@ -272,6 +272,7 @@ body
     .panel
       display: none
 
+/** 通用定义
 /** 通用列表
 .list
   h3
@@ -300,28 +301,34 @@ body
     &.even
       background-color: $color_grey_lightest
 
-/** 购物车页面
-#car
-  border: 1px solid $color_grey_lighter
-  padding: 1px
-  .summary
-    margin: 0 20px
-    border-top: 1px solid $color_grey
-    border-bottom: 1px solid $color_grey
-    @include height(42px)
-    text-align: right
-    color: $color_grey_darker
-    #items_count, #price_count
-      color: $color_hover
-    .unit
-      margin-right: 50px
-  .btns
-    margin: 20px 0 20px 20px
-    a
-      margin-right: 20px
-    .pay, .confirm
-      float: right
-    margin-right: 20px
+/** 通用box区域
+.box
+  color: $color_grey_darker
+  border: 1px solid $color_grey_light
+  padding: 10px
+  /** 块区域
+  .block
+    margin-bottom: 10px
+    padding-top: 20px
+    /** 标题
+    .title
+      margin-bottom: 10px
+      padding: 0 10px
+      span
+        font-weight: bolder
+        font-size: 14px
+      a.sub_title
+        float: right
+        color: $color_red
+    /** 内容面板
+    .panel
+      ul li
+        @include height(24px)
+        a
+          color: $color_grey_dark
+  /** 订单商品列表
+  .box .block
+    padding-top: 0
 
 /** 步骤导航
 .steps
@@ -352,9 +359,38 @@ $left: 37%
 /** 提示信息
 .tip
   color: $color_grey
+// 突出显示
+.highlight
+  color: $color_red_dark
+// 浅淡显示
+.shortlight
+  color: $color_grey_darker
+
+/** 购物车页面
+#car
+  border: 1px solid $color_grey_lighter
+  padding: 1px
+  .summary
+    margin: 0 20px
+    border-top: 1px solid $color_grey
+    border-bottom: 1px solid $color_grey
+    @include height(42px)
+    text-align: right
+    color: $color_grey_darker
+    #items_count, #price_count
+      color: $color_hover
+    .unit
+      margin-right: 50px
+  .btns
+    margin: 20px 0 20px 20px
+    a
+      margin-right: 20px
+    .pay, .confirm
+      float: right
+    margin-right: 20px
 
 /** 购买者登录注册页
-#members
+#members_sessions
   .box
     border: 1px solid $color_grey_light
     padding: 15px 15px 0 15px 
@@ -393,46 +429,29 @@ $left: 37%
           width: 80px
           @include height(25px)
 
-/** 会员订单
-#orders
-  .box
-    color: $color_grey_darker
-    border: 1px solid $color_grey_light
+/** 会员管理页面
+#members
+  .box#menus
     background-color: $color_grey_lightest
+  .row
+    @include height(20px)
+  .box .panel
+    border-top: 1px solid $color_grey
+    border-bottom: 1px solid $color_grey
+    margin: 10px
     padding: 10px
-    h3
-      color: $color_red_dark
-    .tip
-      @include height(20px)
-      span
-        @extend h3
-  .list ul.item li
-    @include height(24px)
 
 /** 会员订单
+.list#orders ul.item li
+  @include height(24px)
+
+/** 会员提交订单
 #order_confirm
   .box
-    color: $color_grey_darker
-    border: 1px solid $color_grey_light
     padding: 10px 20px
     margin: 10px 0
-    h2
-      margin-bottom: 10px
-      padding: 0 10px
-      span
-        font-weight: bolder
-        font-size: 14px
-      a
-        float: right
-        color: $color_red
-    .order_panel
+    .block
       border-top: 1px solid $color_grey
-      margin-bottom: 10px
-      padding-top: 20px
-      ul li
-        @include height(24px)
-        a
-          color: $color_grey_dark
       &.first
         border-top: none
         padding-top: 0
@@ -445,19 +464,6 @@ $left: 37%
       @include height(24px)
   .select_group legend
     color: $color_grey_darker
-  .summary
-    @include height(24px)
-    text-align: right
-    color: $color_grey_darker
-    #items_count, #price_count
-      color: $color_hover
-    .unit
-      margin-right: 50px
-    .back_car
-      float: left
-  .total
-    font-size: 14px
-    color: $color_red_dark
   /** 配送地址
   .buttons
     padding-left: $left
@@ -472,3 +478,19 @@ $left: 37%
       border: none
       width: 117px
       @include height(32px)
+
+/** 订单产品列表统计部分
+#order_confirm, #order_show
+  .summary
+    @include height(24px)
+    text-align: right
+    color: $color_grey_darker
+    #items_count, #price_count
+      color: $color_hover
+    .unit
+      margin-right: 50px
+    .back_car
+      float: left
+  .total
+    font-size: 14px
+    color: $color_red_dark

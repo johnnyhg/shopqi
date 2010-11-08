@@ -1,4 +1,18 @@
 # encoding: utf-8
+module AddressHelper
+  def region
+    "#{District.get(province)}#{District.get(city)}#{District.get(district)}"
+  end
+
+  def telephone
+    [mobile, phone].reject{|n| n.blank?}.join(',')
+  end
+
+  def address_info
+    "#{name}(#{telephone}) #{region}#{detail} #{zipcode}"
+  end
+end
+
 class Member
   include Mongoid::Document
   include SentientUser
@@ -32,6 +46,7 @@ class Address
   include Mongoid::Document
   include Mongoid::Timestamps
   include Formtastic::I18n::Naming
+  include AddressHelper
 
   embedded_in :member, :inverse_of => :addresses
 
@@ -57,15 +72,7 @@ class Address
     where(:default => true).first
   end
 
-  def region
-    "#{District.get(province)}#{District.get(city)}#{District.get(district)}"
-  end
-
-  def telephone
-    [mobile, phone].reject{|n| n.blank?}.join(',')
-  end
-
   def to_s
-    "#{region}#{detail}(#{zipcode}) #{name} #{telephone}"
+    address_info
   end
 end

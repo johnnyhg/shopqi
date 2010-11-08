@@ -87,7 +87,11 @@ Shopqi::Application.routes.draw do
 
   # 会员管理
   scope '/member' do
-    resources :orders
+    resources :orders do
+      member do
+        get :pay
+      end
+    end
   end
 
   # 商品购买者

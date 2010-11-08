@@ -3,7 +3,7 @@ class OrdersController < InheritedResources::Base
   prepend_before_filter :authenticate_member!, :except => [:car]
   actions :new, :create, :index, :show, :destroy
   respond_to :js, :only => [ :create ]
-  layout 'pages'
+  layout 'members'
 
   # 提交订单
   def new
@@ -21,6 +21,10 @@ class OrdersController < InheritedResources::Base
       success.js { render :template => "/shared/redirect" }
       failure.js { render :action => "create.failure.js.haml" }
     end
+  end
+
+  # 订单提交后的提示页面
+  def pay
   end
 
   def car

@@ -1,0 +1,50 @@
+#order_show
+  .box
+    .block.first
+      %h2.title
+        %span 订单详情
+      .panel
+        %ul
+          %li==订单号：#{resource.number}　[#{resource.created_at.to_s(:db)}生成订单]
+          %li==订单状态：#{resource.state_name}
+          %li==支付方式：#{resource.pay_name}
+          %li==收货人：#{resource.address_info}
+          %li==配送方式：#{resource.delivery_name}
+          %li==发货时间：
+          %li==送货要求：#{resource.receive_name}
+
+    .box
+      .block.first
+        %h2.title
+          %span 产品清单
+        #car.list
+          %ul.head
+            %li(style="width:280px") 产品名称
+            %li(style="width:70px") 单价
+            %li(style="width:100px") 数量
+            %li(style="width:100px") 小计
+          -resource.items.each do |item|
+            -product = item.product
+            %ul.item{:class=>cycle(:odd, :even)}
+              %li.name(style="width:280px")=link_to s(product.name), product
+              %li(style="width:70px")
+                ￥
+                =product.price
+              %li(style="width:100px")=@order_hash[product.id.to_s]
+              %li(style="width:100px")
+                ￥
+                =@order_hash[product.id.to_s].to_i*product.price
+
+        .summary
+          产品数量总计:
+          %span=@items_count
+          %span.unit 件
+          产品金额总计：
+          %span
+            ￥
+            =@price_count
+        .summary.total
+          应收款金额
+          %span
+            ￥
+            =@price_count

@@ -150,4 +150,4 @@ cn:
 
   # 状态机
   state:
-    unpay: 未付款
+    unpay: 有效待付款
