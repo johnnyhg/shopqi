@@ -37,11 +37,33 @@ class Order
 
   # 状态
   state_machine do
+    #@see cn.yml(state)
     state :unpay
     state :cancelled
+    state :pay_wait
+    state :pay_unknown_error
+    state :payed_wait_send
+    state :payed
 
+    # 订单事件
     event :cancel do
       transitions :to => :cancelled, :from => :unpay
+    end
+
+    event :pend_payment do
+      transitions :to => :pay_wait, :from => :unpay
+    end
+
+    event :pend_shipment do
+      transitions :to => :payed_wait_send, :from => :unpay
+    end
+
+    event :fail_payment do
+      transitions :to => :pay_unknown_error, :from => :unpay
+    end
+
+    event :pay do
+      transitions :to => :payed, :from => :unpay
     end
   end
 

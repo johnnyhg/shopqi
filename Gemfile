@@ -31,6 +31,10 @@ gem "formtastic"
 gem "validation_reflection"
 gem "inherited_resources"
 
+# 支付
+gem "activemerchant"
+gem "activemerchant_patch_for_china"
+
 # 文件上传
 # 源版本不支持mongoid校验，已提交补丁，已合并至官方版本
 #gem "carrierwave", :git => 'git://github.com/saberma/carrierwave.git', :branch => 'master'

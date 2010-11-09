@@ -3,6 +3,9 @@
     .block.first
       -if flash[:success]
         .spotlight=image_tag('templates/common/product/order_success.gif')
+      -if flash[:payed]
+        %h2.title.spotlight.highlight
+          %span  支付成功！
       %h2.title
         %span 订单详情
       .panel

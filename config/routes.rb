@@ -92,6 +92,13 @@ Shopqi::Application.routes.draw do
         get :pay
         post :cancel
       end
+      collection do
+        # 支付接口调用链接地址
+        # 交易状态同步通知
+        post :notify
+        # 交易完成后返回的地址
+        post :done
+      end
     end
   end
 

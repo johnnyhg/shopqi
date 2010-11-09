@@ -152,3 +152,8 @@ cn:
   state:
     unpay: 有效待付款
     cancelled: 用户已取消
+    # 支付情况
+    pay_wait: 待网上支付
+    pay_unknown_error: 未知的支付错误
+    payed_wait_send: 已付款待发货
+    payed: 已付款

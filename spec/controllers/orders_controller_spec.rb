@@ -74,6 +74,35 @@ describe OrdersController do
       post :cancel, :id => order.id.to_s, :format => :js
       order.state.should eql 'cancelled'
     end
+
+    describe :pay do
+      before :each do
+        post :create, :order => { :address_id => @address.id.to_s}, :format => :js
+        @order = assigns[:order]
+      end
+      
+      it 'should be notify' do
+        notification = mock('notification')
+        ActiveMerchant::Billing::Integrations::Alipay::Notification.stub!(:new).and_return(notification)
+        notification.should_receive(:acknowledge).and_return(true)
+
+        notification.should_receive(:trade_no).and_return(@order.id.to_s)
+        notification.should_receive(:status).and_return("TRADE_FINISHED")
+
+        post :notify
+        assigns[:order].state.should eql 'payed'
+      end
+      
+      it 'should be show pay success' do
+        rtn = mock('return')
+        ActiveMerchant::Billing::Integrations::Alipay::Return.stub!(:new).and_return(rtn)
+        rtn.should_receive(:success?).and_return(true)
+        rtn.should_receive(:order).and_return(@order.id.to_s)
+        get :done
+        assigns[:order].should eql @order
+      end
+
+    end
   end
 
 end
