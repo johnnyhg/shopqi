@@ -1,17 +1,5 @@
 #orders
-  =payment_service_for 0, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, :service => :alipay, :html => { :id => :payment_form, :method => :get } do |service|
-    -service.total_fee 0.01
-    -service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL
-    -service.notify_url notify_orders_url
-    -service.return_url done_orders_url
-    -service.show_url orders_url
-    -service.body '商品描述'
-    -service.charset "utf-8"
-    -service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER
-    -service.payment_type 1
-    -service.subject '商品'
-    -service.sign
-
+  = render :partial => "pay"
   .list
     %h3
       %span 

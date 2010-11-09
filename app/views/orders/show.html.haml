@@ -1,4 +1,5 @@
 #order_show
+  = render :partial => "pay"
   .box
     .block.first
       -if flash[:success]
@@ -22,7 +23,7 @@
           %span
             ￥
             =resource.price_sum
-            =link_to(image_tag('templates/common/product/pay_now.gif'), '#', :title => '现在支付') if resource.state == 'unpay'
+            =link_to_function(image_tag('templates/common/product/pay_now.gif'), "Car.pay('#{resource.id.to_s}', '#{resource.price_sum}')") if resource.state == 'unpay'
 
     .block.first
       %h2.title
