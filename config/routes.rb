@@ -1,8 +1,8 @@
 # encoding: utf-8
-#http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
+#@see: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
+#@see: http://edgeguides.rubyonrails.org/routing.html
 Shopqi::Application.routes.draw do
-
-  resources :orders
+  resources :addresses
 
   resources :containers do
     collection do
@@ -81,11 +81,27 @@ Shopqi::Application.routes.draw do
   #用户登录后的跳转页面(符合devise命名规范)
   match "user_root" => "home#show"
 
+  ##### 网店展示 #####
+  # 购物车
+  get :car, :to => 'orders#car'
+
+  # 会员管理
+  scope '/member' do
+    resources :orders do
+      member do
+        get :pay
+        post :cancel
+      end
+    end
+  end
+
   # 商品购买者
-  devise_for :members
+  devise_for :members, :controllers => {:registrations => "members/registrations"}
   # 会员成功登录后跳转至网店首页
   # @see: http://github.com/plataformatec/devise/wiki/How-To:-Redirect-to-a-specific-page-on-successful-sign-in
   match '/' => 'pages#show', :as => 'member_root'
   resources :members, :only => :show
-  match '/member' => 'members#show'
+
+  # 地区选择
+  match '/district/:id' => 'district#list'
 end

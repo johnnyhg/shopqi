@@ -20,6 +20,9 @@ gem 'mongoid_acts_as_tree', :git => 'git://github.com/saberma/mongoid_acts_as_tr
 # 将current_user设置至线程中
 gem 'sentient_user'
 
+# 状态机，官方版本暂不支持mongoid
+gem "transitions", :git => 'git://github.com/netizer/transitions.git', :require => ["transitions", "mongoid/transitions"]
+
 gem 'haml'
 
 # 注意页面的html元素要有xmlns属性，否则fieldset会挤在一起 http://bit.ly/bbcxU3
@@ -67,6 +70,9 @@ gem "awesome_print", :require => 'ap'
 
 group :development do
   gem 'rails3-generators'
+  # jquery,haml已经独立出来
+  #gem "jquery-rails"
+  #gem "haml-rails"
   gem "hpricot"
   # 修改后台文件后，safari或chrome浏览器会自动刷新
   gem "livereload"

@@ -18,7 +18,7 @@ describe HomeController do
     end
 
     it "should be show" do
-      sign_in(Factory(:user))
+      sign_in(Factory(:user_saberma))
       get 'show'
       response.should be_success
     end

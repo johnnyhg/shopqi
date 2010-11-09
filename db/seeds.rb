@@ -130,7 +130,7 @@ store.save
 
 #菜单
 %w( 首页 男装 女装 童装 鞋 配饰 家居 ).each do |label|
-  store.menus << Menu.new(:name => label, :url => '/menu')
+  store.menus << Menu.new(:name => label, :url => '/')
 end
 store.menus.init_list!
 store.save

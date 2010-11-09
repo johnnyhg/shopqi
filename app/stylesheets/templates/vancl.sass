@@ -14,6 +14,7 @@ $color_grey_lighter: #EBEBEB
 $color_grey_lightest: #F5F5F5
 
 $color_red: #A10000
+$color_red_dark: #7F0019
 
 $color_yellow: #E9BE16
 
@@ -32,7 +33,10 @@ $image_bullet_move_arrow: "templates/common/bullet/move_arrow.png"
 body
   font-size: 12px
   a
+    text-decoration: none
     +link-colors($color, $color_hover)
+  abbr
+    color: $color_red_dark
 
 /***** HEADER *****/
 #header
@@ -82,7 +86,7 @@ body
     .button
       margin-top: 5px
 
-  #car
+  #mini-car
     border-top: 1px solid $color_grey_dark
     border-bottom: 1px solid $color_grey_dark
     height: 44px
@@ -268,10 +272,18 @@ body
     .panel
       display: none
 
-/** 订单页
-#orders
-  border: 1px solid $color_grey_lighter
-  padding: 1px
+/** 通用定义
+/** 通用列表
+.list
+  h3
+    margin-bottom: 15px
+    span
+      border-bottom: 2px solid $color_hover
+      padding: 0 5px 5px 5px
+      em
+        font-size: 14px
+        font-weight: bold
+        color: $color_grey_dark
   ul
     text-align: center
     +horizontal-list(8px)
@@ -288,6 +300,76 @@ body
     padding: 5px 0
     &.even
       background-color: $color_grey_lightest
+
+/** 通用box区域
+.box
+  color: $color_grey_darker
+  border: 1px solid $color_grey_light
+  padding: 10px
+  /** 块区域
+  .block
+    margin-bottom: 10px
+    padding-top: 20px
+    /** 标题
+    .title
+      margin-bottom: 10px
+      padding: 0 10px
+      span
+        font-weight: bolder
+        font-size: 14px
+      a.sub_title
+        float: right
+        color: $color_red
+    /** 内容面板
+    .panel
+      ul li
+        @include height(24px)
+        a
+          color: $color_grey_dark
+
+/** 步骤导航
+.steps
+  color: $color_grey_dark
+  .step
+    color: $color_red
+    font-weight: bolder
+  margin-bottom: 10px
+
+/** formtastic的标签宽度
+$left_default: 25%
+$left: 37%
+
+/** 错误信息
+.error
+  border: 1px solid $color_red
+  color: $color_red
+  width: 300px
+  margin: 0 0 5px $left_default
+  text-align: center
+  background-color: $color_grey_lightest
+  display: none
+  @include height(19px)
+
+#error_explanation
+  display: none
+
+/** 提示信息
+.tip
+  color: $color_grey
+// 突出显示
+.highlight
+  color: $color_red_dark
+// 浅淡显示
+.shortlight
+  color: $color_grey_darker
+// 焦点
+.spotlight
+  text-align: center
+
+/** 购物车页面
+#car
+  border: 1px solid $color_grey_lighter
+  padding: 1px
   .summary
     margin: 0 20px
     border-top: 1px solid $color_grey
@@ -303,18 +385,12 @@ body
     margin: 20px 0 20px 20px
     a
       margin-right: 20px
-    .pay
+    .pay, .confirm
       float: right
     margin-right: 20px
 
 /** 购买者登录注册页
-$left: 34%
-#members
-  .steps
-    color: $color_grey_dark
-    .step
-      color: $color_red
-      font-weight: bolder
+#members_sessions
   .box
     border: 1px solid $color_grey_light
     padding: 15px 15px 0 15px 
@@ -323,17 +399,11 @@ $left: 34%
       border-bottom: 1px solid $color_grey_darker
       margin-bottom: 25px
     p.tip
-      color: $color_grey
       margin: 0 0 20px 22%
     .formtastic
       .error
-        border: 1px solid $color_red
-        color: $color_red
-        width: 200px
         margin: 0 0 5px $left
-        text-align: center
-        background-color: $color_grey_lightest
-        @include height(19px)
+        width: 200px
       label
         text-align: right
         width: $left
@@ -359,5 +429,69 @@ $left: 34%
           width: 80px
           @include height(25px)
 
-  #error_explanation
-    display: none
+/** 会员管理页面
+#members
+  .box#menus
+    background-color: $color_grey_lightest
+  .row
+    @include height(20px)
+  .box .panel
+    border-top: 1px solid $color_grey
+    border-bottom: 1px solid $color_grey
+    margin: 10px
+    padding: 10px
+
+/** 会员订单
+#orders, #order_show
+  .list ul.item li
+    @include height(24px)
+
+/** 会员提交订单
+#order_confirm
+  .box
+    padding: 10px 20px
+    margin: 10px 0
+    .block
+      border-top: 1px solid $color_grey
+      &.first
+        border-top: none
+        padding-top: 0
+    #new_address_form
+      padding-top: 10px
+  .list
+    border: none
+    border-bottom: 1px solid $color_grey_dark
+    ul.item li
+      @include height(24px)
+  .select_group legend
+    color: $color_grey_darker
+  /** 配送地址
+  .buttons
+    padding-left: $left
+    input
+      border: none
+      width: 130px
+      @include height(25px)
+  /** 提交订单
+  .btns
+    float: right
+    input
+      border: none
+      width: 117px
+      @include height(32px)
+
+/** 订单产品列表统计部分
+#order_confirm, #order_show
+  .summary
+    @include height(24px)
+    text-align: right
+    color: $color_grey_darker
+    #items_count, #price_count
+      color: $color_hover
+    .unit
+      margin-right: 50px
+    .back_car
+      float: left
+  .total
+    font-size: 14px
+    color: $color_red_dark

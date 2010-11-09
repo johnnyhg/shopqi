@@ -17,6 +17,12 @@ GIT
       activesupport (~> 3.0)
 
 GIT
+  remote: git://github.com/netizer/transitions.git
+  revision: 3c30cf7d5154180c90d0112337ebc0752f821f00
+  specs:
+    transitions (0.0.8)
+
+GIT
   remote: git://github.com/saberma/mongoid_acts_as_tree.git
   revision: b33595a65c192a3367a7e27cf55abcd80ef4a11b
   specs:
@@ -246,6 +252,7 @@ DEPENDENCIES
   rspec-rails
   sentient_user
   spork
+  transitions!
   unicorn
   validation_reflection
   web-app-theme

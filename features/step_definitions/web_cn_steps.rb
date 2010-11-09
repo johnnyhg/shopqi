@@ -17,6 +17,13 @@ end
   end
 end
 
+当 /^我?(?:在(.+)区域)?确定点击(.+)$/ do |selector, button_or_link|
+  page.execute_script("window.confirm = function(msg) { return true; }")
+  with_scope(selector) do
+    click(button_or_link)
+  end
+end
+
 当 /^我?(?:在(.+)区域)?输入(.+)为(.+)/ do |selector, field, value|
   with_scope(selector) do
     fill_in(field, :with => value)
@@ -197,6 +204,10 @@ end
   else
     page.execute_script("$(\"a:contains('#{field}')\").mouseover()")
   end
+end
+
+当 /^我?刷新当前页面/ do
+  page.execute_script("window.location.reload();");
 end
 
 #此方法尽量少用， 会不定时报错:

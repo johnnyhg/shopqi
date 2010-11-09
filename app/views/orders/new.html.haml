@@ -1,0 +1,86 @@
+#order_confirm
+  = render :partial => "/orders/step", :locals => { :step => 2 }
+  .grid_20.root
+    .grid_15.alpha
+      .box
+        %p.error#order_error_explanation
+        .block.first
+          %h2.title
+            %span 收货人信息
+            =link_to '添加', new_address_path, :remote => true, 'data-type' => :html, :update => :new_address_form, :class => :sub_title
+          .panel#address_panel
+            %ul= render :partial => "addresses/show", :collection => current_member.addresses, :as => :address
+            #new_address_form
+              = render :partial => "addresses/new", :locals => { :resource => Address.new }  if current_member.addresses.empty?
+        .block
+          %h2.title
+            %span 配送方式
+          .panel#delivery_panel
+            %ul
+              -Order.options_for_delivery.each_with_index do |item, index|
+                %li
+                  =radio_button_tag "order_delivery", item.second, index.zero?, :class => :radio
+                  =label_tag "order_delivery_#{item.second}", item.first
+        .block
+          %h2.title
+            %span 支付方式
+          .panel#pay_panel
+            %ul
+              -Order.options_for_pay.each_with_index do |item, index|
+                %li
+                  =radio_button_tag "order_pay", item.second, index.zero?, :class => :radio
+                  =label_tag "order_pay_#{item.second}", item.first
+        .block
+          %h2.title
+            %span 送货时间
+          .panel#receive_panel
+            %ul
+              -Order.options_for_receive.each_with_index do |item, index|
+                %li
+                  =radio_button_tag "order_receive", item.second, index.zero?, :class => :radio
+                  =label_tag "order_receive_#{item.second}", item.first
+    .grid_5.omega
+      .box
+        附加说明
+        =text_area_tag :description, nil, :rows => 10, :cols => 15
+
+  .grid_20.root
+    .box
+      .block.first
+        %h2.title
+          %span 产品清单
+          =link_to '回到购物车，修改产品>>', car_path, :class => :sub_title
+        #car.list
+          %ul.head
+            %li(style="width:280px") 产品名称
+            %li(style="width:70px") 单价
+            %li(style="width:100px") 数量
+            %li(style="width:100px") 小计
+          -@products.each do |product|
+            %ul.item{:class=>cycle(:odd, :even)}
+              %li.name(style="width:280px")=link_to s(product.name), product
+              %li(style="width:70px")
+                ￥
+                =product.price
+              %li(style="width:100px")=@order_hash[product.id.to_s]
+              %li(style="width:100px")
+                ￥
+                =@order_hash[product.id.to_s].to_i*product.price
+
+        .summary
+          .back_car=link_to '回到购物车，修改产品 >>', car_path
+          产品数量总计:
+          %span=@items_count
+          %span.unit 件
+          产品金额总计：
+          %span
+            ￥
+            =@price_count
+        .summary.total
+          您共需要为订单支付：
+          %span
+            ￥
+            =@price_count
+    .btns
+      %span.tip 请核对以上信息，确认无误后点击“提交订单”
+      %span.confirm=link_to_function image_tag('templates/common/product/confirm.gif'), 'Car.order()', :title => '提交订单'
