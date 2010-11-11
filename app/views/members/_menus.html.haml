@@ -1,10 +1,46 @@
-.box#menus
-  %h3.highlight=current_member_name
-  .row.shortlight 您好！欢迎光临凡客诚品.
-  %br
-  .row.shortlight
-    会员级别: 
-    %span.highlight 普通会员
-  .row.shortlight
-    会员积分:
-    %span.highlight 0
+#menus
+  .box
+    %h3.highlight=current_member_name
+    .row.shortlight 您好！欢迎光临凡客诚品.
+    %br
+    .row.shortlight
+      会员级别: 
+      %span.highlight 普通会员
+    .row.shortlight
+      会员积分:
+      %span.highlight 0
+
+  .box.menu
+    %h2 交易记录
+    %ul
+      %li=link_to_unless_current '我的订单', orders_path
+      %li=link_to_unless_current '帐户余额', root_path
+      %li=link_to_unless_current '我的优惠券', root_path
+
+  .box.menu
+    %h2 会员介绍
+    %ul
+      %li=link_to_unless_current '会员等级', root_path
+      %li=link_to_unless_current '会员权益', root_path
+      %li=link_to_unless_current '免责条款', root_path
+
+  .box.menu
+    %h2 会员积分
+    %ul
+      %li=link_to_unless_current '积分获得', root_path
+      %li=link_to_unless_current '积分使用', root_path
+      %li=link_to_unless_current '积分查询', root_path
+      %li=link_to_unless_current '推荐有礼', root_path
+
+  .box.menu
+    %h2 商品管理
+    %ul
+      %li=link_to_unless_current '我的收藏', root_path
+      %li=link_to_unless_current '商品咨询', root_path
+
+  .box.menu
+    %h2 个人设置
+    %ul
+      %li=link_to_unless_current '修改资料', root_path
+      %li=link_to_unless_current '修改密码', root_path
+      %li=link_to_unless_current '收货地址', root_path
