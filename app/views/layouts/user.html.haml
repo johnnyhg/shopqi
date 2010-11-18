@@ -20,7 +20,7 @@
               = link_to "#" do
                 = t "web-app-theme.profile", :default => "Profile"
             %li
-              = link_to "#" do
+              = link_to edit_store_path(store), :remote => true do
                 = t "web-app-theme.settings", :default => "Settings"
             %li
               = link_to destroy_user_session_path, :class => "logout" do
@@ -35,6 +35,7 @@
             %li=link_to '界面', user_root_path
       #wrapper.wat-cf
         #main
+          = render :partial => "stores/edit", :locals => {:resource => store}
           = yield
           #footer
             .block

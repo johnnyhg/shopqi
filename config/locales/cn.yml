@@ -7,6 +7,12 @@ cn:
     titles:
       user_details: 用户信息
     labels:
+      store:
+        name: 名称
+        title: 标题
+        desc: 描述
+        keywords: 关键字
+        detail: 详细地址
       user:
         login: 昵称
         email: 用户名
@@ -59,6 +65,9 @@ cn:
         login: 用户名
         password: 密码
     hints:
+      store:
+        title: 商店的标题将显示在浏览器的标题栏
+        detail: 详细地址前不用再填写省市区
       user:
         email: 请填写有效的Email地址作为下次登录的用户名
         password: 请设为6-20位字母或数字

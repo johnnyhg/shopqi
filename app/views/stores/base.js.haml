@@ -1,0 +1,6 @@
+//tab menu
+$("#edit_store > .secondary-navigation li").removeClass('active');
+$("#store_#{action_name}").addClass('active');
+
+//insert
+$("#edit_store > .content > .inner").html('#{escape_javascript( render(:partial => "#{store.collection_name}/#{action_name}"))}');

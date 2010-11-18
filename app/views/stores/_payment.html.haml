@@ -1,0 +1,10 @@
+%h3 请输入支付信息
+-#左右分栏需要form class(web-app-theme.css)
+= semantic_form_remote_for(store, :html => { :class => 'form' }) do |f|
+  .columns.wat-cf
+    .column.left
+      =f.inputs :name, :title, :desc, :keywords
+      =f.inputs :detail
+      =f.buttons do
+        =f.commit_button '下一步', :button_html => { 'data-disable-with' => '正在提交...' }
+    .column.right

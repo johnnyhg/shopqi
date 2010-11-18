@@ -21,6 +21,16 @@ class Store
   field :logo_image_id
   field :telephone_image_id
 
+  # 网店设置
+  field :name
+  field :title
+  field :desc
+  field :keywords
+  field :province
+  field :city
+  field :district
+  field :detail
+
   # 回调方法
   before_create :init_image
   before_create :init_subdomain
