@@ -2,6 +2,12 @@
 #@see: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
 #@see: http://edgeguides.rubyonrails.org/routing.html
 Shopqi::Application.routes.draw do
+  resources :payments, :only => :index do
+    collection do
+      post "post_data"
+    end
+  end
+
   resources :stores, :only => [:edit, :update] do
     member do
       get :base
