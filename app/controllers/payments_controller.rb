@@ -17,10 +17,12 @@ class PaymentsController < ApplicationController
   
   
   def index
-    index_columns ||= [:id,:name]
+    index_columns ||= [:id,:name, :account]
 
     @payments=PaymentType.all
     total_entries=@payments.size
+
+    @payments.each {|payment| payment.account_in(store)}
     
     render :json => @payments.to_jqgrid_json(index_columns, 1, 100, total_entries)
   end
