@@ -7,7 +7,7 @@ class PaymentsController < ApplicationController
     message=""
     payment = store.payments.where(:payment_type_id => params[:id]).first
     if payment
-      payment.update_attributes(:account => params[:account])
+      payment.update_attributes(:account => params[:account], :partnerid => params[:partnerid], :verifycode => params[:verifycode])
     else
       store.payments.create(:payment_type_id => params[:id], :account => params[:account])
     end
@@ -17,7 +17,7 @@ class PaymentsController < ApplicationController
   
   
   def index
-    index_columns ||= [:name, :account]
+    index_columns ||= [:name, :account, :partnerid, :verifycode]
 
     @payments=PaymentType.all
     total_entries=@payments.size
