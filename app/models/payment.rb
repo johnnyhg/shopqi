@@ -6,4 +6,6 @@ class Payment
 
   field :payment_type_id
   field :account
+  field :partnerid
+  field :verifycode
 end

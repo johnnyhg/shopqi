@@ -17,7 +17,7 @@ class PaymentsController < ApplicationController
   
   
   def index
-    index_columns ||= [:id,:name, :account]
+    index_columns ||= [:name, :account]
 
     @payments=PaymentType.all
     total_entries=@payments.size
