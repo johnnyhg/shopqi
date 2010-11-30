@@ -1,3 +1,11 @@
+.flash#upgrade
+  .warning
+    %p
+      ==试用期至：#{store.deadline}
+      %br
+      如果您觉得ShopQi满足您的要求，请及时付款。
+    %p=link_to '点击此处付款', '#'
+
 .block
   %h3 常用操作
   %ul.navigation

@@ -88,7 +88,8 @@ group :test do
   gem "factory_girl"
   gem "factory_girl_rails"
 
-  gem 'capybara'
+  # 最新版本0.4.0有问题，无法启动测试服务器
+  gem 'capybara', '0.3.9'
   # 保持数据库处理干净状态
   # 留意:步骤完成后就会清除数据，此时浏览器中部分ajax可能还没有操作完，会导致ajax请求时找不到相应数据
   gem 'database_cleaner'

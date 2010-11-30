@@ -49,13 +49,13 @@ describe OrdersController do
       cookies.should_receive(:[]).with('order').at_least(:once).and_return(cookie_order)
 
       lambda do
-        post :create, :order => { :address_id => @address.id.to_s, :delivery => 1, :pay => 1, :receive => 1 }, :format => :js
+        post :create, :order => { :address_id => @address.id.to_s, :delivery => 1, :payment => 1, :receive => 1 }, :format => :js
         order = assigns[:order]
         order.price_sum.should eql 30.0
         order.quantity.should eql 2
 
         order.delivery.should eql 1
-        order.pay.should eql 1
+        order.payment.should eql 1
         order.receive.should eql 1
 
         # 保存商品购买清单

@@ -11,6 +11,9 @@ class Store
   store_has_many :users, :categories, :products, :hots, :containers, :focuses, :payments
   has_many_sortable :navs, :menus
 
+  # 有效期
+  field :deadline, :type => Date
+
   # 模板
   field :template, :default => 'vancl'
 
@@ -34,11 +37,16 @@ class Store
   # 回调方法
   before_create :init_image
   before_create :init_subdomain
+  before_create :init_valid_date
   after_create :init_child
 
   def init_image
     self.logo_image_id = Image.create(:width => 300, :height => 40).id
     self.telephone_image_id = Image.create(:width => 190, :height => 50).id
+  end
+
+  def init_valid_date
+    self.deadline = Date.today.advance(:days => 10)
   end
 
   def init_subdomain

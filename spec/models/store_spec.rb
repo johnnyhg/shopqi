@@ -5,6 +5,7 @@ describe Store do
     lambda do
       @user = Factory(:user_saberma)
       @user.store.should_not be_nil
+      @user.store.deadline.should eql Date.today.advance(:days => 10)
     end.should change(Store, :count).by(1)
   end
 
