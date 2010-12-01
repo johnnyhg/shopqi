@@ -6,13 +6,10 @@ class PaymentsController < ApplicationController
   def post_data
     message=""
     payment = store.payments.where(:payment_type_id => params[:id]).first
-    if payment
-      payment.update_attributes(:account => params[:account], :partnerid => params[:partnerid], :verifycode => params[:verifycode])
-    else
-      store.payments.create(:payment_type_id => params[:id], :account => params[:account])
-    end
-    
-    render :json => [true] 
+    attrs = {:payment_type_id => params[:id], :account => params[:account], :partnerid => params[:partnerid], :verifycode => params[:verifycode]}
+    payment ? payment.update_attributes(attrs) : store.payments.create(attrs)
+    #render :json => [true]
+    render :nothing => true
   end
   
   

@@ -24,5 +24,5 @@ end
   # 替换动态值
   day = Date.today
   expected_list = expected_list.arguments_replaced('20100101' => day.to_s(:serial), '2010-01-01 10:10:10' => day.to_s(:db))
-  expected_list.diff!(actual_list);
+  expected_list.diff!(actual_list)
 end
