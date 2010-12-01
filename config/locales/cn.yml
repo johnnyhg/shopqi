@@ -13,6 +13,8 @@ cn:
         desc: 描述
         keywords: 关键字
         detail: 详细地址
+      consumption:
+        years: 购买年次
       user:
         login: 昵称
         email: 用户名
@@ -79,6 +81,7 @@ cn:
         password_confirmation: 
         login: 请输入中英文、数字、下划线或它们的组合
     actions:
+      confirm: 确定
       create: 新增%{model}
       update: 更新
 

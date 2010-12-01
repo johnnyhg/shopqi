@@ -2,6 +2,13 @@
 #@see: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
 #@see: http://edgeguides.rubyonrails.org/routing.html
 Shopqi::Application.routes.draw do
+  resources :consumptions do
+    collection do
+      # 交易状态同步通知
+      post :notify
+    end
+  end
+
   resources :payments, :only => :index do
     collection do
       post "post_data"
