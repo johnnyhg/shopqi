@@ -95,6 +95,7 @@ Shopqi::Application.routes.draw do
   match "features" => "home#features"
   match "questions" => "home#questions"
   match "contact" => "home#contact"
+  match "invalid" => "home#invalid"
 
   # 网店平台会员
   devise_for :users

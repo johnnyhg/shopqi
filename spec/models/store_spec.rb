@@ -24,12 +24,15 @@ describe Store do
       today = Date.today
       @store.deadline.should eql today.next_day(10)
       @store.deadline_warning?.should be_true
+      @store.available?.should be_true
 
       @store.update_attributes :deadline => today
       @store.deadline_warning?.should be_true
+      @store.available?.should be_true
 
       @store.update_attributes :deadline => today.yesterday
       @store.deadline_warning?.should be_true
+      @store.available?.should be_false
     end
   end
 

@@ -65,6 +65,10 @@ class Store
     self.deadline.months_ago(1).past?
   end
 
+  def available?
+    !self.deadline.past?
+  end
+
   def telephone_image
     Image.find(self.telephone_image_id)
   end

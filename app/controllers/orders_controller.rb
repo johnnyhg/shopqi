@@ -1,6 +1,7 @@
 # encoding: utf-8
 class OrdersController < InheritedResources::Base
   prepend_before_filter :authenticate_member!, :except => [:car]
+  prepend_before_filter :store_valid!
   actions :new, :create, :index, :show, :destroy
   respond_to :js, :only => [ :create ]
   layout 'members'

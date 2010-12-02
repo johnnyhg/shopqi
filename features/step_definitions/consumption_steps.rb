@@ -5,3 +5,6 @@
   consumption.pay!
 end
 
+当 /^网店到期$/ do
+  User.current.store.update_attributes :deadline => Date.yesterday
+end
