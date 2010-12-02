@@ -10,7 +10,7 @@ class ConsumptionsController < InheritedResources::Base
     notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
     if notification.acknowledge && valid?(notification)
       @consumption = Consumption.find(notification.out_trade_no)
-      @consumption.update_attributes(:state_id =>1) if notification.status == "TRADE_FINISHED"
+      @consumption.pay! if notification.status == "TRADE_FINISHED"
       render :text => "success"
     else
       render :text => "fail"

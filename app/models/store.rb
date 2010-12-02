@@ -60,6 +60,11 @@ class Store
     self.categories << Category.root
   end
 
+  # 提前一个月提示用户付款
+  def deadline_warning?
+    self.deadline.months_ago(1).past?
+  end
+
   def telephone_image
     Image.find(self.telephone_image_id)
   end

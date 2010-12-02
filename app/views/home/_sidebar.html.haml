@@ -1,14 +1,15 @@
-.flash#upgrade
-  .warning
-    %p
-      ==有效期至：#{store.deadline}
-      %br
-      您的网店使用期限即将到期，请及时续费。
-    #consumpt_panel
-      -if store.consumptions.unpay
-        = render :partial => "consumptions/show", :locals => {:resource => store.consumptions.unpay}
-      -else
-        %p=link_to '点击此处付款', new_consumption_path, :remote => true, 'data-type' => :html, :update => :consumpt_panel
+-if store.deadline_warning?
+  .flash#upgrade
+    .warning
+      %p
+        ==有效期至：#{store.deadline}
+        %br
+        您的网店使用期限即将到期，请及时续费。
+      #consumpt_panel
+        -if store.consumptions.unpay
+          = render :partial => "consumptions/show", :locals => {:resource => store.consumptions.unpay}
+        -else
+          %p=link_to '点击此处付款', new_consumption_path, :remote => true, 'data-type' => :html, :update => :consumpt_panel
 
 .block
   %h3 常用操作

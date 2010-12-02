@@ -27,6 +27,9 @@ form.formtastic .radio { width: 20px }
 .tooltip form.formtastic input { width: 200px; }
 .tooltip form.formtastic fieldset > ol > li { margin-bottom:.7em; }
 
+/* 侧边栏 */
+#sidebar form.formtastic .buttons input { width: 150px; }
+
 /* 网店布局提示面板的操作链接 */
 .tooltip .operates { margin-bottom: 10px }
 

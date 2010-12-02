@@ -19,4 +19,11 @@ class Consumption
   def self.unpay
     where(:state_id => 0).first
   end
+
+  def pay!
+    self.update_attributes :state_id => 1
+    #已过期则取当前日期作为基准
+    base = store.deadline.future? ? store.deadline : Date.today
+    store.update_attributes :deadline => base.next_year(years)
+  end
 end

@@ -5,13 +5,6 @@
   select(district, :from => 'address_district')
 end
 
-When /^I delete the (\d+)(?:st|nd|rd|th) order$/ do |pos|
-  visit orders_path
-  within("table tr:nth-child(#{pos.to_i+1})") do
-    click_link "Destroy"
-  end
-end
-
 #@see: http://github.com/aslakhellesoy/cucumber/wiki/Multiline-Step-Arguments
 #@see: http://github.com/aslakhellesoy/cucumber-rails-test/blob/master/features/step_definitions/lorry_steps.rb
 #@see: http://github.com/aslakhellesoy/cucumber-rails-test/blob/master/features/manage_lorries.feature
