@@ -86,7 +86,7 @@ describe OrdersController do
         ActiveMerchant::Billing::Integrations::Alipay::Notification.stub!(:new).and_return(notification)
         notification.should_receive(:acknowledge).and_return(true)
 
-        notification.should_receive(:trade_no).and_return(@order.id.to_s)
+        notification.should_receive(:out_trade_no).and_return(@order.id.to_s)
         notification.should_receive(:status).and_return("TRADE_FINISHED")
 
         post :notify

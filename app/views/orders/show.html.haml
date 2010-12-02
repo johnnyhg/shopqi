@@ -13,7 +13,7 @@
         %ul
           %li==订单号：#{resource.number}　[#{resource.created_at.to_s(:db)}生成订单]
           %li==订单状态：#{resource.state_name}
-          %li==支付方式：#{resource.pay_name}
+          %li==支付方式：#{resource.payment_name}
           %li==收货人：#{resource.address_info}
           %li==配送方式：#{resource.delivery_name}
           %li==发货时间：

@@ -69,6 +69,7 @@ GEM
     compass-960-plugin (0.10.0)
       compass (>= 0.10.0)
     configuration (1.2.0)
+    crack (0.1.8)
     cucumber (0.9.4)
       builder (~> 2.1.2)
       diff-lcs (~> 1.1.2)
@@ -106,6 +107,8 @@ GEM
     haml (3.0.24)
     has_scope (0.5.0)
     hpricot (0.8.3)
+    httparty (0.6.1)
+      crack (= 0.1.8)
     i18n (0.5.0)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
@@ -235,6 +238,7 @@ DEPENDENCIES
   formtastic
   haml
   hpricot
+  httparty
   inherited_resources
   launchy
   lemonade

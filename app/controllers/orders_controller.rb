@@ -52,7 +52,7 @@ class OrdersController < InheritedResources::Base
     notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
     render :text => "fail" unless notification.acknowledge
 
-    @order = Order.find(notification.trade_no)
+    @order = Order.find(notification.out_trade_no)
     case notification.status
     when "WAIT_BUYER_PAY"
       @order.pend_payment!

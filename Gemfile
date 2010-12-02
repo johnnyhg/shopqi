@@ -62,6 +62,7 @@ gem 'web-app-theme'
 # 支付
 gem "activemerchant"
 gem "activemerchant_patch_for_china"
+gem "httparty"
 
 # 调试
 gem "awesome_print", :require => 'ap'
