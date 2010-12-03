@@ -5,16 +5,12 @@ class PaymentType < ActiveHash::Base
     {:id => '4cf4b4b00000000000000000', :name => '在线支付-财付通'},
     {:id => '4cf4b4c00000000000000000', :name => '在线支付-快钱'}
   ]
+  attr_accessor :payment
+  delegate :is_show, :account, :partnerid, :verifycode, :to => :payment, :allow_nil => true
 
-  # payment中的属性
-  attr_reader :account, :partnerid, :verifycode
-
-  def account_in(store)
-    payment = store.payments.where(:payment_type_id => self.id).first
-    if payment
-      @account = payment.account
-      @partnerid = payment.partnerid
-      @verifycode = payment.verifycode
+  def self.all_in(store)
+    all.each do |payment_type|
+      payment_type.payment = store.payments.where(:payment_type_id => payment_type.id).first
     end
   end
 end

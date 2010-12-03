@@ -1,4 +1,5 @@
 # encoding: utf-8
+# 网店的支付方式
 class Payment
   include Mongoid::Document
   include Mongoid::BelongToStore
@@ -8,4 +9,5 @@ class Payment
   field :account
   field :partnerid
   field :verifycode
+  field :is_show, :default => '否'
 end

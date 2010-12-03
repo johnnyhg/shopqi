@@ -1,6 +1,7 @@
 %h3 请输入支付信息
 =raw jqgrid("支付信息", "payments", "/payments", 
   [{ :field => "name", :label => "名称", :width => 70 },
+  { :field => "is_show", :label => "是否显示", :editable => true, :edittype => "checkbox", :editoptions => {:value => [['是', '否']]} },
   { :field => "account", :label => "帐号", :editable => true },
   { :field => "partnerid", :label => "合作者身份ID", :editable => true },
   { :field => "verifycode", :label => "交易安全校验码", :editable => true }] ,
