@@ -1,0 +1,20 @@
+%h2.title 请输入支付信息
+%table.table#payment_type
+  %tbody
+    %tr
+      %th.first 序号
+      %th 名称
+      %th 是否显示
+      %th 帐号
+      %th 合作者身份ID
+      %th 交易安全校验码
+      %th.last 备注
+    -@payment_types.each_with_index do |payment_type, index|
+      %tr
+        %td=index+1
+        %td=payment_type.name
+        %td=on_the_spot_edit payment_type, :is_show, :type => :checkbox
+        %td=on_the_spot_edit payment_type, :account
+        %td=on_the_spot_edit payment_type, :partnerid
+        %td=on_the_spot_edit payment_type, :verifycode
+        %td=on_the_spot_edit payment_type, :remark

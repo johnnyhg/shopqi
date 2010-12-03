@@ -11,7 +11,7 @@ Shopqi::Application.routes.draw do
 
   resources :payments, :only => :index do
     collection do
-      post "post_data"
+      post :update_attribute_on_the_spot
     end
   end
 

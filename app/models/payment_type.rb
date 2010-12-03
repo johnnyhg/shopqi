@@ -6,7 +6,7 @@ class PaymentType < ActiveHash::Base
     {:id => '4cf4b4c00000000000000000', :name => '在线支付-快钱'}
   ]
   attr_accessor :payment
-  delegate :is_show, :account, :partnerid, :verifycode, :to => :payment, :allow_nil => true
+  delegate :is_show, :account, :partnerid, :verifycode, :remark, :to => :payment, :allow_nil => true
 
   def self.all_in(store)
     all.each do |payment_type|

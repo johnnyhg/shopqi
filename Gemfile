@@ -42,6 +42,8 @@ gem 'haml'
 gem "formtastic"
 # 用于formtastic读取实体校验规则，页面可直接展示属性是否必填
 gem "validation_reflection"
+# edit in place plugin for jeditable
+gem "on_the_spot"
 
 
 ##### 控制器相关 #####

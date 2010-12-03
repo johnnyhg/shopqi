@@ -154,6 +154,9 @@ cn:
   helper:
     label:
       blank: 未命名
+    common:
+      'true': 是
+      'false': 否
 
   carrierwave:
     errors:

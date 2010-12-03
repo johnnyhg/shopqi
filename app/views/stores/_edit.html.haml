@@ -2,7 +2,7 @@
   .secondary-navigation
     %ul.wat-cf
       %li.first.active#store_base=link_to '网店配置-基本信息', base_store_path(store), :remote => true
-      %li#store_payment=link_to '支付', payment_store_path(store), :remote => true
+      %li#store_payment=link_to '支付', payments_path, :remote => true
       %li#store_service=link_to '客服', '#'
       %li#store_score=link_to '会员积分', '#'
   .content

@@ -6,7 +6,7 @@
     =formtastic_stylesheet_link_tag
     =jqgrid_stylesheets
     = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/user", :cache => true
-    = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree'
+    = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree', 'jeditable/jeditable', 'jeditable/checkbox', 'jeditable/on_the_spot'
     =jqgrid_javascripts
     = csrf_meta_tag
   %body
@@ -37,6 +37,7 @@
             %li=link_to '界面', user_root_path
       #wrapper.wat-cf
         #main
+          -#.inner= render :partial => "stores/edit"
           = yield
           #footer
             .block
