@@ -6,6 +6,7 @@ describe OrdersController do
   before :each do
     @saberma = Factory(:user_saberma)
     request.host = "#{@saberma.store.subdomain}.shopqi.com"
+    @payment = Factory(:payment, :store => @saberma.store)
 
     @root = @saberma.store.categories.roots.first
     @category = Factory(:category_man)
@@ -49,13 +50,13 @@ describe OrdersController do
       cookies.should_receive(:[]).with('order').at_least(:once).and_return(cookie_order)
 
       lambda do
-        post :create, :order => { :address_id => @address.id.to_s, :delivery => 1, :payment => 1, :receive => 1 }, :format => :js
+        post :create, :order => { :address_id => @address.id.to_s, :delivery => 1, :payment_id => @payment.id.to_s, :receive => 1 }, :format => :js
         order = assigns[:order]
         order.price_sum.should eql 30.0
         order.quantity.should eql 2
 
         order.delivery.should eql 1
-        order.payment.should eql 1
+        order.payment.should eql @payment
         order.receive.should eql 1
 
         # 保存商品购买清单
@@ -69,7 +70,7 @@ describe OrdersController do
     end
 
     it 'should be cancel' do
-      post :create, :order => { :address_id => @address.id.to_s}, :format => :js
+      post :create, :order => { :address_id => @address.id.to_s, :payment_id => @payment.id.to_s }, :format => :js
       order = assigns[:order]
       post :cancel, :id => order.id.to_s, :format => :js
       order.state.should eql 'cancelled'
@@ -77,7 +78,7 @@ describe OrdersController do
 
     describe :pay do
       before :each do
-        post :create, :order => { :address_id => @address.id.to_s}, :format => :js
+        post :create, :order => { :address_id => @address.id.to_s, :payment_id => @payment.id.to_s }, :format => :js
         @order = assigns[:order]
       end
       

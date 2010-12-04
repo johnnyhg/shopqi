@@ -51,6 +51,7 @@ GEM
       mongoid (>= 2.0.0.beta.14)
       mongoid_embedded_helper (>= 0.2.5)
     addressable (2.2.2)
+    archive-tar-minitar (0.5.2)
     arel (2.0.4)
     awesome_print (0.3.1)
     bcrypt-ruby (2.1.2)
@@ -69,6 +70,7 @@ GEM
     carrierwave (0.5.0)
       activesupport (~> 3.0.0)
     chunky_png (0.11.1)
+    columnize (0.3.2)
     compass (0.10.6)
       haml (>= 3.0.4)
     compass-960-plugin (0.10.0)
@@ -128,6 +130,8 @@ GEM
       chunky_png (>= 0.8.0)
       compass (>= 0.10.0)
       haml (>= 3.0.0)
+    linecache19 (0.5.11)
+      ruby_core_source (>= 0.1.4)
     livereload (1.4)
       em-dir-watcher (>= 0.1)
       em-websocket (>= 0.1.2)
@@ -195,7 +199,17 @@ GEM
     rspec-rails (2.2.0)
       rails (~> 3.0.0)
       rspec (~> 2.2)
+    ruby-debug-base19 (0.11.24)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
     ruby-json (1.1.2)
+    ruby_core_source (0.1.4)
+      archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
     selenium-webdriver (0.0.28)
       ffi (>= 0.6.1)
@@ -258,6 +272,7 @@ DEPENDENCIES
   rails3-generators
   rb-inotify
   rspec-rails
+  ruby-debug19
   sentient_user
   spork
   transitions!

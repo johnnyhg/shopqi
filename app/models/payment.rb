@@ -2,8 +2,7 @@
 # 网店的支付方式
 class Payment
   include Mongoid::Document
-  include Mongoid::BelongToStore
-  belong_to_store
+  referenced_in :store
 
   field :payment_type_id, :type => Integer
   field :is_show, :type => Boolean, :default => false

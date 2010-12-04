@@ -7,6 +7,7 @@ class Order
   include AddressHelper
   include SimpleEnum
 
+  referenced_in :store
   referenced_in :member
   referenced_in :payment
   embeds_many :items, :class_name => "OrderItem"
@@ -68,13 +69,18 @@ class Order
   # 会员收货地址ID
   attr_accessor :address_id
 
-  validates_presence_of :address_id, :on => :create, :message => I18n.t('activemodel.errors.messages.select')
+  validates_presence_of :address_id, :payment_id, :on => :create, :message => I18n.t('activemodel.errors.messages.select')
   validates_length_of :description, :maximum => 100
 
   before_create :set_address
+  before_create :set_store
+
+  def set_store
+    self.store = member.store
+  end
 
   def set_address
-    address = Member.current.addresses.find(address_id)
+    address = member.addresses.find(address_id)
     ADDRESS_ATTRIBUTES.each do |attr|
       send("#{attr}=", address.send(attr))
     end

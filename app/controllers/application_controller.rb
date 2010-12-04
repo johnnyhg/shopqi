@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   include SentientController
   include InheritedResources::DSL
   #before_filter :check_permission!, :only => [ :create, :update, :destroy ]
-  before_filter {|c| Member.current = current_member }
 
   protect_from_forgery
 

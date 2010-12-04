@@ -12,17 +12,4 @@ class Member
   embeds_many :addresses
 
   field :login
-
-  #@see: https://github.com/bokmann/sentient_user/blob/master/lib/sentient_user.rb
-  def self.current
-    Thread.current[:member]
-  end
-
-  def self.current=(o)
-    Thread.current[:member] = o
-  end
-
-  def make_current
-    Thread.current[:member] = self
-  end
 end

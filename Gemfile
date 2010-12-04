@@ -70,11 +70,6 @@ gem "httparty"
 # 调试
 gem "awesome_print", :require => 'ap'
 
-# To use debugger(add 'debugger' in code, then set autoeval; set autolist in console)
-#gem 'ruby-debug19'
-# 需要手动安装(/path/to/ruby为ruby所在路径，如:home/saberma/.rvm/src/ruby-1.9.2-head)
-# gem install ruby-debug19 --no-ri --no-rdoc -- --with-ruby-include=/path/to/ruby
-
 group :development do
   gem 'rails3-generators'
   # jquery,haml已经独立出来
@@ -84,6 +79,11 @@ group :development do
   # 修改后台文件后，safari或chrome浏览器会自动刷新
   gem "livereload"
   gem "rb-inotify"
+
+  # To use debugger(add 'debugger' in code, then set autoeval; set autolist in console)
+  gem 'ruby-debug19'
+  # 需要手动安装(/path/to/ruby为ruby所在路径，如:home/saberma/.rvm/src/ruby-1.9.2-head)
+  # gem install ruby-debug19 --no-ri --no-rdoc -- --with-ruby-include=/path/to/ruby
 end
 
 group :test do
