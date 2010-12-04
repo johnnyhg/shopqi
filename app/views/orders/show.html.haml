@@ -1,5 +1,5 @@
 #order_show
-  = render :partial => "pay"
+  = render :partial => "pay", :locals => {:order => resource}
   .box
     .block.first
       -if flash[:success]
@@ -13,7 +13,7 @@
         %ul
           %li==订单号：#{resource.number}　[#{resource.created_at.to_s(:db)}生成订单]
           %li==订单状态：#{resource.state_name}
-          %li==支付方式：#{resource.payment_name}
+          %li==支付方式：#{resource.payment.payment_type.name}
           %li==收货人：#{resource.address_info}
           %li==配送方式：#{resource.delivery_name}
           %li==发货时间：
@@ -23,7 +23,7 @@
           %span
             ￥
             =resource.price_sum
-            =link_to_function(image_tag('templates/common/product/pay_now.gif'), "Car.pay('#{resource.id.to_s}', '#{resource.price_sum}')") if resource.state == 'unpay'
+            =link_to_function(image_tag('templates/common/product/pay_now.gif'), "Car.pay('payment_form_#{resource.id}')") if resource.state == 'unpay'
 
     .block.first
       %h2.title

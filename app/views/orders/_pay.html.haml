@@ -1,12 +1,12 @@
-=payment_service_for 0, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, :service => :alipay, :html => { :id => :payment_form, :method => :get } do |service|
+=payment_service_for order.id, order.payment.partnerid, :service => :alipay, :html => { :id => "payment_form_#{order.id}", :method => :get } do |service|
   -service.total_fee 0.01
-  -service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL
+  -service.seller :email => order.payment.account
   -service.notify_url notify_orders_url
   -service.return_url done_orders_url
-  -service.show_url orders_url
+  -service.show_url order_url(order)
   -service.body '商品交易'
   -service.charset "utf-8"
   -service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER
   -service.payment_type 1
   -service.subject "#{store.name}商品交易"
-  -service.sign
+  -service.sign order.payment.verifycode

@@ -26,10 +26,10 @@
             %span 支付方式
           .panel#payment_panel
             %ul
-              -Order.options_for_payment.each_with_index do |item, index|
+              -store.payments.list.each_with_index do |item, index|
                 %li
-                  =radio_button_tag "order_payment", item.second, index.zero?, :class => :radio
-                  =label_tag "order_payment_#{item.second}", item.first
+                  =radio_button_tag "order_payment_id", item.id, index.zero?, :class => :radio
+                  =label_tag "order_payment_id_#{item.id}", item.payment_type.name
         .block
           %h2.title
             %span 送货时间

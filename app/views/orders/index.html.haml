@@ -1,5 +1,4 @@
 #orders
-  = render :partial => "pay"
   .list
     %h3
       %span 
@@ -20,6 +19,8 @@
         %li.state(style="width:100px")=order.state_name
         %li(style="width:100px")=link_to '查看详情', order
         %li.btns_pay(style="width:70px")
-          =link_to_function '现在支付', "Car.pay('#{order.id.to_s}', '#{order.price_sum}')" if order.state == 'unpay'
+          -if order.state == 'unpay'
+            = render :partial => "pay", :locals => {:order => order}
+            =link_to_function '现在支付', "Car.pay('payment_form_#{order.id}')" 
         %li.btns_cancel(style="width:70px")
           =link_to '取消订单', cancel_order_path(order), :remote => true, :method => :post, :confirm => '您确定要取消订单吗?' if order.state == 'unpay'

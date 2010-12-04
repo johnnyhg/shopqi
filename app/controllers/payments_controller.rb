@@ -8,7 +8,11 @@ class PaymentsController < ApplicationController
     klass, field, id = params[:id].split('__')
     payment = store.payments.where(:payment_type_id => id).first
     attrs = {:payment_type_id => id, field => params[:value]}
-    payment ? payment.update_attributes(attrs) : store.payments.create(attrs)
+    if payment
+      payment.update_attributes(attrs) 
+    else
+      payment = store.payments.create(attrs)
+    end
     render :text => payment.send(field)
   end
   

@@ -63,13 +63,14 @@ gem 'web-app-theme'
 ##### 其他 #####
 # 支付
 gem "activemerchant"
-gem "activemerchant_patch_for_china"
+# 支付指定sign key参数
+gem "activemerchant_patch_for_china", :git => 'git://github.com/saberma/activemerchant_patch_for_china.git'
 gem "httparty"
 
 # 调试
 gem "awesome_print", :require => 'ap'
 
-# To use debugger(set autoeval; set autolist)
+# To use debugger(add 'debugger' in code, then set autoeval; set autolist in console)
 #gem 'ruby-debug19'
 # 需要手动安装(/path/to/ruby为ruby所在路径，如:home/saberma/.rvm/src/ruby-1.9.2-head)
 # gem install ruby-debug19 --no-ri --no-rdoc -- --with-ruby-include=/path/to/ruby
