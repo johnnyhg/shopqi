@@ -8,7 +8,7 @@ class Store
 
   references_many :pages, :dependent => :destroy
 
-  store_has_many :users, :categories, :products, :hots, :containers, :focuses, :payments, :consumptions
+  store_has_many :users, :categories, :products, :hots, :containers, :focuses, :payments, :consumptions, :orders
   has_many_sortable :navs, :menus
 
   # 有效期

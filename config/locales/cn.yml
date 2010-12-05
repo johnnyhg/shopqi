@@ -118,6 +118,7 @@ cn:
       order:
         address_id: 收货人信息
         payment_id: 支付方式
+        items: 产品清单
     #不要在此处增加错误提示的属性名称，应保持与formtastic中定义的label名称一致
     #具体方法是在controller中增加interpolation_options，在model中include Formtastic::I18n::Naming，参考product相关文件
     #@see: https://github.com/josevalim/inherited_resources/wiki

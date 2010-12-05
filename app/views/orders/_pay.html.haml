@@ -9,4 +9,4 @@
   -service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER
   -service.payment_type 1
   -service.subject "#{store.name}商品交易"
-  -service.sign order.payment.verifycode
+  -service.sign order.payment.verifycode.to_s

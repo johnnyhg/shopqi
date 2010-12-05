@@ -13,6 +13,10 @@
   end
 end
 
+而且 /^我?已经填写完支付方式$/ do
+  Factory(:payment, :store => @store)
+end
+
 而且 /^我单击刷新表格$/ do
   find('.ui-icon-refresh').click
 end

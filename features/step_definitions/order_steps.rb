@@ -5,6 +5,10 @@
   select(district, :from => 'address_district')
 end
 
+而且 /^我?已经填写完收货地址$/ do
+  Factory(:address, :member => @member)
+end
+
 #@see: http://github.com/aslakhellesoy/cucumber/wiki/Multiline-Step-Arguments
 #@see: http://github.com/aslakhellesoy/cucumber-rails-test/blob/master/features/step_definitions/lorry_steps.rb
 #@see: http://github.com/aslakhellesoy/cucumber-rails-test/blob/master/features/manage_lorries.feature
