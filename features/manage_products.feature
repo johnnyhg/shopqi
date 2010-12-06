@@ -38,6 +38,7 @@
   @javascript
   场景: 购买商品
     假如我已经以用户名saberma@shopqi.com成功注册
+    而且已经填写完支付方式
     #而且我已经以会员ben@shopqi.com成功注册
     * 网店已有具体商品分类
     * 网店有以下商品:

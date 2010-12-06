@@ -6,17 +6,23 @@ describe HotsController do
 
   before :each do
     @saberma = Factory(:user_saberma)
+    @store = @saberma.store
     sign_in @saberma
-    container = Factory(:container, :type => :hots)
 
-    @root = container.hot
-    @root.children << Hot.new(:name => '男装')
-    @root.children.init_list!
+    @page = @store.pages.homepage
+    @root = @page.containers.roots.first
+    # 新增三个容器，包括两个父容器和最后一个实际容器(中间的父容器是为了能够不断的向下方新增子容器)
+    @root_container = @store.containers.create(:type => :hots, :parent_id => @root.id)
+    @container = @root_container.children.first.children.first
+
+    @root_hot = @container.hot
+    @root_hot.children << @store.hots.build(:name => '男装')
+    @root_hot.children.init_list!
   end
 
   describe 'root' do
     it "should be add" do
-      xhr :get, :new, :neighbor => @root.id, :direct => :above, :hot => {
+      xhr :get, :new, :neighbor => @root_hot.id, :direct => :above, :hot => {
         :parent_id => ''
       }
       response.should be_success
@@ -26,7 +32,7 @@ describe HotsController do
       lambda do
         xhr :post, :create, :hot => {
           :name => '男士衬衫',
-          :parent_id => @root.id
+          :parent_id => @root_hot.id
         }
         response.should be_success
       end.should change(Hot, :count).by(1)
@@ -34,7 +40,7 @@ describe HotsController do
 
     it "should be update" do
       lambda do
-        xhr :post, :update, :id => @root.id, :hot => {
+        xhr :post, :update, :id => @root_hot.id, :hot => {
           :name => '男士衬衫', :parent_id => ''
         }
         response.should be_success
@@ -46,10 +52,10 @@ describe HotsController do
   describe 'child' do
     before :each do
 
-      @child = Hot.new :name => '衬衫'
-      @root.children << @child
-      @root.children.init_list!
-      @root.save
+      @child = @store.hots.build :name => '衬衫'
+      @root_hot.children << @child
+      @root_hot.children.init_list!
+      @root_hot.save
       @child.reload
     end
 
@@ -57,7 +63,7 @@ describe HotsController do
       lambda do
         xhr :post, :create, :hot => {
           :name => '男士衬衫',
-          :parent_id => @root.id
+          :parent_id => @root_hot.id
         }
         response.should be_success
       end.should change(Hot, :count).by(1)
@@ -66,7 +72,7 @@ describe HotsController do
     it "should be update" do
       lambda do
         xhr :post, :update, :id => @child.id, :hot => {
-          :name => '男士衬衫', :parent_id => @root.id
+          :name => '男士衬衫', :parent_id => @root_hot.id
         }
         response.should be_success
         assigns[:hot].name.should eql '男士衬衫'
@@ -74,10 +80,10 @@ describe HotsController do
     end
 
     it "should be create neighbor" do
-      @child = Hot.new :name => '衬衫'
-      @root.children << @child
-      @root.children.init_list!
-      @root.save
+      @child = @store.hots.build :name => '衬衫'
+      @root_hot.children << @child
+      @root_hot.children.init_list!
+      @root_hot.save
       @child.reload
       lambda do
         xhr :post, :create, :neighbor => @child.id, :direct => :above, :hot => {
@@ -85,7 +91,7 @@ describe HotsController do
           :parent_id => @child.parent.id
         }
         response.should be_success
-        assigns[:hot].parent.should eql @root
+        assigns[:hot].parent.should eql @root_hot
       end.should change(Hot, :count).by(1)
     end
   end

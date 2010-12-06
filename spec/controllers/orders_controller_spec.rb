@@ -5,12 +5,14 @@ describe OrdersController do
   include Devise::TestHelpers
   before :each do
     @saberma = Factory(:user_saberma)
+    @store = @saberma.store
+    @payment = @store.payments.create(Factory.attributes_for(:payment))
     request.host = "#{@saberma.store.subdomain}.shopqi.com"
 
-    @root = @saberma.store.categories.roots.first
-    @category = Factory(:category_man)
-    @root.children << @category
-    @product = Factory(:product, :category => @category)
+    @root = @store.categories.roots.first
+    @category = @store.categories.create(Factory.attributes_for(:category_man))
+    @root.children.push(@category).init_list!
+    @product = @store.products.create(Factory.attributes_for(:product, :category => @category))
   end
 
   describe 'confirm' do
@@ -23,8 +25,8 @@ describe OrdersController do
 
     describe 'login' do
       it 'should redirect to order new page' do
-        @ben = Factory(:member_ben)
-        sign_in @ben
+        @member = @store.members.create(Factory.attributes_for(:member_ben))
+        sign_in @member
 
         get :new
         response.should be_success
@@ -34,10 +36,10 @@ describe OrdersController do
 
   describe :member do
     before :each do
-      @ben = Factory(:member_ben)
-      sign_in @ben
+      @member = @store.members.create(Factory.attributes_for(:member_ben))
+      sign_in @member
 
-      @address = @ben.addresses.create(Factory.attributes_for(:address))
+      @address = @member.addresses.create(Factory.attributes_for(:address))
     end
 
     it 'should be create' do
@@ -49,13 +51,13 @@ describe OrdersController do
       cookies.should_receive(:[]).with('order').at_least(:once).and_return(cookie_order)
 
       lambda do
-        post :create, :order => { :address_id => @address.id.to_s, :delivery => 1, :pay => 1, :receive => 1 }, :format => :js
+        post :create, :order => { :address_id => @address.id.to_s, :delivery => 1, :payment_id => @payment.id.to_s, :receive => 1 }, :format => :js
         order = assigns[:order]
         order.price_sum.should eql 30.0
         order.quantity.should eql 2
 
         order.delivery.should eql 1
-        order.pay.should eql 1
+        order.payment.should eql @payment
         order.receive.should eql 1
 
         # 保存商品购买清单
@@ -68,11 +70,39 @@ describe OrdersController do
       end.should change(Order, :count).by(1)
     end
 
-    it 'should be cancel' do
-      post :create, :order => { :address_id => @address.id.to_s}, :format => :js
-      order = assigns[:order]
-      post :cancel, :id => order.id.to_s, :format => :js
-      order.state.should eql 'cancelled'
+    describe :pay do
+      before :each do
+        @order = @member.orders.build(:address_id => @address.id.to_s, :payment => @payment)
+        @order.items.build :product => @product, :price => @product.price, :quantity => 1, :sum => @product.price
+        @order.save
+      end
+
+      it 'should be cancel' do
+        post :cancel, :id => @order.id.to_s, :format => :js
+        assigns[:order].state.should eql 'cancelled'
+      end
+      
+      it 'should be notify' do
+        notification = mock('notification')
+        ActiveMerchant::Billing::Integrations::Alipay::Notification.stub!(:new).and_return(notification)
+        notification.should_receive(:acknowledge).and_return(true)
+
+        notification.should_receive(:out_trade_no).and_return(@order.id.to_s)
+        notification.should_receive(:status).and_return("TRADE_FINISHED")
+
+        post :notify
+        assigns[:order].state.should eql 'payed'
+      end
+      
+      it 'should be show pay success' do
+        rtn = mock('return')
+        ActiveMerchant::Billing::Integrations::Alipay::Return.stub!(:new).and_return(rtn)
+        rtn.should_receive(:success?).and_return(true)
+        rtn.should_receive(:order).and_return(@order.id.to_s)
+        get :done
+        assigns[:order].should eql @order
+      end
+
     end
   end
 

@@ -3,6 +3,7 @@ class PagesController < InheritedResources::Base
   layout nil
   # 配置网店需要用户登录
   prepend_before_filter :config_authenticate
+  prepend_before_filter :store_valid!, :except => [:logo, :dynamic]
 
   def show
     render :template => "pages/templates/#{template}/home", :layout => "pages"

@@ -13,6 +13,7 @@ saberma = User.create(:email => 'saberma@shopqi.com', :password => '666666', :lo
 
 store = saberma.store
 store.update_attributes :subdomain => 'vancl'
+store.payments.create :payment_type_id => PaymentType.first.id, :is_show => true
 #logo
 logo = store.logo_image
 logo.words << Word.new(:x => 0, :y => 2, :font => :yahei_bold, 'font-size' => '36px', :color => '#000000', :text => :VANCL)
@@ -61,19 +62,19 @@ category_root = store.categories.roots.first
   :鞋   => %w( 男鞋 女鞋 童鞋 透气休闲鞋 软底跑步鞋 牛仔鞋 圆头平底鞋 山茶花鞋 人字拖 ),
   :配饰 => %w( 女包 帽子 男款皮带 女款皮带 皮质手环 领带 透气棉袜 环保帆布袋 )
 }.each_pair do |key, values|
-  category = Category.new(:name => key)
+  category = store.categories.build(:name => key)
   category_root.children << category
   if values.is_a? Hash
     values.each_pair do |value_key, value_values|
-      child = Category.create(:name => value_key)
+      child = store.categories.create(:name => value_key)
       value_values.each do |c|
-        child.children << Category.create(:name => c)
+        child.children << store.categories.create(:name => c)
       end
       child.children.init_list!
       category.children << child
     end
   elsif values.is_a? Array
-    category.children = values.map{|v| Category.new(:name => v)}
+    category.children = values.map{|v| store.categories.build(:name => v)}
   end
   category.children.init_list!
 end
@@ -82,31 +83,31 @@ category_root.children.init_list!
 #商品
 [
   {
-    :category => Category.where(:name => '男装').first, 
+    :category => store.categories.where(:name => '男装').first, 
     :name => '个性背带格子衬衫',
     :market_price => 298,
     :price => 59
   },
   {
-    :category => Category.where(:name => '衬衫').first, 
+    :category => store.categories.where(:name => '衬衫').first, 
     :name => '自由舒爽棉麻衬衫',
     :market_price => 388,
     :price => 59
   },
   {
-    :category => Category.where(:name => '男鞋').first, 
+    :category => store.categories.where(:name => '男鞋').first, 
     :name => '轻便运动生活休闲鞋',
     :market_price => 499,
     :price => 99
   },
   {
-    :category => Category.where(:name => '裙子').first, 
+    :category => store.categories.where(:name => '裙子').first, 
     :name => '白色剪花抹胸裙',
     :market_price => 599,
     :price => 199
   },
   {
-    :category => Category.where(:name => '女装').first, 
+    :category => store.categories.where(:name => '女装').first, 
     :name => '甜美荷叶边丝带衬衫',
     :market_price => 299,
     :price => 99

@@ -2,6 +2,26 @@
 #@see: http://www.engineyard.com/blog/2010/the-lowdown-on-routes-in-rails-3/
 #@see: http://edgeguides.rubyonrails.org/routing.html
 Shopqi::Application.routes.draw do
+  resources :consumptions do
+    collection do
+      # 交易状态同步通知
+      post :notify
+    end
+  end
+
+  resources :payments, :only => :index do
+    collection do
+      post :update_attribute_on_the_spot
+    end
+  end
+
+  resources :stores, :only => [:edit, :update] do
+    member do
+      get :base
+      get :payment
+    end
+  end
+
   resources :addresses
 
   resources :containers do
@@ -75,6 +95,7 @@ Shopqi::Application.routes.draw do
   match "features" => "home#features"
   match "questions" => "home#questions"
   match "contact" => "home#contact"
+  match "invalid" => "home#invalid"
 
   # 网店平台会员
   devise_for :users
@@ -91,6 +112,13 @@ Shopqi::Application.routes.draw do
       member do
         get :pay
         post :cancel
+      end
+      collection do
+        # 支付接口调用链接地址
+        # 交易状态同步通知
+        post :notify
+        # 交易完成后返回的地址
+        post :done
       end
     end
   end

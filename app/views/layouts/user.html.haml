@@ -4,8 +4,10 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %title ShopQi工作平台
     =formtastic_stylesheet_link_tag
+    =jqgrid_stylesheets
     = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/user", :cache => true
-    = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree'
+    = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree', 'jeditable/jeditable', 'jeditable/checkbox', 'jeditable/on_the_spot'
+    =jqgrid_javascripts
     = csrf_meta_tag
   %body
     #container
@@ -20,7 +22,7 @@
               = link_to "#" do
                 = t "web-app-theme.profile", :default => "Profile"
             %li
-              = link_to "#" do
+              = link_to edit_store_path(0), :remote => true do
                 = t "web-app-theme.settings", :default => "Settings"
             %li
               = link_to destroy_user_session_path, :class => "logout" do
@@ -35,6 +37,7 @@
             %li=link_to '界面', user_root_path
       #wrapper.wat-cf
         #main
+          -#.inner= render :partial => "stores/edit"
           = yield
           #footer
             .block

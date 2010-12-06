@@ -1,0 +1,6 @@
+= semantic_form_remote_for(resource) do |f|
+  %p.tip==待支付金额：#{resource.price_sum}元
+  =f.inputs :class => :radio_group do
+    =f.input :years, :collection => [['1年',1]], :as => :radio, :label => '购买年次：'
+  =f.buttons do
+    =f.commit_button :confirm, :button_html => { 'data-disable-with' => '正在提交...' }

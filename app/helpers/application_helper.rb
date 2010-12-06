@@ -2,7 +2,7 @@ module ApplicationHelper
   delegate :template, :to => :store
 
   def store
-    Store.where(:subdomain => request.subdomain).first
+    current_user ? current_user.store : Store.where(:subdomain => request.subdomain).first
   end
 
   def editinplace(model, attr, options = {})

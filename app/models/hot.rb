@@ -4,10 +4,9 @@ class Hot
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::ActsAsSortableTree
-  include Mongoid::BelongToStore
 
-  belong_to_store
   acts_as_sortable_tree
+  referenced_in :store
   references_one :container
 
   field :name

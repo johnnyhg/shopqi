@@ -5,11 +5,8 @@
   select(district, :from => 'address_district')
 end
 
-When /^I delete the (\d+)(?:st|nd|rd|th) order$/ do |pos|
-  visit orders_path
-  within("table tr:nth-child(#{pos.to_i+1})") do
-    click_link "Destroy"
-  end
+而且 /^我?已经填写完收货地址$/ do
+  Factory(:address, :member => @member)
 end
 
 #@see: http://github.com/aslakhellesoy/cucumber/wiki/Multiline-Step-Arguments
@@ -24,5 +21,5 @@ end
   # 替换动态值
   day = Date.today
   expected_list = expected_list.arguments_replaced('20100101' => day.to_s(:serial), '2010-01-01 10:10:10' => day.to_s(:db))
-  expected_list.diff!(actual_list);
+  expected_list.diff!(actual_list)
 end

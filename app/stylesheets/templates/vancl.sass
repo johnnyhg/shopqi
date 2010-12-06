@@ -18,12 +18,15 @@ $color_red_dark: #7F0019
 
 $color_yellow: #E9BE16
 
+$color_white: white
+
 $image_pay: "templates/vancl/header/pay.jpg"
 $image_bar: "templates/common/header/bar.gif"
 $image_bullet_diamond: "templates/common/bullet/diamond.gif"
 $image_bullet_right_arrow: "templates/common/bullet/right_arrow.gif"
 $image_bullet_down_arrow: "templates/common/bullet/down_arrow.gif"
 $image_bullet_move_arrow: "templates/common/bullet/move_arrow.png"
+$image_bullet_square: "templates/common/bullet/square.png"
 
 @mixin height($dist)
   height: $dist
@@ -431,15 +434,32 @@ $left: 37%
 
 /** 会员管理页面
 #members
-  .box#menus
-    background-color: $color_grey_lightest
-  .row
-    @include height(20px)
   .box .panel
     border-top: 1px solid $color_grey
     border-bottom: 1px solid $color_grey
     margin: 10px
     padding: 10px
+  #menus
+    .box
+      background-color: $color_grey_lightest
+      margin-bottom: 10px
+      .row
+        @include height(20px)
+      &.menu
+        padding: 1px
+        h2
+          color: $color_white
+          font: 14px bold
+          background-color: $color_grey_darker
+          text-align: center
+          @include height(24px)
+        ul li
+          margin: 10px 0
+          padding-left: 30px
+          background: image_url($image_bullet_square) no-repeat 18px 50%
+          font-weight: bold
+          a
+            font-weight: normal
 
 /** 会员订单
 #orders, #order_show

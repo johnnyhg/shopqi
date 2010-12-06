@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   include SentientController
   include InheritedResources::DSL
   #before_filter :check_permission!, :only => [ :create, :update, :destroy ]
-  before_filter {|c| Member.current = current_member }
 
   protect_from_forgery
 
@@ -13,6 +12,11 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     (devise_controller? && resource_name == :member) ? 'compact' : 'application'
+  end
+
+  # 网店未到期
+  def store_valid!
+    redirect_to invalid_path unless store.available?
   end
 
 =begin

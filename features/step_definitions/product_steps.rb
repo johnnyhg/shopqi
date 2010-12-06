@@ -1,6 +1,6 @@
 # coding: utf-8
 假如 /^系统存在网店信息$/ do
-  Factory('store_vancl')
+  假如 "系统已有网店布局"
 end
 
 而且 /将图片(.+)上传/ do |path|
@@ -17,10 +17,9 @@ end
 end
 
 假如 /^网店有以下商品:$/ do |table|
-  store = User.current.store
   table.rows.each do |row|
-    category = store.categories.where(:name => row.fourth).first
-    node = store.products.create(
+    category = @store.categories.where(:name => row.fourth).first
+    node = @store.products.create(
       :name => row.first,
       :market_price => row.second,
       :price => row.third,

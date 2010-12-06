@@ -7,6 +7,7 @@ class ProductsController < InheritedResources::Base
   respond_to :js, :only => [ :create, :update, :destroy, :add_to_car ]
   before_filter :set_object_id, :only => :update
   prepend_before_filter :authenticate_user!, :except => [:index, :add_to_car, :show]
+  prepend_before_filter :store_valid!, :only => :index
 
   def index
     @products = store.products

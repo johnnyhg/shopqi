@@ -23,7 +23,6 @@ class User
       # store一定要与user关联后再保存，否则store关联的记录无法取到user.store
       store = Store.new
       self.store = store
-      self.make_current
       store.save
     end
     self.save

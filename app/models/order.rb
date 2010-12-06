@@ -7,14 +7,13 @@ class Order
   include AddressHelper
   include SimpleEnum
 
+  referenced_in :store
   referenced_in :member
+  referenced_in :payment
   embeds_many :items, :class_name => "OrderItem"
 
   field :delivery_id, :type => Integer
   has_enum :delivery, :enums => [[:normal, 0, "普通快递送货上门"],[:ems, 1, "邮政特快专递EMS"]]
-
-  field :pay_id, :type => Integer
-  has_enum :pay, :enums => [[:online, 0, "网上支付"],[:onsee, 1, "货到付款"], [:post, 2, "邮局汇款"], [:bank, 3, "银行转帐"]]
 
   field :receive_id, :type => Integer
   has_enum :receive, :enums => [[:all, 0, "工作日、双休日与假日均可送货"],[:holiday, 1, "只有双休日、假日送货（工作日不用送货）"], [:weekday, 2, "只有工作日送货（双休日、假日不用送）"], [:school, 3, "学校地址（该地址白天没人，请尽量安排其他时间送货）"]]
@@ -37,24 +36,54 @@ class Order
 
   # 状态
   state_machine do
+    #@see cn.yml(state)
     state :unpay
     state :cancelled
+    state :pay_wait
+    state :pay_unknown_error
+    state :payed_wait_send
+    state :payed
 
+    # 订单事件
     event :cancel do
       transitions :to => :cancelled, :from => :unpay
+    end
+
+    event :pend_payment do
+      transitions :to => :pay_wait, :from => :unpay
+    end
+
+    event :pend_shipment do
+      transitions :to => :payed_wait_send, :from => :unpay
+    end
+
+    event :fail_payment do
+      transitions :to => :pay_unknown_error, :from => :unpay
+    end
+
+    event :pay do
+      transitions :to => :payed, :from => :unpay
     end
   end
 
   # 会员收货地址ID
   attr_accessor :address_id
 
+  #TODO: 会员可能会删除收货地址
   validates_presence_of :address_id, :on => :create, :message => I18n.t('activemodel.errors.messages.select')
+  validates_presence_of :payment_id, :message => I18n.t('activemodel.errors.messages.select')
+  validates_presence_of :items
   validates_length_of :description, :maximum => 100
 
   before_create :set_address
+  before_create :set_store
+
+  def set_store
+    self.store = member.store
+  end
 
   def set_address
-    address = Member.current.addresses.find(address_id)
+    address = member.addresses.find(address_id)
     ADDRESS_ATTRIBUTES.each do |attr|
       send("#{attr}=", address.send(attr))
     end

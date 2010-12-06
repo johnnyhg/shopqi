@@ -17,3 +17,6 @@ public/images/uploads/**
 
 #去掉编译后的css文件
 public/stylesheets/compiled/**
+
+#不上传包含重要信息的文件
+config/initializers/payment.rb

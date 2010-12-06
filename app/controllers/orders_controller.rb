@@ -1,6 +1,7 @@
 # encoding: utf-8
 class OrdersController < InheritedResources::Base
   prepend_before_filter :authenticate_member!, :except => [:car]
+  prepend_before_filter :store_valid!
   actions :new, :create, :index, :show, :destroy
   respond_to :js, :only => [ :create ]
   layout 'members'
@@ -45,6 +46,34 @@ class OrdersController < InheritedResources::Base
   def car
     init_cookie_orders
     render :layout => "compact"
+  end
+
+  ###### 支付 #####
+  def notify
+    notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
+    render :text => "fail" unless notification.acknowledge
+
+    @order = Order.find(notification.out_trade_no)
+    case notification.status
+    when "WAIT_BUYER_PAY"
+      @order.pend_payment!
+    when "WAIT_SELLER_SEND_GOODS"
+      @order.pend_shipment!
+    when "WAIT_BUYER_CONFIRM_GOODS"
+      @order.confirm_shipment!
+    when "TRADE_FINISHED"
+      @order.pay!
+    else
+      @order.fail_payment!
+    end
+    render :text => "success"
+  end
+
+  def done
+    r = ActiveMerchant::Billing::Integrations::Alipay::Return.new(request.query_string)  
+    @order = Order.find(r.order)
+    flash[:payed] = r.success?
+    render :action => :show
   end
 
   protected

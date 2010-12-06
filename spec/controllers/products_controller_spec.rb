@@ -5,16 +5,17 @@ describe ProductsController do
   include Devise::TestHelpers
   before :each do
     @saberma = Factory(:user_saberma)
+    @store = @saberma.store
     sign_in @saberma
-    request.host = "#{@saberma.store.subdomain}.shopqi.com"
+    request.host = "#{@store.subdomain}.shopqi.com"
   end
 
   describe :product do
     before :each do
-      @root = @saberma.store.categories.roots.first
-      @category = Factory(:category_man)
-      @root.children << @category
-      @product = Factory(:product, :category => @category)
+      @root = @store.categories.roots.first
+      @category = @store.categories.create(Factory.attributes_for(:category_man))
+      @root.children.push(@category).init_list!
+      @product = @store.products.create(Factory.attributes_for(:product, :category => @category))
     end
 
     it "should be index" do
