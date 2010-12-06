@@ -35,6 +35,8 @@ module Shopqi
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :cn
+    #@see: http://groups.google.com/group/rubyonrails-core/browse_thread/thread/1fe3e88f9fe73177/
+    config.i18n.locale = config.i18n.default_locale
 
     # Configure generators values. Many other options are available, be sure to check the documentation.
     config.generators do |g|

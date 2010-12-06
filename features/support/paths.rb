@@ -25,6 +25,8 @@ module NavigationHelpers
     when /(.+)商品详情页面/
       name = page_name.match(/(.+)商品详情页面$/)[1]
       with_subdomain_path("/products/#{Product.where(:name => name).first.id.to_s}")
+    when /提交订单页面/
+      with_subdomain_path(new_order_path)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

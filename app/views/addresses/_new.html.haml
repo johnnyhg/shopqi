@@ -1,0 +1,18 @@
+= semantic_form_remote_for(resource) do |f|
+  %p.error#error_explanation
+  =f.semantic_errors :name, :province, :city, :district, :detail, :zipcode, :mobile
+  =f.inputs :name
+  =f.inputs :id => :region do
+    %li.select_group
+      =f.inputs :name => '所在地区<abbr>*</abbr>' do
+        =f.input :province, :label => false, :include_blank => '请选择省/直辖市', :collection => District.list
+        =f.input :city, :label => false, :include_blank => '请选择市', :collection => District.list(resource.province)
+        =f.input :district, :label => false, :include_blank => '请选择县/区', :collection => District.list(resource.city)
+  =f.inputs :detail, :zipcode
+  =f.inputs do
+    =f.input :mobile, :required => false
+    =f.input :phone, :required => false, :hint => '手机与固定电话至少有一项必填'
+  =f.buttons do
+    =f.commit_button '配送至这个地址', :button_html => { :type => :image, :src => '/images/templates/common/product/address_save.gif' }
+
+= javascript_include_tag 'district'

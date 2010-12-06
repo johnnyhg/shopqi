@@ -3,9 +3,8 @@
 class Page
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::BelongToStore
-  belong_to_store
 
+  referenced_in :store
   references_many :containers, :dependent => :destroy
 
   field :name
@@ -16,7 +15,7 @@ class Page
   # 初始化部分分类
   def init_child
     # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
-    self.containers << Container.root(:page => self)
+    store.containers.create :name => :invisible, :page => self
   end
 
   # 首页

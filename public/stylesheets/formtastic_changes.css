@@ -18,11 +18,30 @@ form.formtastic fieldset > ol > li.password input { max-width: 74%; }
 /* 完善:输入框要大一点 */
 form.formtastic input { font-size: 16px; width: 300px; border: 1px solid #959190; }
 
+/* 限制radio宽度 */
+form.formtastic .radio { width: 20px }
+
 /* 网店布局 */
 .tooltip form.formtastic fieldset > ol > li label { width:20%;}
 .tooltip form.formtastic fieldset.buttons { padding-left:20%; }
 .tooltip form.formtastic input { width: 200px; }
 .tooltip form.formtastic fieldset > ol > li { margin-bottom:.7em; }
 
+/* 侧边栏 */
+#sidebar form.formtastic .buttons input { width: 150px; }
+
 /* 网店布局提示面板的操作链接 */
 .tooltip .operates { margin-bottom: 10px }
+
+/* 级联下拉框 */
+form.formtastic fieldset > ol > li.select_group fieldset ol li { float:left; width:auto; margin:0 .3em 0 0; }
+
+form.formtastic fieldset > ol > li.select_group fieldset ol li label { display:none; }
+
+form.formtastic fieldset > ol > li.select_group fieldset ol li label input { display:inline; margin:0; padding:0;  }
+
+/* 多个单选框 */
+form.formtastic fieldset.radio_group ol li.radio { width: 100% }
+form.formtastic fieldset > ol > li.radio fieldset ol li { float:left; }
+form.formtastic fieldset > ol > li.radio fieldset ol li label { width: 50px }
+form.formtastic fieldset > ol > li.radio fieldset ol li label input { width: 20px }

@@ -28,12 +28,26 @@ Spork.prefork do
   Capybara.default_selector = :css
   Capybara.default_wait_time = 10
 
+  # 使用chrome进行测试
+  #Selenium::WebDriver.for :chrome
+  #class Capybara::Driver::Selenium 
+  #  def self.driver 
+  #    unless @driver 
+  #      @driver = Selenium::WebDriver.for :chrome 
+  #      at_exit do 
+  #        @driver.quit 
+  #      end 
+  #    end 
+  #    @driver 
+  #  end 
+  #end 
 end
  
 Spork.each_run do
   Before do
     # sentient_user
     Thread.current[:user] = nil
+    Thread.current[:member] = nil
     Capybara.default_host = "lvh.me"
     Capybara.app_host = "http://lvh.me:9887"
   end

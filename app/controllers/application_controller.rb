@@ -14,6 +14,11 @@ class ApplicationController < ActionController::Base
     (devise_controller? && resource_name == :member) ? 'compact' : 'application'
   end
 
+  # 网店未到期
+  def store_valid!
+    redirect_to invalid_path unless store.available?
+  end
+
 =begin
   # 检查当前用户是否拥有对网店拥有的信息（如商品）进行修改的权限
   def check_permission!

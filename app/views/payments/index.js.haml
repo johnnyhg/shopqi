@@ -1,0 +1,9 @@
+//tab menu
+$("#edit_store > .secondary-navigation li").removeClass('active');
+$("#store_payment").addClass('active');
+
+//insert
+$("#edit_store > .content > .inner").html('#{escape_javascript( render(:partial => "#{controller_name}/#{action_name}"))}');
+
+//edit in place
+$('#payment_type .on_the_spot_editing').each(EIP.attach);

@@ -3,15 +3,15 @@ require 'spec_helper'
 describe Product do
   before :each do
     @saberma = Factory(:user_saberma)
+    @store = @saberma.store
     @root = @saberma.store.categories.roots.first
-    @category_man = Factory(:category_man)
-    @root.children << @category_man
-    @root.children.init_list!
+    @category_man = @store.categories.create(Factory.attributes_for(:category_man))
+    @root.children.push(@category_man).init_list!
   end
 
   describe :category_path do
     before :each do
-      @product = Factory(:product, :category => @category_man)
+      @product = @store.products.create(Factory.attributes_for(:product, :category => @category_man))
     end
 
     it 'should save' do

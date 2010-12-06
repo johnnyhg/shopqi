@@ -3,16 +3,15 @@ require 'spec_helper'
 describe Container do
   before :each do
     @saberma = Factory(:user_saberma)
-    @saberma.make_current
-
-    @page = @saberma.store.pages.homepage
+    @store = @saberma.store
+    @page = @store.pages.homepage
     @root = @page.containers.roots.first
   end
 
   describe 'grids less than parents grids' do
     it 'should add a root container' do
       lambda do
-        root_container = Container.create(
+        root_container = @store.containers.create(
           :parent_id => @root.id,
           :type => :focuses
         )
@@ -29,11 +28,11 @@ describe Container do
     end
 
     it 'should add a parent container' do
-      container = Container.new
+      container = @store.containers.build
       @root.children << container
 
       lambda do
-        focuses_container = Container.create(
+        focuses_container = @store.containers.create(
           :parent_id => container.id,
           :type => :focuses
         )
@@ -50,7 +49,7 @@ describe Container do
   describe 'item' do
     it 'should save focuses item' do
       lambda do
-        @root.children << Container.create(:type => :focuses)
+        @root.children << @store.containers.create(:type => :focuses)
         container = @root.children.first.reload
 
         container.grids.should eql 18
@@ -59,7 +58,7 @@ describe Container do
     end
 
     it 'should save hot item' do
-      @root.children << Container.create(:type => :hots)
+      @root.children << @store.containers.create(:type => :hots)
       container = @root.children.first.reload
 
       container.grids.should eql 18
@@ -69,9 +68,12 @@ describe Container do
     end
 
     it 'should save categories' do
-      category = Factory(:category_man)
+      root_category = @store.categories.roots.first
+      category = @store.categories.create(Factory.attributes_for(:category_man))
+      root_category.children << category
+      root_category.children.init_list!
 
-      root_container = Container.create(:type => :products, :parent_id => @root.id)
+      root_container = @store.containers.create(:type => :products, :parent_id => @root.id)
       container = root_container.children.first
       container.type.should eql 'products'
 
@@ -81,10 +83,10 @@ describe Container do
     # 容器剩余可创建子容器的grids宽度
     it 'should get parents remain grids' do
       @root.remain_grids.should eql Container::MAX_GRIDS
-      container = Container.create(:type => :focuses, :parent_id => @root.id)
+      container = @store.containers.create(:type => :focuses, :parent_id => @root.id)
       container.remain_grids.should eql 6
 
-      Container.create(:type => :focuses, :parent_id => @root.id)
+      @store.containers.create(:type => :focuses, :parent_id => @root.id)
       @root.remain_grids.should eql Container::MAX_GRIDS
     end
   end

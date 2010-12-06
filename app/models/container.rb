@@ -4,7 +4,6 @@ class Container
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::ActsAsSortableTree
-  include Mongoid::BelongToStore
 
   # 操作
   OPERATES = {
@@ -17,7 +16,7 @@ class Container
     :products_accordion => { :grids => 6, :name => '商品列表[手风琴展示效果]'},
   }
 
-  belong_to_store
+  referenced_in :store
   acts_as_sortable_tree
   alias top_root? root?
 
@@ -64,7 +63,7 @@ class Container
   def tranform
     self.update_attributes :grids => MAX_GRIDS if is_root_missing?
     if is_root_missing? or is_nested?
-      self.children << self.class.new(:type => self.type)
+      self.children << store.containers.build(:type => self.type)
       self.children.init_list!
       self.update_attributes :type => nil
     end
@@ -100,14 +99,14 @@ class Container
     if self.type and !(is_root_missing? or is_nested?)
       case self.type.to_sym
       when :focuses
-        self.focus = Focus.root
-        3.times { |i| self.focus.children << Focus.create(:name => "标题#{i+1}", :url => '/') }
+        self.focus = store.focuses.create :name => :invisible
+        3.times { |i| self.focus.children << store.focuses.create(:name => "标题#{i+1}", :url => '/') }
         self.focus.children.init_list!
       when :hots
-        self.hot = Hot.root
+        self.hot = store.hots.create :name => :invisible
         3.times do |i| 
-          hot = Hot.create(:name => "分类#{i+1}", :url => '/')
-          3.times {|j| hot.children << Hot.create(:name => "子类#{j+1}", :url => '/')}
+          hot = store.hots.create(:name => "分类#{i+1}", :url => '/')
+          3.times {|j| hot.children << store.hots.create(:name => "子类#{j+1}", :url => '/')}
           hot.children.init_list!
           self.hot.children << hot
         end
@@ -117,7 +116,7 @@ class Container
       when :fullad
         self.image = Image.create(:width => 940, :height => 60)
       when :products, :products_accordion
-        self.categories = User.current.store.categories.roots.first.children
+        self.categories = store.categories.roots.first.children
       when :products_head
         self.image = Image.new(:width => 264, :height => 40)
         self.image.words << Word.new(:x => 20, :y => 0, :font => :yahei, 'font-size' => '36px', :color => '#000000', :text => '分类')

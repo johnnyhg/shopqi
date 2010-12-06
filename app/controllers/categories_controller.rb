@@ -8,7 +8,7 @@ class CategoriesController < InheritedResources::Base
   actions :index, :create, :update, :destroy
   respond_to :js, :only => [:create, :update, :destroy]
   respond_to :json, :only => [:index]
-  prepend_before_filter :authenticate_user!
+  prepend_before_filter :authenticate_user!, :except => :index
 
   create! do |format|
     # 初始化位置
@@ -52,6 +52,6 @@ class CategoriesController < InheritedResources::Base
 
   protected
   def begin_of_association_chain
-    current_user.store
+    store
   end
 end

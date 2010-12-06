@@ -2,10 +2,14 @@ require 'spec_helper'
 
 describe PagesController do
   include Devise::TestHelpers
+  before :each do
+    @saberma = Factory(:user_saberma)
+    request.host = "#{@saberma.store.subdomain}.shopqi.com"
+  end
 
   describe "user doesn't login" do
     it 'should not be config' do
-      get :show
+      get :show, :config => true
       response.should be_redirect
     end
   end

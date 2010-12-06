@@ -7,6 +7,14 @@ cn:
     titles:
       user_details: 用户信息
     labels:
+      store:
+        name: 名称
+        title: 标题
+        desc: 描述
+        keywords: 关键字
+        detail: 详细地址
+      consumption:
+        years: 购买年次
       user:
         login: 昵称
         email: 用户名
@@ -24,6 +32,17 @@ cn:
         edit:
           title: 编辑用户
         remember_me: 记住登录信息，下次自动登录
+      address:
+        name: 收货人姓名
+        region: 所在地区
+        province: 所在地区的省/直辖市
+        city: 所在地区的市
+        district: 所在地区的县/区
+        detail: 详细地址
+        zipcode: 邮政编码
+        mobile: 手机
+        phone: 固定电话
+        telephone: 手机与固定电话
       product:
         name: 名称
         price: 价格
@@ -48,6 +67,9 @@ cn:
         login: 用户名
         password: 密码
     hints:
+      store:
+        title: 商店的标题将显示在浏览器的标题栏
+        detail: 详细地址前不用再填写省市区
       user:
         email: 请填写有效的Email地址作为下次登录的用户名
         password: 请设为6-20位字母或数字
@@ -59,6 +81,7 @@ cn:
         password_confirmation: 
         login: 请输入中英文、数字、下划线或它们的组合
     actions:
+      confirm: 确定
       create: 新增%{model}
       update: 更新
 
@@ -74,6 +97,8 @@ cn:
         too_long: 长度不能超过%{count}个字符
         not_a_number: 只能是数字
         invalid: 必须是有效的
+        at_least_one: 至少有一项必填
+        select: 尚未选择
       models:
         user:
           attributes:
@@ -90,6 +115,13 @@ cn:
       member:
         email: Email地址
         password: 密码
+      order:
+        address_id: 收货人信息
+        payment_id: 支付方式
+        items: 产品清单
+    #不要在此处增加错误提示的属性名称，应保持与formtastic中定义的label名称一致
+    #具体方法是在controller中增加interpolation_options，在model中include Formtastic::I18n::Naming，参考product相关文件
+    #@see: https://github.com/josevalim/inherited_resources/wiki
 
   support:
     array:
@@ -124,8 +156,21 @@ cn:
   helper:
     label:
       blank: 未命名
+    common:
+      'true': 是
+      'false': 否
 
   carrierwave:
     errors:
       integrity: '不支持上传此类型的图片'
       processing: 'Cannot resize image.'
+
+  # 状态机
+  state:
+    unpay: 有效待付款
+    cancelled: 用户已取消
+    # 支付情况
+    pay_wait: 待网上支付
+    pay_unknown_error: 未知的支付错误
+    payed_wait_send: 已付款待发货
+    payed: 已付款

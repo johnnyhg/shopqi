@@ -1,0 +1,39 @@
+#content
+  .grid_20.root
+    .grid_5.alpha=image_tag 'templates/common/product/order.jpg'
+    .grid_11 　
+    .grid_4.omega=image_tag 'templates/common/product/pay.jpg'
+  .grid_20.root
+    #car.list
+      %ul.head
+        %li(style="width:100px") 商品
+        %li(style="width:200px") 名称
+        %li(style="width:70px") 单价
+        %li(style="width:70px") 数量
+        %li(style="width:70px") 小计
+        %li(style="width:100px") 操作
+      -@products.each do |product|
+        %ul.item{:class=>cycle(:odd, :even)}
+          %li(style="width:100px")=link_to image_tag(product.photo.icon.url), product
+          %li.name(style="width:200px")=link_to s(product.name), product
+          %li(style="width:70px")
+            ￥
+            =product.price
+          %li(style="width:70px")=@order_hash[product.id.to_s]
+          %li(style="width:70px")
+            ￥
+            =@order_hash[product.id.to_s].to_i*product.price
+          %li(style="width:100px")=link_to_function '删除', '#'
+
+      .summary
+        产品数量总计:
+        %span#items_count=@items_count
+        %span.unit 件
+        产品金额总计(不含运费)：
+        %span#price_count
+          ￥
+          =@price_count
+      .btns
+        =link_to image_tag('templates/common/product/shopping_continue.jpg'), '#'
+        =link_to image_tag('templates/common/product/clear.jpg'), '#'
+        .pay=link_to image_tag('templates/common/product/pay.jpg'), new_order_path, :title => '去结算'

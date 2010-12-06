@@ -1,8 +1,9 @@
 # coding: utf-8
 假如 /^我已经以用户名(.+)成功注册$/ do |email|
-  user = Factory(:user, :email => email)
+  @user = Factory(:user, :email => email)
+  @store = @user.store
   # 固定store subdomain
-  user.store.update_attributes :subdomain => 'vancl'
+  @store.update_attributes :subdomain => 'vancl'
 end
 
 假如 /^我已经以用户名(.+)登录$/ do |email|

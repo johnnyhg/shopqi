@@ -4,10 +4,10 @@ require 'spec_helper'
 describe Menu do
   it "should create the sprite image" do
     @saberma = Factory(:user_saberma)
-    @saberma.make_current
+    @store = @saberma.store
     
     %w( 首页 女包 男包 真皮 数码包 旅行包 ).map do |menu|
-      Menu.create :name => menu
+      @store.menus.create :name => menu
     end
     store = @saberma.store
     Menu.sprite(store)

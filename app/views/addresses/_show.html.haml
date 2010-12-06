@@ -1,0 +1,5 @@
+=content_tag_for :li, address do
+  =radio_button_tag "order_address", address.id, :class => :radio
+  =label_tag "order_address_#{address.id}", address.to_s
+  =link_to '修改', edit_address_path(address), :remote => true, 'data-type' => :html, :update => :new_address_form
+  =link_to '删除', address_path(address), :remote => true, :method => :delete, :confirm => '您确定要删除吗？'

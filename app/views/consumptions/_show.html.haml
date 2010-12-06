@@ -1,0 +1,20 @@
+%p
+  ==待支付金额：#{resource.price_sum}元
+  %br
+  ==购买年次：#{resource.years}年
+
+-#rails3的form自动带上snowman_tag，导致md5校验失败，因此提交前要remove
+=payment_service_for resource.id, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, :service => :alipay, :html => { :id => :payment_form, :method => :get, :onsubmit => '$("#payment_form > div").remove();' } do |service|
+  -service.total_fee resource.price_sum
+  -service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL
+  -service.notify_url notify_consumptions_url
+  -service.return_url user_root_url
+  -service.show_url root_url
+  -service.body "ShopQi平台服务年费(#{resource.years}年)"
+  -service.charset "utf-8"
+  -service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER
+  -service.payment_type 1
+  -service.subject 'ShopQi独立网店平台'
+  -service.sign
+  -#提交按钮不能作为至url传递的参数，以免破坏md5校验
+  %p=submit_tag '现在支付', :name => ''
