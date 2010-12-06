@@ -2,10 +2,17 @@ require 'spec_helper'
 
 describe Order do
   before :each do
-    @member = Factory(:member_saberma)
+    @saberma = Factory(:user_saberma)
+    @store = @saberma.store
+    @member = @store.members.create(Factory.attributes_for(:member_saberma))
     @address = @member.addresses.create(Factory.attributes_for(:address))
-    @store = @member.store
-    @payment = Factory(:payment, :store => @store)
+    @payment = @store.payments.create(Factory.attributes_for(:payment))
+
+    #product
+    @root = @store.categories.roots.first
+    @category = @store.categories.create(Factory.attributes_for(:category_man))
+    @root.children.push(@category).init_list!
+    @product = @store.products.create(Factory.attributes_for(:product, :category => @category))
   end
 
   describe :invalid do
@@ -24,7 +31,9 @@ describe Order do
 
   describe :valid do
     before :each do
-     @order = @member.orders.create(:address_id => @address.id.to_s, :payment => @payment)
+     @order = @member.orders.build(:address_id => @address.id.to_s, :payment => @payment)
+     @order.items.build :product => @product, :price => @product.price, :quantity => 1, :sum => @product.price
+     @order.save
     end
 
     it 'should be save' do

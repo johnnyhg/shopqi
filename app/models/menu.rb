@@ -4,13 +4,10 @@ class Menu
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Sortable
-  include Mongoid::BelongToStore
   sortable_belong_to :store
 
   field :name
   field :url
-
-  before_create :init_store
 
   #生成sprite图片
   def self.sprite(store)

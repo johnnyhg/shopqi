@@ -4,6 +4,7 @@
   作为用户
   可以添加、修改和删除容器
 
+  @focus
   @javascript
   场景: 添加热门分类容器及边框广告
     假如我已经以用户名saberma@shopqi.com登录

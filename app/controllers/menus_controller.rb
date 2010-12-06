@@ -34,11 +34,11 @@ class MenusController < InheritedResources::Base
 
   protected
   def begin_of_association_chain
-    current_user.store
+    store
   end
 
   def sprite
-    Menu.sprite(current_user.store)
+    Menu.sprite(store)
   end
 
 end

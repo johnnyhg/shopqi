@@ -5,10 +5,10 @@ describe ContainersHelper do
 
   before :each do
     @saberma = Factory(:user_saberma)
-    @saberma.make_current
+    @store = @saberma.store
 
-    @root = @saberma.store.root_container
-    @root_container = Container.create(:parent_id => @root.id, :type => :focuses)
+    @root = @store.root_container
+    @root_container = @store.containers.create(:parent_id => @root.id, :type => :focuses)
   end
 
   it 'should get root container class' do

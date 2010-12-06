@@ -9,7 +9,7 @@ class ConsumptionsController < InheritedResources::Base
   def notify
     notification = ActiveMerchant::Billing::Integrations::Alipay::Notification.new(request.raw_post)
     if notification.acknowledge && valid?(notification)
-      @consumption = Consumption.find(notification.out_trade_no)
+      @consumption = end_of_association_chain.find(notification.out_trade_no)
       @consumption.pay! if notification.status == "TRADE_FINISHED"
       render :text => "success"
     else
@@ -17,8 +17,12 @@ class ConsumptionsController < InheritedResources::Base
     end
   end
 
-  private
+  protected
+  def begin_of_association_chain
+    store
+  end
 
+  private
   # 确认验证请求是从支付宝发出的
   def valid?(notification)
     url = "http://notify.alipay.com/trade/notify_query.do"

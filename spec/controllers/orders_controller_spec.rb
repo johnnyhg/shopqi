@@ -5,13 +5,14 @@ describe OrdersController do
   include Devise::TestHelpers
   before :each do
     @saberma = Factory(:user_saberma)
+    @store = @saberma.store
+    @payment = @store.payments.create(Factory.attributes_for(:payment))
     request.host = "#{@saberma.store.subdomain}.shopqi.com"
-    @payment = Factory(:payment, :store => @saberma.store)
 
-    @root = @saberma.store.categories.roots.first
-    @category = Factory(:category_man)
-    @root.children << @category
-    @product = Factory(:product, :category => @category)
+    @root = @store.categories.roots.first
+    @category = @store.categories.create(Factory.attributes_for(:category_man))
+    @root.children.push(@category).init_list!
+    @product = @store.products.create(Factory.attributes_for(:product, :category => @category))
   end
 
   describe 'confirm' do
@@ -24,8 +25,8 @@ describe OrdersController do
 
     describe 'login' do
       it 'should redirect to order new page' do
-        @ben = Factory(:member_ben)
-        sign_in @ben
+        @member = @store.members.create(Factory.attributes_for(:member_ben))
+        sign_in @member
 
         get :new
         response.should be_success
@@ -35,10 +36,10 @@ describe OrdersController do
 
   describe :member do
     before :each do
-      @ben = Factory(:member_ben)
-      sign_in @ben
+      @member = @store.members.create(Factory.attributes_for(:member_ben))
+      sign_in @member
 
-      @address = @ben.addresses.create(Factory.attributes_for(:address))
+      @address = @member.addresses.create(Factory.attributes_for(:address))
     end
 
     it 'should be create' do
@@ -69,17 +70,16 @@ describe OrdersController do
       end.should change(Order, :count).by(1)
     end
 
-    it 'should be cancel' do
-      post :create, :order => { :address_id => @address.id.to_s, :payment_id => @payment.id.to_s }, :format => :js
-      order = assigns[:order]
-      post :cancel, :id => order.id.to_s, :format => :js
-      order.state.should eql 'cancelled'
-    end
-
     describe :pay do
       before :each do
-        post :create, :order => { :address_id => @address.id.to_s, :payment_id => @payment.id.to_s }, :format => :js
-        @order = assigns[:order]
+        @order = @member.orders.build(:address_id => @address.id.to_s, :payment => @payment)
+        @order.items.build :product => @product, :price => @product.price, :quantity => 1, :sum => @product.price
+        @order.save
+      end
+
+      it 'should be cancel' do
+        post :cancel, :id => @order.id.to_s, :format => :js
+        assigns[:order].state.should eql 'cancelled'
       end
       
       it 'should be notify' do

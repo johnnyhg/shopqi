@@ -24,7 +24,7 @@ class ContainersController < InheritedResources::Base
 
   protected
   def begin_of_association_chain
-    current_user.store
+    store
   end
 
   def init_parent

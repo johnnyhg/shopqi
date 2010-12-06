@@ -7,10 +7,18 @@ describe CategoriesController do
   describe :normal do
     before :each do
       @saberma = Factory(:user_saberma)
+      @store = @saberma.store
       sign_in @saberma
-      @root = @saberma.store.categories.roots.first
-      @root.children << Factory(:category_man) << Factory(:category_woman)
-      @root.children.init_list!
+
+      @root = @store.categories.roots.first
+      @category_man = @store.categories.create(Factory.attributes_for(:category_man))
+      @category_woman = @store.categories.create(Factory.attributes_for(:category_woman))
+      @root.children.push(@category_man).push(@category_woman).init_list!
+
+      %w( 衬衫 POLO衫 针织衫 外套 ).each do |label| 
+        @category_man.children << @store.categories.build(Factory.attributes_for(:category, :name => label))
+      end
+      @category_man.children.init_list!
     end
 
     it 'should be index' do
@@ -19,7 +27,7 @@ describe CategoriesController do
       json = ActiveSupport::JSON.decode(response.body)
       json.size.should eql 2
       json.map{|h| h['data']}.should eql %w( 男装 女装 )
-      json.last['children'].size.should eql @root.children.last.children.size
+      json.first['children'].size.should eql @category_man.children.size
     end
 
     it 'should show children' do
@@ -66,8 +74,11 @@ describe CategoriesController do
       # 清除，以便新增用户
       Thread.current[:user] = nil
       @ben = Factory(:user_ben)
-      @ben_root = @ben.store.categories.first
-      @ben_root.children << Factory(:category_man) << Factory(:category_woman)
+      @ben_store = @ben.store
+      @ben_root = @ben_store.categories.first
+      @ben_category_man = @ben_store.categories.create(Factory.attributes_for(:category_man))
+      @ben_category_woman = @ben_store.categories.create(Factory.attributes_for(:category_woman))
+      @ben_root.children.push(@ben_category_man).push(@ben_category_woman).init_list!
 
       sign_in @saberma
     end

@@ -3,9 +3,8 @@ class Product
   include Mongoid::Document
   include Mongoid::Timestamps
   include Formtastic::I18n::Naming
-  include Mongoid::BelongToStore
 
-  belong_to_store
+  referenced_in :store
   referenced_in :category
   # 保存分类至根节点的ID，方便查询某个分类及所有子类关联的商品
   field :category_path, :type => Array

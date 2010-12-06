@@ -3,9 +3,9 @@
 class Consumption
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::BelongToStore
   include SimpleEnum
-  belong_to_store
+
+  referenced_in :store
 
   # 购买年次、总额
   field :years, :type => Integer, :default => 1
