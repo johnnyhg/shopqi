@@ -5,9 +5,9 @@
     %title ShopQi工作平台
     =formtastic_stylesheet_link_tag
     =jqgrid_stylesheets
-    = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/user", :cache => true
-    = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree', 'jeditable/jeditable', 'jeditable/checkbox', 'jeditable/on_the_spot'
-    =jqgrid_javascripts
+    = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/user", "jixedbar/jx.stylesheet", :cache => true
+    = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree', 'jeditable/jeditable', 'jeditable/checkbox', 'jeditable/on_the_spot', 'jixedbar/jixedbar.min', 'jixedbar/menu'
+    -#=jqgrid_javascripts
     = csrf_meta_tag
   %body
     #container
@@ -45,5 +45,8 @@
                 Copyright ©
                 = Time.now.year
                 ShopQi.com
+          #menu-bar
+            %ul
+              %li
         #sidebar
           = yield :sidebar
