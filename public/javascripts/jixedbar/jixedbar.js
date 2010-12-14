@@ -52,7 +52,9 @@
 				
 				return this.each(function() {
 					var obj = $(this); // reference to selected element
-					var screen = jQuery(this); // reference to client screen size
+					//var screen = jQuery(this); // reference to client screen size
+                                        //fixed: bar is not in center. 2010.12.12 by saberma
+					var screen = jQuery(window); // reference to client screen size
 					var fullScreen = screen.width(); // get screen width
 					var centerScreen = (fullScreen/2) * (1); // get screen center
 					var hideBar = false; // default bar hide/show status

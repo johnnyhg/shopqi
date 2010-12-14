@@ -68,6 +68,13 @@ pre.
 sudo apt-get update
 sudo apt-get install mongodb-stable
 
+*注意*
+非法关机等操作可能会造成mongodb无法启动，需要手动运行以下语句解锁后重启mongodb
+
+pre.
+mongod --repair
+rm /var/lib/mongodb/mongod.lock
+
 h3. 安装rails ide
 
 请参考rails on vim进行安装 ( "http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles )
@@ -145,6 +152,10 @@ h2. jQuery
 实现商品图片放大
 使用时修改小图片列表的点击事件为鼠标悬停事件，并且修改边框宽度为1px(原为4px)
 注意要指定img元素的rel属性，否则会报js错误
+
+"jixedbar":http://code.google.com/p/jixedbar
+实现任务横条固定显示于最底端
+使用时修正底端横条未居中的问题
 
 h2. 纯js插件
 
