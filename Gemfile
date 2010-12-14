@@ -54,6 +54,7 @@ gem "inherited_resources"
 gem 'compass'
 # css sprite generator
 gem 'lemonade'
+gem 'css_sprite'
 # 使用960.gs css框架
 gem 'compass-960-plugin'
 # 类似37signal的Basecamp产品界面，简洁

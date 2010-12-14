@@ -510,9 +510,9 @@
 
 						/* IE6/IE7 arrow indicator float drop fix: user replaced insertAfter with insertBefore */
 						if (($.browser.msie && ie6) || ($.browser.msie && ie7)) {
-							$("<div />").attr("class", buttonIndicator).insertBefore($(this).parent().find("a")).css({"background-position": "top"}); // IE6 and IE7 fix background position
+							$("<div />").attr("class", buttonIndicator).insertBefore($(this).parent().children("a")).css({"background-position": "top"}); // IE6 and IE7 fix background position
 						} else { // else any other browser
-							$("<div />").attr("class", buttonIndicator).insertAfter($(this).parent().find("a")); // prevent Chrome from wrapping button text
+							$("<div />").attr("class", buttonIndicator).insertAfter($(this).parent().children("a")); // prevent Chrome from wrapping button text
 						}
 						
 						// add click event (button)
@@ -530,7 +530,7 @@
 								} else {
 									buttonIndicator = "jx-arrow-up"; // bottom
 								}
-								$(this).parent().find("div").attr("class", buttonIndicator); // change button indicator
+								$(this).parent().children("div").attr("class", buttonIndicator); // change button indicator
 								
 								$("#jx-menu-con-id").fadeOut(defaults.menuFadeSpeed); // remove/hide menu using fade effect
 								$(this).parent().removeClass("jx-nav-menu-active"); // remove active state for this button (style)
@@ -550,7 +550,7 @@
 								} else {
 									buttonIndicator = "jx-arrow-down";
 								}
-								$(this).parent().find("div").attr("class", buttonIndicator); // change button indicator
+								$(this).parent().children("div").attr("class", buttonIndicator); // change button indicator
 								
 								$("#jx-menu-con-id").css({"display": "none"}); // hide menu container
 								$("#jx-menu-con-id").html("<ul>" + $(this).parent().find("ul").html() + "</ul>");
@@ -598,7 +598,7 @@
 									} else {
 										buttonIndicator = "jx-arrow-up";
 									}
-									$("a[name='" + active_button_name + "']").parent().find("div").attr("class", buttonIndicator);
+									$("a[name='" + active_button_name + "']").parent().children("div").attr("class", buttonIndicator);
 								}
 								
 								button_active = true; // change button's active state

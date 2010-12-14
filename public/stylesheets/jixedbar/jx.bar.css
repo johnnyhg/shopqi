@@ -110,6 +110,11 @@
 		padding:1px;
 	}
 
+	/* custome icon style. by saberma. 2010.12.14 */
+	.jx-bar-button li a.icon:link, .jx-bar-button li a.icon:visited {
+		padding-left:17px;
+	}
+
 	.jx-bar-button li a:hover {
 		font-family:Verdana, Arial, Helvetica, sans-serif;
 		font-size:11px;

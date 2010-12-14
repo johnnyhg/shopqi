@@ -5,7 +5,7 @@
     %title ShopQi工作平台
     =formtastic_stylesheet_link_tag
     =jqgrid_stylesheets
-    = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/user", "jixedbar/jx.stylesheet", :cache => true
+    = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', 'icon_css_sprite', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/user", "jixedbar/jx.stylesheet", :cache => true
     = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree', 'jeditable/jeditable', 'jeditable/checkbox', 'jeditable/on_the_spot', 'jixedbar/jixedbar', 'jixedbar/menu'
     -#=jqgrid_javascripts
     = csrf_meta_tag
@@ -46,14 +46,20 @@
                 = Time.now.year
                 ShopQi.com
           #menu-bar
-            %span.jx-separator-left
-            %div(title='实时显示待处理的订单、咨询、评价等信息') 待办事宜:
             %ul
-              %li
-                =link_to '2010121200001', '#'
+              %li(title='右边将实时显示待处理的订单、咨询、评价等信息') 待办事宜:
+            %span.jx-separator-left
+            %ul
+              %li(title='点击快捷处理订单')
+                =link_to '11111', '#', :class => "icon buy_16"
                 %ul
-                  %li 订单号
-                  %li
-                    =link_to '订单待处理', '#'
+                  %li 
+                    .order_info
+                      订单号
+                      订单号
+                      订单号
+                      订单号
+                      =link_to '订单待处理', '#'
+                      =link_to '订单待处理', '#'
         #sidebar
           = yield :sidebar
