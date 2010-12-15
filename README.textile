@@ -16,12 +16,13 @@ vim 7.2 ("http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles
 
 h2. System Installation
 
+bq. 
 The following process is based on ubuntu 10.04
 
 h3. Softwares that development environment depends 
 
 pre. 
-# Install the dependent libraries, ruby also need to install (or install ruby1.9.2 by rvm will report make: *** [miniprelude.c] Error 1 error)
+# ruby also need to install (or install ruby1.9.2 by rvm will report make: *** [miniprelude.c] Error 1 error)
 sudo apt-get install build-essential bison openssl libreadline6 libreadline-dev curl git-core graphicsmagick \
   zlib1g zlib1g-dev libssl-dev vim libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev subversion autoconf ruby ruby-dev
 # Webrat plug-in required
@@ -30,25 +31,25 @@ sudo apt-get install libxslt1-dev libxml2-dev
 h3. RVM Installation
 
 pre. 
-bash <<(curl http://rvm.beginrescueend.com/releases/rvm-install-head)
+bash << (curl http://rvm.beginrescueend.com/releases/rvm-install-head)
 vim ~/.bashrc
 
-# Add the following statement @~/.bashrc@ the bottom of the file
+#Add the following statement to the bottom of @~/.bashrc@
 @[[-S "$HOME/.rvm/scripts/rvm"]] && source "$HOME/.rvm/scripts/rvm"@
 
 pre. 
-# Install ruby 1.9.2, rails3 ruby version of the recommended
-# Note that Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails 3.0.
-# Ruby Enterprise Edition have these fixed since release 1.8.7-2010.02 though.
-# On the 1.9 front, Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0,
-# So if you want to use Rails 3 with 1.9.x jump on 1.9.2 for smooth sailing.
+#Install ruby 1.9.2, rails3 ruby version of the recommended
+#Note that Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails 3.0.
+#Ruby Enterprise Edition have these fixed since release 1.8.7-2010.02 though.
+#On the 1.9 front, Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0,
+#So if you want to use Rails 3 with 1.9.x jump on 1.9.2 for smooth sailing.
 rvm install 1.9.2-head
 rvm 1.9.2-head --default
 
 h3. Rails3 Installation
 
 pre. 
-gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-format thor bundler i18n - no-ri - no-rdoc
+gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-format thor bundler i18n --no-ri --no-rdoc
 gem install rails --pre --no-ri --no-rdoc
 #If the following error report, you will need to manually download and install rack1.1.0 RubyGems.org the gem package
 ## ERROR: Error installing rails:
@@ -56,10 +57,10 @@ gem install rails --pre --no-ri --no-rdoc
 
 h3. Mongodb Database Installation
 
-Added to the @/etc/apt/source.list@
+Add the following statement to @/etc/apt/source.list@
 
 pre. 
-# Mongodb source
+#Mongodb source
 deb http://downloads.mongodb.org/distros/ubuntu 10.4 10gen
 
 Execute in the terminal
@@ -68,59 +69,66 @@ pre.
 sudo apt-get update
 sudo apt-get install mongodb-stable
 
-* Note *
+bq. 
+*Note:*
 Illegal shutdown operations may cause mongodb not start, you need to manually run the following statement unlock mongod before restart
 
 pre. 
 mongod --repair
 rm /var/lib/mongodb/mongod.lock
 
-h3. Install Rails IDE
+h3. Rails IDE Installation
 
 Please refer to rails on vim installation ("http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles)
 
 h1. Development
 
 pre. 
-# Load the basic data
+#Load the basic data
 rake db:seed
-# Start the development environment applications
+#Start the development
 bundle exec unicorn
 
-Open the url in browser
+Click the following url to see the page
 
-"ShopQi official website http://lvh.me:8080":http://lvh.me:8080
-"Shop Back http://lvh.me:8080/user_root":http://lvh.me:8080/user_root
-"Shop layout manager http://vancl.lvh.me:8080":http://vancl.lvh.me:8080
+"ShopQi official website @ http://lvh.me:8080":http://lvh.me:8080
+"Shop Admin @ http://lvh.me:8080/user_root":http://lvh.me:8080/user_root
+"Shop layout manager @ http://vancl.lvh.me:8080":http://vancl.lvh.me:8080
 
 h1. test
 
-* Cucumber *
+*Cucumber*
 
 pre. 
-# View cucumber supported languages
+#View cucumber supported languages
 cucumber --i18n help
-# View cucumber Chinese grammar
+#View cucumber Chinese grammar
 cucumber --i18n zh-CN
 
-# Run the function test
+pre. 
+#Run the function test
 spork cuc &
 cucumber
 # You can specify the test cases to run focus marker
 cucumber -t @ focus
 
-* Rspec *
+*Rspec*
 
+bq. 
 If the gem is equipped with multiple versions of rspec, you can use the @ bundle exec rspec spec @ instead of @ rspec spec @
 
 pre. 
 spork rspec &
 bundle exec rspec spec -X
-# You can specify a specific example name of the test run
+#You can specify a specific example name of the test run
 bundle exec rspec spec -e create -X
 
-* Why *
-mongodb:flexibility to change fields, no need to control migration, better management of many relationship
+h1. Why We select
+
+h2. mongodb
+
+bq. 
+flexibility to change fields, no need to manage migration, better management of many relationship
 
 h1. plugins Introduction
 
@@ -145,8 +153,10 @@ We has been modified: the width of float panel should not exceed Container_24 wi
 
 "Qtip":http://craigsworks.com/projects/qtip
 show operation panel while mouse hovers
-Download the official release of version 1.0.0-rc3 two problems: Unable to use jquery-1.4.2, you can manually fix; call destroy, reported state undefined error
-"The latest development version of the above two issues have been fixed": http://bazaar.launchpad.net/~craig.craigsworks/qtip/1.0/files
+The official version 1.0.0-rc3 has two problems: 
+1. Unable to use jquery-1.4.2, you can manually fix;
+2. Call destroy method will report 'state undefined error'
+"The latest development version of the above two issues have been fixed!":http://bazaar.launchpad.net/~craig.craigsworks/qtip/1.0/files
 
 "Cloud-zoom":http://www.professorcloud.com/mainsite/cloud-zoom.htm
 Zoom the product image
@@ -168,9 +178,9 @@ h1. Contribute
 If you are interested in the product, you can:
 
 # Fork this
-# Add features or fix Bug
-# Write the corresponding test case test
-# Send a pull request submitted
+# Add features or fix bug
+# Write the corresponding test case
+# Send a pull request
 
 How to solve the commit conflict (ie github's forkqueue show "Will likely not apply cleanly"), you need to manually merge the branch
 
@@ -184,18 +194,18 @@ git push origin master
 Click here to see which features need to be develope
 "Http://www.pivotaltracker.com/projects/84595":http://www.pivotaltracker.com/projects/84595
 
-shopqi code follow the git standardized development process, please refer to "http://saberma.me/git/2010/10/25/git-flow.html":http://saberma.me/git/2010/10/25/git-flow.html
+Shopqi follow the git standardized development process, please refer to "http://saberma.me/git/2010/10/25/git-flow.html":http://saberma.me/git/2010/10/25/git-flow.html
 
 h1. Support
 
 If you need any help, you can:
 
-# Add my gtalk to get direct communication: mahb45 # gmail.com
+# Add gtalk account to get direct communication: mahb45 # gmail.com
 # Send email: mahb45 # gmail.com
 
 h1. Powered By
 
-!http://www.ihost-mm.net/images/wpThumbnails/ruby-logo-512.png!:http://www.ruby-lang.org/!http://rubyonrails.org/images/rails.png!:http://rubyonrails.org !http://www.mongodb.org/download/attachments/132305/PoweredMongoDBgreen50.png?version=1&modificationDate=1247081595817!:http://www.mongodb.org/ !http://haml-lang.com/images/haml.gif!:http://haml-lang.com !http://sass-lang.com/images/sass.gif!:http://sass- lang.com !http://compass-style.org/images/compass.png?1276447843!:http://compass-style.org
+!http://www.ihost-mm.net/images/wpThumbnails/ruby-logo-512.png!:http://www.ruby-lang.org/!http://rubyonrails.org/images/rails.png!:http://rubyonrails.org !http://www.mongodb.org/download/attachments/132305/PoweredMongoDBgreen50.png?version=1&modificationDate=1247081595817!:http://www.mongodb.org/ !http://haml-lang.com/images/haml.gif!:http://haml-lang.com !http://sass-lang.com/images/sass.gif!:http://sass-lang.com !http://compass-style.org/images/compass.png?1276447843!:http://compass-style.org
 
 !http://960.gs/img/h1.gif!:http://960.gs
 
