@@ -10,7 +10,7 @@ cn:
       store:
         name: 名称
         title: 标题
-        desc: 描述
+        description: 描述
         keywords: 关键字
         detail: 详细地址
       consumption:
@@ -146,12 +146,23 @@ cn:
     settings: 设置
     logout: 退出
 
-  # inherited_resource提示消息
+  # inherited_resource flash message(use responders gem)
   flash:
-    products:
+    actions:
       create:
-        notice: "%{cn_resource_name}添加成功!"
-        alert: "%{cn_resource_name}添加失败!"
+        notice: "%{resource_name}添加成功!"
+        alert: "%{resource_name}添加失败!"
+      update:
+        notice: "%{resource_name}更新成功!"
+        alert: "%{resource_name}更新失败!"
+      destroy:
+        notice: "%{resource_name}删除成功!"
+        alert: "%{resource_name}删除失败!"
+    #specify controller
+    #orders:
+    #  create:
+    #    notice: "%{resource_name}提交成功!"
+    #    alert: "%{resource_name}提交失败!"
 
   helper:
     label:
