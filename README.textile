@@ -115,7 +115,7 @@ cucumber -t @ focus
 *Rspec*
 
 bq. 
-If the gem is equipped with multiple versions of rspec, you can use the @ bundle exec rspec spec @ instead of @ rspec spec @
+If the gem is equipped with multiple versions of rspec, you can use the @bundle exec rspec spec@ instead of @rspec spec@
 
 pre. 
 spork rspec &
@@ -218,6 +218,8 @@ Products follow the license: "GNU Affero GPL 3":http://www.gnu.org/licenses/agpl
 h1. Learning Resources
 
 "Rails3-mongoid-devise the framework of the sample project":http://github.com/fortuity/rails3-mongoid-devise
+"My five favorite things about rails 3":http://www.engineyard.com/blog/2009/my-five-favorite-things-about-rails-3/
+"three reasons love responder":http://weblog.rubyonrails.org/2009/8/31/three-reasons-love-responder
 "Git Cheat Sheet":http://github.com/guides/git-cheat-sheet
 
 h1. References

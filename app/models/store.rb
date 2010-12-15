@@ -26,7 +26,7 @@ class Store
   # 网店设置
   field :name
   field :title
-  field :desc
+  field :description
   field :keywords
   field :province
   field :city

@@ -50,16 +50,12 @@
               %li(title='右边将实时显示待处理的订单、咨询、评价等信息') 待办事宜:
             %span.jx-separator-left
             %ul
-              %li(title='点击快捷处理订单')
-                =link_to '11111', '#', :class => "icon buy_16"
-                %ul
-                  %li 
-                    .order_info
-                      订单号
-                      订单号
-                      订单号
-                      订单号
-                      =link_to '订单待处理', '#'
-                      =link_to '订单待处理', '#'
+              -store.orders.where(:state => :payed).each do |order|
+                %li(title='点击快捷处理订单')
+                  =link_to order.number, '#', :class => "icon buy_16"
+                  %ul
+                    %li 
+                      .bar_menu_info
+                        ==订单号:#{order.number}
         #sidebar
           = yield :sidebar

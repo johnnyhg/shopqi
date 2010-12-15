@@ -14,6 +14,9 @@ saberma = User.create(:email => 'saberma@shopqi.com', :password => '666666', :lo
 store = saberma.store
 store.update_attributes :subdomain => 'vancl'
 store.payments.create :payment_type_id => PaymentType.first.id, :is_show => true
+#member
+store.members.create(:email => 'saberma@shopqi.com', :password => '666666', :login => :saberma)
+
 #logo
 logo = store.logo_image
 logo.words << Word.new(:x => 0, :y => 2, :font => :yahei_bold, 'font-size' => '36px', :color => '#000000', :text => :VANCL)
