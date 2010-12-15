@@ -16,11 +16,11 @@ vim 7.2 ("http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles
 
 h2. System Installation
 
-The following process is based on ubuntu 10.04 installed operating system
+The following process is based on ubuntu 10.04
 
 h3. Softwares that development environment depends 
 
-pre.
+pre. 
 # Install the dependent libraries, ruby also need to install (or install ruby1.9.2 by rvm will report make: *** [miniprelude.c] Error 1 error)
 sudo apt-get install build-essential bison openssl libreadline6 libreadline-dev curl git-core graphicsmagick \
   zlib1g zlib1g-dev libssl-dev vim libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev subversion autoconf ruby ruby-dev
@@ -29,14 +29,14 @@ sudo apt-get install libxslt1-dev libxml2-dev
 
 h3. RVM Installation
 
-pre.
+pre. 
 bash <<(curl http://rvm.beginrescueend.com/releases/rvm-install-head)
 vim ~/.bashrc
 
 # Add the following statement @~/.bashrc@ the bottom of the file
 @[[-S "$HOME/.rvm/scripts/rvm"]] && source "$HOME/.rvm/scripts/rvm"@
 
-pre.
+pre. 
 # Install ruby 1.9.2, rails3 ruby version of the recommended
 # Note that Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails 3.0.
 # Ruby Enterprise Edition have these fixed since release 1.8.7-2010.02 though.
@@ -47,7 +47,7 @@ rvm 1.9.2-head --default
 
 h3. Rails3 Installation
 
-pre.
+pre. 
 gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-format thor bundler i18n - no-ri - no-rdoc
 gem install rails --pre --no-ri --no-rdoc
 #If the following error report, you will need to manually download and install rack1.1.0 RubyGems.org the gem package
@@ -58,20 +58,20 @@ h3. Mongodb Database Installation
 
 Added to the @/etc/apt/source.list@
 
-pre.
+pre. 
 # Mongodb source
 deb http://downloads.mongodb.org/distros/ubuntu 10.4 10gen
 
 Execute in the terminal
 
-pre.
+pre. 
 sudo apt-get update
 sudo apt-get install mongodb-stable
 
 * Note *
 Illegal shutdown operations may cause mongodb not start, you need to manually run the following statement unlock mongod before restart
 
-pre.
+pre. 
 mongod --repair
 rm /var/lib/mongodb/mongod.lock
 
@@ -81,7 +81,7 @@ Please refer to rails on vim installation ("http://github.com/saberma/vimfiles":
 
 h1. Development
 
-pre.
+pre. 
 # Load the basic data
 rake db:seed
 # Start the development environment applications
@@ -97,7 +97,7 @@ h1. test
 
 * Cucumber *
 
-pre.
+pre. 
 # View cucumber supported languages
 cucumber --i18n help
 # View cucumber Chinese grammar
@@ -113,7 +113,7 @@ cucumber -t @ focus
 
 If the gem is equipped with multiple versions of rspec, you can use the @ bundle exec rspec spec @ instead of @ rspec spec @
 
-pre.
+pre. 
 spork rspec &
 bundle exec rspec spec -X
 # You can specify a specific example name of the test run
@@ -174,7 +174,7 @@ If you are interested in the product, you can:
 
 How to solve the commit conflict (ie github's forkqueue show "Will likely not apply cleanly"), you need to manually merge the branch
 
-pre.
+pre. 
 git remote add shopqi git://github.com/saberma/shopqi.git
 git pull shopqi master
 # fix file conflict manually ...
