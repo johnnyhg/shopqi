@@ -76,11 +76,11 @@ class Order
   validates_presence_of :items
   validates_length_of :description, :maximum => 100
 
+  before_validation :set_store
   before_create :set_address
-  before_create :set_store
 
   def set_store
-    self.store = member.store
+    self.store ||= member.store
   end
 
   def set_address

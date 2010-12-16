@@ -5,7 +5,7 @@
     %title ShopQi工作平台
     =formtastic_stylesheet_link_tag
     =jqgrid_stylesheets
-    = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', 'icon_css_sprite', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/user", "jixedbar/jx.stylesheet", :cache => true
+    = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', 'icon_css_sprite', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "jixedbar/jx.stylesheet", "compiled/user", :cache => true
     = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree', 'jeditable/jeditable', 'jeditable/checkbox', 'jeditable/on_the_spot', 'jixedbar/jixedbar', 'jixedbar/menu'
     -#=jqgrid_javascripts
     = csrf_meta_tag
@@ -49,13 +49,6 @@
             %ul
               %li(title='右边将实时显示待处理的订单、咨询、评价等信息') 待办事宜:
             %span.jx-separator-left
-            %ul
-              -store.orders.where(:state => :payed).each do |order|
-                %li(title='点击快捷处理订单')
-                  =link_to order.number, '#', :class => "icon buy_16"
-                  %ul
-                    %li 
-                      .bar_menu_info
-                        ==订单号:#{order.number}
+            %ul= render :partial => "orders/tip", :collection => store.orders.where(:state => :payed), :as => :order
         #sidebar
           = yield :sidebar
