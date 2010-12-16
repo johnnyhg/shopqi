@@ -18,6 +18,7 @@ store.payments.create :payment_type_id => PaymentType.first.id, :is_show => true
 store.members.create(:email => 'saberma@shopqi.com', :password => '666666', :login => :saberma)
 
 #logo
+store.reload          #fixed:undefined method `id_criteria' for #<Array:0xb21a18c>
 logo = store.logo_image
 logo.words << Word.new(:x => 0, :y => 2, :font => :yahei_bold, 'font-size' => '36px', :color => '#000000', :text => :VANCL)
 logo.words << Word.new(:x => 143, :y => 0, :font => :yahei_bold, 'font-size' => '36px', :color => '#89060C', :text => '凡客诚品')
@@ -116,7 +117,7 @@ category_root.children.init_list!
     :price => 99
   }
 ].each do |attrs|
-  Product.create attrs
+  store.products.create attrs
 end
 
 #导航
@@ -127,14 +128,14 @@ end
   { :name => '网站联盟', :url => '/union' },
   { :name => '帮助中心', :url => '/help' }
 ].each do |attributes|
-  store.navs << Nav.new(attributes)
+  store.navs << store.navs.build(attributes)
 end
 store.navs.init_list!
 store.save
 
 #菜单
 %w( 首页 男装 女装 童装 鞋 配饰 家居 ).each do |label|
-  store.menus << Menu.new(:name => label, :url => '/')
+  store.menus << store.menus.build(:name => label, :url => '/')
 end
 store.menus.init_list!
 store.save

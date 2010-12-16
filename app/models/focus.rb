@@ -17,6 +17,6 @@ class Focus
   before_create :init_image
 
   def init_image
-    self.image = Image.create(:width => 700, :height => 390)
+    self.image = store.images.create(:width => 700, :height => 390)
   end
 end

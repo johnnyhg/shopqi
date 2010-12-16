@@ -16,9 +16,14 @@ class ImagesController < InheritedResources::Base
   end
 
   def upload
-    @image = params[:id].blank? ? Image.create(params[:image]) : Image.find(params[:id])
+    @image = params[:id].blank? ? end_of_association_chain.create(params[:image]) : end_of_association_chain.find(params[:id])
     @background = Background.new params[:background]
     @image.backgrounds << @background
     @background.save
+  end
+
+  protected
+  def begin_of_association_chain
+    store
   end
 end

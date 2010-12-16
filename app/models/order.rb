@@ -19,7 +19,7 @@ class Order
   has_enum :receive, :enums => [[:all, 0, "工作日、双休日与假日均可送货"],[:holiday, 1, "只有双休日、假日送货（工作日不用送货）"], [:weekday, 2, "只有工作日送货（双休日、假日不用送）"], [:school, 3, "学校地址（该地址白天没人，请尽量安排其他时间送货）"]]
 
   field :number
-  field :state
+  STATE_FIELD = %w(state pay_state ship_state)
 
   field :description
 
@@ -34,20 +34,30 @@ class Order
     field attr
   end
 
-  # 状态
-  state_machine do
+  # 支付状态
+  state_machine :state do
     #@see cn.yml(state)
-    state :unpay
+    state :normal
+    state :disabled
     state :cancelled
+
+    # 订单事件
+    event :cancel do
+      transitions :to => :cancelled, :from => :normal
+    end
+
+    event :disable do
+      transitions :to => :disabled, :from => :normal
+    end
+  end
+
+  # 支付状态
+  state_machine :pay_state do
+    state :unpay
     state :pay_wait
     state :pay_unknown_error
     state :payed_wait_send
     state :payed
-
-    # 订单事件
-    event :cancel do
-      transitions :to => :cancelled, :from => :unpay
-    end
 
     event :pend_payment do
       transitions :to => :pay_wait, :from => :unpay
@@ -63,6 +73,16 @@ class Order
 
     event :pay do
       transitions :to => :payed, :from => :unpay
+    end
+  end
+
+  # 发货状态
+  state_machine :ship_state do
+    state :unshipped
+    state :shipped
+
+    event :ship do
+      transitions :to => :shipped, :from => :unshipped
     end
   end
 
@@ -90,19 +110,9 @@ class Order
     end
   end
 
-  def state_name
-    I18n.t("state.#{state}")
+  STATE_FIELD.each do |name|
+    define_method "#{name}_name" do                    # def pay_state_name
+      I18n.t("machine.#{name}.#{state}")               #   I18n.t("machine.pay_state.#{state}")
+    end                                                # end
   end
-end
-
-class OrderItem
-  include Mongoid::Document
-  embedded_in :order, :inverse_of => :items
-
-  referenced_in :product
-
-  # 价钱、数量、小计
-  field :price, :type => Float
-  field :quantity, :type => Integer
-  field :sum, :type => Float
 end

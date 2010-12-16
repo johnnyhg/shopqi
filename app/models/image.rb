@@ -4,13 +4,14 @@ class Image
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :width, :type => Integer, :default => 255
-  field :height, :type => Integer, :default => 44
-
   embeds_many :backgrounds
   embeds_many :words
+  referenced_in :store
   references_one :container
   references_one :focus, :class_name => 'Focus'
+
+  field :width, :type => Integer, :default => 255
+  field :height, :type => Integer, :default => 44
 
   #mongoid出于性能上的考虑不会触发子记录的callback，导致carrierwave无法将生成图片的路径写入，这里需要手动触发
   #http://github.com/durran/mongoid/issues/issue/35
@@ -24,6 +25,7 @@ class Image
   end
 
   after_save :render
+  after_destroy :cleanup
 
   #生成图片
   def render
@@ -55,6 +57,10 @@ class Image
       end
     end
     magick.write path
+  end
+
+  def cleanup
+    FileUtils.rm_f path
   end
 
   def font_path(font)

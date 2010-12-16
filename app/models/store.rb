@@ -5,7 +5,7 @@ class Store
   include Mongoid::Timestamps
   include Mongoid::Sortable
 
-  [:users, :members, :categories, :products, :pages, :hots, :containers, :focuses, :payments, :consumptions, :orders].each do |children|
+  [:users, :members, :categories, :products, :pages, :hots, :containers, :focuses, :payments, :consumptions, :orders, :images].each do |children|
     references_many children, :dependent => :destroy
   end
   has_many_sortable :navs, :menus
@@ -40,8 +40,8 @@ class Store
   after_create :init_child
 
   def init_image
-    self.logo_image_id = Image.create(:width => 300, :height => 40).id
-    self.telephone_image_id = Image.create(:width => 190, :height => 50).id
+    self.logo_image_id = images.create(:width => 300, :height => 40).id
+    self.telephone_image_id = images.create(:width => 190, :height => 50).id
   end
 
   def init_valid_date
@@ -69,11 +69,11 @@ class Store
   end
 
   def telephone_image
-    Image.find(self.telephone_image_id)
+    images.find(self.telephone_image_id)
   end
 
   def logo_image
-    Image.find(self.logo_image_id)
+    images.find(self.logo_image_id)
   end
 
   def root_container
