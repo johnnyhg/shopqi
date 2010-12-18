@@ -1,15 +1,15 @@
 GIT
-  remote: git://github.com/netizer/transitions.git
-  revision: 3c30cf7d5154180c90d0112337ebc0752f821f00
-  specs:
-    transitions (0.0.8)
-
-GIT
   remote: git://github.com/saberma/activemerchant_patch_for_china.git
   revision: a2d6f061aef47194730dca2fc22038ce7b4ebef5
   specs:
     activemerchant_patch_for_china (0.1.5)
       activemerchant (>= 1.4.2)
+
+GIT
+  remote: git://github.com/saberma/transitions.git
+  revision: 83cbc41cdc4670887b855a95a9749c66efcfe5d8
+  specs:
+    transitions (0.0.8)
 
 GEM
   remote: http://rubygems.org/

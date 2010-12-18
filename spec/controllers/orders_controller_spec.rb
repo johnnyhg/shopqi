@@ -91,7 +91,7 @@ describe OrdersController do
         notification.should_receive(:status).and_return("TRADE_FINISHED")
 
         post :notify
-        assigns[:order].state.should eql 'payed'
+        assigns[:order].pay_state.should eql 'payed'
       end
       
       it 'should be show pay success' do

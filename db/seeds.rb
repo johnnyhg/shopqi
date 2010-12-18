@@ -15,7 +15,8 @@ store = saberma.store
 store.update_attributes :subdomain => 'vancl'
 store.payments.create :payment_type_id => PaymentType.first.id, :is_show => true
 #member
-store.members.create(:email => 'saberma@shopqi.com', :password => '666666', :login => :saberma)
+member = store.members.create(:email => 'saberma@shopqi.com', :password => '666666', :login => :saberma)
+member.addresses.create :name => :saberma, :province => '440000', :city => '440300', :district => '440305', :detail => '科技园南区315', :zipcode => '518057', :mobile => '13928xx28xx'
 
 #logo
 store.reload          #fixed:undefined method `id_criteria' for #<Array:0xb21a18c>

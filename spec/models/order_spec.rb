@@ -37,7 +37,7 @@ describe Order do
     end
 
     it 'should be save' do
-     @order.state.should eql 'unpay'
+     @order.pay_state.should eql 'unpay'
      @order.store.should eql @store
     end
 

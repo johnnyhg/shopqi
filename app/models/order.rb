@@ -20,6 +20,9 @@ class Order
 
   field :number
   STATE_FIELD = %w(state pay_state ship_state)
+  STATE_FIELD.each do |name|
+    field name
+  end
 
   field :description
 

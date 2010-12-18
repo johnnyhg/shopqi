@@ -27,7 +27,7 @@ gem 'mongoid_acts_as_tree'
 gem 'sentient_user'
 
 # 状态机，官方版本暂不支持mongoid
-gem "transitions", :git => 'git://github.com/netizer/transitions.git', :require => ["transitions", "mongoid/transitions"]
+gem "transitions", :git => 'git://github.com/saberma/transitions.git', :require => ["transitions", "mongoid/transitions"]
 
 # 文件上传
 # 2010.08.13 源版本不支持mongoid校验，已提交补丁，已合并至官方版本
