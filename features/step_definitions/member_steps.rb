@@ -1,6 +1,6 @@
 # coding: utf-8
 假如 /^我已经以会员(.+)成功注册$/ do |email|
-  @member = Factory(:member, :email => email)
+  @member = @store.members.create(Factory.attributes_for(:member, :email => email))
 end
 
 假如 /^我已经以会员(.+)登录$/ do |email|
