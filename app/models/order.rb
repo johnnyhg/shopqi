@@ -102,6 +102,10 @@ class Order
   before_validation :set_store
   before_create :set_address
 
+  def self.payed_list
+    self.where(:pay_state => :payed, :ship_state.ne => :shipped)
+  end
+
   def set_store
     self.store ||= member.store
   end

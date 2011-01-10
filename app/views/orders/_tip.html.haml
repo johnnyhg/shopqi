@@ -1,4 +1,4 @@
-%li(title="点击快捷处理订单#{order.number}")
+=content_tag_for :li, order, :title => "点击快捷处理订单#{order.number}" do
   =link_to order.number, '#', :class => "icon buy_16"
   %ul
     %li 
@@ -19,4 +19,4 @@
         %div=order.receive_name
         %div
           处理方式:
-          = link_to "已发货", '#'
+          = link_to "已发货", ship_order_path(order), :remote => true, :method => :post

@@ -103,6 +103,15 @@ describe OrdersController do
         assigns[:order].should eql @order
       end
 
+      describe 'user' do
+        it 'should change order state' do
+          sign_in @saberma
+          post :ship, :id => @order.id.to_s, :format => :js
+          @order.ship_state.should eql :shipped
+          response.should be_success
+        end
+      end
+
     end
   end
 

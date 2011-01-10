@@ -49,6 +49,6 @@
             %ul
               %li(title='右边将实时显示待处理的订单、咨询、评价等信息') 待办事宜:
             %span.jx-separator-left
-            %ul= render :partial => "orders/tip", :collection => store.orders.where(:state => :payed), :as => :order
+            %ul= render :partial => "orders/tip", :collection => store.orders.payed_list, :as => :order
         #sidebar
           = yield :sidebar

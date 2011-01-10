@@ -74,12 +74,20 @@ bq.
 Illegal shutdown operations may cause mongodb not start, you need to manually run the following statement unlock mongod before restart
 
 pre. 
+sudo rm /var/lib/mongodb/mongod.lock
 mongod --repair
-rm /var/lib/mongodb/mongod.lock
 
 h3. Rails IDE Installation
 
 Please refer to rails on vim installation ("http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles)
+
+h2. Get the shopqi source
+
+pre. 
+cd ~/Documents
+git clone git://github.com/saberma/shopqi.git 
+#install gem
+bundle install
 
 h1. Development
 

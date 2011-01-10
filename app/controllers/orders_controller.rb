@@ -1,9 +1,10 @@
 # encoding: utf-8
 class OrdersController < InheritedResources::Base
-  prepend_before_filter :authenticate_member!, :except => [:car]
+  prepend_before_filter :authenticate_member!, :only => [:new, :create, :pay, :cancel, :show]
+  prepend_before_filter :authenticate_user!, :only => [:send_good, :index]
   prepend_before_filter :store_valid!
-  actions :new, :create, :index, :show, :destroy
-  respond_to :js, :only => [ :create ]
+  actions :new, :create, :index, :show
+  respond_to :js, :only => [ :create,  :send_good ]
   layout 'members'
 
   # 提交订单
@@ -41,6 +42,11 @@ class OrdersController < InheritedResources::Base
   #TODO: 先选择订单取消原因
   def cancel
     resource.cancel!
+  end
+
+  # 已发货
+  def ship
+    resource.ship!
   end
 
   def car
