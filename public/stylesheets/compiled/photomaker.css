@@ -1,0 +1,52 @@
+@charset "UTF-8";
+@font-face { font-family: "yahei_bold"; src: local("☺"), url(/images/logo/yahei_bold.ttf) format('truetype'); }
+
+@font-face { font-family: "yahei"; src: local("☺"), url(/images/logo/yahei.ttf) format('truetype'); }
+
+@font-face { font-family: "haibao"; src: local("☺"), url(/images/logo/haibao.ttf) format('truetype'); }
+
+@font-face { font-family: "liuye"; src: local("☺"), url(/images/logo/liuye.ttf) format('truetype'); }
+
+@font-face { font-family: "katong"; src: local("☺"), url(/images/logo/katong.ttf) format('truetype'); }
+
+.add { background: url('/images/photomaker.png?1287578110'); }
+
+.upload { background: url('/images/photomaker.png?1287578110') 0 -32px; }
+
+.generate { background: url('/images/photomaker.png?1287578110') 0 -64px; }
+
+.yahei_bold { background: url('/images/photomaker.png?1287578110') 0 -96px; }
+
+.yahei { background: url('/images/photomaker.png?1287578110') 0 -128px; }
+
+.haibao { background: url('/images/photomaker.png?1287578110') 0 -160px; }
+
+.katong { background: url('/images/photomaker.png?1287578110') 0 -192px; }
+
+.liuye { background: url('/images/photomaker.png?1287578110') 0 -224px; }
+
+.small { background: url('/images/photomaker.png?1287578110') 0 -256px; }
+
+.middle { background: url('/images/photomaker.png?1287578110') 0 -288px; }
+
+.big { background: url('/images/photomaker.png?1287578110') 0 -320px; }
+
+.black { background: url('/images/photomaker.png?1287578110') 0 -352px; }
+
+.red_dark { background: url('/images/photomaker.png?1287578110') 0 -384px; }
+
+.red { background: url('/images/photomaker.png?1287578110') 0 -416px; }
+
+.green { background: url('/images/photomaker.png?1287578110') 0 -448px; }
+
+.blue { background: url('/images/photomaker.png?1287578110') 0 -480px; }
+
+.grey { background: url('/images/photomaker.png?1287578110') 0 -512px; }
+
+.logo_bg { background: url('/images/photomaker.png?1287578110') 0 -544px; }
+
+.banner_bg { background: url('/images/photomaker.png?1287578110') 0 -576px; }
+
+.focus_bg { background: url('/images/photomaker.png?1287578110') 0 -608px; }
+
+.close { background: url('/images/photomaker.png?1287578110') 0 -640px; }

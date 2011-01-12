@@ -88,6 +88,11 @@ cd ~/Documents
 git clone git://github.com/saberma/shopqi.git 
 #install gem
 bundle install
+#get juggernaut
+git submodule update --init
+pushd vendor/others/juggernaut
+git submodule update --init
+popd
 
 h1. Development
 
@@ -96,6 +101,11 @@ pre.
 rake db:seed
 #Start the development
 bundle exec unicorn
+#Start juggernaut(use for showing realtime tasks)
+redis-server
+pushd vendor/others/juggernaut
+#if redis server doesn't start, we will get: Error: ECONNREFUSED, Connection refused
+sudo node server.js
 
 Click the following url to see the page
 

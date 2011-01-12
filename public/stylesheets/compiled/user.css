@@ -1,0 +1,24 @@
+@charset "UTF-8";
+#upload_photo { float: right; }
+
+#photos { clear: both; }
+#photos li { float: left; margin: 5px; }
+#photos li img { border: 1px solid #dddddd; }
+
+#upgrade { margin-bottom: 10px; }
+#upgrade p, #upgrade fieldset { padding: 0 10px; }
+
+/*底端菜单 */
+.bar_menu_info { background-color: white; padding: 5px; }
+.bar_menu_info div { margin: 5px 0; }
+.bar_menu_info .buttons { margin-top: 10px; color: red; }
+
+/*通用列表 */
+.list ul { text-align: center; margin: 0; padding: 0; border: 0; outline: 0; overflow: hidden; *zoom: 1; }
+.list ul li { list-style-image: none; list-style-type: none; margin-left: 0px; white-space: nowrap; display: inline; float: left; padding-left: 8px; padding-right: 8px; }
+.list ul li:first-child, .list ul li.first { padding-left: 0; }
+.list ul li:last-child, .list ul li.last { padding-right: 0; }
+.list ul li.name { text-align: left; }
+.list ul.head { color: white; background-color: #7a7f89; }
+.list ul.item { padding: 5px 0; }
+.list ul.item.even { background-color: #f5f5f5; }

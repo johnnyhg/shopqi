@@ -1,0 +1,12 @@
+ul.slideshow { list-style: none; width: 700px; height: 390px; overflow: hidden; position: relative; margin: 0; padding: 0; }
+ul.slideshow li.focus { position: absolute; left: 0; top: 0; }
+ul.slideshow li.focus.show { z-index: 500; }
+ul img { border: none; }
+
+.slideshow-caption { width: 700px; position: absolute; top: 0; left: 0; z-index: 500; }
+.slideshow-caption .slideshow-caption-container { margin: 0; padding: 0; border: 0; outline: 0; overflow: hidden; *zoom: 1; text-align: center; z-index: 1000; }
+.slideshow-caption .slideshow-caption-container li { list-style-image: none; list-style-type: none; margin-left: 0px; white-space: nowrap; display: inline; float: left; padding-left: 1px; padding-right: 1px; }
+.slideshow-caption .slideshow-caption-container li:first-child, .slideshow-caption .slideshow-caption-container li.first { padding-left: 0; }
+.slideshow-caption .slideshow-caption-container li:last-child, .slideshow-caption .slideshow-caption-container li.last { padding-right: 0; }
+.slideshow-caption .slideshow-caption-container li a { display: block; line-height: 30px; height: 33px; color: white; background: black; }
+.slideshow-caption h3 { margin: 0; padding: 0; font-size: 14px; }
