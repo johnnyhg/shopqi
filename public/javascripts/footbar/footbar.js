@@ -10,6 +10,9 @@
  * Launch  : January 2010
  * Version : 1.0.0
  * Released: Tuesday 11th January, 2010 - 00:00
+ *
+ * http://www.sohtanaka.com/web-design/facebook-style-footer-admin-panel-part-1/
+ * http://www.sohtanaka.com/web-design/facebook-style-footer-admin-panel-part-2/
  */
 (function($) {
   var Footbar = function(element, options){
