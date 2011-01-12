@@ -67,6 +67,8 @@ gem "activemerchant"
 # 支付指定sign key参数
 gem "activemerchant_patch_for_china", :git => 'git://github.com/saberma/activemerchant_patch_for_china.git'
 gem "httparty"
+# 实时(另外需要安装node.js和redis)
+gem "juggernaut"
 
 # 调试
 gem "awesome_print", :require => 'ap'

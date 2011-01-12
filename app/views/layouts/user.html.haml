@@ -49,10 +49,10 @@
             %ul#tasks
               %li.home(title='右边将实时显示待处理的订单、咨询、评价等信息')
                 %a 待办事宜:
+              =render :partial => "orders/tip", :collection => store.orders.payed_list, :as => :order
         #sidebar
           = yield :sidebar
 
 :javascript
   $('#footbar').footbar();
-  $('#tasks').append('#{escape_javascript(render(:partial => "orders/tip", :collection => store.orders.payed_list, :as => :order))}')
   $('#tasks').append('#{escape_javascript(render(:partial => "orders/tip", :collection => store.orders.payed_list, :as => :order))}')

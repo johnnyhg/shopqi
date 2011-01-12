@@ -124,6 +124,8 @@ GEM
       responders (~> 0.6.0)
     json (1.4.6)
     json_pure (1.4.6)
+    juggernaut (2.0.1)
+      redis
     kgio (2.0.0)
     launchy (0.3.7)
       configuration (>= 0.0.5)
@@ -189,6 +191,7 @@ GEM
     rake (0.8.7)
     rb-inotify (0.8.3)
       ffi (>= 0.5.0)
+    redis (2.1.1)
     responders (0.6.2)
     rmagick (2.13.1)
     rspec (2.2.0)
@@ -265,6 +268,7 @@ DEPENDENCIES
   hpricot
   httparty
   inherited_resources
+  juggernaut
   launchy
   lemonade
   livereload
