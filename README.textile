@@ -103,84 +103,6 @@ Click the following url to see the page
 "Shop Admin @ http://lvh.me:8080/user_root":http://lvh.me:8080/user_root
 "Shop layout manager @ http://vancl.lvh.me:8080":http://vancl.lvh.me:8080
 
-h1. test
-
-*Cucumber*
-
-pre. 
-#View cucumber supported languages
-cucumber --i18n help
-#View cucumber Chinese grammar
-cucumber --i18n zh-CN
-
-pre. 
-#Run the function test
-spork cuc &
-cucumber
-# You can specify the test cases to run focus marker
-cucumber -t @ focus
-
-*Rspec*
-
-bq. 
-If the gem is equipped with multiple versions of rspec, you can use the @bundle exec rspec spec@ instead of @rspec spec@
-
-pre. 
-spork rspec &
-bundle exec rspec spec -X
-#You can specify a specific example name of the test run
-bundle exec rspec spec -e create -X
-
-h1. Why We select
-
-h2. mongodb
-
-bq. 
-flexibility to change fields, no need to manage migration, better management of many relationship
-
-h1. plugins Introduction
-
-h2. jQuery
-
-"Jeditable":http://www.appelsiini.net/projects/jeditable
-Synthetic images used to implement the online text, you can instantly edit text.
-Note that editing does not directly submitted to the server, go to the function processing
-
-"JqDnR":http://dev.iceburg.net/jquery/jqDnR/
-Synthetic images used to implement the online text, you can drag text, adjust the panel size
-We has been modified:Drag text only limited within the scope of the panel; while drag stop,it can trigger drag.stop event
-
-"Jstree":http://www.jstree.com
-Categories tree structure to achieve display, drag and dynamic create nodes
-(the document is not clear enough on the callback, it is best edit the source of the __callback, each with jGrowl show the name of the callback function)
-We has been fixed:the checkbox of node with multi-level node(non-leaf) will be set to half-selected, but the lower node is not selected
-
-"Jquery tools tooltip":http://flowplayer.org/tools/tooltip/index.html
-used show form or image float panel while mouse hover
-We has been modified: the width of float panel should not exceed Container_24 width
-
-"Qtip":http://craigsworks.com/projects/qtip
-show operation panel while mouse hovers
-The official version 1.0.0-rc3 has two problems: 
-1. Unable to use jquery-1.4.2, you can manually fix;
-2. Call destroy method will report 'state undefined error'
-"The latest development version of the above two issues have been fixed!":http://bazaar.launchpad.net/~craig.craigsworks/qtip/1.0/files
-
-"Cloud-zoom":http://www.professorcloud.com/mainsite/cloud-zoom.htm
-Zoom the product image
-We has been modified: hover small picture to show instead of click, and modify the border width of 1px (origin 4px)
-Note To specify the img element's rel attribute, otherwise js error will be report
-
-"Jixedbar":http://code.google.com/p/jixedbar
-Show the realtime task bar at the bottom with fixed position
-We has been fixed: the bar was not centered
-
-h2. pure js plugin
-
-"Fileuploader":http://valums.com/ajax-upload
-Ajax upload documents and pictures, presented for the plug-ins do not support ajax file will be submitted to use iframe way
-We has been forked: the addEvent change to jQuery way, in order to pass cucumber tests. It needs to trigger upload button's mouseover event, and then generate a hidden file input
-
 h1. Contribute
 
 If you are interested in the product, you can:
@@ -206,30 +128,8 @@ Shopqi follow the git standardized development process, please refer to "http://
 
 h1. Support
 
-If you need any help, you can:
-
-# Add gtalk account to get direct communication: mahb45 # gmail.com
-# Send email: mahb45 # gmail.com
-
-h1. Powered By
-
-!http://www.ihost-mm.net/images/wpThumbnails/ruby-logo-512.png!:http://www.ruby-lang.org/!http://rubyonrails.org/images/rails.png!:http://rubyonrails.org !http://www.mongodb.org/download/attachments/132305/PoweredMongoDBgreen50.png?version=1&modificationDate=1247081595817!:http://www.mongodb.org/ !http://haml-lang.com/images/haml.gif!:http://haml-lang.com !http://sass-lang.com/images/sass.gif!:http://sass-lang.com !http://compass-style.org/images/compass.png?1276447843!:http://compass-style.org
-
-!http://960.gs/img/h1.gif!:http://960.gs
-
-!http://www.richdownie.com/images/cucumber_logo.png!:http://cukes.info !http://maps.street-directory.com.au/dspec2/images/logo_rspec1.jpg!:http://rspec.info
+# email: mahb45 # gmail.com
 
 h1. License
 
 Products follow the license: "GNU Affero GPL 3":http://www.gnu.org/licenses/agpl-3.0.html
-
-h1. Learning Resources
-
-"Rails3-mongoid-devise the framework of the sample project":http://github.com/fortuity/rails3-mongoid-devise
-"My five favorite things about rails 3":http://www.engineyard.com/blog/2009/my-five-favorite-things-about-rails-3/
-"three reasons love responder":http://weblog.rubyonrails.org/2009/8/31/three-reasons-love-responder
-"Git Cheat Sheet":http://github.com/guides/git-cheat-sheet
-
-h1. References
-
-"15 best free open source e-commerce platform":http://louishan.com/articles/15-open-source-ecommerce-platforms.html
