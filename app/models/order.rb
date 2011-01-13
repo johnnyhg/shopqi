@@ -102,9 +102,14 @@ class Order
 
   before_validation :set_store
   before_create :set_address
+  before_update :publish_tasks
 
   def self.payed_list
     self.where(:pay_state => :payed, :ship_state.ne => :shipped)
+  end
+
+  def publish_tasks
+    Juggernaut.publish "tasks/#{self.store.id}", {:id => self.view_id, :name => self.number} if pay_state_changed? and pay_state.to_sym == :payed
   end
 
   def set_store

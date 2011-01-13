@@ -1,7 +1,7 @@
 jQuery(function ($) {
   var jug = new Juggernaut();
 
-  jug.subscribe("tasks", function(data){ 
-    $('#tasks').append(data['task']);
+  jug.subscribe("tasks/" + store_id, function(data){ 
+    $('#taskTemplate').tmpl(data).appendTo('#tasks');
   });
 });
