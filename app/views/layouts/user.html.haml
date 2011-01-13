@@ -51,8 +51,9 @@
                 %a 待办事宜:
               =render :partial => "orders/tip", :collection => store.orders.payed_list, :as => :order
             %script#taskTemplate(type='text/x-jquery-tmpl')
-              %li(id='${id}')
-                =link_to '${name}', '#', :class => "icon buy_16", :title => "点击快捷处理订单", :remote => true
+              %li(id='${view_id}')
+                =link_to '${name}', '#', :class => "icon buy_16", :title => "点击快捷处理订单", 'data-url' => '/orders/${id}/tip'
+                .subpanel.loading
         #sidebar
           = yield :sidebar
 

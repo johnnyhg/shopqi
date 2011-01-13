@@ -109,7 +109,7 @@ class Order
   end
 
   def publish_tasks
-    Juggernaut.publish "tasks/#{self.store.id}", {:id => self.view_id, :name => self.number} if pay_state_changed? and pay_state.to_sym == :payed
+    Juggernaut.publish "tasks/#{self.store.id}", {:id => id.to_s, :name => number, :view_id => view_id} if ship_state.to_sym == :unshipped and pay_state_changed? and pay_state.to_sym == :payed 
   end
 
   def set_store
