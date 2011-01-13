@@ -5,7 +5,8 @@
 #footbar ul li a:hover { background-color: white; }
 #footbar ul li a.active { background-color: white; height: 17px; /*--Push it up 2px to attach the active button to sub-panel-- */ margin-top: -2px; border: 1px solid #555555; border-top: none; /*--Keeps the active link on top of the sub-panel-- */ z-index: 20090; position: relative; }
 #footbar ul li a.icon { /* 100% will overflow */ width: 90%; text-indent: 18px; background-position: 5px 4px; }
-#footbar .subpanel { position: absolute; left: 0; bottom: 27px; /*--Hide by default-- */ display: none; width: 400px; border: 1px solid #555555; background: white; overflow: hidden; /* reset */ /*--Reset link style for sub-panel links-- */ }
+#footbar .subpanel { position: absolute; left: 0; bottom: 27px; /*--Hide by default-- */ display: none; width: 400px; min-height: 150px; border: 1px solid #555555; background: white; overflow: hidden; /* reset */ /*--Reset link style for sub-panel links-- */ }
+#footbar .subpanel.loading { background: white url("/images/loading_big.gif") no-repeat center 50%; }
 #footbar .subpanel h3 { background: #526ea6; padding: 5px 10px; margin: 0; color: white; font-size: 17px 0.1em; /*--Right aligned "-"-- */ }
 #footbar .subpanel h3 span { font-size: 1.5em; float: right; line-height: 0.6em; font-weight: normal; cursor: pointer; }
 #footbar .subpanel ul { float: none; }

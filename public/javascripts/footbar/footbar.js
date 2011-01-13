@@ -40,8 +40,10 @@
         //its remote content?
         var remote_url = button.attr('data-url');
         if(remote_url){
-          subpanel.html('loading...');
+          subpanel.html('');
+          subpanel.addClass('loading');
           $.get(remote_url, function(data){
+            subpanel.removeClass('loading');
             subpanel.html(data);
           });
         }
