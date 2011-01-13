@@ -104,15 +104,13 @@ Shopqi::Application.routes.draw do
 
   ##### 网店展示 #####
   resources :orders do
-    collection do
-      # 购物车
-      get :car
-    end
     member do
       post :ship
       get :tip
     end
   end
+  # 购物车
+  get :car, :to => 'orders#car'
 
   # 会员管理
   scope '/member' do
