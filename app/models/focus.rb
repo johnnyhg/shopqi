@@ -1,6 +1,7 @@
 # encoding: utf-8
 # 首页顶端轮播图片(设计为tree结构，方便Item关联根节点)
 class Focus
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::ActsAsSortableTree

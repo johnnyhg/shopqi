@@ -1,6 +1,7 @@
 # encoding: utf-8
 require 'carrierwave/orm/mongoid'
 class Image
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
 

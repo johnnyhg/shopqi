@@ -1,6 +1,7 @@
 # encoding: utf-8
 # 网店页面中的布局容器
 class Container
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::ActsAsSortableTree

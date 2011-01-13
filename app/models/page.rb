@@ -1,6 +1,7 @@
 # encoding: utf-8
 # 网店首页、分类商品列表页等
 class Page
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
 

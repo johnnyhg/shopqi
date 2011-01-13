@@ -1,5 +1,6 @@
 # encoding: utf-8
 class OrderItem
+  include Extensions::Base
   include Mongoid::Document
   embedded_in :order, :inverse_of => :items
 

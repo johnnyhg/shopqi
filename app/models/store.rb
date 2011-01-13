@@ -1,6 +1,7 @@
 # encoding: utf-8
 # 网店
 class Store
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Sortable

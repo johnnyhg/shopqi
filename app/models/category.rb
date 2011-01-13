@@ -1,6 +1,7 @@
 # encoding: utf-8
 # 商品分类
 class Category
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::ActsAsSortableTree

@@ -1,5 +1,6 @@
 # 收货地址
 class Address
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include Formtastic::I18n::Naming

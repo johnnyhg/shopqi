@@ -1,6 +1,7 @@
 # encoding: utf-8
 # 用户
 class User
+  include Extensions::Base
   include Mongoid::Document
   include SentientUser
 
