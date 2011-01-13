@@ -1,6 +1,7 @@
 # encoding: utf-8
 # TODO:带有时间限制的优惠折扣可能会造成商品价格混乱，因此超过一定时间(24小时?)未付款的订单将自动删除
 class Order
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Transitions
