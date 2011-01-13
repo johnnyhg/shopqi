@@ -110,6 +110,7 @@ Shopqi::Application.routes.draw do
     end
     member do
       post :ship
+      get :tip
     end
   end
 

@@ -1,21 +1,3 @@
 =content_tag_for :li, order do
-  =link_to order.number, '#', :class => "icon buy_16", :title => "点击快捷处理订单"
+  =link_to order.number, '#', :class => "icon buy_16", :title => "点击快捷处理订单", 'data-url' => tip_order_path(order)
   .subpanel
-    %h3
-      ==订单号:#{order.number}
-      %span -
-    .bar_menu_info
-      %div==收货人:#{order.address_info}
-      %div=order.receive_name
-      .list
-        %ul.head
-          %li(style="width:180px") 产品名称
-          %li(style="width:50px") 数量
-        -order.items.each do |item|
-          -product = item.product
-          %ul.item{:class=>cycle(:odd, :even)}
-            %li.name(style="width:180px")=s(product.name)
-            %li(style="width:50px")=item.quantity
-      .buttons
-        处理方式:
-        = link_to "已发货", ship_order_path(order), :remote => true, :method => :post

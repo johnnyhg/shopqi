@@ -25,11 +25,11 @@
       var li = $(this).closest('li');
       var subpanel = $('.subpanel', li);
       var button = $('> a', li);
-      if(!subpanel[0]) return;
       if(button.hasClass('active')){
         $this.removeData('actived_subpanel');
         button.removeClass('active');
         subpanel.hide();
+      //show it
       }else{
         var last_button = $this.data('actived_subpanel');
         if(last_button)
@@ -37,12 +37,20 @@
         $this.data('actived_subpanel', button);
         button.addClass('active');
         subpanel.show();
+        //its remote content?
+        var remote_url = button.attr('data-url');
+        if(remote_url){
+          subpanel.html('loading...');
+          $.get(remote_url, function(data){
+            subpanel.html(data);
+          });
+        }
       }
     };
 
     this.render = function(){
-      $('.subpanel > h3 > span', $this).live('click', this.toggle);
-      $('ul > li > a', $this).live('click', this.toggle);
+      $this.delegate('ul > li > a', 'click', this.toggle);
+      $this.delegate('.subpanel > h3 > span', 'click', this.toggle);
     }
 
     this.render();
