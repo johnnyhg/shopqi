@@ -100,7 +100,7 @@ pre.
 #Load the basic data
 rake db:seed
 #Start the development
-bundle exec unicorn
+bundle exec unicorn -p 8088
 #Start juggernaut(use for showing realtime tasks)
 redis-server
 pushd vendor/others/juggernaut
@@ -109,9 +109,9 @@ sudo node server.js
 
 Click the following url to see the page
 
-"ShopQi official website @ http://lvh.me:8080":http://lvh.me:8080
-"Shop Admin @ http://lvh.me:8080/user_root":http://lvh.me:8080/user_root
-"Shop layout manager @ http://vancl.lvh.me:8080":http://vancl.lvh.me:8080
+"ShopQi official website @ http://lvh.me:8088":http://lvh.me:8088
+"Shop Admin @ http://lvh.me:8088/user_root":http://lvh.me:8088/user_root
+"Shop layout manager @ http://vancl.lvh.me:8088":http://vancl.lvh.me:8088
 
 h1. Contribute
 
