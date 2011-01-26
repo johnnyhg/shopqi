@@ -10,3 +10,7 @@ end
   而且 "输入密　码为666666"
   而且 "点击登录"
 end
+
+假如 /^会员已关联收货地址$/ do
+  @address = @member.addresses.create(Factory.attributes_for(:address))
+end

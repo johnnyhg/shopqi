@@ -17,13 +17,15 @@ end
 end
 
 假如 /^网店有以下商品:$/ do |table|
-  table.rows.each do |row|
-    category = @store.categories.where(:name => row.fourth).first
-    node = @store.products.create(
-      :name => row.first,
-      :market_price => row.second,
-      :price => row.third,
-      :category => category
-    )
+  mappings = {'名称' => 'name', '市场价格' => 'market_price', '价格' => 'price', '分类' => 'category_name'}
+  #不一定会指定所有的列
+  mappings.reject!{|k, v| !table.headers.include?(k)}
+  table.map_headers! mappings
+  table.hashes.each do |hash|
+    if hash.has_key?('category_name')
+      category = @store.categories.where(:name => hash.delete('category_name')).first
+      hash['category'] = category
+    end
+    @store.products.create hash
   end
 end

@@ -17,7 +17,7 @@
 end
 
 而且 /^我?已经填写完支付方式$/ do
-  Factory(:payment, :store => @store)
+  @payment = @store.payments.create(Factory.attributes_for(:payment))
 end
 
 而且 /^我单击刷新表格$/ do
