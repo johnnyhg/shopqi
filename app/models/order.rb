@@ -100,8 +100,8 @@ class Order
   validates_presence_of :items
   validates_length_of :description, :maximum => 100
 
-  before_validation :set_store, :set_number
-  before_create :set_address
+  before_validation :set_store
+  before_create :set_number, :set_address
   before_update :publish_tasks
 
   def self.payed_list
