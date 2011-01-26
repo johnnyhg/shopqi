@@ -11,6 +11,7 @@
 /*底端菜单 */
 .bar_menu_info { background-color: white; padding: 5px; }
 .bar_menu_info div { margin: 5px 0; }
+.bar_menu_info .summary { text-align: right; }
 .bar_menu_info .buttons { margin-top: 10px; color: red; }
 
 /*通用列表 */
