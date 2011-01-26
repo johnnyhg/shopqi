@@ -36,6 +36,10 @@ describe Order do
      @order.save
     end
 
+    it 'should set number' do
+     @order.number.should_not be_nil
+    end
+
     it 'should be save' do
      @order.pay_state.should eql 'unpay'
      @order.store.should eql @store

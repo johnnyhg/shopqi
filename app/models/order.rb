@@ -100,7 +100,7 @@ class Order
   validates_presence_of :items
   validates_length_of :description, :maximum => 100
 
-  before_validation :set_store
+  before_validation :set_store, :set_number
   before_create :set_address
   before_update :publish_tasks
 
@@ -114,6 +114,10 @@ class Order
 
   def set_store
     self.store ||= member.store
+  end
+
+  def set_number
+    self.number = store.next_order_sequence
   end
 
   def set_address
