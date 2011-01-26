@@ -101,6 +101,7 @@ class Order
   validates_length_of :description, :maximum => 100
 
   before_validation :set_store
+  before_save :update_items
   before_create :set_number, :set_address
   before_update :publish_tasks
 
@@ -114,6 +115,11 @@ class Order
 
   def set_store
     self.store ||= member.store
+  end
+
+  def update_items
+    self.price_sum = self.items.map(&:sum).sum
+    self.quantity = self.items.map(&:quantity).sum
   end
 
   def set_number

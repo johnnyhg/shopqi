@@ -17,9 +17,8 @@ class OrdersController < InheritedResources::Base
 
   def create
     init_cookie_orders
-    params[:order].merge! :quantity => @items_count, :price_sum => @price_count if params[:order]
 
-    @order = end_of_association_chain.build(params[:order])
+    @order = end_of_association_chain.build
     @products.each do |product|
       quantity = @order_hash[product.id.to_s]
       price = product.price

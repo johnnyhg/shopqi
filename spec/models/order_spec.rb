@@ -50,6 +50,10 @@ describe Order do
       @order.province.should eql @address.province
     end
 
+    it 'should set price sum' do
+      @order.price_sum.should eql @product.price
+    end
+
     it 'should be cancel' do
       @order.cancel!
       @order.state.should eql 'cancelled'
