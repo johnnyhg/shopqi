@@ -177,6 +177,7 @@ body abbr { color: #7f0019; }
 #order_confirm .box .block { border-top: 1px solid #b4b4b4; }
 #order_confirm .box .block.first { border-top: none; padding-top: 0; }
 #order_confirm .box #new_address_form { padding-top: 10px; }
+#order_confirm .box #new_address_form p.error { margin: 0 0 5px 25%; }
 #order_confirm .list { border: none; border-bottom: 1px solid #999999; }
 #order_confirm .list ul.item li { height: 24px; line-height: 24px; }
 #order_confirm .select_group legend { color: #565662; }
