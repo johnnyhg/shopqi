@@ -66,6 +66,14 @@ cn:
       member_session:
         login: 用户名
         password: 密码
+      payment:
+        number: 序号
+        name: 名称
+        is_show: 是否显示
+        account: 帐号(Email)
+        partnerid: 合作者身份ID
+        verifycode: 交易安全校验码
+        remark: 备注
     hints:
       store:
         title: 商店的标题将显示在浏览器的标题栏
