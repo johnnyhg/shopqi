@@ -1,7 +1,7 @@
 # encoding: utf-8
 class OrdersController < InheritedResources::Base
-  prepend_before_filter :authenticate_member!, :only => [:new, :create, :pay, :cancel, :show]
-  prepend_before_filter :authenticate_user!, :only => [:send_good, :index, :tip]
+  prepend_before_filter :authenticate_member!, :only => [:new, :create, :index, :pay, :cancel, :show]
+  prepend_before_filter :authenticate_user!, :only => [:send_good, :tip]
   prepend_before_filter :store_valid!
   actions :new, :create, :index, :show
   respond_to :js, :only => [ :create,  :send_good ]
