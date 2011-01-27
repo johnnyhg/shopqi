@@ -1,204 +1,145 @@
-h1. 产品介绍
+h1. Products Introdution
 
-h2. 产品构成
+h2. Product Composition
 
-# ShopQi官网
-# 网店后台管理
-# 网店布局管理
-# 网店展示
+# ShopQi official website
+# Shop Admin
+# Shop layout manager
+# Shop display
 
-h1. 安装
+h1. Installation
 
-h2. 开发环境
+h2. Development Environment
 
 ubuntu 10.04
-vim 7.2 ( "http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles )
+vim 7.2 ("http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles)
 
-h2. 系统安装
+h2. System Installation
 
-以下安装过程是基于ubuntu 10.04操作系统
+bq. 
+The following process is based on ubuntu 10.04
 
-h3. 安装开发环境所依赖的软件
+h3. Softwares that development environment depends 
 
 pre. 
-#安装依赖库、ruby也需要安装(否则通过rvm安装ruby1.9.2时会报make: *** [miniprelude.c] Error 1错误)
-sudo apt-get install build-essential bison openssl libreadline6 libreadline-dev curl git-core graphicsmagick \ 
+# ruby also need to install (or install ruby1.9.2 by rvm will report make: *** [miniprelude.c] Error 1 error)
+sudo apt-get install build-essential bison openssl libreadline6 libreadline-dev curl git-core graphicsmagick \
   zlib1g zlib1g-dev libssl-dev vim libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev subversion autoconf ruby ruby-dev
-#webrat插件所需
+# Webrat plug-in required
 sudo apt-get install libxslt1-dev libxml2-dev
 
-h3. 安装rvm
+h3. RVM Installation
 
 pre. 
-bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
+bash << (curl http://rvm.beginrescueend.com/releases/rvm-install-head)
 vim ~/.bashrc
 
-#将以下语句加入 @~/.bashrc@ 文件最底端
-@[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"@
+#Add the following statement to the bottom of @~/.bashrc@
+@[[-S "$HOME/.rvm/scripts/rvm"]] && source "$HOME/.rvm/scripts/rvm"@
 
 pre. 
-#安装ruby 1.9.2，rails3推荐的ruby版本
-#Note that Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails 3.0. 
-#Ruby Enterprise Edition have these fixed since release 1.8.7-2010.02 though. 
-#On the 1.9 front, Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0, 
-#so if you want to use Rails 3 with 1.9.x jump on 1.9.2 for smooth sailing.
+#Install ruby 1.9.2, rails3 ruby version of the recommended
+#Note that Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails 3.0.
+#Ruby Enterprise Edition have these fixed since release 1.8.7-2010.02 though.
+#On the 1.9 front, Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0,
+#So if you want to use Rails 3 with 1.9.x jump on 1.9.2 for smooth sailing.
 rvm install 1.9.2-head
 rvm 1.9.2-head --default
 
-h3. 安装rails3
+h3. Rails3 Installation
 
 pre. 
 gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-format thor bundler i18n --no-ri --no-rdoc
 gem install rails --pre --no-ri --no-rdoc
-#如果报以下错误，则需要到RubyGems.org手动下载安装rack1.1.0的gem包
-##ERROR:  Error installing rails:
-##  actionpack requires rack (~> 1.1.0, runtime)
+#If the following error report, you will need to manually download and install rack1.1.0 RubyGems.org the gem package
+## ERROR: Error installing rails:
+## Actionpack requires rack (~> 1.1.0, runtime)
 
-h3. 安装mongodb数据库
+h3. Mongodb Database Installation
 
-添加至 @/etc/apt/source.list@
+Add the following statement to @/etc/apt/source.list@
 
 pre. 
-# mongodb的源
+#Mongodb source
 deb http://downloads.mongodb.org/distros/ubuntu 10.4 10gen
 
-在terminal中执行
+Execute in the terminal
 
 pre. 
 sudo apt-get update
 sudo apt-get install mongodb-stable
 
-h3. 安装rails ide
-
-请参考rails on vim进行安装 ( "http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles )
-
-h1. 开发
+bq. 
+*Note:*
+Illegal shutdown operations may cause mongodb not start, you need to manually run the following statement unlock mongod before restart
 
 pre. 
-# 加载基本数据
+sudo rm /var/lib/mongodb/mongod.lock
+mongod --repair
+
+h3. Rails IDE Installation
+
+Please refer to rails on vim installation ("http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles)
+
+h2. Get the shopqi source
+
+pre. 
+cd ~/Documents
+git clone git://github.com/saberma/shopqi.git 
+#install gem
+bundle install
+#get juggernaut
+git submodule update --init
+pushd vendor/others/juggernaut
+git submodule update --init
+popd
+
+h1. Development
+
+pre. 
+#Load the basic data
 rake db:seed
-# 启动开发环境应用服务
-unicorn
+#Start the development
+bundle exec unicorn -p 8088
+#Start juggernaut(use for showing realtime tasks)
+redis-server
+pushd vendor/others/juggernaut
+#if redis server doesn't start, we will get: Error: ECONNREFUSED, Connection refused
+sudo node server.js
 
-访问以下地址查看效果
+Click the following url to see the page
 
-"ShopQi官网 http://lvh.me:8080":http://lvh.me:8080
-"网店后台管理 http://lvh.me:8080/user_root":http://lvh.me:8080/user_root
-"网店布局管理 http://vancl.lvh.me:8080":http://vancl.lvh.me:8080
+"ShopQi official website @ http://lvh.me:8088":http://lvh.me:8088
+"Shop Admin @ http://lvh.me:8088/user_root":http://lvh.me:8088/user_root
+"Shop layout manager @ http://vancl.lvh.me:8088":http://vancl.lvh.me:8088
 
-h1. 测试
+h1. Contribute
 
-*cucumber*
+If you are interested in the product, you can:
 
-pre. 
-  #查看cucumber支持的语言
-  cucumber --i18n help
-  #查看cucumber中文语法
-  cucumber --i18n zh-CN
+# Fork this
+# Add features or fix bug
+# Write the corresponding test case
+# Send a pull request
 
-  #运行功能测试
-  spork cuc &
-  cucumber
-  #可以指定运行focus标记的测试用例
-  cucumber -t @focus
-
-*rspec*
-
-如果gem中装有多个版本的rspec，可使用 @bundle exec rspec spec@ 替换 @rspec spec@
-
-pre. 
-  spork rspec &
-  rspec spec -X
-  #可以指定运行特定example name的测试用例
-  rspec spec -e create -X
-
-*为何选择*
-mongodb:灵活增减字段，不用再管migration，更好地管理一对多的关系
-
-h1. 插件介绍
-
-h2. jQuery
-
-"jeditable":http://www.appelsiini.net/projects/jeditable
-用于实现在线文字图片合成时，可以即时编辑文字，编辑后不直接提交至服务器，转至function处理
-
-"jqDnR":http://dev.iceburg.net/jquery/jqDnR/
-用于实现在线文字图片合成时，可以拖动文字，调整面板大小
-使用时做了修改:限制文字拖动只能在面板以内范围；拖动停止后可以触发drag.stop事件
-
-"jstree":http://www.jstree.com
-实现商品分类的树状结构展示，支持拖动，动态构造节点
-(文档对callback的描述不够清楚,最好自行修改源码中的__callback，用jGrowl显示出各个回调函数的名称)
-使用时做了修正:修改源码，去掉jquery文件名前缀导致无法正常识别出themes所在位置
-  修正多级节点的非叶子节点在checkbox插件中回显时会被置为半选中状态，而其下级节点却并没有选中
-
-"jquery tools tooltip":http://flowplayer.org/tools/tooltip/index.html
-实现鼠标悬停后显示即时修改表单或显示图像修改操作界面
-使用时修改:提示面板宽度不超过.container_24的宽度
-
-"qtip":http://craigsworks.com/projects/qtip
-实现鼠标悬停后显示操作按钮面板
-官方发布下载版本1.0.0-rc3存在两个问题:无法在jquery-1.4.2下使用，可手动修正；调用destroy，报state undefined错误
-"最新开发版本已修正以上两个问题":http://bazaar.launchpad.net/~craig.craigsworks/qtip/1.0/files
-
-"cloud-zoom":http://www.professorcloud.com/mainsite/cloud-zoom.htm
-实现商品图片放大
-使用时修改小图片列表的点击事件为鼠标悬停事件，并且修改边框宽度为1px(原为4px)
-注意要指定img元素的rel属性，否则会报js错误
-
-h2. 纯js插件
-
-"fileuploader":http://valums.com/ajax-upload
-实现ajax文件及图片的上传，对于不支持ajax file提交插件会改用iframe方式隐式提交
-此版本非官方版本，且在使用时做了修正:addEvent改为调用jQuery方式实现，因为cucumber测试需要为上传按钮触发mouseover，才能生成hidden file input
-
-h1. 欢迎参与
-
-如果您对开发此产品有兴趣，可以：
-
-# Fork这里
-# 增加功能或者修正Bug
-# 编写测试相应的测试用例
-# 提交后发送pull request
-
-Fork的commit与shopqi的commit冲突(即github的forkqueue显示"Will likely not apply cleanly")时，需要手动合并分支
+How to solve the commit conflict (ie github's forkqueue show "Will likely not apply cleanly"), you need to manually merge the branch
 
 pre. 
 git remote add shopqi git://github.com/saberma/shopqi.git
 git pull shopqi master
-#vim处理冲突的文件...
+# fix file conflict manually ...
 git commit -a -m 'merge from shopqi'
 git push origin master
 
-点这里查看哪些功能需要开发
-"http://www.pivotaltracker.com/projects/84595":http://www.pivotaltracker.com/projects/84595
+Click here to see which features need to be develope
+"Http://www.pivotaltracker.com/projects/84595":http://www.pivotaltracker.com/projects/84595
 
-shopqi的代码版本控制遵循git标准化开发流程，详情请参考 "http://saberma.me/git/2010/10/25/git-flow.html":http://saberma.me/git/2010/10/25/git-flow.html
+Shopqi follow the git standardized development process, please refer to "http://saberma.me/git/2010/10/25/git-flow.html":http://saberma.me/git/2010/10/25/git-flow.html
 
-h1. 技术互助
+h1. Support
 
-对此产品涉及技术有需要交流的地方，可以:
-
-# 加我的gtalk直接沟通: mahb45#gmail.com
-# 发送email: mahb45#gmail.com
-
-h1. Powered By
-
-!http://www.ihost-mm.net/images/wpThumbnails/ruby-logo-512.png!:http://www.ruby-lang.org/ !http://rubyonrails.org/images/rails.png!:http://rubyonrails.org !http://www.mongodb.org/download/attachments/132305/PoweredMongoDBgreen50.png?version=1&modificationDate=1247081595817!:http://www.mongodb.org/ !http://haml-lang.com/images/haml.gif!:http://haml-lang.com !http://sass-lang.com/images/sass.gif!:http://sass-lang.com !http://compass-style.org/images/compass.png?1276447843!:http://compass-style.org 
-
-!http://960.gs/img/h1.gif!:http://960.gs
-
-!http://www.richdownie.com/images/cucumber_logo.png!:http://cukes.info !http://maps.street-directory.com.au/dspec2/images/logo_rspec1.jpg!:http://rspec.info
+# email: mahb45 # gmail.com
 
 h1. License
 
-产品遵循授权: "GNU Affero GPL 3":http://www.gnu.org/licenses/agpl-3.0.html
-
-h1. 学习资源
-
-"rails3-mongoid-devise框架示例项目":http://github.com/fortuity/rails3-mongoid-devise
-"Git Cheat Sheet":http://github.com/guides/git-cheat-sheet
-
-h1. 参考资源
-
-"15个最好的免费开源电子商务平台":http://louishan.com/articles/15-open-source-ecommerce-platforms.html
+Products follow the license: "GNU Affero GPL 3":http://www.gnu.org/licenses/agpl-3.0.html

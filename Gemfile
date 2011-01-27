@@ -27,7 +27,7 @@ gem 'mongoid_acts_as_tree'
 gem 'sentient_user'
 
 # 状态机，官方版本暂不支持mongoid
-gem "transitions", :git => 'git://github.com/netizer/transitions.git', :require => ["transitions", "mongoid/transitions"]
+gem "transitions", :git => 'git://github.com/saberma/transitions.git', :require => ["transitions", "mongoid/transitions"]
 
 # 文件上传
 # 2010.08.13 源版本不支持mongoid校验，已提交补丁，已合并至官方版本
@@ -54,6 +54,7 @@ gem "inherited_resources"
 gem 'compass'
 # css sprite generator
 gem 'lemonade'
+gem 'css_sprite'
 # 使用960.gs css框架
 gem 'compass-960-plugin'
 # 类似37signal的Basecamp产品界面，简洁
@@ -66,6 +67,8 @@ gem "activemerchant"
 # 支付指定sign key参数
 gem "activemerchant_patch_for_china", :git => 'git://github.com/saberma/activemerchant_patch_for_china.git'
 gem "httparty"
+# 实时(另外需要安装node.js和redis)
+gem "juggernaut"
 
 # 调试
 gem "awesome_print", :require => 'ap'

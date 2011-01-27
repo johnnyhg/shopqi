@@ -103,6 +103,12 @@ Shopqi::Application.routes.draw do
   match "user_root" => "home#show"
 
   ##### 网店展示 #####
+  resources :orders do
+    member do
+      post :ship
+      get :tip
+    end
+  end
   # 购物车
   get :car, :to => 'orders#car'
 

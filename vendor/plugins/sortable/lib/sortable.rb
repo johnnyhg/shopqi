@@ -8,7 +8,7 @@ module Mongoid
     module ClassMethods
       def has_many_sortable(*args)
         args.each do |children_name|
-          references_many children_name
+          references_many children_name, :dependent => :destroy
 
           define_method "sorted_#{children_name}" do
             send(children_name).sort {|x, y| x.pos <=> y.pos}

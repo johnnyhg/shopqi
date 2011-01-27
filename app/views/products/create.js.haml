@@ -1,1 +1,4 @@
+//change form url to edit url
+$('#new_product').attr('method', 'put').attr('action', '#{product_path(:id => @product.id)}');
+
 $('#main-message .flash .message').removeClass('error').addClass('notice').html('<p>#{notice}</p>');

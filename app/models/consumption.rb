@@ -1,6 +1,7 @@
 # encoding: utf-8
 # 服务年费支付记录
 class Consumption
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include SimpleEnum

@@ -1,15 +1,15 @@
 GIT
-  remote: git://github.com/netizer/transitions.git
-  revision: 3c30cf7d5154180c90d0112337ebc0752f821f00
-  specs:
-    transitions (0.0.8)
-
-GIT
   remote: git://github.com/saberma/activemerchant_patch_for_china.git
-  revision: bc8de40d1d2400c3f7e96488573b858685ccdf46
+  revision: a2d6f061aef47194730dca2fc22038ce7b4ebef5
   specs:
     activemerchant_patch_for_china (0.1.5)
       activemerchant (>= 1.4.2)
+
+GIT
+  remote: git://github.com/saberma/transitions.git
+  revision: 83cbc41cdc4670887b855a95a9749c66efcfe5d8
+  specs:
+    transitions (0.0.8)
 
 GEM
   remote: http://rubygems.org/
@@ -77,6 +77,8 @@ GEM
       compass (>= 0.10.0)
     configuration (1.2.0)
     crack (0.1.8)
+    css_sprite (1.4.10)
+      rmagick
     cucumber (0.9.4)
       builder (~> 2.1.2)
       diff-lcs (~> 1.1.2)
@@ -122,6 +124,8 @@ GEM
       responders (~> 0.6.0)
     json (1.4.6)
     json_pure (1.4.6)
+    juggernaut (2.0.1)
+      redis
     kgio (2.0.0)
     launchy (0.3.7)
       configuration (>= 0.0.5)
@@ -187,7 +191,9 @@ GEM
     rake (0.8.7)
     rb-inotify (0.8.3)
       ffi (>= 0.5.0)
+    redis (2.1.1)
     responders (0.6.2)
+    rmagick (2.13.1)
     rspec (2.2.0)
       rspec-core (~> 2.2)
       rspec-expectations (~> 2.2)
@@ -250,6 +256,7 @@ DEPENDENCIES
   carrierwave
   compass
   compass-960-plugin
+  css_sprite
   cucumber
   cucumber-rails
   database_cleaner
@@ -261,6 +268,7 @@ DEPENDENCIES
   hpricot
   httparty
   inherited_resources
+  juggernaut
   launchy
   lemonade
   livereload

@@ -5,7 +5,7 @@
 
 -#rails3的form自动带上snowman_tag，导致md5校验失败，因此提交前要remove
 =payment_service_for resource.id, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, :service => :alipay, :html => { :id => :payment_form, :method => :get, :onsubmit => '$("#payment_form > div").remove();' } do |service|
-  -service.total_fee resource.price_sum
+  -service.total_fee safe_pay(resource.price_sum)
   -service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL
   -service.notify_url notify_consumptions_url
   -service.return_url user_root_url

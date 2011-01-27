@@ -1,6 +1,7 @@
 # encoding: utf-8
 # TODO:带有时间限制的优惠折扣可能会造成商品价格混乱，因此超过一定时间(24小时?)未付款的订单将自动删除
 class Order
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Transitions
@@ -19,7 +20,10 @@ class Order
   has_enum :receive, :enums => [[:all, 0, "工作日、双休日与假日均可送货"],[:holiday, 1, "只有双休日、假日送货（工作日不用送货）"], [:weekday, 2, "只有工作日送货（双休日、假日不用送）"], [:school, 3, "学校地址（该地址白天没人，请尽量安排其他时间送货）"]]
 
   field :number
-  field :state
+  STATE_FIELD = %w(state pay_state ship_state)
+  STATE_FIELD.each do |name|
+    field name
+  end
 
   field :description
 
@@ -34,20 +38,30 @@ class Order
     field attr
   end
 
-  # 状态
-  state_machine do
+  # 支付状态
+  state_machine :state do
     #@see cn.yml(state)
-    state :unpay
+    state :normal
+    state :disabled
     state :cancelled
+
+    # 订单事件
+    event :cancel do
+      transitions :to => :cancelled, :from => :normal
+    end
+
+    event :disable do
+      transitions :to => :disabled, :from => :normal
+    end
+  end
+
+  # 支付状态
+  state_machine :pay_state do
+    state :unpay
     state :pay_wait
     state :pay_unknown_error
     state :payed_wait_send
     state :payed
-
-    # 订单事件
-    event :cancel do
-      transitions :to => :cancelled, :from => :unpay
-    end
 
     event :pend_payment do
       transitions :to => :pay_wait, :from => :unpay
@@ -66,20 +80,50 @@ class Order
     end
   end
 
+  # 发货状态
+  state_machine :ship_state do
+    state :unshipped
+    state :shipped
+
+    event :ship do
+      transitions :to => :shipped, :from => :unshipped
+    end
+  end
+
   # 会员收货地址ID
   attr_accessor :address_id
 
+  validates_presence_of :store
   #TODO: 会员可能会删除收货地址
   validates_presence_of :address_id, :on => :create, :message => I18n.t('activemodel.errors.messages.select')
   validates_presence_of :payment_id, :message => I18n.t('activemodel.errors.messages.select')
   validates_presence_of :items
   validates_length_of :description, :maximum => 100
 
-  before_create :set_address
-  before_create :set_store
+  before_validation :set_store
+  before_save :update_items
+  before_create :set_number, :set_address
+  before_update :publish_tasks
+
+  def self.payed_list
+    self.where(:pay_state => :payed, :ship_state.ne => :shipped)
+  end
+
+  def publish_tasks
+    Juggernaut.publish "tasks/#{self.store.id}", {:id => id.to_s, :name => number, :view_id => view_id} if ship_state.to_sym == :unshipped and pay_state_changed? and pay_state.to_sym == :payed 
+  end
 
   def set_store
-    self.store = member.store
+    self.store ||= member.store
+  end
+
+  def update_items
+    self.price_sum = self.items.map(&:sum).sum
+    self.quantity = self.items.map(&:quantity).sum
+  end
+
+  def set_number
+    self.number = store.next_order_sequence
   end
 
   def set_address
@@ -89,19 +133,9 @@ class Order
     end
   end
 
-  def state_name
-    I18n.t("state.#{state}")
+  STATE_FIELD.each do |name|
+    define_method "#{name}_name" do                    # def pay_state_name
+      I18n.t("machine.#{name}.#{state}")               #   I18n.t("machine.pay_state.#{state}")
+    end                                                # end
   end
-end
-
-class OrderItem
-  include Mongoid::Document
-  embedded_in :order, :inverse_of => :items
-
-  referenced_in :product
-
-  # 价钱、数量、小计
-  field :price, :type => Float
-  field :quantity, :type => Integer
-  field :sum, :type => Float
 end

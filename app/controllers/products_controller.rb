@@ -5,7 +5,7 @@ class ProductsController < InheritedResources::Base
   layout nil
   layout 'pages', :only => [:index, :show]
   respond_to :js, :only => [ :create, :update, :destroy, :add_to_car ]
-  before_filter :set_object_id, :only => :update
+  before_filter :set_object_id, :only => [:create, :update]
   prepend_before_filter :authenticate_user!, :except => [:index, :add_to_car, :show]
   prepend_before_filter :store_valid!, :only => :index
 
@@ -19,7 +19,7 @@ class ProductsController < InheritedResources::Base
   end
 
   update! do |format|
-    format.js { render :nothing => true }
+    format.js { render :action => "create.js.haml"}
   end
 
   # 上传商品照片
@@ -45,11 +45,6 @@ class ProductsController < InheritedResources::Base
   end
 
   protected
-  # 提示消息
-  def interpolation_options
-     { :cn_resource_name => resource_class.model_name.human }
-  end
-
   def begin_of_association_chain
     store
   end

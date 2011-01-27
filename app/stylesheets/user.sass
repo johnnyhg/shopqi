@@ -1,4 +1,7 @@
 @charset "utf-8"
+@import "compass/utilities/lists/horizontal-list"
+
+$color_grey_lightest: #F5F5F5
 
 #upload_photo
   float: right
@@ -15,3 +18,30 @@
   margin-bottom: 10px
   p, fieldset
     padding: 0 10px
+
+/** 底端菜单
+.bar_menu_info
+  background-color: #fff
+  padding: 5px
+  div
+    margin: 5px 0
+  .summary
+    text-align: right
+  .buttons
+    margin-top: 10px
+    color: red
+
+/** 通用列表
+.list
+  ul
+    text-align: center
+    +horizontal-list(8px)
+    li.name
+      text-align: left
+  ul.head
+    color: white
+    background-color: #7a7f89
+  ul.item
+    padding: 5px 0
+    &.even
+      background-color: $color_grey_lightest

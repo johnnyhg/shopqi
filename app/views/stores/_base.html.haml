@@ -3,7 +3,7 @@
 = semantic_form_remote_for(store, :html => { :class => 'form' }) do |f|
   .columns.wat-cf
     .column.left
-      =f.inputs :name, :title, :desc, :keywords
+      =f.inputs :name, :title, :description, :keywords
       =f.inputs :id => :region do
         %li.select_group
           =f.inputs :name => '所在地区' do

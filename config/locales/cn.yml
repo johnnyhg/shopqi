@@ -10,7 +10,7 @@ cn:
       store:
         name: 名称
         title: 标题
-        desc: 描述
+        description: 描述
         keywords: 关键字
         detail: 详细地址
       consumption:
@@ -66,6 +66,14 @@ cn:
       member_session:
         login: 用户名
         password: 密码
+      payment:
+        number: 序号
+        name: 名称
+        is_show: 是否显示
+        account: 帐号(Email)
+        partnerid: 合作者身份ID
+        verifycode: 交易安全校验码
+        remark: 备注
     hints:
       store:
         title: 商店的标题将显示在浏览器的标题栏
@@ -146,12 +154,23 @@ cn:
     settings: 设置
     logout: 退出
 
-  # inherited_resource提示消息
+  # inherited_resource flash message(use responders gem)
   flash:
-    products:
+    actions:
       create:
-        notice: "%{cn_resource_name}添加成功!"
-        alert: "%{cn_resource_name}添加失败!"
+        notice: "%{resource_name}添加成功!"
+        alert: "%{resource_name}添加失败!"
+      update:
+        notice: "%{resource_name}更新成功!"
+        alert: "%{resource_name}更新失败!"
+      destroy:
+        notice: "%{resource_name}删除成功!"
+        alert: "%{resource_name}删除失败!"
+    #specify controller
+    #orders:
+    #  create:
+    #    notice: "%{resource_name}提交成功!"
+    #    alert: "%{resource_name}提交失败!"
 
   helper:
     label:
@@ -166,11 +185,18 @@ cn:
       processing: 'Cannot resize image.'
 
   # 状态机
-  state:
-    unpay: 有效待付款
-    cancelled: 用户已取消
-    # 支付情况
-    pay_wait: 待网上支付
-    pay_unknown_error: 未知的支付错误
-    payed_wait_send: 已付款待发货
-    payed: 已付款
+  machine:
+    state:
+      normal: 正常
+      disabled: 无效
+      cancelled: 用户已取消
+    pay_state:
+      unpay: 有效待付款
+      # 支付情况
+      pay_wait: 待网上支付
+      pay_unknown_error: 未知的支付错误
+      payed_wait_send: 已付款待发货
+      payed: 已付款
+    ship_state:
+      unshipped: 未发货
+      shipped: 已发货

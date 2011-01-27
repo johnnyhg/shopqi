@@ -1,9 +1,10 @@
 # encoding: utf-8
 class OrdersController < InheritedResources::Base
-  prepend_before_filter :authenticate_member!, :except => [:car]
+  prepend_before_filter :authenticate_member!, :only => [:new, :create, :index, :pay, :cancel, :show]
+  prepend_before_filter :authenticate_user!, :only => [:send_good, :tip]
   prepend_before_filter :store_valid!
-  actions :new, :create, :index, :show, :destroy
-  respond_to :js, :only => [ :create ]
+  actions :new, :create, :index, :show
+  respond_to :js, :only => [ :create,  :send_good ]
   layout 'members'
 
   # 提交订单
@@ -16,7 +17,6 @@ class OrdersController < InheritedResources::Base
 
   def create
     init_cookie_orders
-    params[:order].merge! :number => store.next_order_sequence, :quantity => @items_count, :price_sum => @price_count if params[:order]
 
     @order = end_of_association_chain.build(params[:order])
     @products.each do |product|
@@ -41,6 +41,16 @@ class OrdersController < InheritedResources::Base
   #TODO: 先选择订单取消原因
   def cancel
     resource.cancel!
+  end
+
+  # 快捷订单处理页面
+  def tip
+    render :layout => nil
+  end
+
+  # 已发货
+  def ship
+    resource.ship!
   end
 
   def car

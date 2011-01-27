@@ -5,9 +5,9 @@
     %title ShopQi工作平台
     =formtastic_stylesheet_link_tag
     =jqgrid_stylesheets
-    = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/user", :cache => true
-    = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree', 'jeditable/jeditable', 'jeditable/checkbox', 'jeditable/on_the_spot'
-    =jqgrid_javascripts
+    = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', 'icon_css_sprite', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/footbar/footbar", "compiled/user", :cache => true
+    = javascript_include_tag :defaults, 'jquery-ui.custom.min', 'tmpl', 'inspect', 'photomaker/jgrowl', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree', 'jeditable/jeditable', 'jeditable/checkbox', 'jeditable/on_the_spot', 'footbar/footbar', 'juggernaut/json', 'juggernaut/socket_io', 'juggernaut/juggernaut', 'juggernaut/tasks'
+    -#=jqgrid_javascripts
     = csrf_meta_tag
   %body
     #container
@@ -45,5 +45,17 @@
                 Copyright ©
                 = Time.now.year
                 ShopQi.com
+          #footbar
+            %ul#tasks
+              %li.home(title='右边将实时显示待处理的订单、咨询、评价等信息')
+                %a 待办事宜:
+              =render :partial => "orders/tip", :collection => store.orders.payed_list, :as => :order
+            %script#taskTemplate(type='text/x-jquery-tmpl')
+              %li(id='${view_id}')
+                =link_to '${name}', '#', :class => "icon buy_16", :title => "点击快捷处理订单", 'data-url' => '/orders/${id}/tip'
+                .subpanel.loading
         #sidebar
           = yield :sidebar
+
+:javascript
+  var store_id = '#{current_user.store.id}';

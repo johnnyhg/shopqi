@@ -19,6 +19,12 @@ class ApplicationController < ActionController::Base
     redirect_to invalid_path unless store.available?
   end
 
+  protected
+  # I18n flash message
+  def interpolation_options
+    { :resource_name => resource_class.model_name.human }
+  end
+
 =begin
   # 检查当前用户是否拥有对网店拥有的信息（如商品）进行修改的权限
   def check_permission!

@@ -7,7 +7,9 @@
 end
 
 假如 /^我已经以用户名(.+)登录$/ do |email|
-  假如 "我已经以用户名#{email}成功注册"
+  unless User.where(:email => email).first
+    假如 "我已经以用户名#{email}成功注册"
+  end
   而且 "我访问首页"
   而且 "点击登录管理您的网店"
   当 "我输入用户名为#{email}"

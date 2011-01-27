@@ -2,13 +2,13 @@
 %table.table#payment_type
   %tbody
     %tr.head
-      %th.first 序号
-      %th{:width => '100px'} 名称
-      %th{:width => '30px'} 是否显示
-      %th 帐号
-      %th 合作者身份ID
-      %th 交易安全校验码
-      %th.last 备注
+      %th.first=t('formtastic.labels.payment.number')
+      %th{:width => '100px'}=t('formtastic.labels.payment.name')
+      %th{:width => '30px'}=t('formtastic.labels.payment.is_show')
+      %th=t('formtastic.labels.payment.account')
+      %th=t('formtastic.labels.payment.partnerid')
+      %th=t('formtastic.labels.payment.verifycode')
+      %th.last=t('formtastic.labels.payment.remark')
     -@payment_types.each_with_index do |payment_type, index|
       %tr.item
         %td=index+1

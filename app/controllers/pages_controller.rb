@@ -10,7 +10,7 @@ class PagesController < InheritedResources::Base
   end
 
   def logo
-    @image = Image.find(params[:image_id])
+    @image = store.images.find(params[:image_id])
     resource.logo.update_attributes :url => @image.url, :image_id => @image.id
     render :nothing => true
   end
