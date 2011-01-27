@@ -19,11 +19,6 @@ class AddressesController < InheritedResources::Base
   end
 
   protected
-  # 提示消息
-  def interpolation_options
-     { :cn_resource_name => resource_class.model_name.human }
-  end
-
   def begin_of_association_chain
     current_member
   end

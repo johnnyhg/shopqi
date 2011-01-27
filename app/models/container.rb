@@ -1,6 +1,7 @@
 # encoding: utf-8
 # 网店页面中的布局容器
 class Container
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::ActsAsSortableTree
@@ -112,13 +113,13 @@ class Container
         end
         self.hot.children.init_list!
       when :sidead
-        self.image = Image.create(:width => 220, :height => 120)
+        self.image = store.images.create(:width => 220, :height => 120)
       when :fullad
-        self.image = Image.create(:width => 940, :height => 60)
+        self.image = store.images.create(:width => 940, :height => 60)
       when :products, :products_accordion
         self.categories = store.categories.roots.first.children
       when :products_head
-        self.image = Image.new(:width => 264, :height => 40)
+        self.image = store.images.new(:width => 264, :height => 40)
         self.image.words << Word.new(:x => 20, :y => 0, :font => :yahei, 'font-size' => '36px', :color => '#000000', :text => '分类')
         self.image.words << Word.new(:x => 100, :y => 16, :font => :yahei, 'font-size' => '24px', :color => '#EBEBEB', :text => 'Categories')
         self.image.save

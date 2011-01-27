@@ -36,14 +36,22 @@ describe Order do
      @order.save
     end
 
+    it 'should set number' do
+     @order.number.should_not be_nil
+    end
+
     it 'should be save' do
-     @order.state.should eql 'unpay'
+     @order.pay_state.should eql 'unpay'
      @order.store.should eql @store
     end
 
     it 'should set address' do
       @order.name.should eql @address.name
       @order.province.should eql @address.province
+    end
+
+    it 'should set price sum' do
+      @order.price_sum.should eql @product.price
     end
 
     it 'should be cancel' do

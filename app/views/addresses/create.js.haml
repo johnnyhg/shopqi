@@ -1,2 +1,2 @@
 $('#new_address_form').html('');
-$('#address_panel').append('#{escape_javascript(render :partial => "show", :locals => { :address => resource })}');
+$('#address_panel > ul').append('#{escape_javascript(render :partial => "show", :locals => { :address => resource })}');

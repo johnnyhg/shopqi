@@ -13,11 +13,11 @@ module ApplicationHelper
   end
 
   def id(model)
-    "#{name(model)}_#{model.id}"
+    model.view_id
   end
 
   def name(model)
-    model.class.name.downcase
+    model.view_name
   end
 
   # 实体的校验要越少越好，则名称不输入时显示[未命名]

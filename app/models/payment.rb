@@ -1,6 +1,7 @@
 # encoding: utf-8
 # 网店的支付方式
 class Payment
+  include Extensions::Base
   include Mongoid::Document
   referenced_in :store
 

@@ -91,7 +91,7 @@ describe OrdersController do
         notification.should_receive(:status).and_return("TRADE_FINISHED")
 
         post :notify
-        assigns[:order].state.should eql 'payed'
+        assigns[:order].pay_state.should eql 'payed'
       end
       
       it 'should be show pay success' do
@@ -101,6 +101,15 @@ describe OrdersController do
         rtn.should_receive(:order).and_return(@order.id.to_s)
         get :done
         assigns[:order].should eql @order
+      end
+
+      describe 'user' do
+        it 'should change order state' do
+          sign_in @saberma
+          post :ship, :id => @order.id.to_s, :format => :js
+          assigns[:order].ship_state.should eql 'shipped'
+          response.should be_success
+        end
       end
 
     end

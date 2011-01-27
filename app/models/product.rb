@@ -1,5 +1,6 @@
 # encoding: utf-8
 class Product
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include Formtastic::I18n::Naming

@@ -23,7 +23,7 @@
           %span
             ￥
             =resource.price_sum
-            =link_to_function(image_tag('templates/common/product/pay_now.gif'), "Car.pay('payment_form_#{resource.id}')") if resource.state == 'unpay'
+            =link_to_function(image_tag('templates/common/product/pay_now.gif'), "Car.pay('payment_form_#{resource.id}')") if resource.unpay?
 
     .block.first
       %h2.title

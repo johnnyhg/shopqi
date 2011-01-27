@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Member
+  include Extensions::Base
   include Mongoid::Document
-  include SentientUser
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
@@ -12,4 +12,6 @@ class Member
   embeds_many :addresses
 
   field :login
+
+  validates_presence_of :store
 end

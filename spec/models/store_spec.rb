@@ -5,6 +5,7 @@ describe Store do
     before :each do
       @user = Factory(:user_saberma)
       @store = @user.store
+      @store.reload
     end
 
     it 'should create logo' do

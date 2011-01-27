@@ -1,6 +1,7 @@
 # encoding: utf-8
 # 首页顶端菜单
 class Menu
+  include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Sortable

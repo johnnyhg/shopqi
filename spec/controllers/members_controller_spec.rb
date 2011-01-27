@@ -6,9 +6,10 @@ describe MembersController do
 
   before :each do
     @saberma = Factory(:user_saberma)
+    @store = @saberma.store
     request.host = "#{@saberma.store.subdomain}.shopqi.com"
 
-    @member = Factory(:member_ben)
+    @member = @store.members.create(Factory.attributes_for(:member_ben))
     sign_in @member
   end
 
