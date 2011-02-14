@@ -126,7 +126,6 @@ GEM
     json_pure (1.4.6)
     juggernaut (2.0.1)
       redis
-    kgio (2.0.0)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -229,9 +228,6 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
-    unicorn (3.0.0)
-      kgio (~> 2.0.0)
-      rack
     validation_reflection (1.0.0)
     warden (1.0.2)
       rack (>= 1.0.0)
@@ -284,7 +280,6 @@ DEPENDENCIES
   sentient_user
   spork
   transitions!
-  unicorn
   validation_reflection
   web-app-theme
   webrat

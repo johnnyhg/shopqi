@@ -86,6 +86,8 @@ h2. Get the shopqi source
 pre. 
 cd ~/Documents
 git clone git://github.com/saberma/shopqi.git 
+cd shopqi
+gem install unicorn
 #install gem
 bundle install
 #get juggernaut
@@ -100,7 +102,7 @@ pre.
 #Load the basic data
 rake db:seed
 #Start the development
-bundle exec unicorn -p 8088
+unicorn -p 8088
 #Start juggernaut(use for showing realtime tasks)
 redis-server
 pushd vendor/others/juggernaut
