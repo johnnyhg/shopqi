@@ -2,7 +2,7 @@
 
 # Always ActionController::InvalidAuthenticityToken
 #Rails.application.config.session_store :cookie_store, :key => '_shopqi_session', :domain => :all
-domain = production? ? '.shopqi.com' : '.lvh.me'
+domain = (production? || staging?) ? '.shopqi.com' : '.lvh.me'
 Rails.application.config.session_store :cookie_store, :key => '_shopqi_session', :domain => domain
 
 # Use the database for sessions instead of the cookie-based default,
