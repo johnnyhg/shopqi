@@ -16,7 +16,7 @@
         #user-navigation
           %ul.wat-cf
             %li
-              = link_to "#{request.protocol}#{store.subdomain}.#{request.host_with_port}?config=true", :target => :_blank do
+              = link_to "#{request.protocol}#{store.subdomain}.#{request.domain}#{request.port_string}?config=true", :target => :_blank do
                 = t "web-app-theme.design", :default => "Design"
             %li
               = link_to "#" do
