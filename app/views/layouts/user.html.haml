@@ -2,7 +2,7 @@
 %html{html_attrs('zh-CN')}
   %head
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
-    %title ShopQi工作平台
+    %title=platform
     =formtastic_stylesheet_link_tag
     =jqgrid_stylesheets
     = stylesheet_link_tag "photomaker/jgrowl", 'compiled/photomaker/fileuploader', 'icon_css_sprite', "web_app_theme", "web_app_theme_override", "themes/djime-cerulean/style", "compiled/footbar/footbar", "compiled/user", :cache => true
@@ -12,7 +12,7 @@
   %body
     #container
       #header
-        %h1= link_to 'ShopQi工作平台', root_path
+        %h1= link_to platform, root_path
         #user-navigation
           %ul.wat-cf
             %li
