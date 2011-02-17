@@ -16,10 +16,10 @@
         #user-navigation
           %ul.wat-cf
             %li
-              = link_to "#{request.protocol}#{store.subdomain}.#{request.domain}#{request.port_string}?config=true", :target => :_blank do
+              = link_to config_store_url, :target => :_blank do
                 = t "web-app-theme.design", :default => "Design"
             %li
-              = link_to "#{request.protocol}#{store.subdomain}.#{request.domain}#{request.port_string}", :target => :_blank do
+              = link_to show_store_url, :target => :_blank do
                 = t "web-app-theme.show", :default => "Show"
             %li
               = link_to "#" do
