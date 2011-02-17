@@ -13,6 +13,9 @@
     #container
       #header
         %h1= link_to platform, root_path
+        #loading-indicator
+          =image_tag 'admin-loader.gif'
+          正在处理，请稍候...
         #user-navigation
           %ul.wat-cf
             %li
