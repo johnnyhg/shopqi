@@ -40,7 +40,8 @@
             %li=link_to '界面', user_root_path
       #wrapper.wat-cf
         #main
-          -#.inner= render :partial => "stores/edit"
+          -if store.name.blank?
+            .inner= render :partial => "stores/edit"
           = yield
           #footer
             .block
