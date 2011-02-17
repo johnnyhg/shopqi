@@ -1,4 +1,4 @@
-%h3 请完成网店基本配置信息，以后如需修改，请点击右上角的[设置]
+%h3 请输入网店信息，以后如需修改，请点击右上角的[设置]
 -#左右分栏需要form class(web-app-theme.css)
 = semantic_form_remote_for(store, :html => { :class => 'form' }) do |f|
   .columns.wat-cf
@@ -12,7 +12,12 @@
             =f.input :district, :label => false, :include_blank => '请选择县/区', :collection => District.list(store.city)
       =f.inputs :detail
       =f.buttons do
-        =f.commit_button '下一步', :button_html => { 'data-disable-with' => '正在提交...' }
+        =f.commit_button '保存', :button_html => { 'data-disable-with' => '正在提交...' }
     .column.right
+  .flash.hide#step2_message
+    .message.notice
+      %p
+        您已保存网店信息，现在可以
+        =link_to t("web-app-theme.design"), config_store_url, :target => :_blank
 
 = javascript_include_tag 'district'
