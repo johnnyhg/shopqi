@@ -1,9 +1,10 @@
-%h2.title 请输入支付信息
+%h2.title 请输入支付信息，第一次使用时，请先点击[申请签约]
 %table.table#payment_type
   %tbody
     %tr.head
       %th.first=t('formtastic.labels.payment.number')
       %th{:width => '100px'}=t('formtastic.labels.payment.name')
+      %th{:width => '30px'}=t('formtastic.labels.payment.apply')
       %th{:width => '30px'}=t('formtastic.labels.payment.is_show')
       %th=t('formtastic.labels.payment.account')
       %th=t('formtastic.labels.payment.partnerid')
@@ -13,6 +14,7 @@
       %tr.item
         %td=index+1
         %td=payment_type.name
+        %td=link_to t('formtastic.labels.payment.apply'), payment_type.link, :target => :_blank
         %td=on_the_spot_edit payment_type, :is_show, :type => :checkbox
         %td=on_the_spot_edit payment_type, :account
         %td=on_the_spot_edit payment_type, :partnerid

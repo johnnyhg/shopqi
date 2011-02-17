@@ -69,6 +69,7 @@ cn:
       payment:
         number: 序号
         name: 名称
+        apply: 申请签约
         is_show: 是否显示
         account: 帐号(Email)
         partnerid: 合作者身份ID
@@ -151,7 +152,8 @@ cn:
     confirm: 您是否确定?
     created_at: 创建于
     all: 全部
-    design: 网店布局
+    design: 管理网店布局
+    show: 查看网店
     profile: 个人资料
     settings: 设置
     logout: 退出
