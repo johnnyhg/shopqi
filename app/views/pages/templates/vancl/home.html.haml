@@ -10,3 +10,6 @@
 /= render :partial => "pages/footer/extra"
 /= render :partial => "pages/footer/links"
 /= render :partial => "pages/footer/company"
+-if config?
+  :javascript
+    $.jGrowl('修改内容时，先按下Ctrl键，再把鼠标移至要修改的地方，系统会弹出编辑窗口', { header: '可视化操作提示', sticky: false, life: 20000 });
