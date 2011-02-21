@@ -1,6 +1,3 @@
-//hide
-$("#tooltip").trigger('cancle');
-
 //insert
 -if !params[:neighbor].blank?
   $("##{name(resource)}_#{params[:neighbor]}").move('#{params[:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/#{partial_name}", :object => resource))}');
@@ -17,4 +14,4 @@ $("##{id(resource)}").parent().children(':first').addClass('no_bar');
   //destroy parent (not empty) ul qtip
   $('##{id(resource)}').parent('.qtip_ul').qtip('destroy');
 
-Admin.refresh();
+$.modal.close();
