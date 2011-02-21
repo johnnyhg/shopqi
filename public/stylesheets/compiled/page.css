@@ -19,4 +19,4 @@ body { font: 12px tahoma, arial, verdana, geneva, sans-serif; }
 
 #simplemodal-container a.modalCloseImg { background: url(/images/x.png) no-repeat; width: 25px; height: 29px; display: inline; z-index: 3200; position: absolute; top: -15px; right: -18px; cursor: pointer; }
 
-#loading-indicator { position: absolute; left: 20px; top: 30px; display: none; font-size: 14px; color: black; }
+#loading-indicator { position: fixed; left: 20px; top: 30px; display: none; font-size: 14px; color: black; }
