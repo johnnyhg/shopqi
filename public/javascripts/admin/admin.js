@@ -12,9 +12,6 @@ $.fn.move = function(direct, content){
   });
 }
 
-// 可编辑标记
-var editable_flag = false;
-
 var tooltip_setting = {
   tip: '#tooltip', 
   predelay: 1000, 
@@ -31,9 +28,6 @@ var tooltip_setting = {
   },
   //opacity: 0.9,
   onBeforeShow: function(){
-    $.jGrowl(editable_flag);
-    if(!editable_flag) return false;
-    editable_flag = false;
     $('#tooltip').html('正在处理...');
     var obj = this.getTrigger().parents('[id]:first');
     //初始化提示面板的宽高
@@ -57,8 +51,6 @@ var tooltip_setting = {
 
 var image_tooltip_setting = $.extend({}, tooltip_setting, {
   onBeforeShow: function(){
-    if(!editable_flag) return false;
-    editable_flag = false;
     $('#tooltip').html('正在处理...');
     this.getTip().width(960).height(this.getTrigger().height() + 70);
     var url = '/images/' + id(this.getTrigger().attr('id')) + '/edit';
@@ -68,8 +60,6 @@ var image_tooltip_setting = $.extend({}, tooltip_setting, {
 
 var products_tooltip_setting = $.extend({}, tooltip_setting, {
   onBeforeShow: function(){
-    if(!editable_flag) return false;
-    editable_flag = false;
     $('#tooltip').html('正在处理...');
     this.getTip().width(960).height(300);
     var url = '/containers/' + id(this.getTrigger().attr('id')) + '/edit';
@@ -87,10 +77,6 @@ Admin = {
 
     //products list
     $('.editable.products_list, .editable.products_accordion_list').removeClass('editable').parent('.container').tooltip(products_tooltip_setting).dynamic(dynamic_setting);
-
-    //show panel
-    $('.editable a').tooltip(tooltip_setting).dynamic(dynamic_setting);
-    $('.editable').removeClass('editable');
 
     //hots
     if($('dd ul:empty')[0]){
@@ -125,12 +111,7 @@ Admin = {
 };
 
 jQuery(function ($) {
-  // tooltip设置显示延时，但关闭不能也跟着延时
-  $('#tooltip').bind('cancle', function(){ $(this).hide() });
   Admin.refresh();
-
-  // 按下ctrl键才能编辑
-  $(document).bind('keydown', 'ctrl', function(){ editable_flag = true; });
 
   // 商品详情即时编辑
   $('.editinplace').each(function(){
