@@ -9,4 +9,3 @@
     =f.commit_button '保存', :button_html => {'data-disable-with' => '正在提交...'}
     -unless resource.new_record?
       %li=link_to '删除', focus_path, :remote => true, :method => :delete
-    %li=link_to_function '关闭', '$("#tooltip").trigger("cancle")'
