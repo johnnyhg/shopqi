@@ -1,6 +1,4 @@
 @charset "utf-8"
-@import "compass/utilities/lists/horizontal-list"
-@import "compass/utilities/general/min"
 
 body
   //Fixed: 出现纵向滚动条会导致拖动时，滚动条自动向下滚动(chrome浏览器)
@@ -8,67 +6,3 @@ body
   //overflow-y: scroll
   //Fixed: 数字高度较矮
   font: 12px tahoma, arial, verdana, geneva, sans-serif
-
-.tooltip
-  z-index: 999
-  :background-color #fffff0
-  :border 1px solid #ccc
-  :display none 
-  :text-align left 
-  :font-size 12px 
-
-  .operates
-    +horizontal-list(4px)
-    line-height: 26px
-    margin-left: 15px
-
-/* override the arrow image of the tooltip
-.tooltip .bottom
-  padding-top: 40px
-  height: 55px
-
-.container_operates
-  background-color: #ddd
-  height: 10px
-
-.container_24
-  .grid_24.root
-    margin-top: 14px
-
-.qtip ul li
-  padding: 2px 0
-
-//edittip
-#edittip
-  z-index: 600
-  position: absolute
-  background-color: #cfc
-  padding: 4px
-  border: 2px solid #9c9
-  border-radius: 4px
-  -webkit-border-radius: 4px
-  -moz-border-radius: 4px
-
-//simplemodal
-#simplemodal-container a.modalCloseImg
-  background: url(/images/x.png) no-repeat
-  width: 25px
-  height: 29px
-  display: inline
-  z-index: 3200
-  position: absolute
-  top: -15px
-  right: -18px
-  cursor: pointer
-
-#loading-indicator
-  position: fixed
-  left: 20px
-  top: 30px
-  display: none
-  font-size: 14px
-  color: #000
-
-.tree
-  height: 500px
-  overflow-y: auto
