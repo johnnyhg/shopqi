@@ -31,12 +31,13 @@ var tooltip_setting = {
   },
   //opacity: 0.9,
   onBeforeShow: function(){
+    $.jGrowl(editable_flag);
     if(!editable_flag) return false;
     editable_flag = false;
     $('#tooltip').html('正在处理...');
     var obj = this.getTrigger().parents('[id]:first');
     //初始化提示面板的宽高
-    var width = 300, height = 130;
+    var width = 340, height = 150;
     if(obj.attr('edit_width')) width = parseInt(obj.attr('edit_width'));
     if(obj.attr('edit_height')) height = parseInt(obj.attr('edit_height'));
     this.getTip().width(width).height(height);

@@ -1,6 +1,16 @@
 = render :partial => "consumptions/warning"
 
 .block
+  %h3 网店信息
+  .content
+    %p
+      访问地址：
+      =link_to show_store_url, show_store_url
+    %p
+      管理后台地址：
+      =link_to admin_store_url, admin_store_url
+
+.block
   %h3 常用操作
   %ul.navigation
     %li=link_to '添加商品', new_product_path, :remote => true, 'data-type' => :html, :position => 'main-panel', :update => 'main-panel'

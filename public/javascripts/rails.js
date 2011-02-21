@@ -39,9 +39,11 @@ jQuery(function ($) {
                         type: method.toUpperCase(),
                         beforeSend: function (xhr) {
                             el.trigger('ajax:loading', xhr);
+                            $('#loading-indicator').show();
                         },
                         success: function (data, status, xhr) {
                             el.trigger('ajax:success', [data, status, xhr]);
+                            $('#loading-indicator').hide();
                         },
                         complete: function (xhr) {
                             el.trigger('ajax:complete', xhr);

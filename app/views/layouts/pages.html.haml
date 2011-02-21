@@ -3,10 +3,10 @@
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "zh-CN", "http-equiv" => "Content-Language"}/
-    %title 麦包包官网 - 淘宝网商城知名品牌, 开心网购, 就在麦包包！
-    %meta{:content => "mbaobao.com", :name => "Copyright"}/
-    %meta{ :name => "Keywords"}/
-    %meta{ :name => "Description"}/
+    %title=store_title
+    %meta{:content => request.domain, :name => "Copyright"}/
+    %meta{:content => store.keywords, :name => "Keywords"}/
+    %meta{:content => store.description, :name => "Description"}/
     -# 在线文字图片合成样式
     = stylesheet_link_tag 'compiled/grid', 'compiled/photomaker', 'photomaker/jgrowl', 'photomaker/images', 'compiled/photomaker/fileuploader'
     =formtastic_stylesheet_link_tag

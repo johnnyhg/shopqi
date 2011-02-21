@@ -69,6 +69,7 @@ cn:
       payment:
         number: 序号
         name: 名称
+        apply: 申请签约
         is_show: 是否显示
         account: 帐号(Email)
         partnerid: 合作者身份ID
@@ -76,7 +77,9 @@ cn:
         remark: 备注
     hints:
       store:
-        title: 商店的标题将显示在浏览器的标题栏
+        name: 网站名称。例如：凡客诚品
+        title: 商店的标题将显示在浏览器的标题栏。例如：VANCL 凡客诚品 互联网时尚品牌
+        description: 网站简短描述。例如：VANCL 凡客诚品，互联网时尚品牌。根植互联网，全球时尚潮流，国际一线品质，平民价位。在线销售男装、女装、童装、鞋、家居、配饰等。送货上门、货到付款，无条件退换货。
         detail: 详细地址前不用再填写省市区
       user:
         email: 请填写有效的Email地址作为下次登录的用户名
@@ -149,7 +152,8 @@ cn:
     confirm: 您是否确定?
     created_at: 创建于
     all: 全部
-    design: 网店布局
+    design: 管理网店布局
+    show: 查看网店
     profile: 个人资料
     settings: 设置
     logout: 退出
