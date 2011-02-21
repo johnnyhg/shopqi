@@ -20,7 +20,7 @@ jQuery(function ($) {
   $('#loading-indicator').ajaxStart(function(){$(this).show()}).ajaxStop(function(){$(this).hide()});
   $('a', $editTip).mousedown(function(){
     $("#tooltip").load($editTip.data('url'), function(){ 
-      $('#tooltip').modal({});
+      $('#tooltip').modal({minWidth: 300, minHeight: 180});
     });
   });
   $(document).mousedown(function(){ $editTip.hide().removeData('trigger'); });
@@ -37,7 +37,6 @@ jQuery(function ($) {
   $('body').delegate('.editable > a', 'mouseenter', function(event) {
     var link = this,
         $link = $(this);
-
     var trigger = $editTip.data('trigger');
     if(!trigger || (trigger && trigger!=this)) {
       $editTip.data('trigger', this);
@@ -47,6 +46,34 @@ jQuery(function ($) {
       var url = pluralize_name(obj.attr('id')) + '/' + id(obj.attr('id')) + '/edit';
       $editTip.data('url', url);
     }
-    
   });
+
+  $('body').delegate('.image_editable', 'mouseenter', function(event) {
+    var link = this,
+        $link = $(this);
+    var trigger = $editTip.data('trigger');
+    if(!trigger || (trigger && trigger!=this)) {
+      $editTip.data('trigger', this);
+      tip.position(event);
+      $editTip.fadeOut(0).fadeIn(200);
+      var obj = $link.parent();
+      var url = '/images/' + id($link.attr('id')) + '/edit';
+      $editTip.data('url', url);
+    }
+  });
+
+  $('body').delegate('.editable.products_list, .editable.products_accordion_list', 'mouseenter', function(event) {
+    var link = this,
+        $link = $(this);
+    var trigger = $editTip.data('trigger');
+    if(!trigger || (trigger && trigger!=this)) {
+      $editTip.data('trigger', this);
+      tip.position(event);
+      $editTip.fadeOut(0).fadeIn(200);
+      var obj = $link.parent();
+      var url = '/containers/' + id(obj.attr('id')) + '/edit';
+      $editTip.data('url', url);
+    }
+  });
+    
 });
