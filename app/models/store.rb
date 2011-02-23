@@ -35,26 +35,35 @@ class Store
   field :detail
 
   # 回调方法
-  before_create :init_image
-  before_create :init_subdomain
-  before_create :init_valid_date
-  after_create :init_child
+  before_create :set_valid_date
+  before_create :set_subdomain
+  after_create :add_background_jobs
 
-  def init_image
-    self.logo_image_id = images.create(:width => 300, :height => 40).id
-    self.telephone_image_id = images.create(:width => 190, :height => 50).id
-  end
-
-  def init_valid_date
+  def set_valid_date
     self.deadline = Date.today.next_day(10)
   end
 
-  def init_subdomain
+  def set_subdomain
     self.subdomain = self.id.to_s if self.subdomain.blank?
   end
 
+  def add_background_jobs
+    Resque.enqueue(StoreInit, self.id)
+  end
+
   # 初始化部分分类
-  def init_child
+  def init
+    #image
+    self.logo_image_id = images.create(:width => 300, :height => 40).id
+    self.telephone_image_id = images.create(:width => 190, :height => 50).id
+    #nav
+    [ { :name => '我的帐户', :url => '/help' },
+      { :name => '帮助中心', :url => '/help' }
+    ].each do |attributes|
+      self.navs.build(attributes)
+    end
+    self.navs.init_list!
+    #page
     self.pages.create :name => :homepage
     # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
     self.categories.create :name => :invisible
