@@ -11,7 +11,7 @@ body abbr { color: #7f0019; }
 #header #navs li { list-style-image: none; list-style-type: none; margin-left: 0px; white-space: nowrap; display: inline; float: left; padding-left: 8px; padding-right: 8px; }
 #header #navs li:first-child, #header #navs li.first { padding-left: 0; }
 #header #navs li:last-child, #header #navs li.last { padding-right: 0; }
-#header #navs li { background: url('/images/templates/common/header/bar.gif?1279770306') no-repeat 0px 2px; }
+#header #navs li { background: url('/images/templates/common/header/bar.gif?1298543163') no-repeat 0px 2px; }
 #header #navs li.no_bar { background-image: none; }
 #header #welcome { padding: 15px 0 0 15px; }
 #header #welcome a { color: #a10010; }
@@ -36,7 +36,7 @@ body abbr { color: #7f0019; }
 #header #mini-car .shopping { margin: 3px 3px 0 0; }
 #header #mini-car #product_count, #header #mini-car #product_price { font-weight: bold; color: #a10000; }
 #header #mini-car #product_count { margin: 0 4px; }
-#header #mini-car .pay_btn { float: right; background-image: url('/images/templates/vancl/header/pay.jpg?1282642274'); width: 53px; height: 19px; }
+#header #mini-car .pay_btn { float: right; background-image: url('/images/templates/vancl/header/pay.jpg?1298543163'); width: 53px; height: 19px; }
 
 /**** Content **** */
 #content { /* 分类列表页面较窄，只能放四个商品信息 */ /* 容器拖动排序 */ }
@@ -52,7 +52,7 @@ body abbr { color: #7f0019; }
 #content .hots dl dd ul li { list-style-image: none; list-style-type: none; margin-left: 0px; white-space: nowrap; display: inline; float: left; padding-left: 8px; padding-right: 8px; }
 #content .hots dl dd ul li:first-child, #content .hots dl dd ul li.first { padding-left: 0; }
 #content .hots dl dd ul li:last-child, #content .hots dl dd ul li.last { padding-right: 0; }
-#content .hots dl dd ul li { background: url('/images/templates/common/header/bar.gif?1279770306') no-repeat 0px 14px; }
+#content .hots dl dd ul li { background: url('/images/templates/common/header/bar.gif?1298543163') no-repeat 0px 14px; }
 #content .hots dl dd ul li.no_bar { background-image: none; }
 #content .products_list { margin: 0; padding: 0; border: 0; outline: 0; overflow: hidden; *zoom: 1; }
 #content .products_list li { list-style-image: none; list-style-type: none; margin-left: 0px; white-space: nowrap; display: inline; float: left; padding-left: 0px; padding-right: 0px; }
@@ -66,13 +66,13 @@ body abbr { color: #7f0019; }
 #content .products_list .price { margin-top: 3px; color: #a10010; }
 #content .category_product li { padding: 0 8px 0 0; }
 #content .products_accordion_list { border-bottom: 1px solid #ebebeb; }
-#content .products_accordion_list dt { height: 29px; line-height: 29px; background: url('/images/templates/common/bullet/diamond.gif?1284436134') no-repeat 8px 11px; border: 1px solid #ebebeb; border-bottom: none; padding-left: 20px; }
-#content .products_accordion_list dt p { margin-right: 8px; background: url('/images/templates/common/bullet/right_arrow.gif?1284436943') no-repeat 100% 11px; }
+#content .products_accordion_list dt { height: 29px; line-height: 29px; background: url('/images/templates/common/bullet/diamond.gif?1298543163') no-repeat 8px 11px; border: 1px solid #ebebeb; border-bottom: none; padding-left: 20px; }
+#content .products_accordion_list dt p { margin-right: 8px; background: url('/images/templates/common/bullet/right_arrow.gif?1298543163') no-repeat 100% 11px; }
 #content .products_accordion_list dt.showimg a { color: #a10010; }
-#content .products_accordion_list dt.showimg p { background: url('/images/templates/common/bullet/down_arrow.gif?1284436220') no-repeat 100% 11px; }
+#content .products_accordion_list dt.showimg p { background: url('/images/templates/common/bullet/down_arrow.gif?1298543163') no-repeat 100% 11px; }
 #content .products_accordion_list dd { display: none; }
 #content .products_head { border-bottom: 2px solid #a10010; }
-#content h2.move { width: 16px; height: 16px; background: url('/images/templates/common/bullet/move_arrow.png?1284455240') no-repeat 0 0; /* 相对位置会占用空间 */ /* position: relative */ position: absolute; left: 0px; top: 0px; cursor: move; display: none; z-index: 999; }
+#content h2.move { width: 16px; height: 16px; background: url('/images/templates/common/bullet/move_arrow.png?1298543163') no-repeat 0 0; /* 相对位置会占用空间 */ /* position: relative */ position: absolute; left: 0px; top: 0px; cursor: move; display: none; z-index: 999; }
 
 .categories { border: 1px solid #c7c7c7; }
 .categories .title { height: 24px; line-height: 24px; background-color: #565662; color: white; font-weight: bold; padding-left: 15px; margin: 1px; }
@@ -165,7 +165,7 @@ body abbr { color: #7f0019; }
 #members #menus .box .row { height: 20px; line-height: 20px; }
 #members #menus .box.menu { padding: 1px; }
 #members #menus .box.menu h2 { color: white; font: 14px bold; background-color: #565662; text-align: center; height: 24px; line-height: 24px; }
-#members #menus .box.menu ul li { margin: 10px 0; padding-left: 30px; background: url('/images/templates/common/bullet/square.png?1291625996') no-repeat 18px 50%; font-weight: bold; }
+#members #menus .box.menu ul li { margin: 10px 0; padding-left: 30px; background: url('/images/templates/common/bullet/square.png?1298543163') no-repeat 18px 50%; font-weight: bold; }
 #members #menus .box.menu ul li a { font-weight: normal; }
 
 /*会员订单 */
