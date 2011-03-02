@@ -21,3 +21,8 @@ config/initializers/payment.rb
 
 #vagrant
 .vagrant
+*.box
+config/unicorn.conf.rb
+
+#bundle deployment
+vendor/bundle

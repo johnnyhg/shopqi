@@ -1,113 +1,52 @@
-h1. Products Introdution
+  config.vm.forward_port "mongodb", 27092, 27092
+  config.vm.forward_port "redis", 6379, 6379
+h1. ShoqQi
 
-h2. Product Composition
+An open source ecommerce platform in Ruby on Rails
+See the "demo.shopqi.com":http://www.shopqi.com:3000 . 
 
-# ShopQi official website
-# Shop Admin
-# Shop layout manager
-# Shop display
+ShopQi was developed by "saberma":http://saberma.me
 
-h1. Installation
+h1. Getting Started
 
-h2. Development Environment
+For testing and development purposes, Vagrant can be used to bootstrap a @virtual machine@ that is ready to run ShopQi
 
-ubuntu 10.04
-vim 7.2 ("http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles)
+h2. Prerequisites
 
-h2. System Installation
+h3. VirtualBox
 
-bq. 
-The following process is based on ubuntu 10.04
+VirtualBox 4.x is required: "http://www.virtualbox.org/wiki/Downloads":http://www.virtualbox.org/wiki/Downloads
 
-h3. Softwares that development environment depends 
+h3. Vagrant
 
-pre. 
-# ruby also need to install (or install ruby1.9.2 by rvm will report make: *** [miniprelude.c] Error 1 error)
-sudo apt-get install build-essential bison openssl libreadline6 libreadline-dev curl git-core graphicsmagick \
-  zlib1g zlib1g-dev libssl-dev vim libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev subversion autoconf ruby ruby-dev
-# Webrat plug-in required
-sudo apt-get install libxslt1-dev libxml2-dev
+pre.
+gem install vagrant --no-ri --no-rdoc
 
-h3. RVM Installation
+h3. ShopQi Box
 
-pre. 
-bash << (curl http://rvm.beginrescueend.com/releases/rvm-install-head)
-vim ~/.bashrc
+Download the box(765M): "https://dl.dropbox.com/u/19519145/shopqi/vagrant-package-shopqi.box":https://dl.dropbox.com/u/19519145/shopqi/vagrant-package-shopqi.box
+This box contains:
 
-#Add the following statement to the bottom of @~/.bashrc@
-@[[-S "$HOME/.rvm/scripts/rvm"]] && source "$HOME/.rvm/scripts/rvm"@
+# Ubuntu 10.04(32bit)
+# RVM 1.2.8
+# Ruby 1.9.2
+# Ruby on Rails 3.0.3
+# mongodb 1.6.5
+# redis 2.2.0rc2
+# node.js 0.2.6
 
-pre. 
-#Install ruby 1.9.2, rails3 ruby version of the recommended
-#Note that Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails 3.0.
-#Ruby Enterprise Edition have these fixed since release 1.8.7-2010.02 though.
-#On the 1.9 front, Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0,
-#So if you want to use Rails 3 with 1.9.x jump on 1.9.2 for smooth sailing.
-rvm install 1.9.2-head
-rvm 1.9.2-head --default
-
-h3. Rails3 Installation
+h2. Download the sources:
 
 pre. 
-gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-format thor bundler i18n --no-ri --no-rdoc
-gem install rails --pre --no-ri --no-rdoc
-#If the following error report, you will need to manually download and install rack1.1.0 RubyGems.org the gem package
-## ERROR: Error installing rails:
-## Actionpack requires rack (~> 1.1.0, runtime)
-
-h3. Mongodb Database Installation
-
-Add the following statement to @/etc/apt/source.list@
-
-pre. 
-#Mongodb source
-deb http://downloads.mongodb.org/distros/ubuntu 10.4 10gen
-
-Execute in the terminal
-
-pre. 
-sudo apt-get update
-sudo apt-get install mongodb-stable
-
-bq. 
-*Note:*
-Illegal shutdown operations may cause mongodb not start, you need to manually run the following statement unlock mongod before restart
-
-pre. 
-sudo rm /var/lib/mongodb/mongod.lock
-mongod --repair
-
-h3. Rails IDE Installation
-
-Please refer to rails on vim installation ("http://github.com/saberma/vimfiles":http://github.com/saberma/vimfiles)
-
-h2. Get the shopqi source
-
-pre. 
-cd ~/Documents
 git clone git://github.com/saberma/shopqi.git 
 cd shopqi
-gem install unicorn
-#install gem
-bundle install
-#get juggernaut
-git submodule update --init
-pushd vendor/others/juggernaut
-git submodule update --init
-popd
 
-h1. Development
+h2. Create the VM
 
 pre. 
-#Load the basic data
-rake db:seed
-#Start the development
-unicorn -p 8088
-#Start juggernaut(use for showing realtime tasks)
-redis-server
-pushd vendor/others/juggernaut
-#if redis server doesn't start, we will get: Error: ECONNREFUSED, Connection refused
-sudo node server.js
+vagrant up
+
+h1. All done
 
 Click the following url to see the page
 
@@ -115,32 +54,16 @@ Click the following url to see the page
 "Shop Admin @ http://lvh.me:8088/user_root":http://lvh.me:8088/user_root
 "Shop layout manager @ http://vancl.lvh.me:8088":http://vancl.lvh.me:8088
 
-h1. Contribute
+h1. Contributor
 
-If you are interested in the product, you can:
+waiting for you...
 
-# Fork this
-# Add features or fix bug
-# Write the corresponding test case
-# Send a pull request
-
-How to solve the commit conflict (ie github's forkqueue show "Will likely not apply cleanly"), you need to manually merge the branch
-
-pre. 
-git remote add shopqi git://github.com/saberma/shopqi.git
-git pull shopqi master
-# fix file conflict manually ...
-git commit -a -m 'merge from shopqi'
-git push origin master
-
-Click here to see which features need to be develope
-"Http://www.pivotaltracker.com/projects/84595":http://www.pivotaltracker.com/projects/84595
-
-Shopqi follow the git standardized development process, please refer to "http://saberma.me/git/2010/10/25/git-flow.html":http://saberma.me/git/2010/10/25/git-flow.html
+Task List: "Http://www.pivotaltracker.com/projects/84595":http://www.pivotaltracker.com/projects/84595
 
 h1. Support
 
-# email: mahb45 # gmail.com
+# email(gtalk): mahb45 # gmail.com
+# twitter: "twitter.com/saberma":http://twitter.com/saberma
 
 h1. License
 
