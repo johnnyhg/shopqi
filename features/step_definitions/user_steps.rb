@@ -3,7 +3,7 @@
   @user = Factory(:user, :email => email)
   @store = @user.store
   # 固定store subdomain
-  @store.update_attributes :subdomain => 'vancl'
+  @store.update_attributes :name => 'vancl', :subdomain => 'vancl'
 end
 
 假如 /^我已经以用户名(.+)登录$/ do |email|

@@ -27,4 +27,8 @@ Vagrant::Config.run do |config|
     chef.log_level = :debug
   end
 
+  #config.vm.customize do |vm|
+  #  vm.memory_size = 1024
+  #end
+
 end

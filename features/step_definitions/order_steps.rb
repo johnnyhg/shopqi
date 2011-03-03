@@ -44,6 +44,8 @@ end
 end
 
 当 /会员成功支付订单/ do
+  #waiting 10s for firefox connect to node.js server
+  sleep 10
   @order.pay!
 end
 
