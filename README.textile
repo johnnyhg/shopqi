@@ -1,5 +1,3 @@
-  config.vm.forward_port "mongodb", 27092, 27092
-  config.vm.forward_port "redis", 6379, 6379
 h1. ShoqQi
 
 An open source ecommerce platform in Ruby on Rails
