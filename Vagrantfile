@@ -13,12 +13,16 @@ Vagrant::Config.run do |config|
   #config.vm.forward_port "mongodb-shopqi", 27092, 27092
   #config.vm.forward_port "redis-shopqi", 6379, 6379
 
+  #fixed: share folder performance. http://vagrantup.com/docs/nfs.html
+  config.vm.share_folder("v-root", "/vagrant", ".", :nfs => true)
+  config.vm.network("33.33.33.10")
+
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
   #
   config.vm.provision :chef_solo do |chef|
-    chef.recipe_url = "https://dl.dropbox.com/u/19519145/shopqi/chef-solo.tar.gz"
-    #chef.cookbooks_path = "/home/saberma/Documents/chef-repo/cookbooks"
+    #chef.recipe_url = "https://dl.dropbox.com/u/19519145/shopqi/chef-solo.tar.gz"
+    chef.cookbooks_path = "/home/saberma/Documents/chef-repo/cookbooks"
     chef.add_recipe "develop"
   
     # You may also specify custom JSON attributes:
