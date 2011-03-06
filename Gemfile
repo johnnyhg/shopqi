@@ -69,6 +69,7 @@ gem "activemerchant_patch_for_china", :git => 'git://github.com/saberma/activeme
 gem "httparty"
 # 实时(另外需要安装node.js和redis)
 gem "juggernaut"
+gem "resque"
 
 # 调试
 gem "awesome_print", :require => 'ap'
