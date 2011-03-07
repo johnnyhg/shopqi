@@ -12,6 +12,11 @@ Vagrant::Config.run do |config|
   #config.vm.forward_port "web-shopqi", 3000, 8088
   #config.vm.forward_port "mongodb-shopqi", 27092, 27092
   #config.vm.forward_port "redis-shopqi", 6379, 6379
+  #config.vm.forward_port "nodejs-shopqi", 8080, 8080
+
+  #fixed: share folder performance. http://vagrantup.com/docs/nfs.html
+  config.vm.share_folder("v-root", "/vagrant", ".", :nfs => true)
+  config.vm.network("33.33.33.10")
 
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
