@@ -26,12 +26,13 @@ Download the box(765M): "https://dl.dropbox.com/u/19519145/shopqi/vagrant-packag
 This box contains:
 
 # Ubuntu 10.04(32bit)
-# RVM 1.2.8
 # Ruby 1.9.2
 # Ruby on Rails 3.0.3
+# unicorn 3.0.4
 # mongodb 1.6.5
 # redis 2.2.0rc2
 # node.js 0.2.6
+# nginx 0.7.67
 
 h2. Download the sources:
 
@@ -42,6 +43,8 @@ cd shopqi
 h2. Create the VM
 
 pre. 
+#require nfsd for share folder
+sudo apt-get install nfs-kernel-server
 vagrant up
 
 h1. All done

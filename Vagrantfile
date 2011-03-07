@@ -12,6 +12,7 @@ Vagrant::Config.run do |config|
   #config.vm.forward_port "web-shopqi", 3000, 8088
   #config.vm.forward_port "mongodb-shopqi", 27092, 27092
   #config.vm.forward_port "redis-shopqi", 6379, 6379
+  #config.vm.forward_port "nodejs-shopqi", 8080, 8080
 
   #fixed: share folder performance. http://vagrantup.com/docs/nfs.html
   config.vm.share_folder("v-root", "/vagrant", ".", :nfs => true)
@@ -21,8 +22,8 @@ Vagrant::Config.run do |config|
   # to this Vagrantfile), and adding some recipes and/or roles.
   #
   config.vm.provision :chef_solo do |chef|
-    #chef.recipe_url = "https://dl.dropbox.com/u/19519145/shopqi/chef-solo.tar.gz"
-    chef.cookbooks_path = "/home/saberma/Documents/chef-repo/cookbooks"
+    chef.recipe_url = "https://dl.dropbox.com/u/19519145/shopqi/chef-solo.tar.gz"
+    #chef.cookbooks_path = "/home/saberma/Documents/chef-repo/cookbooks"
     chef.add_recipe "develop"
   
     # You may also specify custom JSON attributes:
