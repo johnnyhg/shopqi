@@ -121,27 +121,6 @@ category_root.children.init_list!
   store.products.create attrs
 end
 
-#导航
-[ { :name => '我的帐户', :url => '/user' },
-  { :name => '断码专区', :url => '/discount' },
-  { :name => '积分回馈', :url => '/score' },
-  { :name => '凡客论坛', :url => '/bbs' },
-  { :name => '网站联盟', :url => '/union' },
-  { :name => '帮助中心', :url => '/help' }
-].each do |attributes|
-  store.navs << store.navs.build(attributes)
-end
-store.navs.init_list!
-store.save
-
-#菜单
-%w( 首页 男装 女装 童装 鞋 配饰 家居 ).each do |label|
-  store.menus << store.menus.build(:name => label, :url => '/')
-end
-store.menus.init_list!
-store.save
-Menu.sprite store
-
 page = store.pages.homepage
 #轮播广告
 =begin

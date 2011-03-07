@@ -95,6 +95,8 @@ group :test do
   gem "rspec-rails"
   gem "factory_girl"
   gem "factory_girl_rails"
+  # resque测试
+  gem 'resque_spec'
 
   # 最新版本0.4.0有问题，无法启动测试服务器
   gem 'capybara', '0.3.9'

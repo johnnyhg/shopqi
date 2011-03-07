@@ -3,7 +3,9 @@ require 'spec_helper'
 describe Store do
   describe :created do
     before :each do
-      @user = Factory(:user_saberma)
+      with_resque do
+        @user = Factory(:user_saberma)
+      end
       @store = @user.store
       @store.reload
     end
