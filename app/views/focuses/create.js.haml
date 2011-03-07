@@ -1,10 +1,7 @@
-//hide
-$("#tooltip").trigger('cancle');
-
 //insert
-$(".slideshow li[rel_id='focus_#{params[:neighbor]}']").move('#{params[:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/item", :object => resource, :locals => {:item_counter => 0}))}');
+$(".slideshow li[rel_id='#{name(resource)}_#{params[:neighbor]}']").move('#{params[:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/item", :object => resource, :locals => {:item_counter => 0}))}');
 
 //caption
 $(".slideshow").data('slideshow').refresh_caption();
 
-Admin.refresh();
+$.modal.close();
