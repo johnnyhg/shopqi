@@ -8,7 +8,6 @@
       %ul
         %li=link_to '', '#', :title => '添加文字', :class => :add, :id => :add_word
         %li=link_to '', '#', :title => '上传图片', :class => :upload, :id => :upload_background
-        %li=link_to '', '#', :title => '生成图片', :class => :generate, :id => :generate_image, :style => 'display:none'
         %li.separator
       %ul{:name => :font}
         %li=link_to '', '#', :title => '字体:微软雅黑(粗体)', :value => :yahei_bold, :class => :yahei_bold
@@ -71,11 +70,7 @@
       });
 
       //可拖动
-      word.jqDrag(null, '#panel').bind('drag.stop', function(){
-        //修正:click会发送两次请求
-        //$('#generate_image').click();
-        $('#generate_image').dblclick();
-      });
+      word.jqDrag(null, '#panel');
 
       //可编辑
       word.editable(
@@ -90,9 +85,6 @@
         //input为inline,则form也应为inline,否则布局会乱
         cssclass : 'form_inline',
         placeholder: '双击此处编辑',
-        callback : function(value, settings) {
-          $('#generate_image').click();
-        }
       });
 
       //设置当前文字
@@ -124,9 +116,7 @@
     });
 
     //面板可修改大小
-    $('#panel').jqResize('.jqResize').bind('drag.stop', function(){
-      $('#generate_image').click();
-    });
+    $('#panel').jqResize('.jqResize');
 
     $('.word').each(function(){
       Word.init($(this));
@@ -159,7 +149,7 @@
     });
 
     //生成图片
-    $('#generate_image').click(function(){
+    $('.save').click(function(){
       if($('.word, .background').size() == 0)
         return;
       //面板参数
@@ -222,8 +212,6 @@
         if(name == 'color' || name == 'font-size')
           current.css(name, value);
         current.attr('word-' + name, value);
-        //立即生成图片
-        $('#generate_image').click();
         if(name == 'font')
           current.css('font-family', value);
         //$.jGrowl('修改属性' + name + ':' + value);
