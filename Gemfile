@@ -81,9 +81,9 @@ group :development do
   #gem "jquery-rails"
   #gem "haml-rails"
   gem "hpricot"
-  # 修改后台文件后，safari或chrome浏览器会自动刷新(虚拟化开发环境无桌面，暂时取消，以后尝试guard-livereload)
-  #gem "livereload"
-  #gem "rb-inotify"
+  # 修改后台文件后，safari或chrome浏览器会自动刷新
+  gem "livereload"
+  gem "rb-inotify"
 
   # To use debugger(add 'debugger' in code, then set autoeval; set autolist in console)
   #gem 'ruby-debug19'

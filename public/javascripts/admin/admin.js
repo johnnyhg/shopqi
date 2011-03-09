@@ -78,4 +78,10 @@ jQuery(function ($) {
   $('.panel').click(function(e){
     e.stopPropagation();
   });
+
+  //选择链接
+  $('body').delegate('.url_option', 'click', function(){
+    $('.select_url').val($(this).attr('href'));
+    return false;
+  });
 });

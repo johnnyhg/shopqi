@@ -1,0 +1,10 @@
+#url_options
+  %ul
+    %li 常用链接
+    %li= link_to "首页", root_path, :class => :url_option
+    %li= link_to "商品列表", products_path, :class => :url_option
+  -store.categories.roots.first.children.each do |category|
+    %ul
+      %li=link_to category.name, category_products_path(category), :class => :url_option
+      -category.children.each do |child|
+        %li=link_to child.name, category_products_path(child), :class => :url_option
