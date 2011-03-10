@@ -10,11 +10,13 @@ gem 'rails'
 # gem 'capistrano'
 
 ##### 实体相关 #####
-gem 'mongoid', '2.0.0.beta.19'
+gem 'mongoid', '2.0.0.rc.7'
 gem 'bson_ext'
 gem 'devise'
 # 用于保存配置型记录
 gem 'active_hash'
+# 分页
+gem 'kaminari'
 
 # mongoid
 # 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
