@@ -4,9 +4,11 @@
 = semantic_form_remote_for(resource) do |f|
   =hidden_field_tag :direct, params[:direct]
   =hidden_field_tag :neighbor, params[:neighbor]
-  =f.inputs :name, :url
+  =f.inputs do
+    =f.input :name
+    =f.input :url, :input_html => { :class => :select_url }
+  = render :partial => "pages/links"
   =f.buttons do
     =f.commit_button '保存', :button_html => {'data-disable-with' => '正在提交...'}
     -unless resource.new_record?
       %li=link_to '删除', menu_path, :remote => true, :method => :delete
-    %li=link_to_function '关闭', '$("#tooltip").trigger("cancle")'

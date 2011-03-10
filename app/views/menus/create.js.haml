@@ -1,7 +1,5 @@
-$("#tooltip").trigger('cancle');
-
 //insert
-$("#menu_#{params[:neighbor]}").move('#{params[:direct]}', '#{escape_javascript( render(:partial => "menus/item", :object => resource, :locals => {:item_counter => 0}))}');
+$("##{name(resource)}_#{params[:neighbor]}").move('#{params[:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/item", :object => resource, :locals => {:item_counter => 0}))}');
 
 //refresh image
 $("##{id(resource)}").parent().find('> li > a').css('background-image', 'url(#{menu_bg_img}?#{Time.now.to_i})');
@@ -10,7 +8,5 @@ $("##{id(resource)}").parent().find('> li > a').css('background-image', 'url(#{m
 $("##{id(resource)}").parent().children().removeAttr('class').each(function(index){
 $(this).addClass('menu_' + index);
 });
-//readd class, for tooltip reset
-$("##{id(resource)}").addClass('editable');
 
-Admin.refresh();
+$.modal.close();

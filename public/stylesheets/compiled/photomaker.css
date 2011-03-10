@@ -9,24 +9,24 @@
 
 @font-face { font-family: "katong"; src: local("☺"), url(/images/logo/katong.ttf) format('truetype'); }
 
-#photomaker .add { background: url('/images/photomaker.png?1298910206'); }
-#photomaker .upload { background: url('/images/photomaker.png?1298910206') 0 -32px; }
-#photomaker .generate { background: url('/images/photomaker.png?1298910206') 0 -64px; }
-#photomaker .yahei_bold { background: url('/images/photomaker.png?1298910206') 0 -96px; }
-#photomaker .yahei { background: url('/images/photomaker.png?1298910206') 0 -128px; }
-#photomaker .haibao { background: url('/images/photomaker.png?1298910206') 0 -160px; }
-#photomaker .katong { background: url('/images/photomaker.png?1298910206') 0 -192px; }
-#photomaker .liuye { background: url('/images/photomaker.png?1298910206') 0 -224px; }
-#photomaker .small { background: url('/images/photomaker.png?1298910206') 0 -256px; }
-#photomaker .middle { background: url('/images/photomaker.png?1298910206') 0 -288px; }
-#photomaker .big { background: url('/images/photomaker.png?1298910206') 0 -320px; }
-#photomaker .black { background: url('/images/photomaker.png?1298910206') 0 -352px; }
-#photomaker .red_dark { background: url('/images/photomaker.png?1298910206') 0 -384px; }
-#photomaker .red { background: url('/images/photomaker.png?1298910206') 0 -416px; }
-#photomaker .green { background: url('/images/photomaker.png?1298910206') 0 -448px; }
-#photomaker .blue { background: url('/images/photomaker.png?1298910206') 0 -480px; }
-#photomaker .grey { background: url('/images/photomaker.png?1298910206') 0 -512px; }
-#photomaker .logo_bg { background: url('/images/photomaker.png?1298910206') 0 -544px; }
-#photomaker .banner_bg { background: url('/images/photomaker.png?1298910206') 0 -576px; }
-#photomaker .focus_bg { background: url('/images/photomaker.png?1298910206') 0 -608px; }
-#photomaker .close { background: url('/images/photomaker.png?1298910206') 0 -640px; }
+#photomaker .add { background: url('/images/photomaker.png?1299487074'); }
+#photomaker .upload { background: url('/images/photomaker.png?1299487074') 0 -32px; }
+#photomaker .generate { background: url('/images/photomaker.png?1299487074') 0 -64px; }
+#photomaker .yahei_bold { background: url('/images/photomaker.png?1299487074') 0 -96px; }
+#photomaker .yahei { background: url('/images/photomaker.png?1299487074') 0 -128px; }
+#photomaker .haibao { background: url('/images/photomaker.png?1299487074') 0 -160px; }
+#photomaker .katong { background: url('/images/photomaker.png?1299487074') 0 -192px; }
+#photomaker .liuye { background: url('/images/photomaker.png?1299487074') 0 -224px; }
+#photomaker .small { background: url('/images/photomaker.png?1299487074') 0 -256px; }
+#photomaker .middle { background: url('/images/photomaker.png?1299487074') 0 -288px; }
+#photomaker .big { background: url('/images/photomaker.png?1299487074') 0 -320px; }
+#photomaker .black { background: url('/images/photomaker.png?1299487074') 0 -352px; }
+#photomaker .red_dark { background: url('/images/photomaker.png?1299487074') 0 -384px; }
+#photomaker .red { background: url('/images/photomaker.png?1299487074') 0 -416px; }
+#photomaker .green { background: url('/images/photomaker.png?1299487074') 0 -448px; }
+#photomaker .blue { background: url('/images/photomaker.png?1299487074') 0 -480px; }
+#photomaker .grey { background: url('/images/photomaker.png?1299487074') 0 -512px; }
+#photomaker .logo_bg { background: url('/images/photomaker.png?1299487074') 0 -544px; }
+#photomaker .banner_bg { background: url('/images/photomaker.png?1299487074') 0 -576px; }
+#photomaker .focus_bg { background: url('/images/photomaker.png?1299487074') 0 -608px; }
+#photomaker .save { background: url('/images/photomaker.png?1299487074') 0 -640px; }

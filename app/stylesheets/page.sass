@@ -1,6 +1,4 @@
 @charset "utf-8"
-@import "compass/utilities/lists/horizontal-list"
-@import "compass/utilities/general/min"
 
 body
   //Fixed: 出现纵向滚动条会导致拖动时，滚动条自动向下滚动(chrome浏览器)
@@ -8,41 +6,3 @@ body
   //overflow-y: scroll
   //Fixed: 数字高度较矮
   font: 12px tahoma, arial, verdana, geneva, sans-serif
-
-.tooltip
-  z-index: 999
-  :background-color #fffff0
-  :border 1px solid #ccc
-  :width 300px 
-  :display none 
-  :text-align left 
-  :font-size 12px 
-
-  //outline radius for mozilla/firefox only
-  :outline-radius 4px 
-  :-moz-outline-radius 4px 
-  :-webkit-outline-radius 4px
-
-  overflow-x: hidden
-  overflow-y: auto
-
-  .operates
-    +horizontal-list(4px)
-    line-height: 26px
-    margin-left: 15px
-
-/* override the arrow image of the tooltip
-.tooltip .bottom
-  padding-top: 40px
-  height: 55px
-
-.container_operates
-  background-color: #ddd
-  height: 10px
-
-.container_24
-  .grid_24.root
-    margin-top: 14px
-
-.qtip ul li
-  padding: 2px 0

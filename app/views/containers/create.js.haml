@@ -1,5 +1,5 @@
 //close qtip
-$("#tooltip").trigger('cancle');
+$.modal.close();
 
 //appendTo parent
 $('##{id(resource.parent)}').append('#{escape_javascript( render(:partial => "containers/child", :object => resource, :locals => {:containers => resource.parent.children}))}');

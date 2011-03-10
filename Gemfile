@@ -69,6 +69,7 @@ gem "activemerchant_patch_for_china", :git => 'git://github.com/saberma/activeme
 gem "httparty"
 # 实时(另外需要安装node.js和redis)
 gem "juggernaut"
+# 后台任务
 gem "resque"
 
 # 调试
@@ -80,9 +81,9 @@ group :development do
   #gem "jquery-rails"
   #gem "haml-rails"
   gem "hpricot"
-  # 修改后台文件后，safari或chrome浏览器会自动刷新(虚拟化开发环境无桌面，暂时取消，以后尝试guard-livereload)
-  #gem "livereload"
-  #gem "rb-inotify"
+  # 修改后台文件后，safari或chrome浏览器会自动刷新
+  gem "livereload"
+  gem "rb-inotify"
 
   # To use debugger(add 'debugger' in code, then set autoeval; set autolist in console)
   #gem 'ruby-debug19'
@@ -95,6 +96,8 @@ group :test do
   gem "rspec-rails"
   gem "factory_girl"
   gem "factory_girl_rails"
+  # resque测试
+  gem 'resque_spec'
 
   # 最新版本0.4.0有问题，无法启动测试服务器
   gem 'capybara', '0.3.9'
