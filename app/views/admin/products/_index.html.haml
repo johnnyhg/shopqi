@@ -1,0 +1,22 @@
+%h2
+%table.table
+  %tbody
+    %tr.head
+      %th.first{:width => '50px'}=t('formtastic.labels.product.number')
+      %th=t('formtastic.labels.product.name')
+      %th{:width => '100px'}=t('formtastic.labels.product.market_price')
+      %th{:width => '100px'}=t('formtastic.labels.product.price')
+      %th.last
+  -@products.each_with_index do |product, index|
+    %tr.item
+      %td=product.number
+      %td=product.name
+      %td=product.market_price
+      %td=product.price
+      %td.last
+        = link_to "查看", '#'
+        |
+        = link_to "编辑", '#'
+        |
+        = link_to "删除", '#'
+= paginate @products, :remote => true

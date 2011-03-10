@@ -23,7 +23,7 @@ class Container
 
   referenced_in :focus, :class_name => 'Focus'
   referenced_in :hot
-  references_many :categories, :stored_as => :array, :inverse_of => :container
+  references_and_referenced_in_many :categories
 
   referenced_in :page
 
