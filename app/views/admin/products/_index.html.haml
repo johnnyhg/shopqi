@@ -19,4 +19,4 @@
         = link_to "编辑", '#'
         |
         = link_to "删除", '#'
-= paginate @products, :remote => true
+= paginate @products, :params => {:action => :index}, :remote => true

@@ -1,6 +1,9 @@
-.block#products_list
+.block#products_list.hide
   .secondary-navigation
     %ul.wat-cf
       %li.first.active=link_to '商品列表', '#'
+      %li.last
+        %span.close(title='关闭')
   .content
     .inner#products
+      = render :partial => "index"

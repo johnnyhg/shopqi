@@ -1,5 +1,5 @@
 //insert
 if(!$('#products_list')[0]){
 $("#main").prepend('#{escape_javascript( render(:partial => "list"))}');
-$.get('/admin/products.js');
+$('#products_list').slideDown(1000, 'easeInOutCubic');
 }

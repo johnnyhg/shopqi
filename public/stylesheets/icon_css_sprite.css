@@ -1,4 +1,5 @@
-.buy_16 {
-  background: url('/images/icon_css_sprite.png?1292332492') no-repeat;
+.buy_16, .close {
+  background: url('/images/icon_css_sprite.png?1299898850') no-repeat;
 }
 .buy_16 { background-position: 0px 0px; width: 16px; height: 16px; }
+.close { background-position: 0px -21px; width: 32px; height: 32px; }

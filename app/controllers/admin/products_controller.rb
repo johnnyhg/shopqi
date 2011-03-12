@@ -12,7 +12,7 @@ class Admin::ProductsController < InheritedResources::Base
 
   protected
   def collection
-    @products ||= end_of_association_chain.page(params[:page]).per(1)
+    @products ||= end_of_association_chain.page(params[:page])
   end
 
   def begin_of_association_chain

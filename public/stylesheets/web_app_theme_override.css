@@ -1,2 +1,13 @@
 /* Override here any style definide by web-app-theme */
 .message ul { list-style-type: none }
+
+.secondary-navigation li.last {
+  float:right;
+  padding-right:14px;
+  padding-top:1px;
+  cursor:pointer;
+}
+
+.secondary-navigation li.last span {
+  display: block
+}
