@@ -1,8 +1,7 @@
 # encoding: utf-8
 class Admin::ProductsController < InheritedResources::Base
-  actions :index
   layout nil
-  respond_to :js, :only => [ :index]
+  respond_to :js, :only => [:list, :index, :create, :update, :destroy]
   prepend_before_filter :authenticate_user!
   prepend_before_filter :store_valid!
 
