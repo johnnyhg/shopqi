@@ -9,7 +9,6 @@ class Category
 
   acts_as_sortable_tree
   references_many :products
-  referenced_in :container
   
   field :name
 

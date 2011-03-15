@@ -10,7 +10,10 @@ gem 'rails'
 # gem 'capistrano'
 
 ##### 实体相关 #####
-gem 'mongoid', '2.0.0.rc.7'
+#gem 'mongoid', '2.0.0.rc.7'
+gem 'mongoid_adjust',           :git => 'git://github.com/saberma/mongoid_adjust.git'
+gem 'mongoid_embedded_helper',  :git => 'git://github.com/saberma/mongoid_embedded_helper.git'
+gem 'mongoid', :git => 'git://github.com/saberma/mongoid.git'
 gem 'bson_ext'
 gem 'devise'
 # 用于保存配置型记录
@@ -20,7 +23,7 @@ gem 'kaminari'
 
 # mongoid
 # 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
-gem 'acts_as_list_mongoid'
+gem 'acts_as_list_mongoid', :git => 'git://github.com/saberma/acts_as_list_mongoid.git'
 # 修正Bug，已提交补丁，已合并至官方版本
 # 2010.10.20 BSON::ObjectID改名为BSON::ObjectId，已提交补丁，已合并至官方版本
 gem 'mongoid_acts_as_tree'

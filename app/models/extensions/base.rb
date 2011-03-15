@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Extensions
   module Base
     extend ActiveSupport::Concern

@@ -1,3 +1,4 @@
+# encoding: utf-8
 # 收货地址
 class Address
   include Extensions::Base

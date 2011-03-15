@@ -36,8 +36,7 @@ class Container
 
   field :type
 
-  # mongoid暂不支持
-  validates_inclusion_of :type, :in => OPERATES.stringify_keys, :allow_blank => true
+  validates_inclusion_of :type, :in => OPERATES.keys, :allow_blank => true
 
   # 回调方法
   before_create :set_page
@@ -117,7 +116,7 @@ class Container
       when :fullad
         self.image = store.images.create(:width => 940, :height => 60)
       when :products, :products_accordion
-        self.categories = store.categories.roots.first.children
+        self.categories << store.categories.roots.first.children
       when :products_head
         self.image = store.images.new(:width => 264, :height => 40)
         self.image.words << Word.new(:x => 20, :y => 0, :font => :yahei, 'font-size' => '36px', :color => '#000000', :text => '分类')

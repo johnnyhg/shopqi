@@ -15,7 +15,7 @@ describe Store do
     end
 
     it 'should create root category' do
-      @store.categories.size.should eql 1
+      @store.categories.roots.size.should eql 1
     end
 
     it 'should get order number' do
