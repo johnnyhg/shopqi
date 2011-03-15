@@ -6,7 +6,7 @@ describe CategoriesController do
 
   describe :normal do
     before :each do
-      @saberma = Factory(:user_saberma)
+      with_resque{ @saberma = Factory(:user_saberma) }
       @store = @saberma.store
       sign_in @saberma
 
@@ -70,7 +70,7 @@ describe CategoriesController do
 
   describe 'security' do
     before :each do
-      @saberma = Factory(:user_saberma)
+      with_resque{ @saberma = Factory(:user_saberma) }
       # 清除，以便新增用户
       Thread.current[:user] = nil
       @ben = Factory(:user_ben)

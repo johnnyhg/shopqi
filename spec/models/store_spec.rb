@@ -3,9 +3,7 @@ require 'spec_helper'
 describe Store do
   describe :created do
     before :each do
-      with_resque do
-        @user = Factory(:user_saberma)
-      end
+      with_resque{ @user = Factory(:user_saberma) }
       @store = @user.store
       @store.reload
     end
@@ -41,7 +39,7 @@ describe Store do
 
   it 'should be create while user created' do
     lambda do
-      @user = Factory(:user_saberma)
+      with_resque{ @user = Factory(:user_saberma) }
       @store = @user.store
       @store.should_not be_nil
     end.should change(Store, :count).by(1)

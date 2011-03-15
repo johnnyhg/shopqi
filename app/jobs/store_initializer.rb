@@ -16,8 +16,8 @@ module StoreInitializer
 
     #虚拟单根节点，方便实际根节点排序
     #分类
-    { :男装 => { :衬衫 => %w() },
-      :女装 => %w()
+    { '男装' => { '衬衫' => %w() },
+      '女装' => %w()
     }.each_pair do |key, values|
       category = store.categories.build(:name => key)
       category_root.children << category

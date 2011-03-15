@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Container do
   before :each do
-    @saberma = Factory(:user_saberma)
+    with_resque{ @saberma = Factory(:user_saberma) }
     @store = @saberma.store
     @page = @store.pages.homepage
     @root = @page.containers.roots.first

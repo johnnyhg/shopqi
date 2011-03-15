@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Address do
   before :each do
-    @saberma = Factory(:user_saberma)
+    with_resque{ @saberma = Factory(:user_saberma) }
     @store = @saberma.store
     @member = @store.members.create(Factory.attributes_for(:member_saberma))
   end

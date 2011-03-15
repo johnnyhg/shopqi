@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe Category do
   before :each do
-    @saberma = Factory(:user_saberma)
+    with_resque{ @saberma = Factory(:user_saberma) }
     @store = @saberma.store
     @root = @store.categories.roots.first
     @category = @store.categories.create(Factory.attributes_for(:category_man))
