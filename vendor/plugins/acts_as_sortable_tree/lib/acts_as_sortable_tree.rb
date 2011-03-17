@@ -3,24 +3,19 @@
 module Mongoid
   module ActsAsSortableTree
     def self.included(base)
-      base.send :include, ActsAsList::Mongoid
-      base.send :include, Mongoid::Acts::Tree
+      base.send :include, Mongoid::Tree
+      base.send :include, Mongoid::Tree::Ordering
+      base.send :include, InstanceMethods
       base.send :extend, ClassMethods
+    end
+
+    module InstanceMethods
+      def init_list_item!
+      end
     end
 
     module ClassMethods
       def acts_as_sortable_tree
-        #排序
-        field :pos, :type => Integer
-
-        acts_as_list :column => :pos
-        acts_as_tree :order => [:pos, :asc]
-
-        # 虚拟根节点
-        def self.root(options = {})
-          self.create({:name => :invisible}.merge(options))
-        end
-
         # 配合acts_as_list，限定子记录排序范围
         def scope_condition
           {:parent_id => parent.id, :pos.ne => nil}

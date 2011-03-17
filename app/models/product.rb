@@ -8,7 +8,7 @@ class Product
   referenced_in :store
   referenced_in :category
   # 保存分类至根节点的ID，方便查询某个分类及所有子类关联的商品
-  field :category_path, :type => Array
+  field :category_parent_ids, :type => Array
 
   field :name
   field :price, :type => Float
@@ -20,10 +20,10 @@ class Product
   # validates_presence_of :name, :price
   validates_numericality_of :price, :allow_blank => true
 
-  before_save :set_category_path
+  before_save :set_category_parent_ids
 
-  def set_category_path
-    self.category_path = self.category.full_path if category and (self.new_record? or category.changed?)
+  def set_category_parent_ids
+    self.category_parent_ids = self.category.full_parent_ids if category and (self.new_record? or category.changed?)
   end
 
   # 产品第一张照片

@@ -19,7 +19,7 @@ module StoreInitializer
     { '男装' => { '衬衫' => %w() },
       '女装' => %w()
     }.each_pair do |key, values|
-      category = store.categories.build(:name => key)
+      category = store.categories.create(:name => key)
       category_root.children << category
       if values.is_a? Hash
         values.each_pair do |value_key, value_values|
@@ -31,7 +31,7 @@ module StoreInitializer
           category.children << child
         end
       elsif values.is_a? Array
-        category.children = values.map{|v| store.categories.build(:name => v)}
+        category.children = values.map{|v| store.categories.create(:name => v)}
       end
       category.children.init_list!
     end
