@@ -50,7 +50,7 @@ module PagesHelper
   end
 
   def products_accordion(item)
-    render :partial => "containers/items/products_accordion", :locals => { :collection => Product.any_in(:category_path => item.category_ids) }
+    render :partial => "containers/items/products_accordion", :locals => { :collection => Product.any_in(:category_parent_ids => item.category_ids) }
   end
 
   def products_head(item)
@@ -58,6 +58,6 @@ module PagesHelper
   end
 
   def products(item)
-    render :partial => "containers/items/products", :locals => { :collection => Product.any_in(:category_path => item.category_ids) }
+    render :partial => "containers/items/products", :locals => { :collection => Product.any_in(:category_parent_ids => item.category_ids) }
   end
 end

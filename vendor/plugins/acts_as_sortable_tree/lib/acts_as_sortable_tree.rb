@@ -12,6 +12,14 @@ module Mongoid
     module InstanceMethods
       def init_list_item!
       end
+
+      # @param options { :below => <#object> }
+      # @param options { :above => <#object> }
+      def move(options)
+        direct = options.first[0]
+        other = options.first[1]
+        send("move_#{direct}", other)
+      end
     end
 
     module ClassMethods

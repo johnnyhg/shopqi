@@ -11,7 +11,7 @@ class ProductsController < InheritedResources::Base
 
   def index
     @products = store.products
-    @products = @products.any_in(:category_path => [BSON::ObjectId(params[:category_id])]) unless params[:category_id].blank?
+    @products = @products.any_in(:category_parent_ids => [BSON::ObjectId(params[:category_id])]) unless params[:category_id].blank?
   end
 
   create! do |success, failure|

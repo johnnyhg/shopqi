@@ -12,7 +12,7 @@ describe ProductsController do
 
   describe :product do
     before :each do
-      @root = @store.categories.roots.first
+      @root = @store.categories.root
       @category = @store.categories.create(Factory.attributes_for(:category_man))
       @root.children.push(@category).init_list!
       @product = @store.products.create(Factory.attributes_for(:product, :category => @category))
