@@ -7,6 +7,8 @@ class Image
 
   embeds_many :backgrounds
   embeds_many :words
+  accepts_nested_attributes_for :words, :allow_destroy => true
+
   referenced_in :store
   references_one :container
   references_one :focus, :class_name => 'Focus'

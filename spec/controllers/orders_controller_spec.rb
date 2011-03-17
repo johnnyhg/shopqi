@@ -10,8 +10,7 @@ describe OrdersController do
     request.host = "#{@saberma.store.subdomain}.shopqi.com"
 
     @root = @store.categories.roots.first
-    @category = @store.categories.create(Factory.attributes_for(:category_man))
-    @root.children.push(@category).init_list!
+    @category = @store.categories.create(Factory.attributes_for(:category_man, :parent => @root))
     @product = @store.products.create(Factory.attributes_for(:product, :category => @category))
   end
 
@@ -78,6 +77,8 @@ describe OrdersController do
       end
 
       it 'should be cancel' do
+        ap @order
+        ap @order.new_record?
         post :cancel, :id => @order.id.to_s, :format => :js
         assigns[:order].state.should eql 'cancelled'
       end
