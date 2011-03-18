@@ -77,8 +77,6 @@ describe OrdersController do
       end
 
       it 'should be cancel' do
-        ap @order
-        ap @order.new_record?
         post :cancel, :id => @order.id.to_s, :format => :js
         assigns[:order].state.should eql 'cancelled'
       end

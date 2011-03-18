@@ -32,7 +32,7 @@ class Order
   field :price_sum, :type => Float
 
   # 收货人信息
-  ADDRESS_EXCLUDE_ATTRIBUTES = ['created_at', 'updated_at', 'default']
+  ADDRESS_EXCLUDE_ATTRIBUTES = ['_id', '_type', 'created_at', 'updated_at', 'default']
   ADDRESS_ATTRIBUTES = Address.fields.keys - ADDRESS_EXCLUDE_ATTRIBUTES
   ADDRESS_ATTRIBUTES.each do |attr|
     field attr
