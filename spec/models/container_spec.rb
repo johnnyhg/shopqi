@@ -5,7 +5,7 @@ describe Container do
     with_resque{ @saberma = Factory(:user_saberma) }
     @store = @saberma.store
     @page = @store.pages.homepage
-    @root = @page.containers.roots.first
+    @root = @page.containers.root
   end
 
   describe 'grids less than parents grids' do
@@ -68,9 +68,9 @@ describe Container do
     end
 
     it 'should save categories' do
-      root_category = @store.categories.roots.first
-      category = @store.categories.create(Factory.attributes_for(:category_man))
-      root_category.children << category
+      root_category = @store.categories.root
+      root_category.children.clear
+      category = @store.categories.create(Factory.attributes_for(:category_man, :parent => root_category))
 
       root_container = @store.containers.create(:type => :products, :parent_id => @root.id)
       container = root_container.children.first

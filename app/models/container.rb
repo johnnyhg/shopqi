@@ -15,7 +15,7 @@ class Container
     :products_head => { :grids => 24, :name => '商品列表标题'},
     :products => { :grids => 24, :name => '商品列表'},
     :products_accordion => { :grids => 6, :name => '商品列表[手风琴展示效果]'},
-  }
+  }.stringify_keys
 
   referenced_in :store
   alias top_root? root?
@@ -38,11 +38,16 @@ class Container
   validates_inclusion_of :type, :in => OPERATES.keys, :allow_blank => true
 
   # 回调方法
+  before_validation :convert_type
   before_create :set_page
   before_create :init_grids
   before_create :init_item
   after_create :tranform
 
+  # :fullad => 'fullad'
+  def convert_type
+    self.type = self.type.to_s if self.type
+  end
 
   def remain_grids
     remain = self.grids - self.children.map(&:grids).sum
@@ -51,7 +56,7 @@ class Container
   end
 
   def init_grids
-    self.grids = OPERATES[self.type.to_sym][:grids] if self.type
+    self.grids = OPERATES[self.type][:grids] if self.type
   end
 
   def set_page
