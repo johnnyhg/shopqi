@@ -4,8 +4,7 @@ describe Product do
   before :each do
     @store = Store.create
     @root = @store.categories.create
-    @category_man = @store.categories.create(Factory.attributes_for(:category_man))
-    @root.children.push(@category_man).init_list!
+    @category_man = @store.categories.create(Factory.attributes_for(:category_man, :parent => @root))
   end
 
   describe :category_parent_ids do

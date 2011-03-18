@@ -8,7 +8,6 @@
       node = @store.categories.create :name => col
       level = level[0, index + 1]
       level.last.children << node
-      level.last.children.init_list!
       level << node
       break
     end

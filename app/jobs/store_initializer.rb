@@ -11,7 +11,7 @@ module StoreInitializer
     store.save
     #child
     store.pages.create :name => :homepage
-    # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
+    # 设置虚拟root节点是为了方便子记录调用parent.children.order_method_name排序
     category_root = store.categories.create :name => :invisible
 
     #虚拟单根节点，方便实际根节点排序
@@ -27,15 +27,12 @@ module StoreInitializer
           value_values.each do |c|
             child.children << store.categories.create(:name => c)
           end
-          child.children.init_list!
           category.children << child
         end
       elsif values.is_a? Array
         category.children = values.map{|v| store.categories.create(:name => v)}
       end
-      category.children.init_list!
     end
-    category_root.children.init_list!
 
     #商品
     [ { :category => store.categories.where(:name => '男装').first, :name => '男装衬衫1', :market_price => 98, :price => 59 },
@@ -89,14 +86,12 @@ module StoreInitializer
     sidead_container = store.containers.create( :parent_id => root_container.id, :type => :sidead)
     store.containers.create( :parent_id => sidead_container.id, :type => :sidead)
     store.containers.create( :parent_id => sidead_container.id, :type => :sidead)
-    root_container.children.init_list!
 
     #热门分类
     root_container = store.containers.create( :parent_id => root.id, :type => :hots)
     accordion = store.containers.create( :parent_id => root_container.id, :type => :products_accordion).children.first
     accordion.category_ids = store.categories.where(:name => '男装').map(&:id)
     accordion.save
-    root_container.children.init_list!
 
     #商品列表
     store.containers.create( :parent_id => root.id, :type => :products_head)

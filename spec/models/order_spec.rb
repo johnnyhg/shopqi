@@ -10,8 +10,7 @@ describe Order do
 
     #product
     @root = @store.categories.roots.first
-    @category = @store.categories.create(Factory.attributes_for(:category_man))
-    @root.children.push(@category).init_list!
+    @category = @store.categories.create(Factory.attributes_for(:category_man, :parent => @root))
     @product = @store.products.create(Factory.attributes_for(:product, :category => @category))
   end
 

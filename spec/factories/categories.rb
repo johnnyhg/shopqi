@@ -14,6 +14,5 @@ Factory.define :category_woman, :parent => :category do |f|
   #  %w( 百变衫 BRA-T 打底裤 裙子 ).each do |label| 
   #    category.children << category.store.categories.build(Factory.attributes_for(:category, :name => label))
   #  end
-  #  category.children.init_list!
   #end
 end

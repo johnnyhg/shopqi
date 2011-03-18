@@ -71,7 +71,6 @@ describe Container do
       root_category = @store.categories.roots.first
       category = @store.categories.create(Factory.attributes_for(:category_man))
       root_category.children << category
-      root_category.children.init_list!
 
       root_container = @store.containers.create(:type => :products, :parent_id => @root.id)
       container = root_container.children.first

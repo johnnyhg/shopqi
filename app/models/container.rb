@@ -18,7 +18,6 @@ class Container
   }
 
   referenced_in :store
-  acts_as_sortable_tree
   alias top_root? root?
 
   referenced_in :focus, :class_name => 'Focus'
@@ -64,7 +63,6 @@ class Container
     self.update_attributes :grids => MAX_GRIDS if is_root_missing?
     if is_root_missing? or is_nested?
       self.children << store.containers.build(:type => self.type)
-      self.children.init_list!
       self.update_attributes :type => nil
     end
   end
@@ -101,16 +99,13 @@ class Container
       when :focuses
         self.focus = store.focuses.create :name => :invisible
         3.times { |i| self.focus.children << store.focuses.create(:name => "标题#{i+1}", :url => '/') }
-        self.focus.children.init_list!
       when :hots
         self.hot = store.hots.create :name => :invisible
         3.times do |i| 
           hot = store.hots.create(:name => "分类#{i+1}", :url => '/')
           3.times {|j| hot.children << store.hots.create(:name => "子类#{j+1}", :url => '/')}
-          hot.children.init_list!
           self.hot.children << hot
         end
-        self.hot.children.init_list!
       when :sidead
         self.image = store.images.create(:width => 220, :height => 120)
       when :fullad

@@ -6,8 +6,6 @@ class Category
   include Mongoid::Timestamps
   include Mongoid::ActsAsSortableTree
   referenced_in :store
-
-  acts_as_sortable_tree
   references_many :products
   
   field :name
