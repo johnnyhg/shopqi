@@ -58,19 +58,18 @@ module StoreInitializer
     telephone.save
 
     #导航
+    nav_root = store.navs.create :name => :invisible
     [ { :name => '我的帐户', :url => '/user' },
       { :name => '帮助中心', :url => '/help' }
     ].each do |attributes|
-      store.navs << store.navs.build(attributes)
+      store.navs.create(attributes.merge(:parent => nav_root))
     end
-    store.navs.init_list!
-    store.save
+
     #菜单
+    menu_root = store.menus.create :name => :invisible
     %w( 首页 男装 女装 ).each do |label|
-      store.menus << store.menus.build(:name => label, :url => '/')
+      store.menus.create(:name => label, :url => '/', :parent => menu_root)
     end
-    store.menus.init_list!
-    store.save
     Menu.sprite store
 
     #通栏广告
