@@ -42,7 +42,8 @@ jQuery(function ($) {
       $editTip.data('trigger', this);
       tip.position(event);
       $editTip.fadeOut(0).fadeIn(200);
-      var obj = $link.parent();
+      //hot id show in ancestor dl elment
+      var obj = $link.parent().closest('*[id]');
       var url = pluralize_name(obj.attr('id')) + '/' + id(obj.attr('id')) + '/edit';
       $editTip.data('url', url);
     }
