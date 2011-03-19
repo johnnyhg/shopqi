@@ -47,6 +47,10 @@ end
   end
 end
 
+当 /^我?在分类列表点击(.+)/ do |button_or_link|
+  page.execute_script("$(\"a:contains('#{button_or_link}') > ins:first-child\").click()")
+end
+
 当 /^在分类名称输入框中输入(.+)/ do |value|
   find('.tree input:first').set(value)
   # 输入框失焦点，并向后台提交信息
