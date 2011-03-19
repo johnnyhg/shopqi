@@ -4,6 +4,7 @@
   作为访问者
   可以注册会员
   
+  @focus
   @javascript
   场景: 会员注册
     假如我已经以用户名saberma@shopqi.com成功注册
@@ -31,7 +32,6 @@
     而且点击完成
     #那么我应该能看到注册成功
   
-  @focus
   场景: 会员登录
     假如我已经以用户名saberma@shopqi.com成功注册
     * 我已经以会员ben@shopqi.com成功注册

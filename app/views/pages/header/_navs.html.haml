@@ -1,1 +1,1 @@
-%ul#navs.sortable{:sort_url => sort_navs_path}=render :partial => "navs/item", :collection => store.sorted_navs, :locals => { :collection => store.sorted_navs }
+%ul#navs.sortable{:sort_url => sort_navs_path}=render :partial => "navs/item", :collection => store.navs.root.children, :locals => { :collection => store.navs.root.children }

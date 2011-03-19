@@ -91,11 +91,11 @@ class Container
   end
 
   def sorted_focuses
-    self.focus.children.sort {|x, y| x.pos <=> y.pos}
+    self.focus.children.sort {|x, y| x.position <=> y.position}
   end
 
   def sorted_hots
-    self.hot.children.sort {|x, y| x.pos <=> y.pos}
+    self.hot.children.sort {|x, y| x.position <=> y.position}
   end
 
   def init_item

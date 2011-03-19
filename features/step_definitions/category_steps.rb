@@ -1,13 +1,12 @@
 # encoding: utf-8
 假如 /^系统有以下商品分类:$/ do |table|
-  root = @store.categories.roots.first
+  root = @store.categories.root
   level = [root]
   table.raw.each do |row|
     row.each_with_index do |col, index|
       next if col.blank?
-      node = @store.categories.create :name => col
       level = level[0, index + 1]
-      level.last.children << node
+      node = @store.categories.create :name => col, :parent => level.last
       level << node
       break
     end

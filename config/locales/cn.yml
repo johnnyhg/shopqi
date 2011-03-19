@@ -96,7 +96,7 @@ cn:
       create: 新增%{model}
       update: 更新
 
-  activemodel:
+  mongoid:
     errors:
       template:
         header: ""
