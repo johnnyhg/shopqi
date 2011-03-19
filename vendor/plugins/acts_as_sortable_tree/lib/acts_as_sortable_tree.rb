@@ -6,6 +6,8 @@ module Mongoid
       base.send :include, Mongoid::Tree
       base.send :include, Mongoid::Tree::Ordering
       base.send :include, InstanceMethods
+
+      base.send :before_destroy, :destroy_children
     end
 
     module InstanceMethods
