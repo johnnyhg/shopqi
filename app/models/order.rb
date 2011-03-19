@@ -95,8 +95,8 @@ class Order
 
   validates_presence_of :store
   #TODO: 会员可能会删除收货地址
-  validates_presence_of :address_id, :on => :create, :message => I18n.t('activemodel.errors.messages.select')
-  validates_presence_of :payment_id, :message => I18n.t('activemodel.errors.messages.select')
+  validates_presence_of :address_id, :on => :create, :message => I18n.t('mongoid.errors.messages.select')
+  validates_presence_of :payment_id, :message => I18n.t('mongoid.errors.messages.select')
   validates_presence_of :items
   validates_length_of :description, :maximum => 100
 
