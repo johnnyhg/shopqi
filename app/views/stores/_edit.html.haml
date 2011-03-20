@@ -5,5 +5,7 @@
       %li#store_payment=link_to '支付', payments_path, :remote => true
       -#%li#store_service=link_to '客服', '#'
       -#%li#store_score=link_to '会员积分', '#'
+      %li.last
+        %span.close(title='关闭')
   .content
     .inner= render :partial => "stores/base"

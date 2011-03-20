@@ -13,7 +13,5 @@
     labels.each do |label|
       hot.children << @store.hots.build(:name => label, :url => "/#{label}")
     end
-    hot.children.init_list!
   end
-  root.children.init_list!
 end

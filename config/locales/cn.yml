@@ -96,7 +96,7 @@ cn:
       create: 新增%{model}
       update: 更新
 
-  activemodel:
+  mongoid:
     errors:
       template:
         header: ""
@@ -204,3 +204,10 @@ cn:
     ship_state:
       unshipped: 未发货
       shipped: 已发货
+
+  # 分页
+  views:
+    pagination:
+      previous: "&laquo; 上一页"
+      next: "下一页 &raquo;"
+      truncate: "..."

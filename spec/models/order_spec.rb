@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Order do
   before :each do
-    @saberma = Factory(:user_saberma)
+    with_resque{ @saberma = Factory(:user_saberma) }
     @store = @saberma.store
     @member = @store.members.create(Factory.attributes_for(:member_saberma))
     @address = @member.addresses.create(Factory.attributes_for(:address))
@@ -10,8 +10,7 @@ describe Order do
 
     #product
     @root = @store.categories.roots.first
-    @category = @store.categories.create(Factory.attributes_for(:category_man))
-    @root.children.push(@category).init_list!
+    @category = @store.categories.create(Factory.attributes_for(:category_man, :parent => @root))
     @product = @store.products.create(Factory.attributes_for(:product, :category => @category))
   end
 

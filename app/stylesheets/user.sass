@@ -56,3 +56,40 @@ $color_grey_lightest: #F5F5F5
     padding: 5px 0
     &.even
       background-color: $color_grey_lightest
+
+#tooltip
+  z-index: 999
+  :background-color #fffff0
+  :border 1px solid #ccc
+  :display none 
+  :text-align left 
+  :font-size 12px 
+  :padding 8px
+  ul
+    :list-style-type none
+    li
+      :clear both
+      label,span
+        :margin-bottom 8px
+        :display block
+        :float left
+      label
+        :width 40px
+        :text-align right
+        :padding-right 5px
+  .inputs input
+    :width 74%
+  .commit input
+    :width 140px
+
+//simplemodal
+#simplemodal-container a.modalCloseImg
+  background: url(/images/x.png) no-repeat
+  width: 25px
+  height: 29px
+  display: inline
+  z-index: 3200
+  position: absolute
+  top: -15px
+  right: -18px
+  cursor: pointer

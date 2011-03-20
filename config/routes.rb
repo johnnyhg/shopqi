@@ -102,6 +102,15 @@ Shopqi::Application.routes.draw do
   #用户登录后的跳转页面(符合devise命名规范)
   match "user_root" => "home#show"
 
+  ##### 后台管理 #####
+  namespace "admin" do
+    resources :products, :only => [:index, :show, :new, :edit, :update, :destroy] do
+      collection do
+        get :list
+      end
+    end
+  end
+
   ##### 网店展示 #####
   resources :orders do
     member do

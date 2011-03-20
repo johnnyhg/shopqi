@@ -4,15 +4,16 @@ class Menu
   include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Sortable
-  sortable_belong_to :store
+  include Mongoid::ActsAsSortableTree
+
+  referenced_in :store
 
   field :name
   field :url
 
   #生成sprite图片
   def self.sprite(store)
-    menus = store.sorted_menus
+    menus = store.menus.root.children
 
     bg_path = "#{Rails.root}/public/images/templates/#{store.template}/system/menu_bg.png" 
     bg_hover_path = "#{Rails.root}/public/images/templates/#{store.template}/system/menu_bg_hover.png" 

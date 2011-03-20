@@ -5,7 +5,7 @@ describe HotsController do
   include Devise::TestHelpers
 
   before :each do
-    @saberma = Factory(:user_saberma)
+    with_resque{ @saberma = Factory(:user_saberma) }
     @store = @saberma.store
     sign_in @saberma
 
@@ -17,7 +17,6 @@ describe HotsController do
 
     @root_hot = @container.hot
     @root_hot.children << @store.hots.build(:name => '男装')
-    @root_hot.children.init_list!
   end
 
   describe 'root' do
@@ -54,7 +53,6 @@ describe HotsController do
 
       @child = @store.hots.build :name => '衬衫'
       @root_hot.children << @child
-      @root_hot.children.init_list!
       @root_hot.save
       @child.reload
     end
@@ -82,7 +80,6 @@ describe HotsController do
     it "should be create neighbor" do
       @child = @store.hots.build :name => '衬衫'
       @root_hot.children << @child
-      @root_hot.children.init_list!
       @root_hot.save
       @child.reload
       lambda do

@@ -9,6 +9,7 @@ end
 #@see: http://github.com/aslakhellesoy/cucumber-rails-test/blob/master/features/step_definitions/lorry_steps.rb
 #@see: http://github.com/aslakhellesoy/cucumber-rails-test/blob/master/features/manage_lorries.feature
 那么 /^页面应该显示以下订单列表:$/ do |expected_list|
+  sleep 1
   #@see http://github.com/aslakhellesoy/cucumber/blob/master/lib/cucumber/ast/table.rb
   #@see: http://github.com/aslakhellesoy/cucumber-rails/blob/master/lib/cucumber/web/tableish.rb
   actual_list = table(tableish('.list > ul', 'li'), :missing_col => false)

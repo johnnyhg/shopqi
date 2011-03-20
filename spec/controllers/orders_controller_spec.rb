@@ -4,14 +4,13 @@ require 'spec_helper'
 describe OrdersController do
   include Devise::TestHelpers
   before :each do
-    @saberma = Factory(:user_saberma)
+    with_resque{ @saberma = Factory(:user_saberma) }
     @store = @saberma.store
     @payment = @store.payments.create(Factory.attributes_for(:payment))
     request.host = "#{@saberma.store.subdomain}.shopqi.com"
 
     @root = @store.categories.roots.first
-    @category = @store.categories.create(Factory.attributes_for(:category_man))
-    @root.children.push(@category).init_list!
+    @category = @store.categories.create(Factory.attributes_for(:category_man, :parent => @root))
     @product = @store.products.create(Factory.attributes_for(:product, :category => @category))
   end
 

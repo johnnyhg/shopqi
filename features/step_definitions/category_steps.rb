@@ -1,14 +1,13 @@
 # encoding: utf-8
 假如 /^系统有以下商品分类:$/ do |table|
-  root = @store.categories.roots.first
+  root = @store.categories.root
+  root.children.clear
   level = [root]
   table.raw.each do |row|
     row.each_with_index do |col, index|
       next if col.blank?
-      node = @store.categories.create :name => col
       level = level[0, index + 1]
-      level.last.children << node
-      level.last.children.init_list!
+      node = @store.categories.create :name => col, :parent => level.last
       level << node
       break
     end
@@ -46,6 +45,10 @@ end
     sleep 2
     page.execute_script("$(\"a:contains('#{button_or_link}'):first\").trigger('contextmenu.jstree')")
   end
+end
+
+当 /^我?在分类列表点击(.+)/ do |button_or_link|
+  page.execute_script("$(\"a:contains('#{button_or_link}') > ins:first-child\").click()")
 end
 
 当 /^在分类名称输入框中输入(.+)/ do |value|

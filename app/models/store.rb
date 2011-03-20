@@ -4,12 +4,10 @@ class Store
   include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Sortable
 
-  [:users, :members, :categories, :products, :pages, :hots, :containers, :focuses, :payments, :consumptions, :orders, :images].each do |children|
+  [:users, :members, :categories, :products, :pages, :hots, :containers, :focuses, :payments, :consumptions, :orders, :images, :navs, :menus].each do |children|
     references_many children, :dependent => :destroy
   end
-  has_many_sortable :navs, :menus
 
   # 有效期
   field :deadline, :type => Date

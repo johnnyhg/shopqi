@@ -15,8 +15,6 @@ class FocusesController < InheritedResources::Base
       neighbor_item = end_of_association_chain.find(params[:neighbor])
       resource.update_attributes :parent_id => neighbor_item.parent_id
 
-      # 初始化位置
-      resource.parent.children.init_list!
       # reload重新加载pos属性值
       resource.reload.move(params[:direct].to_sym => neighbor_item)
     end

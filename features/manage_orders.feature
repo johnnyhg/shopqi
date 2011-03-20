@@ -4,6 +4,7 @@
   作为会员
   可以提交订单
 
+  @focus
   @javascript
   场景: 管理收货人信息
     假如我已经以用户名saberma@shopqi.com成功注册
@@ -66,7 +67,6 @@
     * 点击提交订单
     那么我应该能看到产品清单 不能为空
 
-  @focus
   @javascript
   场景: 管理员查看处理订单
     假如会员ben@shopqi.com提交订单购买以下商品:

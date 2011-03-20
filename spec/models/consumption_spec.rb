@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Consumption do
   before :each do
-    @user = Factory(:user_saberma)
+    with_resque{ @user = Factory(:user_saberma) }
     @store = @user.store
     @consumption = @store.consumptions.create
   end

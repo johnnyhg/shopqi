@@ -9,10 +9,6 @@ class NavsController < InheritedResources::Base
     neighbor = params[:neighbor]
     if neighbor
       neighbor_item = end_of_association_chain.find(params[:neighbor])
-      resource.update_attributes :store_id => neighbor_item.store_id
-
-      # 初始化位置
-      resource.store.navs.init_list!
       # reload重新加载pos属性值
       resource.reload.move(params[:direct].to_sym => neighbor_item)
     end

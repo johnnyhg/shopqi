@@ -3,7 +3,7 @@ require 'spec_helper'
 describe PagesController do
   include Devise::TestHelpers
   before :each do
-    @saberma = Factory(:user_saberma)
+    with_resque{ @saberma = Factory(:user_saberma) }
     request.host = "#{@saberma.store.subdomain}.shopqi.com"
   end
 

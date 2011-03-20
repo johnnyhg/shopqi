@@ -1,0 +1,10 @@
+%h3 商品信息
+= semantic_form_remote_for(resource, :url => admin_product_path(resource)) do |f|
+  =f.semantic_errors :name, :price
+  =f.inputs do
+    -# 保证新增修改使用相同的ID
+    =f.input :id, :as => :hidden
+    =f.input :category_id, :as => :hidden
+    =f.inputs :name, :price, :market_price, :number
+    =f.buttons do
+      =f.commit_button '保存', :button_html => { 'data-disable-with' => '正在提交...' }

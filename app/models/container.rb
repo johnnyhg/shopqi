@@ -15,15 +15,14 @@ class Container
     :products_head => { :grids => 24, :name => '商品列表标题'},
     :products => { :grids => 24, :name => '商品列表'},
     :products_accordion => { :grids => 6, :name => '商品列表[手风琴展示效果]'},
-  }
+  }.stringify_keys
 
   referenced_in :store
-  acts_as_sortable_tree
   alias top_root? root?
 
   referenced_in :focus, :class_name => 'Focus'
   referenced_in :hot
-  references_many :categories, :stored_as => :array, :inverse_of => :container
+  references_and_referenced_in_many :categories
 
   referenced_in :page
 
@@ -36,15 +35,19 @@ class Container
 
   field :type
 
-  # mongoid暂不支持
-  validates_inclusion_of :type, :in => OPERATES.stringify_keys, :allow_blank => true
+  validates_inclusion_of :type, :in => OPERATES.keys, :allow_blank => true
 
   # 回调方法
+  before_validation :convert_type
   before_create :set_page
   before_create :init_grids
   before_create :init_item
   after_create :tranform
 
+  # :fullad => 'fullad'
+  def convert_type
+    self.type = self.type.to_s if self.type
+  end
 
   def remain_grids
     remain = self.grids - self.children.map(&:grids).sum
@@ -53,7 +56,7 @@ class Container
   end
 
   def init_grids
-    self.grids = OPERATES[self.type.to_sym][:grids] if self.type
+    self.grids = OPERATES[self.type][:grids] if self.type
   end
 
   def set_page
@@ -65,7 +68,6 @@ class Container
     self.update_attributes :grids => MAX_GRIDS if is_root_missing?
     if is_root_missing? or is_nested?
       self.children << store.containers.build(:type => self.type)
-      self.children.init_list!
       self.update_attributes :type => nil
     end
   end
@@ -89,11 +91,11 @@ class Container
   end
 
   def sorted_focuses
-    self.focus.children.sort {|x, y| x.pos <=> y.pos}
+    self.focus.children.sort {|x, y| x.position <=> y.position}
   end
 
   def sorted_hots
-    self.hot.children.sort {|x, y| x.pos <=> y.pos}
+    self.hot.children.sort {|x, y| x.position <=> y.position}
   end
 
   def init_item
@@ -102,22 +104,19 @@ class Container
       when :focuses
         self.focus = store.focuses.create :name => :invisible
         3.times { |i| self.focus.children << store.focuses.create(:name => "标题#{i+1}", :url => '/') }
-        self.focus.children.init_list!
       when :hots
         self.hot = store.hots.create :name => :invisible
         3.times do |i| 
           hot = store.hots.create(:name => "分类#{i+1}", :url => '/')
           3.times {|j| hot.children << store.hots.create(:name => "子类#{j+1}", :url => '/')}
-          hot.children.init_list!
           self.hot.children << hot
         end
-        self.hot.children.init_list!
       when :sidead
         self.image = store.images.create(:width => 220, :height => 120)
       when :fullad
         self.image = store.images.create(:width => 940, :height => 60)
       when :products, :products_accordion
-        self.categories = store.categories.roots.first.children
+        self.categories << store.categories.roots.first.children
       when :products_head
         self.image = store.images.new(:width => 264, :height => 40)
         self.image.words << Word.new(:x => 20, :y => 0, :font => :yahei, 'font-size' => '36px', :color => '#000000', :text => '分类')

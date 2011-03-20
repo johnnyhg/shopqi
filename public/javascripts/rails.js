@@ -43,10 +43,10 @@ jQuery(function ($) {
                         },
                         success: function (data, status, xhr) {
                             el.trigger('ajax:success', [data, status, xhr]);
-                            $('#loading-indicator').hide();
                         },
                         complete: function (xhr) {
                             el.trigger('ajax:complete', xhr);
+                            $('#loading-indicator').hide();
                         },
                         error: function (xhr, status, error) {
                             el.trigger('ajax:failure', [xhr, status, error]);

@@ -1,4 +1,8 @@
-# encoding: utf-8
+# coding: utf-8
+假如 /^首页没有容器$/ do
+  @store.pages.homepage.containers.root.children.clear
+end
+
 当 /^我?把鼠标移进容器操作横栏$/ do
   page.execute_script("$('.container_operates').mouseover()")
   sleep 1

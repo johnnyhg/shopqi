@@ -11,15 +11,15 @@ module StoreInitializer
     store.save
     #child
     store.pages.create :name => :homepage
-    # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
+    # 设置虚拟root节点是为了方便子记录调用parent.children.order_method_name排序
     category_root = store.categories.create :name => :invisible
 
     #虚拟单根节点，方便实际根节点排序
     #分类
-    { :男装 => { :衬衫 => %w() },
-      :女装 => %w()
+    { '男装' => { '衬衫' => %w() },
+      '女装' => %w()
     }.each_pair do |key, values|
-      category = store.categories.build(:name => key)
+      category = store.categories.create(:name => key)
       category_root.children << category
       if values.is_a? Hash
         values.each_pair do |value_key, value_values|
@@ -27,15 +27,12 @@ module StoreInitializer
           value_values.each do |c|
             child.children << store.categories.create(:name => c)
           end
-          child.children.init_list!
           category.children << child
         end
       elsif values.is_a? Array
-        category.children = values.map{|v| store.categories.build(:name => v)}
+        category.children = values.map{|v| store.categories.create(:name => v)}
       end
-      category.children.init_list!
     end
-    category_root.children.init_list!
 
     #商品
     [ { :category => store.categories.where(:name => '男装').first, :name => '男装衬衫1', :market_price => 98, :price => 59 },
@@ -61,19 +58,18 @@ module StoreInitializer
     telephone.save
 
     #导航
+    nav_root = store.navs.create :name => :invisible
     [ { :name => '我的帐户', :url => '/user' },
       { :name => '帮助中心', :url => '/help' }
     ].each do |attributes|
-      store.navs << store.navs.build(attributes)
+      store.navs.create(attributes.merge(:parent => nav_root))
     end
-    store.navs.init_list!
-    store.save
+
     #菜单
+    menu_root = store.menus.create :name => :invisible
     %w( 首页 男装 女装 ).each do |label|
-      store.menus << store.menus.build(:name => label, :url => '/')
+      store.menus.create(:name => label, :url => '/', :parent => menu_root)
     end
-    store.menus.init_list!
-    store.save
     Menu.sprite store
 
     #通栏广告
@@ -89,14 +85,12 @@ module StoreInitializer
     sidead_container = store.containers.create( :parent_id => root_container.id, :type => :sidead)
     store.containers.create( :parent_id => sidead_container.id, :type => :sidead)
     store.containers.create( :parent_id => sidead_container.id, :type => :sidead)
-    root_container.children.init_list!
 
     #热门分类
     root_container = store.containers.create( :parent_id => root.id, :type => :hots)
     accordion = store.containers.create( :parent_id => root_container.id, :type => :products_accordion).children.first
     accordion.category_ids = store.categories.where(:name => '男装').map(&:id)
     accordion.save
-    root_container.children.init_list!
 
     #商品列表
     store.containers.create( :parent_id => root.id, :type => :products_head)

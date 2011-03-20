@@ -1,6 +1,6 @@
 # coding: utf-8
 假如 /^我已经以用户名(.+)成功注册$/ do |email|
-  @user = Factory(:user, :email => email)
+  with_resque { @user = Factory(:user, :email => email) }
   @store = @user.store
   # 固定store subdomain
   @store.update_attributes :name => 'vancl', :subdomain => 'vancl'

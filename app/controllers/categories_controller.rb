@@ -11,8 +11,6 @@ class CategoriesController < InheritedResources::Base
   prepend_before_filter :authenticate_user!, :except => :index
 
   create! do |format|
-    # 初始化位置
-    resource.parent.children.init_list!
     format.js { render :nothing => true }
   end
 
@@ -34,7 +32,7 @@ class CategoriesController < InheritedResources::Base
   end
 
   def index
-    @result = params[:id].blank? ? end_of_association_chain.roots.first.children : end_of_association_chain.find(params[:id]).children
+    @result = params[:id].blank? ? end_of_association_chain.root.children : end_of_association_chain.find(params[:id]).children
     render :json => get_attributes(@result).to_json
   end
 

@@ -6,13 +6,6 @@ class ContainersController < InheritedResources::Base
   prepend_before_filter :authenticate_user!
   before_filter :init_parent, :only => :new
 
-  create! do |success, failure|
-    success.js {
-      # 初始化位置
-      resource.parent.children.init_list!
-    }
-  end
-
   def sort
     params[:container].each_with_index do |id, index|
       container = end_of_association_chain.find(id)

@@ -10,18 +10,26 @@ gem 'rails'
 # gem 'capistrano'
 
 ##### 实体相关 #####
-gem 'mongoid', '2.0.0.beta.19'
+#gem 'mongoid', '2.0.0.rc.7'
+#2011.03.14 官方版本不支持mongoid 2.0.0.rc.7，已提交补丁，未合并
+gem 'mongoid_adjust',           :git => 'git://github.com/saberma/mongoid_adjust.git'
+gem 'mongoid_embedded_helper',  :git => 'git://github.com/saberma/mongoid_embedded_helper.git'
+#2011.03.14 官方版本2.0.0.rc.7存在bug:调整where查询条件顺序出来的結果不一样。已提交补丁，未合并
+gem 'mongoid', :git => 'git://github.com/saberma/mongoid.git'
 gem 'bson_ext'
 gem 'devise'
 # 用于保存配置型记录
 gem 'active_hash'
+# 分页
+gem 'kaminari'
 
 # mongoid
 # 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
-gem 'acts_as_list_mongoid'
+gem 'acts_as_list_mongoid', :git => 'git://github.com/saberma/acts_as_list_mongoid.git'
 # 修正Bug，已提交补丁，已合并至官方版本
 # 2010.10.20 BSON::ObjectID改名为BSON::ObjectId，已提交补丁，已合并至官方版本
-gem 'mongoid_acts_as_tree'
+#gem 'mongoid_acts_as_tree'
+gem 'mongoid-tree', :require => 'mongoid/tree', :git => 'git://github.com/benedikt/mongoid-tree.git', :branch => 'mongoid-2.0.0'
 
 # 将current_user设置至线程中
 gem 'sentient_user'
@@ -86,9 +94,7 @@ group :development do
   gem "rb-inotify"
 
   # To use debugger(add 'debugger' in code, then set autoeval; set autolist in console)
-  #gem 'ruby-debug19'
-  # 以上报错，需要手动安装(/path/to/ruby为ruby所在路径，如:home/saberma/.rvm/src/ruby-1.9.2-head)
-  # gem install ruby-debug19 --no-ri --no-rdoc -- --with-ruby-include=/path/to/ruby
+  gem 'ruby-debug19'
 end
 
 group :test do
