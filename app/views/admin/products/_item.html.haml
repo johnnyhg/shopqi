@@ -1,0 +1,11 @@
+=content_tag_for :tr, item, :class => "item" do
+  %td=item.number
+  %td=item.name
+  %td=item.market_price
+  %td=item.price
+  %td.last
+    = link_to "查看", admin_product_path(item), 'data-modal' => true
+    |
+    = link_to "编辑", edit_admin_product_path(item), 'data-modal' => true
+    |
+    = link_to "删除", admin_product_path(item), :remote => true, :method => :delete, :confirm => '您确定要删除?'

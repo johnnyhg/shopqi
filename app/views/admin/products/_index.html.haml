@@ -7,16 +7,5 @@
       %th{:width => '100px'}=t('formtastic.labels.product.market_price')
       %th{:width => '100px'}=t('formtastic.labels.product.price')
       %th.last
-  -@products.each_with_index do |product, index|
-    =content_tag_for :tr, product, :class => "item" do
-      %td=product.number
-      %td=product.name
-      %td=product.market_price
-      %td=product.price
-      %td.last
-        = link_to "查看", admin_product_path(product), 'data-modal' => true
-        |
-        = link_to "编辑", edit_admin_product_path(product), 'data-modal' => true
-        |
-        = link_to "删除", admin_product_path(product), :remote => true, :method => :delete, :confirm => '您确定要删除?'
+  = render :partial => "item", :collection => @products
 = paginate @products, :params => {:action => :index}, :remote => true
