@@ -1,38 +1,21 @@
-=content_for :extra_head do
-  = stylesheet_link_tag 'cloud-zoom', 'jwysiwyg'
-  = javascript_include_tag 'zoom/cloud-zoom', 'jwysiwyg'
-
-= render :partial => "pages/header"
-
-#content
-  .container_24
-    .grid_24.root
-      .grid_5.alpha
-        .categories
-          .title 产品分类
-          .tree
-      #main.grid_19.omega
-        =render :partial => "info"
-        .grid_19.alpha.omega.tabs
-          %h2 商品详情
-          %textarea#wysiwyg=resource.content
-
-= render :partial => "tree"
-:javascript
-  $('#wysiwyg').wysiwyg({
-    controls: {
-      subscript:    { visible: false},
-      superscript:  { visible: false},
-      removeFormat: { visible: false},
-      save: { visible: true, tooltip: '保存', className: 'save', exec: function(){
-        var data = { _method: 'put' };
-        data[rest_name()] = {};
-        data[rest_name()]['content'] = $('#wysiwyg').val();
-        $.post(window.location.pathname + '.js', data);
-      }}
-    }
-  }).wysiwyg('document').click(function(e) {
-    e.preventDefault();
-    $('.panel').show(500);
-    $('.wysiwyg').css('border-color', '#ccc');
-  });;
+.columns.wat-cf
+  .column.left
+    %ul
+      %li
+        %label 名称:
+        %span=resource.name
+      %li
+        %label 分类:
+        %span=resource.category.name
+      %li
+        %label 编号:
+        %span=resource.number
+      %li
+        %label 售价:
+        %span=resource.price
+      %li
+        %label 市场价:
+        %span=resource.market_price
+  .column.right
+    %ul#photos
+      = render :partial => "photo", :collection => resource.photos

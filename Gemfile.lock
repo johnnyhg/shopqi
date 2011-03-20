@@ -179,7 +179,7 @@ GEM
       haml (>= 3.0.0)
     linecache19 (0.5.11)
       ruby_core_source (>= 0.1.4)
-    livereload (1.5)
+    livereload (1.6)
       em-dir-watcher (>= 0.1)
       em-websocket (>= 0.1.2)
       ruby-json (>= 1.1.2)
