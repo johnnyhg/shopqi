@@ -15,7 +15,7 @@ class Page
 
   # 初始化部分分类
   def init_child
-    # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
+    # 设置虚拟root节点是为了方便子记录调用parent.children.order_method_name排序
     store.containers.create :name => :invisible, :page => self
   end
 

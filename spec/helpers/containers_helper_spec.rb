@@ -4,7 +4,7 @@ describe ContainersHelper do
   include ApplicationHelper
 
   before :each do
-    @saberma = Factory(:user_saberma)
+    with_resque{ @saberma = Factory(:user_saberma) }
     @store = @saberma.store
 
     @root = @store.root_container

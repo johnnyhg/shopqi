@@ -1,0 +1,21 @@
+.columns.wat-cf
+  .column.left
+    %ul
+      %li
+        %label 名称:
+        %span=resource.name
+      %li
+        %label 分类:
+        %span=resource.category.name
+      %li
+        %label 编号:
+        %span=resource.number
+      %li
+        %label 售价:
+        %span=resource.price
+      %li
+        %label 市场价:
+        %span=resource.market_price
+  .column.right
+    %ul#photos
+      = render :partial => "photo", :collection => resource.photos

@@ -11,8 +11,11 @@ class ImagesController < InheritedResources::Base
     failure.js { render :action => "create.failure.js.haml"}
   end
 
-  update! do |success, failure|
-    failure.js { render :action => "update.failure.js.haml"}
+  def update
+    @image = end_of_association_chain.find(params[:id])
+    words = params['image'].delete('words')
+    @image.words_attributes = words
+    @image.update_attributes params
   end
 
   def upload

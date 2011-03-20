@@ -6,7 +6,6 @@ class Focus
   include Mongoid::Timestamps
   include Mongoid::ActsAsSortableTree
 
-  acts_as_sortable_tree
   referenced_in :store
   references_one :container
   referenced_in :image

@@ -10,10 +10,7 @@ class HotsController < InheritedResources::Base
   end
 
   create! do |success, failure|
-    # 初始化位置
-    resource.parent.children.init_list!
-    # reload重新加载pos属性值
-    resource.reload.move(params[:direct].to_sym => end_of_association_chain.find(params[:neighbor])) unless params[:direct].blank?
+    resource.move(params[:direct].to_sym => end_of_association_chain.find(params[:neighbor])) unless params[:direct].blank?
   end
 
   def sort

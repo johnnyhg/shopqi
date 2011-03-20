@@ -1,0 +1,11 @@
+%h2
+%table.table
+  %tbody
+    %tr.head
+      %th.first{:width => '50px'}=t('formtastic.labels.product.number')
+      %th=t('formtastic.labels.product.name')
+      %th{:width => '100px'}=t('formtastic.labels.product.market_price')
+      %th{:width => '100px'}=t('formtastic.labels.product.price')
+      %th.last
+  = render :partial => "item", :collection => @products
+= paginate @products, :params => {:action => :index}, :remote => true

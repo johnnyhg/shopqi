@@ -6,19 +6,18 @@ describe CategoriesController do
 
   describe :normal do
     before :each do
-      @saberma = Factory(:user_saberma)
+      with_resque{ @saberma = Factory(:user_saberma) }
       @store = @saberma.store
       sign_in @saberma
 
       @root = @store.categories.roots.first
-      @category_man = @store.categories.create(Factory.attributes_for(:category_man))
-      @category_woman = @store.categories.create(Factory.attributes_for(:category_woman))
-      @root.children.push(@category_man).push(@category_woman).init_list!
+      @root.children.clear
+      @category_man = @store.categories.create(Factory.attributes_for(:category_man, :parent => @root))
+      @category_woman = @store.categories.create(Factory.attributes_for(:category_woman, :parent => @root))
 
       %w( 衬衫 POLO衫 针织衫 外套 ).each do |label| 
         @category_man.children << @store.categories.build(Factory.attributes_for(:category, :name => label))
       end
-      @category_man.children.init_list!
     end
 
     it 'should be index' do
@@ -55,8 +54,8 @@ describe CategoriesController do
       parent = @root.children.first
       parent.children.map(&:name).should eql %w( 衬衫 POLO衫 针织衫 外套 )
 
-      node = Category.where(:name => '衬衫').first
-      neighbor = Category.where(:name => '针织衫').first
+      node = parent.children.first
+      neighbor = parent.children.third
 
       xhr :post, :update, :id => node.id, :category => { 
         :parent_id => parent.id,
@@ -64,21 +63,20 @@ describe CategoriesController do
       }
       response.should be_success
       
-      parent.children.map(&:name).should eql %w( POLO衫 衬衫 针织衫 外套 )
+      parent.reload.children.map(&:name).should eql %w( POLO衫 衬衫 针织衫 外套 )
     end
   end
 
   describe 'security' do
     before :each do
-      @saberma = Factory(:user_saberma)
+      with_resque{ @saberma = Factory(:user_saberma) }
       # 清除，以便新增用户
       Thread.current[:user] = nil
-      @ben = Factory(:user_ben)
+      with_resque { @ben = Factory(:user_ben) }
       @ben_store = @ben.store
       @ben_root = @ben_store.categories.first
-      @ben_category_man = @ben_store.categories.create(Factory.attributes_for(:category_man))
-      @ben_category_woman = @ben_store.categories.create(Factory.attributes_for(:category_woman))
-      @ben_root.children.push(@ben_category_man).push(@ben_category_woman).init_list!
+      @ben_category_man = @ben_store.categories.create(Factory.attributes_for(:category_man, :parent => @ben_root))
+      @ben_category_woman = @ben_store.categories.create(Factory.attributes_for(:category_woman, :parent => @ben_root))
 
       sign_in @saberma
     end

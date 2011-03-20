@@ -7,6 +7,8 @@ class Image
 
   embeds_many :backgrounds
   embeds_many :words
+  accepts_nested_attributes_for :words, :allow_destroy => true
+
   referenced_in :store
   references_one :container
   references_one :focus, :class_name => 'Focus'
@@ -113,9 +115,9 @@ class Word
   #字体:微软雅黑,华康海报体W12,方正少女体,方正卡通,柳叶
   #validates_inclusion_of :font, :in => %w( yahei haibao fzsn katong liuye)
   #背景形状#:带边角正方形
-  validates_inclusion_of :background, :in => %w( roundrectangle )
+  validates_inclusion_of :background, :in => %w( roundrectangle ), :allow_blank => true
 
-  embedded_in :image, :inverse_of => :words
+  embedded_in :image
 
   # ImageMagick在处理draw text时，有些中文字体会有margin-top，而且像素不定
   # convert xc: -font "/home/saberma/Documents/shopqi/public/images/logo/yahei.ttf" -pointsize 36 -debug annotate -annotate 0 '中国' null 2>&1 | grep Metrics: | fmt -w80

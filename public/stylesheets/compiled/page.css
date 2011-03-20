@@ -1,16 +1,1 @@
 body { font: 12px tahoma, arial, verdana, geneva, sans-serif; }
-
-.tooltip { z-index: 999; background-color: #fffff0; border: 1px solid #cccccc; width: 300px; display: none; text-align: left; font-size: 12px; outline-radius: 4px; -moz-outline-radius: 4px; -webkit-outline-radius: 4px; overflow-x: hidden; overflow-y: auto; }
-.tooltip .operates { margin: 0; padding: 0; border: 0; outline: 0; overflow: hidden; *zoom: 1; line-height: 26px; margin-left: 15px; }
-.tooltip .operates li { list-style-image: none; list-style-type: none; margin-left: 0px; white-space: nowrap; display: inline; float: left; padding-left: 4px; padding-right: 4px; }
-.tooltip .operates li:first-child, .tooltip .operates li.first { padding-left: 0; }
-.tooltip .operates li:last-child, .tooltip .operates li.last { padding-right: 0; }
-
-/* override the arrow image of the tooltip */
-.tooltip .bottom { padding-top: 40px; height: 55px; }
-
-.container_operates { background-color: #dddddd; height: 10px; }
-
-.container_24 .grid_24.root { margin-top: 14px; }
-
-.qtip ul li { padding: 2px 0; }

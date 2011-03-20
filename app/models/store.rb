@@ -4,12 +4,10 @@ class Store
   include Extensions::Base
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Sortable
 
-  [:users, :members, :categories, :products, :pages, :hots, :containers, :focuses, :payments, :consumptions, :orders, :images].each do |children|
+  [:users, :members, :categories, :products, :pages, :hots, :containers, :focuses, :payments, :consumptions, :orders, :images, :navs, :menus].each do |children|
     references_many children, :dependent => :destroy
   end
-  has_many_sortable :navs, :menus
 
   # 有效期
   field :deadline, :type => Date
@@ -35,14 +33,12 @@ class Store
   field :detail
 
   # 回调方法
-  before_create :init_image
   before_create :init_subdomain
   before_create :init_valid_date
-  after_create :init_child
+  after_create :background_job
 
-  def init_image
-    self.logo_image_id = images.create(:width => 300, :height => 40).id
-    self.telephone_image_id = images.create(:width => 190, :height => 50).id
+  def background_job
+    Resque.enqueue(StoreInitializer, self.id.to_s)
   end
 
   def init_valid_date
@@ -51,13 +47,6 @@ class Store
 
   def init_subdomain
     self.subdomain = self.id.to_s if self.subdomain.blank?
-  end
-
-  # 初始化部分分类
-  def init_child
-    self.pages.create :name => :homepage
-    # 设置虚拟root节点是为了方便子记录调用parent.children.init_list!
-    self.categories.create :name => :invisible
   end
 
   # 提前一个月提示用户付款

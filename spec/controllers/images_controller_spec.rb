@@ -28,7 +28,9 @@ describe ImagesController do
     image_attr = image.attributes
     image_attr[:words] = {}
     image.words.each_with_index do |word, index|
-      image_attr[:words][index.to_s] = word.attributes
+      image_attr[:words][index.to_s] = word.attributes.except(:_id)
+      #https://github.com/mongoid/mongoid/blob/master/lib/mongoid/relations/builders/nested_attributes/many.rb#L115
+      image_attr[:words][index.to_s][:id] = word.id
     end
     image_attr[:words][image.words.size.to_s] = Factory.attributes_for(:word, :text => :saberma)
     image_attr[:width] = 400

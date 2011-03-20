@@ -1,8 +1,6 @@
-$("#tooltip").trigger('cancle');
-
 $("##{name(resource)}_#{params[:neighbor]}").move('#{params[:direct]}', '#{escape_javascript( render(:partial => "#{resource.collection_name}/item", :object => resource))}');
 
 $("##{id(resource)}").parent().children().removeClass('no_bar');
 $("##{id(resource)}").parent().children(':first').addClass('no_bar');
 
-Admin.refresh();
+$.modal.close();

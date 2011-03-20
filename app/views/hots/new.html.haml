@@ -6,7 +6,10 @@
   =hidden_field_tag :neighbor, params[:neighbor]
   =f.inputs do
     =f.input :parent_id, :as => :hidden
-  =f.inputs :name, :url
+  =f.inputs do
+    =f.input :name
+    =f.input :url, :input_html => { :class => :select_url }
+  = render :partial => "pages/links"
   =f.buttons do
     =f.commit_button '保存'
     -unless resource.new_record?

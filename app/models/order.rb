@@ -32,7 +32,7 @@ class Order
   field :price_sum, :type => Float
 
   # 收货人信息
-  ADDRESS_EXCLUDE_ATTRIBUTES = ['created_at', 'updated_at', 'default']
+  ADDRESS_EXCLUDE_ATTRIBUTES = ['_id', '_type', 'created_at', 'updated_at', 'default']
   ADDRESS_ATTRIBUTES = Address.fields.keys - ADDRESS_EXCLUDE_ATTRIBUTES
   ADDRESS_ATTRIBUTES.each do |attr|
     field attr
@@ -95,8 +95,8 @@ class Order
 
   validates_presence_of :store
   #TODO: 会员可能会删除收货地址
-  validates_presence_of :address_id, :on => :create, :message => I18n.t('activemodel.errors.messages.select')
-  validates_presence_of :payment_id, :message => I18n.t('activemodel.errors.messages.select')
+  validates_presence_of :address_id, :on => :create, :message => I18n.t('mongoid.errors.messages.select')
+  validates_presence_of :payment_id, :message => I18n.t('mongoid.errors.messages.select')
   validates_presence_of :items
   validates_length_of :description, :maximum => 100
 

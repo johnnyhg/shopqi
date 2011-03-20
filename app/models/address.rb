@@ -1,3 +1,4 @@
+# encoding: utf-8
 # 收货地址
 class Address
   include Extensions::Base
@@ -23,7 +24,7 @@ class Address
   validate :at_least_one_telephone
 
   def at_least_one_telephone
-    errors.add(:telephone, I18n.t('activemodel.errors.messages.at_least_one')) if mobile.blank? and phone.blank?
+    errors.add(:telephone, I18n.t('mongoid.errors.messages.at_least_one')) if mobile.blank? and phone.blank?
   end
 
   def self.default

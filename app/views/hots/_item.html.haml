@@ -1,5 +1,5 @@
-=content_tag_for :dl, item, :class => :editable do
+=content_tag_for :dl, item do
   %dt
-    .title=link_to item.name, item.url
+    .title.editable=link_to item.name, item.url
   %dd
     %ul.sortable{:sort_url => sort_hots_path, :parent_id => item.id}=render :partial => "hots/child", :collection => item.children, :locals => { :collection => item.children }

@@ -10,18 +10,26 @@ gem 'rails'
 # gem 'capistrano'
 
 ##### 实体相关 #####
-gem 'mongoid', '2.0.0.beta.19'
+#gem 'mongoid', '2.0.0.rc.7'
+#2011.03.14 官方版本不支持mongoid 2.0.0.rc.7，已提交补丁，未合并
+gem 'mongoid_adjust',           :git => 'git://github.com/saberma/mongoid_adjust.git'
+gem 'mongoid_embedded_helper',  :git => 'git://github.com/saberma/mongoid_embedded_helper.git'
+#2011.03.14 官方版本2.0.0.rc.7存在bug:调整where查询条件顺序出来的結果不一样。已提交补丁，未合并
+gem 'mongoid', :git => 'git://github.com/saberma/mongoid.git'
 gem 'bson_ext'
 gem 'devise'
 # 用于保存配置型记录
 gem 'active_hash'
+# 分页
+gem 'kaminari'
 
 # mongoid
 # 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
-gem 'acts_as_list_mongoid'
+gem 'acts_as_list_mongoid', :git => 'git://github.com/saberma/acts_as_list_mongoid.git'
 # 修正Bug，已提交补丁，已合并至官方版本
 # 2010.10.20 BSON::ObjectID改名为BSON::ObjectId，已提交补丁，已合并至官方版本
-gem 'mongoid_acts_as_tree'
+#gem 'mongoid_acts_as_tree'
+gem 'mongoid-tree', :require => 'mongoid/tree', :git => 'git://github.com/benedikt/mongoid-tree.git', :branch => 'mongoid-2.0.0'
 
 # 将current_user设置至线程中
 gem 'sentient_user'
@@ -69,6 +77,7 @@ gem "activemerchant_patch_for_china", :git => 'git://github.com/saberma/activeme
 gem "httparty"
 # 实时(另外需要安装node.js和redis)
 gem "juggernaut"
+# 后台任务
 gem "resque"
 
 # 调试
@@ -80,14 +89,12 @@ group :development do
   #gem "jquery-rails"
   #gem "haml-rails"
   gem "hpricot"
-  # 修改后台文件后，safari或chrome浏览器会自动刷新(虚拟化开发环境无桌面，暂时取消，以后尝试guard-livereload)
-  #gem "livereload"
-  #gem "rb-inotify"
+  # 修改后台文件后，safari或chrome浏览器会自动刷新
+  gem "livereload"
+  gem "rb-inotify"
 
   # To use debugger(add 'debugger' in code, then set autoeval; set autolist in console)
-  #gem 'ruby-debug19'
-  # 以上报错，需要手动安装(/path/to/ruby为ruby所在路径，如:home/saberma/.rvm/src/ruby-1.9.2-head)
-  # gem install ruby-debug19 --no-ri --no-rdoc -- --with-ruby-include=/path/to/ruby
+  gem 'ruby-debug19'
 end
 
 group :test do
@@ -95,6 +102,8 @@ group :test do
   gem "rspec-rails"
   gem "factory_girl"
   gem "factory_girl_rails"
+  # resque测试
+  gem 'resque_spec'
 
   # 最新版本0.4.0有问题，无法启动测试服务器
   gem 'capybara', '0.3.9'
