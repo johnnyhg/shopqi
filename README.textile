@@ -1,7 +1,6 @@
 h1. ShoqQi
 
 An open source ecommerce platform in Ruby on Rails
-See the "demo.shopqi.com":http://www.shopqi.com:3000 . 
 
 ShopQi was developed by "saberma":http://saberma.me
 
