@@ -43,11 +43,6 @@ describe ProductsController do
         response.should be_success
 
         assigns[:product].new_record?.should be_false
-        photo = assigns[:photo]
-        photo.file.versions.map(&:first).each do |version|
-          File.exist?(photo.file.send(version).path).should eql true
-          FileUtils.rm_f(photo.file.send(version).path)
-        end
       end.should change(Product, :count).by(1)
     end
 
