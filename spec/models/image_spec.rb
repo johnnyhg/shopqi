@@ -5,8 +5,8 @@ describe Image do
 
   it "should render a image" do
     image = Image.new :width => 251, :height => 44
-    image.words.build :x => 5, :y => 0, :font => :fzsn, :size => 28, :color => '#E60012', :text => '麦包包', :background => 'roundrectangle'
-    image.words.build :x => 110, :y => 5, :font => :haibao, :size => 20, :color => '#E60012', :text => '买包包? 麦包包!'
+    image.words.build :x => 5, :y => 5, :font => :yahei, 'font-size' => 28, :color => '#E60012', :text => '麦包包', :background => 'roundrectangle'
+    image.words.build :x => 100, :y => 10, :font => :haibao, 'font-size' => 20, :color => '#E60012', :text => '买包包? 麦包包!'
     image.save
     File.exist?("#{Rails.root}/public/images/logo/#{image.id}.png").should == true
     FileUtils.rm_f("#{Rails.root}/public/images/logo/#{image.id}.png")

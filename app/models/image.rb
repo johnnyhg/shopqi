@@ -55,7 +55,7 @@ class Image
         #c.stroke 'black'
         c.fill word.color
         if word.background
-          c.draw "roundrectangle #{word.x - 5}, #{word.y}, #{word.text.size * size + 5}, #{height}, 5, 5" if word.background
+          c.draw "roundrectangle #{word.x - 5}, #{word.y - 5}, #{word.text.size * size + 5}, #{height}, 5, 5" if word.background
           #有背景，则前景颜色改为白色
           c.fill 'white'
         end
@@ -142,6 +142,7 @@ class Word
     elsif %w( katong ).include?(self.font)
       return (self.y - katong_sizes[self.attributes['font-size']])
     end
-    self.y
+    #gm的坐标定位需要加上字体自身的大小?
+    self.y + self.attributes['font-size'].to_i
   end
 end
