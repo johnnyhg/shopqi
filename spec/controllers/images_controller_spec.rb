@@ -49,8 +49,5 @@ describe ImagesController do
 
     image = assigns[:image].reload
     image.backgrounds.size.should eql 1
-    bg = image.backgrounds.first
-    File.exist?(bg.file.path).should eql true
-    FileUtils.rm_f(bg.file.path)
   end
 end
