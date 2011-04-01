@@ -50,6 +50,7 @@ Spork.each_run do
 
     config.after(:each) do
       DatabaseCleaner.clean
+      CarrierWave.clean_cached_files!
     end
   end
   
