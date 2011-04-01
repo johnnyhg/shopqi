@@ -39,6 +39,9 @@ class Image
       c.gravity 'NorthWest'
       # 背景
       backgrounds.each do |background|
+        # 换回gridfs存储后，local_fs不存储图片，而gm处理时需要本地存储
+        # 解决方法:利用carrierwave的cache机制，即时在local_fs生成图片
+        background.file.cache_stored_file! unless background.file.cached?
         c.draw "image over #{background.x},#{background.y},0,0 '#{background.file.path}'"
       end
       # 文字

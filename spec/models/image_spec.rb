@@ -39,11 +39,9 @@ describe Image do
   # 上传图片
   it "should upload a image" do
     image = Image.new
-    image.backgrounds << Background.new(:file => File.open("#{Rails.root}/public/images/logo.jpg"))
+    bg = image.backgrounds.build(:file => File.open("#{Rails.root}/public/images/logo.jpg"))
     image.save
-    bg = image.backgrounds.first
     bg.file.url.should_not be_nil
     File.exist?(bg.file.path).should eql true
-    FileUtils.rm_f(bg.file.path)
   end
 end
