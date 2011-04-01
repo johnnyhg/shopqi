@@ -47,7 +47,7 @@ class Menu
         c.fill font_color
 
         x = index * unit_width + (unit_width - menu.name.size * font_size) / 2
-        y = (height / 2 - font_size) / 2
+        y = (height / 2 - font_size) / 2 + font_size
         c.draw "text #{x},#{y} '#{menu.name}'"
 
         # 绘制悬停背景图
