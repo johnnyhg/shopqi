@@ -1,5 +1,4 @@
-# encoding:utf-8
-require 'spec_helper'
+# encoding:utf-8 require 'spec_helper'
 
 describe Image do
 
@@ -44,4 +43,5 @@ describe Image do
     bg.file.url.should_not be_nil
     File.exist?(bg.file.path).should eql true
   end
+
 end

@@ -147,4 +147,6 @@ Shopqi::Application.routes.draw do
 
   # 地区选择
   match '/district/:id' => 'district#list'
+  #定义dragonfly处理图片的route,用于访问图片
+  match '/media(/:dragonfly)', :to => Dragonfly[:images]
 end
