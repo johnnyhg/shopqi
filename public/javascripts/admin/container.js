@@ -1,26 +1,4 @@
-var qtip_setting = {
-    position: 'topLeft',
-    hide: { fixed: true }, // Make it fixed so it can be hovered over
-    show: { delay: 1000 },
-    style: { padding: '5px 10px', name: 'green' }
-};
-
 Container = {
-  attach_tip: function(){
-    $('.grid_1:empty, .grid_2:empty, .grid_3:empty, .grid_4:empty, .grid_5:empty, .grid_6:empty, .grid_7:empty, .grid_8:empty, .grid_9:empty, .grid_10:empty, .grid_11:empty, .grid_12:empty, .grid_13:empty, .grid_14:empty, .grid_15:empty, .grid_16:empty, .grid_17:empty, .grid_18:empty, .grid_19:empty, .grid_20:empty, .grid_21:empty, .grid_22:empty, .grid_23:empty, .grid_24:empty').each(function(){
-      // qtip_container用于添加子容器后调用destroy
-      $(this).addClass('qtip_container').qtip($.extend({ content: { url: '/containers/new', data: { parent_id: id($(this).attr('id')) } }}, qtip_setting));
-    });
-  },
-
-  //删除原有辅助容器及其提示面板
-  destroy_assist: function(){
-    //destroy old qtip
-    var root = $(this).parents('.container_24 > .grid_24');
-    root.find('.assist').remove();
-    root.find('.qtip_container').andSelf().filter('.qtip_container').removeClass('qtip_container').qtip('destroy');
-  },
-
   // 生成辅助容器
   generate_assist: function(){
     var root = $(this).parent('.container_24')[0] ? $(this) : $(this).parents('.container_24 > .grid_24');
@@ -40,7 +18,6 @@ Container = {
       var rest_grids = root_grids - children_grids;
       //辅助容器的id为父容器的id，并在其前加上assist_
       $('<div/>').appendTo(root).addClass('assist').addClass('grid_' + rest_grids).addClass('omega').attr('id', 'assist_' + root.attr('id')).height(container_height);
-      Container.attach_tip();
     }
 
     //纵向辅助容器
@@ -58,7 +35,6 @@ Container = {
         var rest_height = container_height - children_height;
         //辅助容器的id为父容器的id，并在其前加上assist_
         child.children('.container').eq(0).clone().empty().appendTo(child).height(rest_height).addClass('assist').attr('id', 'assist_' + child.attr('id'));
-        Container.attach_tip();
       }
     });
   },
@@ -74,19 +50,14 @@ Container = {
 
   // 生成move handler
   generate_move_handler: function(){
-    $('.container').each(function(){
-      if(!$(this).children('h2.move')[0]) $(this).prepend($('<h2 class="move"/>').css('opacity', '0.3'));
-    });
-    $('h2.move').each(Container.move);
+    //$('.container').each(function(){
+    //  if(!$(this).children('h2.move')[0]) $(this).prepend($('<h2 class="move"/>').css('opacity', '0.3'));
+    //});
+    //$('h2.move').each(Container.move);
   }
 };
 
 jQuery(function($) {
-  $('.container_operates').qtip($.extend({ content: {url: '/containers/new' } }, qtip_setting));
-  //点击后立即关闭提示面板
-  $('.qtip a').live('click', function(){ $(this).parents('.qtip').qtip('hide'); });
-
-  Container.attach_tip();
 
   //空白处要显示提示面板，用于继续添加容器
   //逐层将高度调整（保持与顶层容器一致），除非容器已无子容器

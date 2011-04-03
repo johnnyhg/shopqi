@@ -7,11 +7,4 @@
 $("##{id(resource)}").parent().children().removeClass('no_bar');
 $("##{id(resource)}").parent().children(':first').addClass('no_bar');
 
--if resource.root?
-  //reset qtip
-  $('##{id(resource)}').each(Container.destroy_assist).each(Container.generate_assist);
--else
-  //destroy parent (not empty) ul qtip
-  $('##{id(resource)}').parent('.qtip_ul').qtip('destroy');
-
 $.modal.close();

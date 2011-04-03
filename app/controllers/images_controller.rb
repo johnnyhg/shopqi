@@ -1,5 +1,6 @@
 # encoding: utf-8
 class ImagesController < InheritedResources::Base
+  layout nil
   actions :new, :create, :edit, :update
   respond_to :js, :only => [:create, :update]
 

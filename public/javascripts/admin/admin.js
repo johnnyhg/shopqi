@@ -17,13 +17,6 @@ Admin = {
     //accordion products list
     $('.accordion').accordion();
 
-    //hots
-    if($('dd ul:empty')[0]){
-      var parentDl = $('dd ul:empty').parents('dl:first');
-      //qtip_ul为方便destroy qtip
-      $('dd ul:empty').not('qtip_ul').addClass('qtip_ul').height(parentDl.height()).qtip($.extend({ content: {url: '/hots/operates' , data: { parent_id: id(parentDl.attr('id')) } }}, qtip_setting));
-    }
-
     //sort
     $('.sortable').removeClass('sortable').each(function(){
       var attrs = {
@@ -79,7 +72,7 @@ jQuery(function ($) {
     e.stopPropagation();
   });
 
-  //选择链接
+  //导航、菜单等编辑页抽的候选链接
   $('body').delegate('.url_option', 'click', function(){
     $('.select_url').val($(this).attr('href'));
     return false;

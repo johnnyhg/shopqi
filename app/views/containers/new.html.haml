@@ -1,5 +1,5 @@
-%ul.operates
-  %li 在此处添加:
+在此处添加:
+%ul
   -Container::OPERATES.each_pair do |type, attrs|
     -if @parent.remain_grids >= attrs[:grids]
       %li=link_to attrs[:name], containers_path(:container => { :parent_id => @parent.id, :type => type } ), :method => :post, :remote => true

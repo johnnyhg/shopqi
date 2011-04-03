@@ -2,6 +2,3 @@ $("##{id(resource)}").html('#{escape_javascript( item_partial(resource) )}');
 
 //admin
 Admin.refresh();
-
-//adjust containter height, reset qtip
-$('##{id(resource)}').each(Container.destroy_assist).each(Container.generate_assist);

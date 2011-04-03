@@ -4,10 +4,7 @@ $.modal.close();
 var parent = $("##{id(resource)}").parent();
 $("##{id(resource)}").remove();
 
--if resource.root?
-  //reset qtip
-  parent.each(Container.destroy_assist).each(Container.generate_assist);
--else
+-unless resource.root?
   parent.children().removeClass('no_bar');
   parent.children(':first').addClass('no_bar');
 
