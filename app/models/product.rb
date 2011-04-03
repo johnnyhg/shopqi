@@ -44,8 +44,8 @@ class Photo
 
   field :file_uid
   image_accessor :file
-
-  validates_size_of :file, :maximum =>1000.kilobytes
+  
+  validates_size_of :file, :maximum =>8000.kilobytes
   validates_property :mime_type, :of => :file, :in => %w(image/jpeg image/jpg image/png image/gif),:message => "请上传正确格式的图片"
 
  # delegate :url, :accordion, :icon, :small, :middle, :big, :to => :file
