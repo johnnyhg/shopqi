@@ -16,6 +16,10 @@ class Image
   field :width, :type => Integer, :default => 255
   field :height, :type => Integer, :default => 44
 
+  #use to dragonfly access the image 
+ # field :data_uid
+ # image_accessor :data
+
   #mongoid出于性能上的考虑不会触发子记录的callback，导致carrierwave无法将生成图片的路径写入，这里需要手动触发
   #http://github.com/durran/mongoid/issues/issue/35
   #http://github.com/durran/mongoid/issues/closed/#issue/160

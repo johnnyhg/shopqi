@@ -28,7 +28,7 @@ class Product
 
   # 产品第一张照片
   def photo
-    (photos.empty? ? Photo.new : photos.first).file
+    photos.empty? ? Photo.new : photos.first 
   end
 
   # 产品列表缩略图
@@ -41,7 +41,43 @@ end
 class Photo
   include Mongoid::Document
   include Mongoid::Timestamps
-  delegate :url, :accordion, :icon, :small, :middle, :big, :to => :file
-  mount_uploader :file, PhotoUploader
+
+  field :file_uid
+  image_accessor :file
+  
+  validates_size_of :file, :maximum =>8000.kilobytes
+  validates_property :mime_type, :of => :file, :in => %w(image/jpeg image/jpg image/png image/gif),:message => "请上传正确格式的图片"
+
+ # delegate :url, :accordion, :icon, :small, :middle, :big, :to => :file
+ # mount_uploader :file, PhotoUploader
   embedded_in :product, :inverse_of => :photos
+
+  def self.versions(opt={})
+    opt.each_pair do |k,v|
+      define_method k do
+        if file
+          file.thumb(v)
+        else
+          DefVersion.new(k)
+        end
+      end
+    end
+  end
+
+  # 显示在产品详情页中的缩略图(icon)
+  # 显示在产品列表页中的缩略图(small)
+  # 显示在产品详情页中的图片(middle)
+  # 显示在产品详情页中的放大镜图片(big)
+  versions :icon => '60x60', :small => '175x175', :middle => '418x418',:big => '1024x1024',:accordion=> '220x118'
+
+end
+
+#此类用于获取默认图片
+class DefVersion
+  def initialize(version)
+    @version = version   
+  end
+  def url
+    "/images/fallback/product/#{@version}.png"
+  end
 end

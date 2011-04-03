@@ -17,6 +17,11 @@ describe Product do
       photo = product.photos.create(:file => File.open("#{Rails.root}/public/images/logo.jpg"))
       photo.file.should_not be_nil
     end
+
+    it "should be eql the default small url" do
+      product.photo.small.url.should == "/images/fallback/product/small.png"
+    end
+
   end
 
   describe :category_parent_ids do

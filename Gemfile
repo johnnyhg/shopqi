@@ -22,6 +22,9 @@ gem 'devise'
 gem 'active_hash'
 # 分页
 gem 'kaminari'
+#用于处理图片(缩略图)
+gem 'dragonfly'
+gem 'rack-cache', :require => 'rack/cache'
 
 # mongoid
 # 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
@@ -91,7 +94,10 @@ group :development do
   gem "hpricot"
   # 修改后台文件后，safari或chrome浏览器会自动刷新
   gem "livereload"
-  gem "rb-inotify"
+#only on the linux platform install the gem
+  if RUBY_PLATFORM =~ /linux/
+    gem "rb-inotify"
+  end
 
   # To use debugger(add 'debugger' in code, then set autoeval; set autolist in console)
   gem 'ruby-debug19'
