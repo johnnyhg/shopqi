@@ -18,7 +18,7 @@
     -if config?
       -# 在线文字图片合成脚本
       = javascript_include_tag 'jeditable/jeditable', 'photomaker/jqDnR', 'photomaker/fileuploader', 'tree/cookie', 'tree/hotkeys', 'tree/jstree', 'hotkeys'
-      = javascript_include_tag 'inspect', 'tooltip/edittip', 'tooltip/simplemodal.min', 'admin/admin', 'admin/container'
+      = javascript_include_tag 'inspect', 'simplemodal.min', 'config/config', 'config/container', 'config/onetip'
     = javascript_include_tag 'index', 'slideshow', 'accordion', 'car'
     =yield :extra_head
     = csrf_meta_tag
