@@ -97,10 +97,15 @@ Shopqi::Application.routes.draw do
   match "contact" => "home#contact"
   match "invalid" => "home#invalid"
 
-  # 网店平台会员
   devise_for :users
+  # 网店平台会员
+  as :user do
+    get "sign_in" => "devise/sessions#new"
+  end
+
   #用户登录后的跳转页面(符合devise命名规范)
-  match "user_root" => "home#show"
+  match "/admin" => "home#show"
+  match "user_root" => redirect("/admin")
 
   ##### 后台管理 #####
   namespace "admin" do
