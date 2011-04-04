@@ -27,3 +27,6 @@ config/unicorn.conf.rb
 
 #bundle deployment
 vendor/bundle
+
+#compass
+.sass-cache/

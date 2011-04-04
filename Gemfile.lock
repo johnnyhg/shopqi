@@ -160,6 +160,8 @@ GEM
     haml (3.0.24)
     has_scope (0.5.0)
     hpricot (0.8.3)
+    html5-boilerplate (0.3.2)
+      compass (>= 0.10.0)
     httparty (0.6.1)
       crack (= 0.1.8)
     i18n (0.5.0)
@@ -312,6 +314,7 @@ DEPENDENCIES
   formtastic
   haml
   hpricot
+  html5-boilerplate
   httparty
   inherited_resources
   juggernaut

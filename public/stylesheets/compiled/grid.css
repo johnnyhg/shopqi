@@ -1,19 +1,4 @@
 /* 960 Grid System ~ Core CSS. Learn more ~ http://960.gs/ * Licensed under GPL and MIT. */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
-
-body { line-height: 1; color: black; background: white; }
-
-ol, ul { list-style: none; }
-
-table { border-collapse: separate; border-spacing: 0; vertical-align: middle; }
-
-caption, th, td { text-align: left; font-weight: normal; vertical-align: middle; }
-
-q, blockquote { quotes: "" ""; }
-q:before, q:after, blockquote:before, blockquote:after { content: ""; }
-
-a img { border: none; }
-
 .container_24 { margin-left: auto; margin-right: auto; width: 960px; }
 .container_24 .grid_1, .container_24 .grid_2, .container_24 .grid_3, .container_24 .grid_4, .container_24 .grid_5, .container_24 .grid_6, .container_24 .grid_7, .container_24 .grid_8, .container_24 .grid_9, .container_24 .grid_10, .container_24 .grid_11, .container_24 .grid_12, .container_24 .grid_13, .container_24 .grid_14, .container_24 .grid_15, .container_24 .grid_16, .container_24 .grid_17, .container_24 .grid_18, .container_24 .grid_19, .container_24 .grid_20, .container_24 .grid_21, .container_24 .grid_22, .container_24 .grid_23, .container_24 .grid_24 { display: inline; float: left; margin-left: 10px; margin-right: 10px; }
 .container_24 .grid_1 { width: 20px; }

@@ -1,0 +1,14 @@
+-# CSS: implied media="all"
+= stylesheet_link_tag 'compiled/style', :media => 'all'
+
+= stylesheet_link_tag 'compiled/grid'
+= stylesheet_link_tag "compiled/templates/#{template}", 'compiled/page', 'pages/dynamic.css', 'compiled/slideshow'
+-if config?
+  = stylesheet_link_tag 'compiled/photomaker', 'photomaker/jgrowl', 'photomaker/images', 'compiled/photomaker/fileuploader', 'compiled/config'
+  =formtastic_stylesheet_link_tag
+
+-# Uncomment if you are specifically targeting less enabled mobile browsers
+-#= stylesheet_link_tag 'handheld', :media => 'handheld'
+
+-# Append your own using content_for :stylesheets
+= yield :stylesheets

@@ -101,6 +101,9 @@ group :development do
 
   # To use debugger(add 'debugger' in code, then set autoeval; set autolist in console)
   gem 'ruby-debug19'
+
+  # html-boilerplate
+  gem "html5-boilerplate"
 end
 
 group :test do

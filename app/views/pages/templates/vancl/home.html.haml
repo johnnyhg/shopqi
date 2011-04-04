@@ -1,16 +1,9 @@
-= render :partial => "pages/header"
-
 #content
   .container_24.sortable{:id => id(store.root_container), :sort_url => sort_containers_path}=render :partial => "containers/child", :collection => resource.containers.roots.first.children, :locals => {:containers => nil}
 
-/= render :partial => "pages/main"
 .container_24
   .grid_24
     .container_operates
 /= render :partial => "pages/footer/extra"
 /= render :partial => "pages/footer/links"
 /= render :partial => "pages/footer/company"
--if config?
-  :javascript
-    $.jGrowl('修改内容时，先把鼠标移至要修改的地方，再点击浮动的编辑链接，系统会弹出编辑窗口', { header: '操作提示1', life: 5000 });
-    $.jGrowl('鼠标单击并拖动<image src="/images/templates/common/bullet/move_arrow.png"/>，可以移动内容', { header: '操作提示2', life: 8000 });
