@@ -31,7 +31,7 @@ class Image
     end
   end
 
-  after_save :render
+  after_create :render
   after_destroy :cleanup
 
   #生成图片
@@ -66,11 +66,17 @@ class Image
         c.draw "text #{word.x},#{word.adjusted_y} '#{word.text}'"
       end
     end
-    magick.write path
+    local_image = File.open(magick.path)
+    grid.delete(self.id);
+    grid.put(local_image, :filename=> "image_#{self.id}", :_id => self.id)
+  end
+
+  def grid
+    @grid ||= Mongo::Grid.new(Mongoid.database)
   end
 
   def cleanup
-    FileUtils.rm_f path
+    grid.delete(self.id)
   end
 
   def font_path(font)
@@ -81,12 +87,8 @@ class Image
     "#{Rails.root}/public/images/logo/blank.png"
   end
 
-  def path
-    "#{Rails.root}/public/images/logo/#{id}.png"
-  end
-
   def url
-    "/images/logo/#{id}.png?#{self.updated_at.to_i}"
+    "/gridfs/#{self.id}.png?#{self.updated_at.to_i}"
   end
 end
 

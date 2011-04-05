@@ -1,14 +1,15 @@
-# encoding:utf-8 require 'spec_helper'
+# encoding:utf-8
+require 'spec_helper'
 
 describe Image do
 
-  it "should render a image" do
-    image = Image.new :width => 251, :height => 44
+  it "should render a image with words" do
+    image = Image.create :width => 251, :height => 44
     image.words.build :x => 5, :y => 5, :font => :yahei, 'font-size' => 28, :color => '#E60012', :text => '麦包包', :background => 'roundrectangle'
     image.words.build :x => 100, :y => 10, :font => :haibao, 'font-size' => 20, :color => '#E60012', :text => '买包包? 麦包包!'
     image.save
-    File.exist?("#{Rails.root}/public/images/logo/#{image.id}.png").should == true
-    FileUtils.rm_f("#{Rails.root}/public/images/logo/#{image.id}.png")
+    image.render
+    Mongo::Grid.new(Mongoid.database).get(image.id).should_not be_nil
   end
 
   #更新原有子记录的同时，新增新的子记录，不能抛出异常: #<Mongo::OperationFailure: have conflict mod>
@@ -21,6 +22,7 @@ describe Image do
       image.words.second.text = :saberma
       image.words.build Factory.attributes_for(:word)
       image.save!
+      Mongo::Grid.new(Mongoid.database).get(image.id).should_not be_nil
     end.should_not raise_error
   end
 
@@ -31,8 +33,7 @@ describe Image do
     #image.backgrounds << Background.new(:file => File.open("#{Rails.root}/public/images/rails.png", :x => 10, :y => 5))
     image.backgrounds << Background.new(:x => 10, :y => 5, :file => File.open("#{Rails.root}/public/images/rails.png"))
     image.save
-    File.exist?("#{Rails.root}/public/images/logo/#{image.id}.png").should eql true
-    FileUtils.rm_f("#{Rails.root}/public/images/logo/#{image.id}.png")
+    Mongo::Grid.new(Mongoid.database).get(image.id).should_not be_nil
   end
 
   # 上传图片

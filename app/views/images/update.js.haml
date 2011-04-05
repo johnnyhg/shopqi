@@ -1,2 +1,3 @@
 //callback
-$('##{id(resource)}').attr('src', '#{resource.url}').width(#{resource.width}).height(#{resource.height});
+//https://github.com/mongoid/mongoid/issues/791
+$('##{id(resource)}').attr('src', '#{resource.url}&#{DateTime.now.to_i}').width(#{resource.width}).height(#{resource.height});
