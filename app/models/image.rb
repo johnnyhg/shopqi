@@ -31,7 +31,7 @@ class Image
     end
   end
 
-  after_create :render
+  after_save :render
   after_destroy :cleanup
 
   #生成图片

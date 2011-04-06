@@ -8,7 +8,6 @@ describe Image do
     image.words.build :x => 5, :y => 5, :font => :yahei, 'font-size' => 28, :color => '#E60012', :text => '麦包包', :background => 'roundrectangle'
     image.words.build :x => 100, :y => 10, :font => :haibao, 'font-size' => 20, :color => '#E60012', :text => '买包包? 麦包包!'
     image.save
-    image.render
     Mongo::Grid.new(Mongoid.database).get(image.id).should_not be_nil
   end
 

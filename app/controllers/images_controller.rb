@@ -18,7 +18,6 @@ class ImagesController < InheritedResources::Base
     words = params['image'].delete('words')
     @image.words_attributes = words
     @image.update_attributes params
-    @image.render
   end
 
   def upload
