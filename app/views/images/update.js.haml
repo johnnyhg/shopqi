@@ -1,3 +1,8 @@
+//set the word id
+-@image.words.each do |word|
+  $(".word[tmp_id='#{word.tmp_id}']").attr('word-id', '#{word.id}');
+-@image.backgrounds.each do |background|
+  $(".background[tmp_id='#{background.tmp_id}']").attr('background-id', '#{background.id}';
 //callback
 //https://github.com/mongoid/mongoid/issues/791
 $('##{id(resource)}').attr('src', '#{resource.url}&#{DateTime.now.to_i}').width(#{resource.width}).height(#{resource.height});

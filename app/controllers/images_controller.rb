@@ -14,6 +14,7 @@ class ImagesController < InheritedResources::Base
 
   def update
     @image = end_of_association_chain.find(params[:id])
+    #https://github.com/saberma/shopqi/wiki/Mongoid
     words = params['image'].delete('words')
     @image.words_attributes = words
     @image.update_attributes params
