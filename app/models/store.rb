@@ -17,6 +17,8 @@ class Store
 
   # 二级域名
   field :subdomain
+  #二级域名须为3到20位数字和字母组成的，且唯一
+  validates :subdomain,:presence =>true,:uniqueness => true, :format => {:with => /\A([a-z0-9])*\Z/ },:length => 3..20
 
   # Logo, telephone
   field :logo_image_id
@@ -33,7 +35,7 @@ class Store
   field :detail
 
   # 回调方法
-  before_create :init_subdomain
+  #before_create :init_subdomain
   before_create :init_valid_date
   after_create :background_job
 
@@ -45,9 +47,9 @@ class Store
     self.deadline = Date.today.next_day(10)
   end
 
-  def init_subdomain
-    self.subdomain = self.id.to_s if self.subdomain.blank?
-  end
+  # def init_subdomain
+  #   self.subdomain = self.id.to_s if self.subdomain.blank?
+  # end
 
   # 提前一个月提示用户付款
   def deadline_warning?

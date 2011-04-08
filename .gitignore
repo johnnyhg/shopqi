@@ -1,6 +1,7 @@
 .bundle
 db/*.sqlite3
 log/*.log
+log/.nfs*
 tmp/**/*
 
 #cucumber测试生成的临时文件
@@ -30,3 +31,9 @@ vendor/bundle
 
 #compass
 .sass-cache/
+
+#OSX产生的文件夹Finder信息
+.DS_Store
+public/.DS_Store
+public/images/.DS_Store
+public/stylesheets/.DS_Store

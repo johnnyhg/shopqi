@@ -6,9 +6,12 @@ end
 Factory.define :user_saberma, :parent => :user do |u|
   u.email 'saberma@shopqi.com'
   u.login :saberma
+  u.store :subdomain => "vancl"
 end
 
 Factory.define :user_ben, :parent => :user do |u|
   u.email 'ben@shopqi.com'
   u.login :ben
+  u.store :subdomain => "ben"
 end
+

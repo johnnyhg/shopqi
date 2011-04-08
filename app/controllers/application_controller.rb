@@ -16,7 +16,12 @@ class ApplicationController < ActionController::Base
 
   # 网店未到期
   def store_valid!
-    redirect_to invalid_path unless store.available?
+    #判断是否存在该二级域名的网店，若不存在，则跳到官网
+    unless store.subdomain
+      redirect_to  "http://www.shopqi.com"
+    else
+      redirect_to invalid_path unless store.available?
+    end
   end
 
   protected

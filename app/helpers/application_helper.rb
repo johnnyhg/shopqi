@@ -2,9 +2,10 @@ module ApplicationHelper
   delegate :template, :to => :store
 
   def store
-    current_user ? current_user.store : Store.where(:subdomain => request.subdomain).first
+    store = current_user ? current_user.store : Store.where(:subdomain => request.subdomain).first
+    store.nil? ? Store.new : store
   end
-
+    
   def editinplace(model, attr, options = {})
     options[:class] = [options[:class], :editinplace].compact
     # 用于ajax提交时指定更新的字段名称

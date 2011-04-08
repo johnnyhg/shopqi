@@ -9,10 +9,10 @@
 saberma = User.where(:email => 'saberma@shopqi.com').first
 saberma.try(:store).try(:destroy)
 saberma.try(:destroy)
-saberma = User.create(:email => 'saberma@shopqi.com', :password => '666666', :login => :saberma)
+saberma = User.create(:email => 'saberma@shopqi.com', :password => '666666', :login => :saberma,:store => {:subdomain => "vancl"})
 
 store = saberma.store
-store.update_attributes :subdomain => 'vancl'
+#store.update_attributes :subdomain => 'vancl'
 store.payments.create :payment_type_id => PaymentType.first.id, :is_show => true
 #member
 member = store.members.create(:email => 'saberma@shopqi.com', :password => '666666', :login => :saberma)

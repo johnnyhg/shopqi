@@ -475,3 +475,7 @@ label span {
 
 #copyright {
   float: left; }
+
+input#user_store_subdomain{
+  width: 70px;
+}
