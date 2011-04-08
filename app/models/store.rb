@@ -5,7 +5,7 @@ class Store
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  [:users, :members, :categories, :products, :pages, :hots, :containers, :focuses, :payments, :consumptions, :orders, :images, :navs, :menus].each do |children|
+  [:users, :members, :categories, :products, :pages, :hots, :containers, :focuses, :payments, :consumptions, :orders, :images, :navs, :menus, :helps].each do |children|
     references_many children, :dependent => :destroy
   end
 

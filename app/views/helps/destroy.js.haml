@@ -1,0 +1,9 @@
+//hide
+$.modal.close();
+
+var parent = $("##{id(resource)}").parent();
+$("##{id(resource)}").remove();
+
+-unless resource.root?
+  parent.children().removeClass('first');
+  parent.children(':first').addClass('first');

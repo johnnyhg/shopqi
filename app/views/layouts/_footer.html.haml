@@ -1,23 +1,6 @@
 .container_24
   .grid_24#helps
-    %dl.left
-      %dt
-        %strong 新手指南
-      %dd
-        %img(src='/images/point.gif' width=5 height=8)
-        %a(href='/' target='_blank') 注册
-      %dd
-        %img(src='/images/point.gif' width=5 height=8)
-        %a(href='/' target='_blank') 注册
-    %dl
-      %dt
-        %strong 新手指南
-      %dd
-        %img(src='/images/point.gif' width=5 height=8)
-        %a(href='/' target='_blank') 注册
-      %dd
-        %img(src='/images/point.gif' width=5 height=8)
-        %a(href='/' target='_blank') 注册
+    =render :partial => "helps/item", :collection => store.helps.root.children
 
 .container_24
   .grid_24
