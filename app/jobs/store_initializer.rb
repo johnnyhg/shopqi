@@ -49,7 +49,7 @@ module StoreInitializer
     logo = store.logo_image
     logo.words.build(:x => 0, :y => 2, :font => :yahei_bold, 'font-size' => '36px', :color => '#000000', :text => :ShopQi)
     logo.words.build(:x => 143, :y => 0, :font => :yahei_bold, 'font-size' => '36px', :color => '#89060C', :text => '在线商店')
-    logo.render
+    logo.save
 
     #telephone
     telephone = store.telephone_image

@@ -192,3 +192,11 @@ body abbr { color: #7f0019; }
 #order_confirm .summary .unit, #order_show .summary .unit { margin-right: 50px; }
 #order_confirm .summary .back_car, #order_show .summary .back_car { float: left; }
 #order_confirm .total, #order_show .total { font-size: 14px; color: #7f0019; }
+
+/*页脚 */
+#footer #helps { border-top: 1px solid #9f0306; border-bottom: 1px solid #9f0306; padding: 20px 0 30px 0; height: 87px; margin-top: 20px; }
+#footer #helps dl { float: left; width: 95px; height: 97px; padding: 0 27px 0 27px; border-right: 1px solid #cccccc; }
+#footer #helps dl.left { padding: 0 27px 0 0; }
+#footer #helps dl dt { margin-bottom: 14px; }
+#footer #helps dl dd { list-style: none; margin: 0 12px 8px 0; }
+#footer #helps dl dd a:link, #footer #helps dl dd a:visited { color: #333333; }
