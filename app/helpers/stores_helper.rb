@@ -13,7 +13,11 @@ module StoresHelper
   end
 
   def show_store_url
-    "#{request.protocol}#{store.subdomain}.#{request.domain}#{request.port_string}"
+    unless store.subdomain
+      "#{request.protocol}#{request.domain}#{request.port_string}"
+    else
+      "#{request.protocol}#{store.subdomain}.#{request.domain}#{request.port_string}"
+    end
   end
 
   def admin_store_url
