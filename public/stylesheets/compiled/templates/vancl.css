@@ -195,8 +195,9 @@ body abbr { color: #7f0019; }
 
 /*页脚 */
 #footer #helps { border-top: 1px solid #9f0306; border-bottom: 1px solid #9f0306; padding: 20px 0 30px 0; height: 87px; margin-top: 20px; }
-#footer #helps dl { float: left; width: 95px; height: 97px; padding: 0 27px 0 27px; border-right: 1px solid #cccccc; }
+#footer #helps dl { float: left; width: 125px; height: 97px; padding: 0 27px 0 27px; border-right: 1px solid #cccccc; }
 #footer #helps dl.left { padding: 0 27px 0 0; }
+#footer #helps dl.right { border-right: 0px; }
 #footer #helps dl dt { margin-bottom: 14px; }
 #footer #helps dl dd { list-style: none; margin: 0 12px 8px 0; }
 #footer #helps dl dd a:link, #footer #helps dl dd a:visited { color: #333333; }

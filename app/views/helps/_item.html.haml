@@ -1,4 +1,4 @@
-=content_tag_for :dl, item, :class => "#{bar(collection, item)}" do
+=content_tag_for :dl, item, :class => "#{last(collection, item)}" do
   %dt
     %strong.editable=item.name
   =render :partial => "helps/child", :collection => item.children, :locals => { :collection => item.children }

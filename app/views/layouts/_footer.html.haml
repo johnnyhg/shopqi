@@ -1,6 +1,6 @@
 .container_24
   .grid_24#helps
-    =render :partial => "helps/item", :collection => store.helps.root.children
+    =render :partial => "helps/item", :collection => store.helps.root.children, :locals => { :collection => store.helps.root.children }
 
 .container_24
   .grid_24
