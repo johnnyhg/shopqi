@@ -435,7 +435,7 @@ $left: 37%
           @include height(25px)
 
 /** 会员管理页面
-#members
+#members, #helps
   .box .panel
     border-top: 1px solid $color_grey
     border-bottom: 1px solid $color_grey
@@ -455,13 +455,16 @@ $left: 37%
           background-color: $color_grey_darker
           text-align: center
           @include height(24px)
-        ul li
-          margin: 10px 0
-          padding-left: 30px
-          background: image_url($image_bullet_square) no-repeat 18px 50%
-          font-weight: bold
-          a
-            font-weight: normal
+        ul
+          list-style: none
+          margin-left: 0
+          li
+            margin: 10px 0
+            padding-left: 30px
+            background: image_url($image_bullet_square) no-repeat 18px 50%
+            font-weight: bold
+            a
+              font-weight: normal
 
 /** 会员订单
 #orders, #order_show

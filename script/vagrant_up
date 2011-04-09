@@ -1,4 +1,7 @@
 #!/bin/bash
 script_dir="$(dirname "$(readlink -f ${BASH_SOURCE[0]})")"
 cd $script_dir/..
-vagrant up > log/vagrant.log
+#make sure network connected
+#http://askubuntu.com/questions/27954/how-can-i-check-internet-connectivity-in-a-console
+wget --spider http://sina.com > log/vagrant.log
+vagrant up >> log/vagrant.log

@@ -1,9 +1,9 @@
 # encoding: utf-8
 class HelpsController < InheritedResources::Base
   layout nil
-  actions :new, :create, :edit, :update, :destroy
+  actions :new, :create, :edit, :update, :destroy, :show
   respond_to :js, :only => [:create, :update, :destroy]
-  prepend_before_filter :authenticate_user!
+  prepend_before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
   create! do |success, failure|
     neighbor = params[:neighbor]
@@ -15,6 +15,11 @@ class HelpsController < InheritedResources::Base
 
   edit! do |format|
     format.html { render :action => "new" }
+  end
+
+  
+  show! do |format|
+    format.html { render :layout => 'pages' }
   end
 
   def sort
