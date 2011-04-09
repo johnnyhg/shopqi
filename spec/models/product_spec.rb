@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Product do
   before :each do
-    @store = Store.create
+    @store = Store.create(:subdomain => "vancl")
     @root = @store.categories.create
     @category_man = @store.categories.create(Factory.attributes_for(:category_man, :parent => @root))
   end

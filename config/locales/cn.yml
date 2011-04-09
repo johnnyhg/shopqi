@@ -13,6 +13,7 @@ cn:
         description: 描述
         keywords: 关键字
         detail: 详细地址
+        subdomain: 二级域名
       consumption:
         years: 购买年次
       user:
@@ -20,6 +21,7 @@ cn:
         email: 用户名
         company: 公司
         password: 密码
+        subdomain: 二级域名
         password_confirmation: 确认密码
         edit:
           title: 编辑用户
@@ -85,6 +87,7 @@ cn:
         title: 商店的标题将显示在浏览器的标题栏。例如：VANCL 凡客诚品 互联网时尚品牌
         description: 网站简短描述。例如：VANCL 凡客诚品，互联网时尚品牌。根植互联网，全球时尚潮流，国际一线品质，平民价位。在线销售男装、女装、童装、鞋、家居、配饰等。送货上门、货到付款，无条件退换货。
         detail: 详细地址前不用再填写省市区
+        subdomain: 输入vancl, 二级域名即为vancl.shopqi.com
       user:
         email: 请填写有效的Email地址作为下次登录的用户名
         password: 请设为6-20位字母或数字

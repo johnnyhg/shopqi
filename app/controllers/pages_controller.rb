@@ -1,5 +1,6 @@
 # encoding: utf-8
 class PagesController < InheritedResources::Base
+  include StoresHelper
   layout nil
   # 配置网店需要用户登录
   prepend_before_filter :config_authenticate

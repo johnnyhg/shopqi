@@ -1,5 +1,5 @@
 # Set the default text field size when input is a string. Default is 50.
-# Formtastic::SemanticFormBuilder.default_text_field_size = 50
+ Formtastic::SemanticFormBuilder.default_text_field_size = 50
 
 # Set the default text area height when input is a text. Default is 20.
 # Formtastic::SemanticFormBuilder.default_text_area_height = 5
@@ -49,6 +49,7 @@ Formtastic::SemanticFormBuilder.inline_order = [:input, :hints, :errors]
 # Default value: false. Overridden for specific fields by setting value to true,
 # i.e. :label => true, or :hint => true (or opposite depending on initialized value)
 Formtastic::SemanticFormBuilder.i18n_lookups_by_default = true
+Formtastic::SemanticFormBuilder.inline_errors = :none
 
 # You can add custom inputs or override parts of Formtastic by subclassing SemanticFormBuilder and
 # specifying that class here.  Defaults to SemanticFormBuilder.

@@ -128,4 +128,5 @@ group :test do
   gem 'spork'
   # 跨平台执行程序(如打开浏览器)
   gem 'launchy'
+
 end
