@@ -11,4 +11,8 @@ class Help
   field :name
   field :content
   field :url
+
+  def to_html
+    RedCloth.new(self.content).to_html
+  end
 end

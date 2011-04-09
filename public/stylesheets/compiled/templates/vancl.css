@@ -194,6 +194,9 @@ body abbr { color: #7f0019; }
 #order_confirm .summary .back_car, #order_show .summary .back_car { float: left; }
 #order_confirm .total, #order_show .total { font-size: 14px; color: #7f0019; }
 
+/*帮助页面 */
+.help { height: 20px; line-height: 20px; }
+
 /*页脚 */
 #footer #helps { border-top: 1px solid #9f0306; border-bottom: 1px solid #9f0306; padding: 20px 0 30px 0; height: 87px; margin-top: 20px; margin-bottom: 10px; }
 #footer #helps dl { float: left; width: 130px; height: 97px; padding: 0 27px 0 27px; border-right: 1px solid #cccccc; }

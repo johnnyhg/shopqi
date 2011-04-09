@@ -11,6 +11,7 @@
                 -help.children.each do |child|
                   %li=link_to s(child.name), url_or_special(child)
 
-      #main.grid_19.omega
-        =resource.name
-        =resource.content
+      .grid_19.omega
+        .help_show
+          %strong.title=resource.name
+          .content=raw resource.to_html

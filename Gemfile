@@ -25,6 +25,8 @@ gem 'kaminari'
 #用于处理图片(缩略图)
 gem 'dragonfly'
 gem 'rack-cache', :require => 'rack/cache'
+#(帮助信息)普通标记文本转html
+gem 'RedCloth', '4.2.2'
 
 # mongoid
 # 排序，注意:保存后要调用todo_list.items.init_list! 初始化序号
