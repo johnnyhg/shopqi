@@ -3,7 +3,8 @@ module ApplicationHelper
 
   def store
     store = current_user ? current_user.store : Store.where(:subdomain => request.subdomain).first
-    store.nil? ? Store.new : store
+    #store.nil? ? Store.new : store
+    store
   end
     
   def editinplace(model, attr, options = {})

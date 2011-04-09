@@ -5,6 +5,7 @@ describe ConsumptionsController do
   before :each do
     with_resque{ @saberma = Factory(:user_saberma) }
     @consumption = @saberma.store.consumptions.create
+    request.host = "#{@saberma.store.subdomain}.shopqi.com"
   end
   
   it 'should be notify' do
