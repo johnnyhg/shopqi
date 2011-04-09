@@ -9,6 +9,7 @@
   =f.inputs do
     =f.input :name
     =f.input :url
+    =f.input :content, :as => :text
   =f.buttons do
     =f.commit_button '保存'
     -unless resource.new_record?

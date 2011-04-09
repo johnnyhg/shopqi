@@ -60,6 +60,10 @@ cn:
       hot:
         name: 名称
         url: 链接地址
+      help:
+        name: 名称
+        url: 链接地址
+        content: 内容
       user_session:
         login: 用户名
         password: 密码

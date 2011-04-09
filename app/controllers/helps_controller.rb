@@ -1,5 +1,5 @@
 # encoding: utf-8
-class HelpsController < ApplicationController
+class HelpsController < InheritedResources::Base
   layout nil
   actions :new, :create, :edit, :update, :destroy
   respond_to :js, :only => [:create, :update, :destroy]

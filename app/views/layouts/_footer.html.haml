@@ -2,7 +2,18 @@
   .grid_24#helps
     =render :partial => "helps/item", :collection => store.helps.root.children, :locals => { :collection => store.helps.root.children }
 
-.container_24
+.container_24#bottoms
+  .grid_24=image_tag("templates/#{template}/footer/number.png")
+  .grid_24
+    -%w(首页 公司简介 隐私申明 团购优惠 合作专区 投诉与建议).each do |name|
+      =link_to name, '/', :target => :_blank
+      -unless name == '投诉与建议'
+        &nbsp;|&nbsp;
+
   .grid_24
     %small.copyright
-      Copyright &copy; #{Date.today.year}
+      Copyright &copy; 2011 - #{Date.today.year} #{request.host} All Rights Reserved 
+  .grid_24
+    =link_to(image_tag("templates/common/footer/redlogo.gif"), 'http://www.ectrustprc.org.cn')
+    =link_to(image_tag("templates/common/footer/wsjybzzx.gif"), 'http://www.315online.com.cn')
+    =link_to(image_tag("templates/common/footer/beian.gif"), 'http://www.hd315.gov.cn')
