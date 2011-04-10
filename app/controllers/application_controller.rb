@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   include SentientController
   include InheritedResources::DSL
   #before_filter :check_permission!, :only => [ :create, :update, :destroy ]
-
   protect_from_forgery
 
   # 定义devise layout
@@ -17,7 +16,7 @@ class ApplicationController < ActionController::Base
   # 网店未到期
   def store_valid!
     #判断是否存在该二级域名的网店，若不存在，则跳到官网
-    unless store.subdomain
+    unless store
       redirect_to show_store_url
     else
       redirect_to invalid_path unless store.available?
