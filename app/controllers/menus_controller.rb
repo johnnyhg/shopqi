@@ -24,7 +24,7 @@ class MenusController < InheritedResources::Base
 
   def sort
     params[:menu].each_with_index do |id, index|
-      end_of_association_chain.find(id).update_attributes :pos => index
+      end_of_association_chain.find(id).update_attributes :position => index
     end
   end
 
