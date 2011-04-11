@@ -1,7 +1,2 @@
-//refresh image
--params[:menu].each_with_index do |menu_id, index|
-  $("#menu_#{menu_id} > a").css('background-image', 'url(#{menu_bg_img}?#{Time.now.to_i})');
-
-$("#menu_#{params[:menu].first}").parent().children().removeAttr('class').each(function(index){
-$(this).addClass('menu_' + index);
-});
+$("#help_#{params[:help].last}").parent().children().removeClass('last');
+$("#help_#{params[:help].last}").addClass('last');
