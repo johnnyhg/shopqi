@@ -5,7 +5,7 @@ module StoresHelper
   end
 
   def store_title
-    store.title.blank? ? '请在[后台管理]-[设置]中输入标题' : store.title
+     (store && store.title.blank?) ? '请在[后台管理]-[设置]中输入标题' : store.title
   end
 
   def config_store_url
@@ -13,7 +13,7 @@ module StoresHelper
   end
 
   def show_store_url
-    unless store.subdomain
+    unless store
       "#{request.protocol}#{request.domain}#{request.port_string}"
     else
       "#{request.protocol}#{store.subdomain}.#{request.domain}#{request.port_string}"
