@@ -1,6 +1,6 @@
 .container_24
   .grid_24#helps
-    =render :partial => "helps/item", :collection => store.helps.root.children, :locals => { :collection => store.helps.root.children }
+    .sortable{:sort_url => sort_helps_path}=render :partial => "helps/item", :collection => store.helps.root.children, :locals => { :collection => store.helps.root.children }
 
 .container_24#bottoms
   .grid_24=image_tag("templates/#{template}/footer/number.png")

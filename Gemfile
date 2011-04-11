@@ -73,6 +73,8 @@ gem 'compass-960-plugin'
 # 类似37signal的Basecamp产品界面，简洁
 # http://pilu.github.com/web-app-theme/
 gem 'web-app-theme'
+# 主题
+# http://www.wpdesigner.com/2007/02/19/so-you-want-to-create-wordpress-themes-huh/
 
 ##### 其他 #####
 # 支付
