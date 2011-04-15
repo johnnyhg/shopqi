@@ -1,0 +1,12 @@
+=content_tag_for :tr, item, :class => "item" do
+  %td=item.number
+  %td=item.name
+  %td=item.price_sum
+  %td=item.state_name
+  %td
+    =item.payment.payment_type.name
+    =item.pay_state_name
+  %td=item.created_at.to_s(:full)
+  %td=item.ship_state_name
+  %td.last
+    = link_to "删除", admin_order_path(item), :remote => true, :method => :delete, :confirm => '您确定要删除?'

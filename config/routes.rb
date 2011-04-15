@@ -111,7 +111,14 @@ Shopqi::Application.routes.draw do
 
   ##### 后台管理 #####
   namespace "admin" do
+    #商品管理
     resources :products, :only => [:index, :show, :new, :edit, :update, :destroy] do
+      collection do
+        get :list
+      end
+    end
+    #订单管理
+    resources :orders, :only => [:index, :show, :new, :edit, :update, :destroy] do
       collection do
         get :list
       end

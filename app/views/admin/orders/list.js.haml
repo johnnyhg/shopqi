@@ -1,0 +1,5 @@
+//insert
+if(!$('#orders_list')[0]){
+$("#main").prepend('#{escape_javascript( render(:partial => "list"))}');
+$('#orders_list').slideDown(1000, 'easeInOutCubic');
+}

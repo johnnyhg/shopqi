@@ -38,7 +38,7 @@ class Order
     field attr
   end
 
-  # 支付状态
+  # 订单状态
   state_machine :state do
     #@see cn.yml(state)
     state :normal
@@ -135,7 +135,7 @@ class Order
 
   STATE_FIELD.each do |name|
     define_method "#{name}_name" do                    # def pay_state_name
-      I18n.t("machine.#{name}.#{state}")               #   I18n.t("machine.pay_state.#{state}")
+      I18n.t("machine.#{name}.#{self.send(name)}")               #   I18n.t("machine.pay_state.#{state}")
     end                                                # end
   end
 end

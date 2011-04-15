@@ -1,0 +1,14 @@
+%h2
+%table.table
+  %tbody
+    %tr.head
+      %th.first{:width => '50px'}=t('formtastic.labels.order.number')
+      %th=t('formtastic.labels.order.name')
+      %th{:width => '100px'}=t('formtastic.labels.order.price_sum')
+      %th{:width => '100px'}=t('formtastic.labels.order.state')
+      %th{:width => '100px'}=t('mongoid.attributes.order.payment_id')
+      %th{:width => '100px'}=t('formtastic.labels.order.created_at')
+      %th{:width => '100px'}=t('formtastic.labels.order.ship_state')
+      %th.last
+  = render :partial => "item", :collection => @orders
+= paginate @orders, :params => {:action => :index}, :remote => true

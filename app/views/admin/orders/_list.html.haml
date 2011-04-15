@@ -1,0 +1,9 @@
+.block#orders_list.hide
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to '订单列表', '#'
+      %li.last
+        %span.close(title='关闭')
+  .content
+    .inner#orders
+      = render :partial => "index"
