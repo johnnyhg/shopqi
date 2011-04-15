@@ -1,4 +1,5 @@
-=content_tag_for :dl, item, :class => "#{last(collection, item)}" do
-  %dt
+=content_tag_for :dl, item, :class => "#{last(collection, item)} sortable", :sort_url => sort_helps_path do
+  -#.assist指定为sortable的拖动排除元素
+  %dt.assist
     %strong.editable=item.name
   =render :partial => "helps/child", :collection => item.children, :locals => { :collection => item.children }
